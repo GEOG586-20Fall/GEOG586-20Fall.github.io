@@ -2,7 +2,9 @@
 <head> 
 
 	<style>
-		#MainMap { height: 180px; }
+		#MainMap { height: 180px;
+				   Width:350px;
+				   }
 
 	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
 	   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -12,6 +14,15 @@
 	   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 	   crossorigin=""></script>
 	   
+</head> 
+
+<body>
+<h1> Nicole's Favoutie Restaurants.</h1> 
+<h2> By Nicole Morrison.</h2>
+<p> This will be my WebMap </P> 
+
+<div id="MainMap"></div>
+
 	<script type= "application/javascript">
 		var map = L.map('MainMap').setView([51.505, -0.09], 13);
 
@@ -25,12 +36,8 @@
 
 	</script> 
 
-</head> 
 
-<div id="MainMap"></div>
-
-
-
+</body> 
 
 
 </html>
