@@ -2,8 +2,8 @@
 <head> 
 
 	<style>
-		#MainMap { height: 180px;
-				   Width:850px;
+		#MyMap { height: 220px;
+				 width: 850px;
 		}
 	</style>
 	
@@ -12,7 +12,7 @@
 	   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
 	   crossorigin=""/>
 	   
-	   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+	 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 	   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 	   crossorigin=""></script>
 	   
@@ -23,10 +23,10 @@
 <h2> By Nicole Morrison.</h2>
 <p> This will be my WebMap </P> 
 
-<div id="MainMap"></div>
+<div id="MyMap"></div>
 
 	<script type= "application/javascript">
-		var map = L.map('MainMap').setView([51.505, -0.09], 13);
+		var map = L.map('MyMap').setView([51.505, -0.09], 13);
 
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -36,10 +36,8 @@
 			.bindPopup('Nicole's WebMap.<br> Easily customizable.")
 			.openPopup();
 
-	</script> 
-
-
+	</script> 	
 <body> 
 
-
 </html>
+
