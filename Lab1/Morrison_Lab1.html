@@ -23,7 +23,7 @@
 					 max-width:850px;
 					 margin: auto; 
 					 background-color: white;
-					 font-size: 15px;
+					 font-size: 20px;
 		} 
 		.center{max-width: 850px; 
 				margin: auto; 
@@ -99,6 +99,10 @@
 		
 	L.marker([51.048, -114.066]).addTo(map)
 		.bindPopup('OEB.<br> Very funky Brunch spot.')
+		.openPopup();
+	
+	L.marker([51.051, -114.063]).addTo(map)
+		.bindPopup('Point Sushi.<br> Infamous bullet train sushi bar.')
 		.openPopup();
 </script> 	
 <body> 
