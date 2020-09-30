@@ -1,8 +1,33 @@
 <html>
-
+<title> Lab 1
+</title>
 <head>
 	<style> 
-		#mainMap {	height: 180px; }
+		#mainMap { 
+			height: 650px;
+			width: 450px;
+			padding-left: 100px
+		}
+		
+		h1 { 
+			text-align: center;
+			font-family: verdana, sans-serif;
+		}
+		
+		h2 {
+			text-align: center;
+			font-family: verdana, sans-serif;
+		}
+		
+		p1 {
+			text-align: center;
+			font-family: verdana, sans-serif;
+		}
+		
+		p2 {
+			text-align: center;
+			font-family: verdana, sans-serif;
+		}
 	</style>
 	
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -16,23 +41,39 @@
 
 <body>
 
-<h1> THis is a heading</h1>
-<h2> by rita zoura</h2>
-<p> this is my web map</p>
+<h1>Favourite Places in My Neighbourhood</h1>
+<h2>By Rita Zoura</h2>
+<p1>This is a webmap of the places I like to walk to in my neighbourhood. I have lived in this area for most of my life and I know the area really well.</p>
+<p2>Click on a marker on the map to learn more about it!</p>
 
-<div id="mainMap"></div>
+<div id="mainMap">
 
 	<script type="application/javascript">
-		var map = L.map('mainMap').setView([51.505, -0.09], 13);
+		var map = L.map('mainMap').setView([50.985871, -114.077288], 15);
 
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(map);
-
-		L.marker([51.5, -0.09]).addTo(map)
-			.bindPopup('first popup!.<br> Easily customizable.')
-			.openPopup()
+		
+		var polygon = L.polygon([
+			[50.993989, -114.083003],
+			[50.994136, -114.071481],
+			[50.979552, -114.071430],
+			[50.979540, -114.083018]
+		]).addTo(map);
+		
+		polygon.bindPopup("This is the community of Kingsland. I have lived here for most of my life and grown up in this area. The markers around are some of my favourite places to walk to! I hope you enjoy getting to know my neighbourhood.").openPopup();
+		
+		L.marker([50.981787, -114.073834]).addTo(map)
+			.bindPopup("This is Kingsland's Dry Pond. It has a long paved walkway going around it, good for biking or a short walk. There is also a large hill great for sledding down in the winter. Just be careful of the storm grates at the bottom of the hill! Back in 2005, there was a big storm, the grates weren't cleared out and a lot of the houses in the community had their basements flooded (including mine). The pond it self was also full of water we couldn't even go around it with out being blocked by water")
+			.openPopup(onclick());
+		
+		L.marker([50.979012, -114.074716]).addTo(map)
+			.bindPopup("Heritage Station")
+			.openPopup(onclick());
+		
 	</script>
+</div>
 </body>
 
 </html>
