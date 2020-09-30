@@ -2,8 +2,8 @@
 <head> 
 
 	<style>
-		#MyMap { height: 580px;
-				 width: 550px;
+		#MyMap { height: 680px;
+				 width: 850px;
 		}
 	</style>
 	
@@ -30,12 +30,16 @@
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
 
-	L.marker([51.028, -114.06]).addTo(map)
+	L.marker([51.041, -114.06]).addTo(map)
 		.bindPopup('Ten Foot Henry.<br> Hip atmosphere with modern vegtable-anchored plates for sharing.')
 		.openPopup();
 	
-	L.marker([51.036, -114.04]).addTo(map)
+	L.marker([51.044, -114.07]).addTo(map)
 		.bindPopup('Bridgette Bar.<br> Chef-driven food with a funky lounge atmosphere.')
+		.openPopup();
+		
+	L.marker([51.037, -114.07]).addTo(map)
+		.bindPopup('UNA Pizza and Wine.<br> Hip local elevated pizzeria.')
 		.openPopup();
 
 	</script> 	
