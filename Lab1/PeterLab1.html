@@ -9,7 +9,7 @@
 
 <head>
    <style>
-      #mapLondon {height: 380px; width: 500px}
+      #mapCalgary {height: 380px; width: 580px}
    </style>
 
    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -32,17 +32,17 @@
       <br>It is <b>the largest mall in Calgary</b> and it has one of the city's biggest Cineplex theatre, which I adore and visit often!
    </p>
 
-   <div id = "mapLondon"></div>
+   <div id = "mapCalgary"></div>
 
    <script>
-      var mymap = L.map("mapLondon").setView([51.505, -0.09], 13);
+      var mymap = L.map("mapCalgary").setView([51.00, -114.074821], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(mymap);
 
-      L.marker([51.5, -0.09]).addTo(mymap)
-         .bindPopup("Peter's first pop up.<br> Easily customizable.")
+      L.marker([51.00, -114.074821]).addTo(mymap)
+         .bindPopup("In my opinion, best place in Calgary<br>for shopping and movies.")
          .openPopup();
    </script>
 
