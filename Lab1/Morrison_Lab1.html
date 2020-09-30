@@ -7,6 +7,12 @@
 		}
 	</style>
 	
+	<style>
+		h1{font-family: cooper black;}
+		.pinkText{color:pink;}
+	</style>
+	
+	
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
@@ -17,9 +23,11 @@
 </head> 
 
 <body>
+<div id="description" class="pinkText">
 <h1> Nicole's Favourite Local Calgary Eateries.</h1> 
 <h2> "For all the foodies out there"</h2>
 <p> By Nicole Morrison. </P> 
+</div>
 
 <div id="MyMap"></div>
 
@@ -35,7 +43,7 @@
 		.openPopup();
 	
 	L.marker([51.044, -114.07]).addTo(map)
-		.bindPopup('Bridgette Bar.<br> Chef-driven food with a funky lounge atmosphere.')
+		.bindPopup('Bridgette Bar.<br> Chef-driven food with a unique lounge atmosphere.')
 		.openPopup();
 		
 	L.marker([51.037, -114.0755]).addTo(map)
@@ -67,6 +75,8 @@
 		.openPopup();
 </script> 	
 <body> 
+
+
 
 </html>
 
