@@ -2,8 +2,8 @@
 <head> 
 
 	<style>
-		#MyMap { height: 580px;
-				 width: 1050px;
+		#MyMap { height: 500px;
+				 width: 950px;
 		}
 		body{
 			 background-image: url("https://www.besthealthmag.ca/wp-content/uploads/2019/07/junk-food-1.gif");
@@ -13,13 +13,17 @@
 	<style>
 		body{font-family: cooper black;}
 		.pinkText{color:pink;
-				  Max-width 500px; 
+				  max-width :500px; 
 				  margin: auto;
 		}
 		.purpleText {color: purple;
 					 max-width:500px;
 					 margin: auto; 
 		} 
+		.center 
+				max-width: 500px; 
+				margin: auto; 
+		
 		
 	</style>
 	
@@ -45,7 +49,7 @@
 </div>
 
 
-<div id="MyMap"></div>
+<div id="MyMap" class="center"></div>
 
 <script type= "application/javascript">
 	var map = L.map('MyMap').setView([51.048, -114.07], 13);
