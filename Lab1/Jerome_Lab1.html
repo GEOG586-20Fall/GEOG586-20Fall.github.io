@@ -1,0 +1,119 @@
+<html>
+<head>
+
+	<style>
+		#Lab1Map { height: 569px; }
+		#Lab1Map { width: 800px; }
+		
+		body {
+			background-image: url("https://live.staticflickr.com/65535/50405104093_bca69cc610.jpg");
+			}
+			
+		.center{max-width: 900px;
+			margin: auto;
+			}
+			
+		.textformat{color:blueviolet;
+			max-width: 850px;
+			margin: auto;
+			background-color: #E28A2b;
+			text-align: center;
+			}
+	</style>
+	
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+</head>
+
+<body>
+
+<div id="header" class="textformat">
+	<h1 style="text-align:center;">NE Calgary</h1>
+	<h2 style="text-align:center;">By Ethan Jerome - 30053230</h2>
+	<p style="text-align:center;">This map will help you get to know me better. It shows where I live, as well as the local landmarks and amenities. </p>
+</div>
+
+<div id="Lab1Map" class="center"></div>
+
+	<script type="application/javascript">
+	var map = L.map('Lab1Map').setView([51.155064, -114.066517], 13);
+
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
+
+	L.marker([51.155797, -114.068550]).addTo(map)
+		.bindPopup('Local Movie Theatre, Landmark Cinemas: <br> Currently getting wrecked by Big Rona.')
+		.openPopup();
+		
+	L.marker([51.170416, -114.039086]).addTo(map)
+		.bindPopup('My Humble Abode.')
+		.openPopup();
+		
+	L.marker([51.155005, -113.999054]).addTo(map)
+		.bindPopup('Spiritleaf: The Cannabis Dispensary where I get my Recreational Goods.')
+		.openPopup();
+	
+	L.marker([51.159603, -114.065876]).addTo(map)
+		.bindPopup('Vivo for Healthier Generations: <br> Local Gym and Recreational Facility.')
+		.openPopup();
+	
+	L.marker([51.161904, -114.035584]).addTo(map)
+		.bindPopup('Local Glacial Erratic.')
+		.openPopup();
+	
+	L.marker([51.155487, -114.057829]).addTo(map)
+		.bindPopup('Sobeys: Where I usually go to get Groceries.')
+		.openPopup();
+		
+	L.marker([51.154534, -114.060146]).addTo(map)
+		.bindPopup('Esso: Where I usually fill up on Gas.')
+		.openPopup();
+	
+	L.marker([51.158328, -114.043256]).addTo(map)
+		.bindPopup('Liquor Outlet: A small, family run liquor store I usually shop at.')
+		.openPopup();
+		
+	L.marker([51.164798, -114.036286]).addTo(map)
+		.bindPopup('A wonderful place to sit, relax, and see beautiful skies around sunset.')
+		.openPopup();
+		
+	L.marker([51.136754, -114.079110]).addTo(map)
+		.bindPopup('Where I lived until March of this year, when I then moved to Coventry Hills.')
+		.openPopup();
+		
+	L.marker([51.165081, -114.071017]).addTo(map)
+		.bindPopup("Cedar's Deli: One of my favorite places to eat.")
+		.openPopup();
+		
+	L.marker([51.126959, -114.055830]).addTo(map)
+		.bindPopup("Seniore's Pizza: My favorite Pizza place.")
+		.openPopup();
+		
+	 var polygon = L.polygon([
+		[51.167908, -114.037074],
+		[51.165682, -114.039057],
+		[51.165335, -114.036730]
+	]).addTo(map);
+		polygon.bindPopup('The Field where I walk my Dog, Lily.')
+		polygon.openPopup();
+		
+	 var polygonPark = L.polygon([
+		[51.161783, -114.042823],
+		[51.162368, -114.042532],
+		[51.162155, -114.041815],
+		[51.161634, -114.042354]
+	]).addTo(map);
+		polygonPark.bindPopup('One of many Local Playgrounds.')
+		polygonPark.openPopup();
+		
+	</script>
+	
+</body>
+</html>
