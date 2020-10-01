@@ -4,18 +4,28 @@
 
 <head>
    <style>
-      body{font-family:times new roman}
+      body{font-family:Times New Roman
+      }
+      
       .blueText{color:DarkSlateBlue;
          max-width: 700px;
          margin: auto;
          text-align: center;
       }
+      
       .bg{height: 80px;
          width: 100%;
-         border: 5px outset lightblue;
-         background-color: darkslateblue;
+         border: 5px outset LightBlue;
+         background-color: DarkSlateBlue;
          text-align: center;
          color: GhostWhite;
+      }
+      
+      .wbg{height: 30px;
+         width: 100%;
+         background-color: White;
+         text-align: center;
+         color: Black
       }
       
       p{color:Black;
@@ -23,6 +33,7 @@
          margin: auto;
          text-align: left;
       }
+      
       .center{max-width: 700px;
          margin: auto;
          width: 60%;
@@ -65,26 +76,30 @@
    </p>
    
    <p>
-      Another favourite attraction of mine is the Calgary Shooting Centre! It is where I go for target practice and it has the largest
-      collection of firearms in Calgary!
+      Another favourite attraction of mine is the <b>Calgary Shooting Centre</b>! It is where I go for target practices and it has <b>the largest
+      collection of firearms in Calgary</b>!
    </p>
    </div>
    
    <div id="mapCalgary" class="center"></div>
 
+   <div class="wbg"></div>
+   
+   <div class="bg"></div>
+   
    <script>
-      var mymap=L.map("mapCalgary").setView([51.00, -114.074821], 13);
+      var mymap=L.map("mapCalgary").setView([50.9970, -114.073935], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(mymap);
 
-      L.marker([51.00, -114.074821]).addTo(mymap)
-         .bindPopup("In my opinion, best place in Calgary<br>for shopping and movies.")
+      L.marker([50.9970, -114.073935]).addTo(mymap)
+         .bindPopup("CF Chinook Centre: In my opinion,<br> this is the best place in Calgary<br>for shopping and movies.")
          .openPopup();
       
       L.marker([50.9903, -114.067321]).addTo(mymap)
-         .bindPopup("The biggest gun store in Calgary.")
+         .bindPopup("The Calgary Shooting Centre:<br>The biggest gun store in Calgary.")
          .openPopup();
    </script>
 
