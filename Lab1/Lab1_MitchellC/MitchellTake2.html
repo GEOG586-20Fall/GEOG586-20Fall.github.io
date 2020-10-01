@@ -17,28 +17,57 @@
 </head>
 
 <body>
-	<h1>The Essentials for Living in UofC Residence</h1>
+	<h1>Hotspots for a student living in UofC Residence</h1>
 	<h2>A Guide by Mitchell Cornish, Residence Community Ambassador & Geographer</h2>
 	
 	<p> Welcome to my webpage! My name is Mitchell and I am a 3rd year Geography major, and this is also my third year living in residence at the University of Calgary.
-	This sememster, I am enrolled in GEOG 586 with Dr. Burns! </p> 
+	This semester, I am enrolled in GEOG 586 with Dr. Burns!<br>For this project, I wanted to map out the different hotspots for a student such as myself living in residence.
+	<br> There are various areas I like to explore and visit during my days on campus. Take a look at the map to see some of my favourite places!</p> 
 	
 	
 <div id="primaryMap"></div>
 
 	<script type="application/javascript">
-		var map = L.map('primaryMap').setView([51.076884, -114.131655], 13);
+		var map = L.map('primaryMap').setView([51.076884, -114.131655], 7);
 
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(map);
 
 		L.marker([51.076162, -114.132901]).addTo(map)
-			.bindPopup("International House: Residence Building and home to the Campus Service Centre<br> Easily customizable.")
+			.bindPopup("International House: First Year Residence Building and home to the Campus Service Centre<br> Fun fact: I currently live here!")
 			.openPopup();
 		
 		L.marker([51.078065, -114.133443]).addTo(map)
-			.bindPopup("Fitness Centre<br> Easily customizable.")
+			.bindPopup("Fitness Centre<br> During COVID-19 it is still open to all students.")
+			.openPopup();
+			
+		L.marker([51.074836, -114.136981]).addTo(map)
+			.bindPopup("Yamnuska Hall<br> A first and second year residence building.<br> It has a lot of restaurants that students enjoy, including Starbucks, Domino's, and Subway.)
+			.openPopup();
+			
+		L.marker([51.077530, -114.147416]).addTo(map)
+			.bindPopup("Save-On-Foods<br> This is a new supermarket that opened in August 2020. It is the closest supermarket to residence!")
+			.openPopup();
+			
+		L.marker([51.076424, -114.127228]).addTo(map)
+			.bindPopup("Craigie Hall Bus Terminal<br> An important transportation hub for residence students and commuter students alike")
+			.openPopup();
+			
+		L.marker([51.078409, -114.131054]).addTo(map)
+			.bindPopup("Mac Hall<br>A place to eat, to shop and to access various campus resources")
+			.openPopup();
+			
+		L.marker([51.077386, -114.129835]).addTo(map)
+			.bindPopup("TFDL<br> The library at which I occasionally study at...not so much this year though.")
+			.openPopup();
+			
+		L.marker([51.080100, -114.123122]).addTo(map)
+			.bindPopup("University LRT Station<br>Another important transit hub for students")
+			.openPopup();
+			
+		L.marker([51.069640, -114.143031]).addTo(map)
+			.bindPopup("West Campus Park Duck Pond<br> A place that I like to visit if I need to go off campus for a break.")
 			.openPopup();
 	</script>
 	
