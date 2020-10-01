@@ -1,5 +1,10 @@
+<!DOCTYPE html>
+
 <html>
 <head>
+
+	<style> #mapid { height: 180px; } </style>
+
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
@@ -8,6 +13,20 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
    
+	
+	
+
+</head>
+
+<body>
+	<h1>The Essentials for Living in UofC Residence</h1>
+	<h2>A Guide by Mitchell Cornish, Residence Community Ambassador & Geographer</h2>
+	
+	<p> Welcome to my webpage! My name is Mitchell and I am a 3rd year Geography major, and this is also my third year living in residence at the University of Calgary.
+	This sememster, I am enrolled in GEOG 586 with Dr. Burns! </p> 
+	
+<div id="basemap"></div>
+
 	<script> type="application/javascript">
 		var map = L.map('basemap').setView([51.505, -0.09], 13);
 
@@ -19,17 +38,6 @@
 		.bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
 		.openPopup();
 </script>
-</head>
-
-<body>
-	<h1>The Essentials for Living in UofC Residence</h1>
-	<h2>A Guide by Mitchell Cornish, Residence Community Ambassador & Geographer</h2>
-	
-	<p> Welcome to my webpage! My name is Mitchell and I am a 3rd year Geography major, and this is also my third year living in residence at the University of Calgary.
-	This sememster, I am enrolled in GEOG 586 with Dr. Burns! </p> 
-	
-<div id="basemap">
-</div>
 
 </body>
 
