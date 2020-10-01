@@ -2,12 +2,17 @@
 <html>
 
 
-<style>
-   body{font-family:times new roman}
-</style>
-
-
 <head>
+   <style>
+      body{font-family:times new roman}
+      .center{max-width: 700px;
+         margin: auto;}
+      .whiteText{color:GhostWhite;
+         max-width: 700px;
+         margin:auto
+         text-align: center;}
+   </style>
+   
    <style>
       #mapCalgary {height: 380px; width: 580px}
    </style>
@@ -22,8 +27,8 @@
 </head>
 
 
-<body>
-   <h1>
+<body class="center">
+   <h1 class= "whiteText">
       Peter's Calgary Key Attractions
    </h1>
 
@@ -32,10 +37,10 @@
       <br>It is <b>the largest mall in Calgary</b> and it has one of the city's biggest Cineplex theatre, which I adore and visit often!
    </p>
 
-   <div id = "mapCalgary"></div>
+   <div id="mapCalgary"></div>
 
    <script>
-      var mymap = L.map("mapCalgary").setView([51.00, -114.074821], 13);
+      var mymap=L.map("mapCalgary").setView([51.00, -114.074821], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
