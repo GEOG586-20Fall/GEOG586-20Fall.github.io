@@ -3,8 +3,10 @@
 <html>
 <head>
 
-	<style> #basemap { height: 540px; 
-		width: 1050px;} </style>
+	<style> 
+			#primaryMap { height: 540px; width: 1050px;} 
+			
+	</style>
 
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -26,10 +28,10 @@
 	<p> Welcome to my webpage! My name is Mitchell and I am a 3rd year Geography major, and this is also my third year living in residence at the University of Calgary.
 	This sememster, I am enrolled in GEOG 586 with Dr. Burns! </p> 
 	
-<div id="basemap"></div>
+<div id="primaryMap"></div>
 
 	<script> type="application/javascript">
-		var map = L.map('basemap').setView([51.505, -0.09], 13);
+		var map = L.map('primaryMap').setView([51.505, -0.09], 13);
 
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
