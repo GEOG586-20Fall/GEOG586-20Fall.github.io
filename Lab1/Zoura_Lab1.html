@@ -64,13 +64,25 @@
 		
 		polygon.bindPopup("This is the community of Kingsland. I have lived here for most of my life and grown up in this area. The markers around are some of my favourite places to walk to! I hope you enjoy getting to know my neighbourhood.").openPopup();
 		
-		L.marker([50.981787, -114.073834]).addTo(map)
-			.bindPopup("This is Kingsland's Dry Pond. It has a long paved walkway going around it, good for biking or a short walk. There is also a large hill great for sledding down in the winter. Just be careful of the storm grates at the bottom of the hill! Back in 2005, there was a big storm, the grates weren't cleared out and a lot of the houses in the community had their basements flooded (including mine). The pond it self was also full of water we couldn't even go around it with out being blocked by water")
-			.openPopup(onclick());
+		var marker = L.marker([50.981787, -114.073834]).addTo(map); <!--dry pond-->
 		
-		L.marker([50.979012, -114.074716]).addTo(map)
-			.bindPopup("Heritage Station")
-			.openPopup(onclick());
+		marker.bindPopup("This is Kingsland's Dry Pond. It has a long paved walkway going around it, good for biking or a short walk. There is also a large hill great for sledding down in the winter. Just be careful of the storm grates at the bottom of the hill! Back in 2005, there was a big storm, the grates weren't cleared out and a lot of the houses in the community had their basements flooded (including mine). The pond it self was also full of water we couldn't even go around it with out being blocked by water").openPopup(onclick());
+		
+		var marker = new L.marker([50.979012, -114.074716]).addTo(map); <!--Heritage Station-->
+		
+		marker.bindPopup("One of the things i really like about my neighbourhood is how close transit access is to my place. This is Heritage station and within a 5 min walk, i cna hop on the to the train nad toward the university. Only about a 30min train ride too.").addTo(map(onclick()));
+		
+		var marker2 = new L.marker([50.984368, -114.073064]).addTo(map); <!-- Trico towers area of constant change-->
+		
+		var marker = new L.marker([50.986297, -114.084718]).addTo(map); <!--wise wood hs-->
+		
+		var marker = new L.marker([50.991179, -114.082744]).addTo(map); <!--7/11-->
+		
+		var marker = new L.marker([50.982679, -114.101362]).addTo(map); <!--Heritage Park-->
+		
+		var marker = new L.marker([50.981366, -114.117666]).addTo(map); <!--glenmore reservoir-->
+		
+		var marker = new L.marker([50.976022, -114.083541]).addTo(map); <!--woodman-->
 		
 	</script>
 </div>
