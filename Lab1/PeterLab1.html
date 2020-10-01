@@ -2,14 +2,30 @@
 <html>
 
 
-<style>
-   body{font-family:times new roman}
-</style>
-
-
 <head>
    <style>
-      #mapCalgary {height: 380px; width: 580px}
+      body{font-family:times new roman}
+      .blueText{color:DarkSlateBlue;
+         max-width: 700px;
+         margin: auto;
+         text-align: center;
+      }
+      
+      p{color:Black;
+         max-width: 700px;
+         margin: auto;
+         text-align: left;
+      }
+      .center{max-width: 700px;
+         margin: auto;
+         width: 60%;
+         border: 6px solid #483D8B;
+         padding: 10px;
+      }
+   </style>
+   
+   <style>
+      #mapCalgary {height: 380px; width: 700px}
    </style>
 
    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -23,19 +39,28 @@
 
 
 <body>
+   <div class="blueText">
    <h1>
       Peter's Calgary Key Attractions
    </h1>
 
+   <hr>   
+      
    <p>
-      One of my favourite key attraction is the <b>Chinook Centre</b>!
-      <br>It is <b>the largest mall in Calgary</b> and it has one of the city's biggest Cineplex theatre, which I adore and visit often!
+      One of my favourite attraction is the <b>Chinook Centre</b>!
+      It is <b>the largest mall in Calgary</b> and it has one of the city's biggest Cineplex theatre, which I adore and visit often!
    </p>
-
-   <div id = "mapCalgary"></div>
+   
+   <p>
+      Another favourite attraction of mine is the Calgary Shooting Centre! It is where I go for target practice and it has the largest
+      collection of firearms in Calgary!
+   </p>
+   </div>
+   
+   <div id="mapCalgary" class="center"></div>
 
    <script>
-      var mymap = L.map("mapCalgary").setView([51.00, -114.074821], 13);
+      var mymap=L.map("mapCalgary").setView([51.00, -114.074821], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -43,6 +68,10 @@
 
       L.marker([51.00, -114.074821]).addTo(mymap)
          .bindPopup("In my opinion, best place in Calgary<br>for shopping and movies.")
+         .openPopup();
+      
+      L.marker([50.9903, -114.067321]).addTo(mymap)
+         .bindPopup("The biggest gun store in Calgary.")
          .openPopup();
    </script>
 
