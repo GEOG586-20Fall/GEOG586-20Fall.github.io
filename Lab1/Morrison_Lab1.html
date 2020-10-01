@@ -71,8 +71,9 @@
 		color: 'red',
 		fillColor: '#f03',
 		fillOpacity: 0.5,
-		radius: 500
-	}).addTo(map);
+		radius: 700
+	}).addTo(map).bindPopup('<b>17th Avenue 5</b><br> 17th Avenue is home to some of the best food in Calgary.')
+		.openPopup();
 
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
