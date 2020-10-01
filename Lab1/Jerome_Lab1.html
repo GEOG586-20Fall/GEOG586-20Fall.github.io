@@ -1,0 +1,36 @@
+<html>
+<head>
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+<script type="application/javascript">
+	var map = L.map('Lab1Map').setView([51.505, -0.09], 13);
+
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(map);
+
+	L.marker([51.5, -0.09]).addTo(map)
+		.bindPopup('The first popup practice.<br> Easily customizable.')
+		.openPopup();
+</script>
+
+</head>
+
+<body>
+<h1>Its a lit placeholder fam
+<h2>By the main man himself, Ethan Jerome
+<p> this will be my web map </p>
+
+<div id="Lab1Map">
+
+</div>
+
+</body>
+</html>
