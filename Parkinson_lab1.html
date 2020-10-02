@@ -3,7 +3,41 @@
 <head>
 
 	<style>
-		#map { height: 180px; }
+		#map { height: 500px; 
+		        width: 1000px;}
+
+		h1 {
+		  color: DarkTurquoise;
+		  text-align: center;
+		  font-family: Arial, sans-serif;
+		}
+								 
+		h2 {
+		  color: DeepSkyBlue;
+		  text-align: center;
+		  font-family: Arial, sans-serif;
+		}
+
+		h3 {
+		  color: DeepSkyBlue;
+		  text-align: left;
+		  font-family: Arial, sans-serif;
+		}
+
+		h4 {
+		  color: SpringGreen;
+		  text-align: left;
+		  font-family: Arial, sans-serif;
+		}
+
+
+		p {
+		  color: white;
+		  text-align: left;
+		  font-family: Georgia, serif;
+		}
+
+	 
 	</style>
 
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity=
@@ -19,23 +53,73 @@
 </head>
 
 <body>
-<h1>My First Heading</h1>
-<p>My First paragraph.</p>
+	<h1>A Canadians Tour of Tamarindo</h1>
+	<h2>Your Tour Guide: Dylan Parkinson</h2>
+	<p>Welcome to my tour of this small Costa Rican town of Tamarindo. During this tour you will find a few of my favorite spots, including where to eat, what to do, where to shop, where I personally stayed and more! Going to a foreign country can sometimes be a challenge, you want to get the most out of your trip in the short amount of time you are there, so you don’t want to waste it on places that you will not be happy with. Well, if you are planning a trip to Tamarindo this map has you covered! In the map below you with find my top 8 places to go in this town! Enjoy! </p>
 
 <div id="map"></div>
 
 <script type="application/javascript">
-		var map = L.map('map').setView([10.3, -85.838], 13);
+		var map = L.map('map').setView([10.302725, -85.837146], 15);
 
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(map);
 
-		L.marker([10.3, -85.838]).addTo(map)
-			.bindPopup('This is crazy.<br> Yes it is.')
+		L.marker([10.302210, -85.830550]).addTo(map)
+			.bindPopup('Tamarindo look out<br> Way up on a hill, great place for photos!')
 			.openPopup();
-	</script>
+			
+        L.marker([10.297991, -85.841281]).addTo(map)
+			.bindPopup('Sharkys Sports Bar.<br> Where we watched the World Juniors.')
+			.openPopup();
+			
+		L.marker([10.299691, -85.841616]).addTo(map)
+			.bindPopup('Waffle Monkey.<br> Best waffles in town.')
+			.openPopup();
+			
+		L.marker([10.300395, -85.840909]).addTo(map)
+			.bindPopup('Dreamland Sunglasses.<br> High quality, Costa Rican made.')
+			.openPopup();
+			
+		L.marker([10.306617, -85.836437]).addTo(map)
+			.bindPopup('Pangas Beach Club.<br> Best resturant in town, You eat on the beach!')
+			.openPopup();
+			
+		L.marker([10.302297, -85.839850]).addTo(map)
+			.bindPopup('Iguana Surf Shop.<br> Perfect place to rent surf boards.')
+			.openPopup();
+			
+		L.marker([10.303017, -85.840595]).addTo(map)
+			.bindPopup('New Years Eve Fireworks.<br> Perfect view of them from our rental!')
+			.openPopup();
+			
+		L.marker([10.307657, -85.838246]).addTo(map)
+			.bindPopup('Estero de Playa Grande.<br> Which translates to Big Beach Estuary.<br> Stay away! There are Crocodiles!')
+			.openPopup();
 
+		L.marker([10.297192, -85.840934]).addTo(map)
+			.bindPopup('ATV Tamarindo.<br> Great excursion!')
+			.openPopup();
+			
+		L.marker([10.303066, -85.833126]).addTo(map)
+			.bindPopup('Casa Catalina.<br> Where I stayed.')
+			.openPopup();		
+</script>
+
+	<h3>The List</h3>
+	<p>1. Pangas Beach Club</p>
+	<p>2. Tamarindo look out</p>
+	<p>3. Waffle Monkey</p>
+	<p>4. Sharkys Sports Bar</p>
+	<p>5. Dreamland Sunglasses</p>
+	<p>6. New Years Eve Fireworks</p>	
+	<p>7. Iguana Surf Shop</p>
+	<p>8. ATV Tamarindo</p>
+	<h4>Ok, so there it is! My list of places to go and visit in Tamarindo! I hope this was helpful for any perspective tavellers, Costa Rica is an amazing place to visit and I hope you enjoy your trip as much as I did!
+	<p>Notes:</p>
+	<p>This is a Lab 1 for Dr. Ryan Burns GEOG 586 class at the University Of Calgary</p>
+	
 </body>
 </html>
 

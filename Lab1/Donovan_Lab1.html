@@ -1,0 +1,193 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<style> 
+       
+    body{
+        
+        font-family: 'Roboto', sans-serif;
+        background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/email-pattern.png");
+        position: relative;
+        
+    }
+    .container{
+        display: grid;
+        justify-content: space-evenly;
+        
+    }
+         
+    h1{
+        text-align:center;
+        color:black;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+    
+    h2{
+        text-align: center;
+        color:black;
+        font-weight: 300;
+        font-size: 20px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+    
+    .button{
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        color: white;
+        background-color: black;
+        border: none;
+        opacity: 0.6;
+        position: relative;
+        padding: 5px 15px;
+        border: 0.5px solid black;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        font-weight: 100;
+        display: inline-block;
+        margin: 2px;
+        text-decoration: none;
+        
+       
+    }
+    .button:hover {
+        text-align: center;
+        font-size: 15px;
+        background-color: black;
+        color: white;
+        border: none;
+        opacity: 1;
+        padding: 5px 15px;
+        border: 0.5px solid black;
+        border-radius: 8px;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+       
+    }
+
+    .button2{
+        text-align: center;
+        font-size: 15px;
+        color: white;
+        border: black;
+        padding: 5px 15px;
+        border: 0.5px solid black;
+        border-radius: 8px;
+        
+    
+       
+    }
+    .button2:hover {
+        text-align: center;
+        font-size: 15px;
+        background-color: black;
+        color: white;
+        border: black;
+        padding: 5px 15px;
+        border: 0.5px solid black;
+        border-radius: 8px;
+       
+    }
+      #map {
+            display: block;
+            position: absolute; 
+            top: 195; 
+            bottom: 150; 
+            left: 100; 
+            right: 100;
+            border-radius: 12px;
+          
+    }
+    .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background-color: black;
+          opacity: 0.6;
+          color: white;
+          text-align: center;
+    }
+    p{
+        display: grid;
+        justify-content: space-evenly;
+        align-content: center;
+        
+    }
+</style>
+    
+</head>
+<body>
+ 
+    <div class="container">
+        <h1>Mikayla's Life History</h1>
+        <h2>These are all the places I've lived!</h2>
+         <button class= "button button2" onclick="AboutMe()">Click to learn more about me!</button>
+       <a class="button button1"href="https://ca.linkedin.com/in/mikayla-donovan-2a0a43165" target="_blank">Let's connect!</a>
+    </div>
+    
+    <div class="footer">
+    <p>
+        By Mikayla Donovan
+        </p>
+           
+    </div>
+
+    
+    <div id = "map"></div>
+    
+    
+<script>
+    
+    alert("Hello and welcome to my map!")
+    
+    function AboutMe(){
+        alert("Hey! My name (the creator of this web map) is Mikayla Donovan. I'm an environmental science student learning web mapping.");
+    }
+    var map = L.map('map', {zoomSnap: 0.25}).setView([30.9, 10.14], 2.25);
+    
+    L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=TGQCxyBRvyf29NNtjFcv', {
+        attribution:'<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+    }).addTo(map);
+    
+    L.control.scale().addTo(map);
+    
+    var leafletIcon = L.icon ({
+        iconUrl: 'https://www.iconfinder.com/data/icons/small-n-flat/24/678111-map-marker-512.png',
+        iconSize: [50,50],
+        iconAnchor: [22,50],
+        popupAnchor: [3,-50]
+     })
+    
+    
+    var vanIsland = L.marker([49.68, -124.99],{icon:leafletIcon}).addTo(map); 
+    var Sydney = L.marker([-33.96, 151.25],{icon:leafletIcon}).addTo(map);
+    var Mexico = L.marker([31.87, -116.60],{icon:leafletIcon}).addTo(map);
+    var Calgary = L.marker([51.06, -114.11],{icon:leafletIcon}).addTo(map);
+    var Vancouver = L.marker([49.10, -122.66],{icon:leafletIcon}).addTo(map);
+    var France = L.marker([45.04, 3.88], 
+    {icon:leafletIcon}).addTo(map);
+    var Rio = L.marker([-22.91, -43.17], 
+    {icon:leafletIcon}).addTo(map);
+    vanIsland.bindPopup("<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Kennedy_Lake_along_Highway_4.jpg/1200px-Kennedy_Lake_along_Highway_4.jpg style=width:300px;height:150px;> <b> Vancouver Island </b><br> I was born here!").openPopup(onclick);
+    <!--citation for vanIsland : https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Kennedy_Lake_along_Highway_4.jpg/1200px-Kennedy_Lake_along_Highway_4.jpg-->
+    Sydney.bindPopup("<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/The_Sydney_Opera_House_at_dusk.jpg/1920px-The_Sydney_Opera_House_at_dusk.jpg style=width:300px;height:150px;> <b> Sydney </b><br> I worked here in 2014! ").openPopup(onclick);
+     <!-- citation for Sydney: https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/The_Sydney_Opera_House_at_dusk.jpg/1920px-The_Sydney_Opera_House_at_dusk.jpg-->
+    Mexico.bindPopup("<img src=https://farm4.staticflickr.com/3226/2993119641_0dcaca4e69_z.jpg style=width:300px;height:150px;> <b> Ensenada </b><br> I spent summer 2011 here! ").openPopup(onclick);
+    <!-- citation for mexico : https://farm4.staticflickr.com/3226/2993119641_0dcaca4e69_z.jpg-->
+    Calgary.bindPopup("<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Downtown_Calgary_2016_-_Kevin_Cappis.jpg/1200px-Downtown_Calgary_2016_-_Kevin_Cappis.jpg style=width:300px;height:150px;><b> Calgary </b><br> I moved here for University! ").openPopup(onclick);
+     <!-- citation for Calgary: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Downtown_Calgary_2016_-_Kevin_Cappis.jpg/1200px-Downtown_Calgary_2016_-_Kevin_Cappis.jpg-->
+    Vancouver.bindPopup("<img src=https://upload.wikimedia.org/wikipedia/commons/8/80/English_Bay%2C_Vancouver%2C_BC.jpg style=width:300px;height:150px;><b> Vancouver </b><br> I lived here after high school! ").openPopup(onclick);
+    <!-- citation for vancouver: https://upload.wikimedia.org/wikipedia/commons/8/80/English_Bay%2C_Vancouver%2C_BC.jpg-->
+    Rio.bindPopup("<img src=https://upload.wikimedia.org/wikipedia/commons/a/a0/Rio_de_Janeiro_Helicoptero_47_Feb_2006.jpg style=width:300px;height:150px;> <b> Rio </b><br> I travelled here last year! ").openPopup(onclick);
+     <!-- citation for Rio: https://upload.wikimedia.org/wikipedia/commons/a/a0/Rio_de_Janeiro_Helicoptero_47_Feb_2006.jpg-->
+    France.bindPopup("<img src=https://www.lepuyenvelay-tourisme.fr/wp-content/uploads/2018/07/le-puy-en-velay-810x405.jpg style=width:300px;height:150px;> <b> France </b><br> I worked here in 2015! ").openPopup(Map);
+     <!-- citation for France: https://www.lepuyenvelay-tourisme.fr/wp-content/uploads/2018/07/le-puy-en-velay-810x405.jpg
+         -->
+</script>
+    
+</body>
+</html>
