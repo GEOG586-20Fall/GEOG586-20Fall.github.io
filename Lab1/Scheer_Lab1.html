@@ -16,8 +16,10 @@
 
 <body>
 
-<h1>Test</h1>
-<h2>smaller test</h2>
+<h1>The Many Amenities of Dalhousie!</h1>
+<h2>A map showing a selection of the surprising amount of walkable things that this community has to offer </h2>
+
+<p>
 
 <div id="myMap"></div>
 	<script type="application/javascript">
@@ -28,11 +30,11 @@
 		}).addTo(map);
 		
 		L.marker([51.102623, -114.146024]).addTo(map)
-			.bindPopup("Co-Op! A chain grocery store cooperative which sources a decent amount of local goods " +
-				"and rewards its members with money back every year");
+			.bindPopup("Co-op. A chain grocery store cooperative which sources a decent amount of local goods " +
+				"and rewards its members with money back every year.");
 				
 		L.marker([51.106917, -114.161792]).addTo(map)
-			.bindPopup("Safeway. Another grocery option, sometimes cheaper than Co-Op.");
+			.bindPopup("Safeway. Another grocery option, sometimes cheaper than Co-op.");
 		
 		L.marker([51.096534, -114.138670]).addTo(map)
 			.bindPopup("Nose Hill Library. A nice, equitable place to read and learn, or use a computer");
@@ -48,6 +50,9 @@
 				
 		L.marker([51.101344, -114.140063]).addTo(map)
 			.bindPopup("Canadian Pizza Unlimited (CPU). Essential for survival, but also one of many other food options around for when pizza (or cheap) isn't the name of the game.");
+			
+		L.marker([51.103814, -114.153236]).addTo(map)
+			.bindPopup("My home. A townhouse, in one of the 4 or 5 complexes around here.");
 					
 	</script>
 
