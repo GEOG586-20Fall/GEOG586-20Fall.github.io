@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+</head>
+<body>
+
+  <!-- Add Heading 1 -->
+  <div class="center" id="about">
+    <h1>Brentwood Restaurants</h1>
+    <p>
+    Brentwood community is only one Calgary train(C-Train) stop away from the University station and 2 routes bus accessible. It takes 10 minutes to walk from the Energy Environment and Experiential Learning Building (EEEL) to Brentwood business district. There are different kinds of restaurants in the business district including fast food, Asian restaurants and bar. Most restaurants offer dine-in and take-out, so you can enjoy the in-person meeting with friends while maintaining social distance.
+    </p>
+  </div>
+<!--Add map class -->
+<div class = "mapid" id = "map" ></div>
+
+     <script>
+        //Creating map options
+        var mapOptions = {
+           center: [51.082330, -114.126308],
+           zoom: 15
+        }
+        var map = new L.map('map', mapOptions);
+
+        //Creating a Layer object
+        var layer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
+            {attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiemFjaHciLCJhIjoiY2tmcnM4b3ZmMDk2NzJ0bXRoeTF0ZmgxdyJ9.7UvFgEV22QZTBdazgDy9xg'
+        }
+        );
+        map.addLayer(layer);
+
+        // Creating markers
+        var wendys = new L.Marker([51.087194, -114.129916]);
+        var chatime = new L.Marker([51.087019, -114.128511]);
+        var wami = new L.Marker([51.086635, -114.128167]);
+        var jamesonsPub = new L.Marker([51.086244, -114.128468]);
+
+        //Creat popups
+       wendys.bindPopup( "<b>It's Wendys store, drive through available.</b><a href='https://www.yelp.com/biz/wendys-brentwood'>Check out on yelp</a>")
+       .openPopup();
+       chatime.bindPopup( "<b>It's Chatime, bubble tea and fried chicken are icons.</b><a href='https://www.yelp.ca/biz/chatime-calgary-2'>Check out on yelp</a>")
+       .openPopup();
+       wami.bindPopup( "<b>It's Wami Ootoya Japanese Cuisine.</b><a href='https://www.yelp.ca/biz/wami-ootoya-calgary'>Check out on yelp</a>")
+       .openPopup();
+       jamesonsPub.bindPopup( "<b>It's Jamesons Pub, you know where to have fun.</b><a href='https://www.yelp.ca/biz/jamesons-pub-calgary'>Check out on yelp</a>")
+       .openPopup();
+
+        // Creating circle
+        var circle = L.circle([51.078545, -114.127417], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.3,
+        radius: 300
+});
+
+        // Creating layer group
+        var layerGroup = L.layerGroup([wendys,chatime,wami,jamesonsPub,circle]);
+        layerGroup.addTo(map);
+        // Add scale on map
+        L.control.scale().addTo(map);
+
+</script>
+</div>
+</body>
+</html>
