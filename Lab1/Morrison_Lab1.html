@@ -8,9 +8,7 @@
 		body{
 			 background-image: url("https://www.besthealthmag.ca/wp-content/uploads/2019/07/junk-food-1.gif");
 			 }
-	</style>
-	
-	<style>
+
 		body{font-family: cooper black;}
 		.pinkText{color:DeepPink;
 				  max-width :850px; 
@@ -57,10 +55,11 @@
 <body>
 
 	<div id="Header" class="pinkText">
-	<h1> Nicole's Favourite Local Calgary Eateries</h1> 
+	<h1> Nicole's Favorite Local Calgary Eateries</h1> 
 	<h2> "For all the foodies out there"</h2>
 	<p>One of the things I love most about Calgary is the great food it has to offer! </p>
 	<p>This map will show you some of my favourite places to eat in the inner city.</P>
+	<p> Click on a marker or the circle to explore the cities eateries.</p>
 	</div> 
 
 
@@ -68,58 +67,69 @@
 
 <script type= "application/javascript">
 	var map = L.map('MyMap').setView([51.048, -114.07], 13);
+	
+	var circle = L.circle([51.039, -114.076], {
+		color: 'red',
+		fillColor: '#f03',
+		fillOpacity: 0.5,
+		radius: 900
+	}).addTo(map).bindPopup('<b>17th Avenue </b><br> 17th Avenue is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave.')
+		.openPopup();
 
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
 
 	L.marker([51.0410501, -114.0659303]).addTo(map)
-		.bindPopup('Ten Foot Henry.<br> Hip atmosphere with modern vegtable-anchored plates for sharing.')
+		.bindPopup('<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.')
 		.openPopup();
 	
 	L.marker([51.0437007, -114.0786483]).addTo(map)
-		.bindPopup('Bridgette Bar.<br> Chef-driven food with a unique lounge atmosphere.')
+		.bindPopup('<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$$.')
 		.openPopup();
 		
 	L.marker([51.0379030, -114.0754840]).addTo(map)
-		.bindPopup('UNA Pizza and Wine.<br> Hip local elevated pizzeria.')
+		.bindPopup('<b>UNA Pizza and Wine</b><br> Hip local elevated pizzeria. $$.')
 		.openPopup();
 
 	L.marker([51.0427140, -114.0542788]).addTo(map)
-		.bindPopup('Village Ice Cream.<br> Homemade ice cream with a trendy twist.')
+		.bindPopup('<b>Village Ice Cream</b><br> Homemade ice cream with a trendy twist. $.')
 		.openPopup();
 	
 	L.marker([51.0379171, -114.0708578]).addTo(map)
-		.bindPopup('Calcutta Cricket Club.<br> Modern Indian Cuisine.')
+		.bindPopup('<b>Calcutta Cricket Club</b><br> Modern Indian Cuisine. $$.')
 		.openPopup();
 	
 	L.marker([51.0481298, -114.0466905]).addTo(map)
-		.bindPopup('Sidewalk Citizen.<br> Rustic bakery and cafe .')
+		.bindPopup('<b>Sidewalk Citizen</b><br> Rustic bakery and cafe. $ .')
 		.openPopup();
 		
 	L.marker([51.0337300, -114.0714570]).addTo(map)
-		.bindPopup('Anejo.<br> Contemperary mexican and famous margaritas.')
+		.bindPopup('<b>Anejo</b><br> Contemperary mexican and famous margaritas. $$.')
 		.openPopup();
 		
 	L.marker([51.0415189, -114.0369155]).addTo(map)
-		.bindPopup('The Nash.<br> Inventive dishes served in an old 1900s hotel .')
+		.bindPopup('<b>The Nash</b><br> Inventive dishes served in an old 1900s hotel.$$$$ .')
 		.openPopup();
 		
 	L.marker([51.0487096, -114.0660517]).addTo(map)
-		.bindPopup('OEB.<br> Very funky Brunch spot.')
+		.bindPopup('<b>OEB</b><br> Very funky Brunch spot. $$.')
 		.openPopup();
 	
 	L.marker([51.0513535, -114.0635280]).addTo(map)
-		.bindPopup('Point Sushi.<br> Infamous bullet train sushi bar.')
+		.bindPopup('<b>Point Sushi</b><br> Infamous bullet train sushi bar.$$.')
 		.openPopup();
 	
 	L.marker([51.0379097, -114.0789122]).addTo(map)
-		.bindPopup('Clive burger.<br> Locally sourced hamburgers and shakes with a retro vibe.')
+		.bindPopup('<b>Clive burger</b><br> Locally sourced hamburgers and shakes with a retro vibe.$.')
 		.openPopup();
 		
 	L.marker([51.0379095, -114.0784720]).addTo(map)
-		.bindPopup('Trolley 5.<br> Brews their own beer on site as well as featuring other local Micro-breweries, plus amazing wings.')
+		.bindPopup('<b>Trolley 5</b><br> Brews their own beer on site as well as featuring other local Micro-breweries, plus amazing wings. $$.')
 		.openPopup();
+		
+	
+		
 		
 </script> 	
 

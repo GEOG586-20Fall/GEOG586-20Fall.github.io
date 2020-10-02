@@ -4,11 +4,35 @@
 
 <head>
    <style>
-      body{font-family:times new roman}
+      body{font-family:Times New Roman
+      }
+      
       .blueText{color:DarkSlateBlue;
          max-width: 700px;
          margin: auto;
          text-align: center;
+      }
+      
+      .bg{height: 80px;
+         width: 100%;
+         border: 5px outset LightBlue;
+         background-color: DarkSlateBlue;
+         text-align: center;
+         color: GhostWhite;
+      }
+      
+      .wbg{height: 30px;
+         width: 100%;
+         background-color: White;
+         text-align: center;
+         color: Black
+      }
+      
+      .wbg2{height: 10px;
+         width: 60%;
+         background-color: White;
+         text-align: center;
+         color: Black
       }
       
       p{color:Black;
@@ -16,6 +40,7 @@
          margin: auto;
          text-align: left;
       }
+      
       .center{max-width: 700px;
          margin: auto;
          width: 60%;
@@ -25,7 +50,9 @@
    </style>
    
    <style>
-      #mapCalgary {height: 380px; width: 700px}
+      #mapCalgary {height: 380px;
+         width: 700px;
+      }
    </style>
 
    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -39,32 +66,73 @@
 
 
 <body>
-   <div class="blueText">
+   <div class="bg">
    <h1>
       Peter's Calgary Key Attractions
    </h1>
+   </div>
+   
+   <div class="blueText">
+   <h3>
+      By Yihuan Jiang
+   </h3>
 
+   <hr>   
+      
    <p>
-      One of my favourite key attraction is the <b>Chinook Centre</b>!
-      It is <b>the largest mall in Calgary</b> and it has one of the city's biggest Cineplex theatre, which I adore and visit often!
+      One of my favourite attraction is the <b>Chinook Centre</b>!
+      It is <b>the largest mall in Calgary</b> and it has one of the
+      city's biggest Cineplex theatre, which I adore and visit often!
+   </p>
+   
+   <div class="wbg2"></div>
+      
+   <p>
+      Another favourite attraction of mine is the <b>Calgary Shooting Centre</b>!
+      It is where I go for target practices and it has <b>the largest collection of
+      firearms in Calgary</b>!
+   </p>
+   
+   <div class="wbg2"></div>
+      
+   <p>
+      Lastly, I want to bring up a restaurant that I personally adore, which is
+      the <b>Five Guys Burgers and Fries</b>! It is my go-to burger joint in Calgary!
    </p>
    </div>
    
+   <div class="wbg2"></div>
+   
    <div id="mapCalgary" class="center"></div>
 
+   <div class="wbg"></div>
+   
+   <div class="bg"></div>
+   
    <script>
-      var mymap=L.map("mapCalgary").setView([51.00, -114.074821], 13);
+      var mymap=L.map("mapCalgary").setView([50.9970, -114.073935], 13);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(mymap);
 
-      L.marker([51.00, -114.074821]).addTo(mymap)
-         .bindPopup("In my opinion, best place in Calgary<br>for shopping and movies.")
+      var polygon = L.polygon([
+         [51.0015, -114.0760],
+         [50.9850, -114.0760],
+         [50.9850, -114.0650],
+         [51.0015, -114.0650]
+      ]).addTo(mymap);
+      
+      L.marker([50.9970, -114.073935]).addTo(mymap)
+         .bindPopup("<b>CF Chinook Centre</b>: In my opinion,<br>this is the best place in Calgary<br>for shopping and movies.")
          .openPopup();
       
       L.marker([50.9903, -114.067321]).addTo(mymap)
-         .bindPopup("The biggest gun store in Calgary.")
+         .bindPopup("<b>The Calgary Shooting Centre</b>:<br>The biggest gun store in Calgary.")
+         .openPopup();
+      
+      L.marker([50.98805, -114.074220]).addTo(mymap)
+         .bindPopup("<b>Five Guys Burgers and Fries</b>:<br>My favourite burger joint in Calgary.")
          .openPopup();
    </script>
 
