@@ -1,0 +1,38 @@
+<html>
+
+<head>
+
+	<style> #mapid { height: 180px; width: 360 px } </style>
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+</head>
+
+<body>
+
+<h1>Test</h1>
+<h2>smaller test</h2>
+
+<div id="myMap"></div>
+	<script type="application/javascript">
+		var map = L.map("myMap").setview([51.103814, -114.153236], 14);
+			
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(map);
+		
+		L.marker([51.102623, -114.146024]).addTo(map)
+			.bindPopup("Co-Op! A chain grocery store cooperative which sources a decent amount of local goods " +
+				"and rewards its members with money back every year");
+					
+	</script>
+Text after the map?
+</body>
+
+</html>
