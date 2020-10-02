@@ -116,6 +116,13 @@
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(mymap);
 
+      var polygon = L.polygon([
+         [51.0015, -114.0760],
+         [50.9850, -114.0760],
+         [50.9850, -114.0650],
+         [51.0015, -114.0650]
+      ]).addTo(mymap);
+      
       L.marker([50.9970, -114.073935]).addTo(mymap)
          .bindPopup("<b>CF Chinook Centre</b>: In my opinion,<br>this is the best place in Calgary<br>for shopping and movies.")
          .openPopup();
