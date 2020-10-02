@@ -13,8 +13,7 @@
 
 <script>
 function myFunction() {
-  document.getElementById("solutions").innerHTML = "1-Providing more parking space <br/>2-Increasing the service hours of the store to 24 hours";
-  //document.getElementById("asdf").innerHTML = " 24 hours";
+  document.getElementById("demo").innerHTML = "1-Providing more parking space 2-Increasing the service hours of the store to 24 hours";
 }
 </script>
 
@@ -22,7 +21,7 @@ function myFunction() {
 
 <style>
    
- #mapid { height: 600px;width:800px; margin: auto; }
+ #mapid { height: 600px;width:800px; }
    
    body {
   background-color: lightblue;
@@ -70,16 +69,15 @@ pre {
 
 <body>
 
-
 <h1>Tehran New Hyper Market Location Map</h1>
   <br>
   <hr>
 <h2>
-<p id="datetimeText"></p>
+<p id="demo"></p>
 
 <script>
 var d = new Date();
-document.getElementById("datetimeText").innerHTML = d;
+document.getElementById("demo").innerHTML = d;
 </script>
 
 </h2>
@@ -104,8 +102,7 @@ The town concil has provided some solutions in this Regard!
 &#128516; &#128525; &#128151;
 </p>
 </button>
-
- <p id="solutions"></p>
+ <p id="demo"></p>
 
 
 </pre>
@@ -147,6 +144,7 @@ var circle = L.circle([35.713068, 51.369695], {
 
 marker.bindPopup("<b>Hi Everry one!</b><br>I am a Hyper Market.").openPopup();
 circle.bindPopup("I am a circle.");
+polygon.bindPopup("I am a polygon.");
 
 </script>
 

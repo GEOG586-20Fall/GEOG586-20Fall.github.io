@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+
+
+
+<style>
+   
+ #mapid { height: 600px;width:1000px; margin: auto; }
+ 
+   body {
+  background-color: lightgreen;
+}
+
+
+
+pre {border-style: double;}
+
+
+h1 {
+  text-align: center;
+}
+h1 {color:red; background-color:yellow; font-size:40px;
+}
+
+h2 {
+  text-align: center;
+}
+h2 {color:green; background-color:lightgreen; font-size:35px;
+}
+
+h3 {
+  text-align: center;
+}
+   
+h3 {color:yellow; background-color:orange; font-size:28px;
+}
+
+    
+pre {
+  text-align: center;
+}	
+
+a {
+  text-decoration: underline;
+}
+pre {
+  font-size: 20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Kourosh Mall Location Map</h1>
+  <br>
+  <hr>
+<h2>
+<p id="datetimeText"></p>
+
+<script>
+var d = new Date();
+document.getElementById("datetimeText").innerHTML = d;
+</script>
+
+</h2>
+  <hr>
+<h3>GEOG586-lab1 <br> Mahsa Shayanfar</h3>
+  
+  <div id="introduction">
+  <pre>History!
+  Supermarkets have long been associated with modernity in Iran.
+  Etka Chain Stores Company, established in 1955, is controlled by 
+  the economic holding company of Iran’s armed forces. 
+The Tehran municipality launched the Shahrvand chain in 1993.  
+Kourosh mall which has been established since 5 years ago, is located in western part of Tehran.
+This outstanding mall has caused a traffic jam within the 1km redious, since it has great attraction for people.
+The town concil has provided some solutions in this Regard!
+<br> 
+<img src="Hyper-Market-5.jpg" alt="test" width="300" height="300"> <img src="Kourosh Mall.jpg" alt="test" width="200" height="200"> <img src="17195.jpg" alt="test" width="300" height="300">
+<br>
+<button onclick="myFunction()">Click Here To See Solutions!<p style="font-size:48px">
+&#128516; &#128525; &#128151;
+</p>
+</button>
+
+ <p id="solutions"></p>
+
+
+</pre>
+ 
+
+ 
+ 
+
+<a href="https://maps.me/catalog/shops/shop-supermarket/hyper-market-4611686023312442306/">See Kourosh Mall Website</a>
+
+<p title="traffic">Put your cursor here to see what has become an outstanding problem!.</p>
+
+
+ <div id="mapid"></div>
+ 
+ <script src="mahsa2js.js">
+
+	   
+
+</script>
+
+<br>
+<button onclick="window.print()">Print this page</button>
+
+
+<p id="demo"></p>
+
+</body>	   
+
+</html>
