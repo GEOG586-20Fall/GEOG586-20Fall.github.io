@@ -7,76 +7,60 @@
 
     <title>My Ucluelet Adventure</title>
 
+        
     <style> 
-        body {background-color: darkseagreen;}  
+        body {background-image: url("Beach.jpg");}  
 
-        h1 {color: black; margin-left: 40px;} 
-
-        p {color: black}
-
-        button {color:}
-
-
+        h1 {color: darkkhaki;
+        font-family:Verdana;
+       text-align: center;
+        font-size: 50px;    
+        } 
+        
+        h3{color: darkseagreen}
+        
+        h4{text-align:center;
+           color:darkseagreen;
+           font-family: Verdana}
+        
+        p {color: white;
+        font-family: arial;}
+        
+        .centermap{
+              margin: auto;
+            width: 200px;
+            border: 3px clear;
+            padding: 10px;
+            }
+        
+        .left {float: left;
+            width: 700px;
+            border: 3px clear;
+            padding: 2px;}
+        
+        .right{ float: right;
+            width: 700px;
+            border: 3px clear;
+            padding: 2px;}
+            
     </style>
     </head> 
 
+    
     <body>
 
     <h1>My Ucluelet Adventure</h1>
-
-    <ul>
-       <li><a href="#intro">Introduction</a> </li> 
-       <li><a href="#phaseuno">Phase Uno</a> </li>
-       <li><a href="#phasedos">Phase Dos</a> </li>
-       <li><a href="#phasetres">Phase Tres</a></li>
-       <li><a href="#mapid">The Map</a></li>    
-        </ul>
-
-    <div id="intro">
-        <h3> The Year of the Lost Purpose (Introduction)</h3>
-        <p>After spending 13 years of my life in school, having worked hard for my grades and played harder (being a student athlete was tiring work), I found myself on a year off. Unsure about my future, I worked as a barista and saved money for whatever was to come. Whether that was school, travel, or something else entirely I did not know. What I did know was that I wanted to do something cool.  </p>
-        <p> <strong>In comes Ucluelet (Ukee)</strong> - out of nowhere, a close friend throws the idea at me of road tripping out to the island (Vancouver Island, that is). Beginning as a joke, it soon became very real. We took 2 weeks off, packed her old automobile up, and headed west.</p>
-
-
-        </div>   
-    <div id="phaseuno">
-        <h3> Phase Uno - Slow & Slightly Upset</h3> 
-
-          <p>The trip began with us shooting straight through Alberta and a chunk of BC, following the TransCanada/AB-1 W Hwy. My friend (lets call her Ji) drove through to Sicamous before exploding. </p>
-          <p> <strong>"Why did she explode?"</strong> you ask. Well... her car was old, small, and <em>standard</em>. "My wrist hurts!" she exclaimed. I just laughed it off and encouraged her to pull over at a Tim's for a break. She glared at me.  </p>
-          <p>"No," she said, "it's <em>your</em> turn to drive."</p>
-          <p>I panicked, we argued, and I eventually ended up behind the wheel.</p>
-          <p> I'd driven standard ONCE before. Getting the car started was a hastle, I stalled and cursed my way through it. First gear IS the devil himself. 
-          <p> We moved slow, and I was stressed and slightly upset. We eventaully made it onto the highway where I never went below 5th and thanked the heavens for it.  </p>
-
-
-    <div id="phasedos">
-      <h3> Phase Dos - Van, Stanley, and Other Friends </h3>  
-        <p>Driving into Vancouver as a new standard driver cost me my sanity, my blood pressure, and Ji's tires. Howe Street will forever have the burnt rubber of the tires I completely obliterated when accelerating while uphill from a complete stop. </p>
-        <p>Here we stayed at an old friend's home. We drank, we ate, we made new friends, and I was introduced to the best cononut latte I will ever have. </p>
-
-
-        <p>The second day there I explored Stanley Park - one of the coolest urban forests to ever exist. I will forever remember climbing its big trees</p>
-
-
-        <p>Grandville Island was another cool place to become acquainted with. The fish and chips were to die for.</p>
-
-
-
-        <p>The last friend I met was the BC ferry at the Tsawwassen terminal bay. This is how we hopped into the island.</p>
-
-
-
-      <div id="phasetres">
-        <h3> Phase Tres - Surf till you die </h3>   
-        <p>Once on The Island we drove from Victoria to Ukee. I finally checked "Learn to surf" off my bucket list on Long Beach. Nothing cooler than learning how to surf right next to a giant rock dubbed "Incinerator Rock". The rest of the time was spent surfing for 8 hours/day, sleeping, eating, then rinse and repeat. I surfed till I died and would 10/10 do it again. </p>  
-
-
-
-     <div id="mapid" style="height: 500px; width: 1000px"></div>
+        
+        <h4>Highlights of my Ucluelet road trip - click on the icons for fun facts!</h3>
+        
+        
+        <div id="mapid" class="centermap outline" style="height: 500px; width: 1000px;"> 
+         
+     
       <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
+           
 
     <script> 
     var mymap = L.map('mapid').setView([50.8378,-118.9768], 6);  
@@ -89,20 +73,60 @@
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A'
 }).addTo(mymap);
+        
 
-<!--Markers placed together --> 
+        
+   L.marker([50.8378,-118.9768]).addTo(mymap)
+       .bindPopup("<b>Sicamous, BC</b><br />Where I met Stickshift (my worst enemy).").openPopup(onclick);
 
-
-    var marker = L.marker([51.0478,-114.0593]).addTo(mymap);
-    var marker = L.marker([50.8378,-118.9768]).addTo(mymap); 
-    var marker = L.marker([49.2762,-123.1090]).addTo(mymap);  
-    var marker = L.marker([49.3043,-123.1443]).addTo(mymap);
-    var marker = L.marker([49.2712,-123.1340]).addTo(mymap); 
-    var marker = L.marker([49.0069,-123.1304]).addTo(mymap);
-    var marker = L.marker([49.0689,-125.7538]).addTo(mymap);    
+   L.marker([49.3043,-123.1443]).addTo(mymap)
+        .bindPopup("<b>Stanley Park, Vancouver, BC. AB</b><br />Where we climbed trees and explored nature.").openPopup(onclick);
+         
+    L.marker([49.2762,-123.1090]).addTo(mymap)
+        .bindPopup("<b>Bean Around the World, Vancouver, BC</b><br />Where I fell in love with a coconut latte.").openPopup(onclick);
+        
+   L.marker([49.2712,-123.1340]).addTo(mymap)
+        .bindPopup("<b>Grandville Island, Vancouver, BC</b><br />Where  I had top notch fish and chips").openPopup(onclick);
+         
+   L.marker([49.0069,-123.1304]).addTo(mymap)
+        .bindPopup("<b>Tsawwassen Terminal</b><br />Where we took off for the island.").openPopup(onclick);
+        
+   L.marker([49.0689,-125.7538]).addTo(mymap)
+        .bindPopup("<b>Long Beach, Tofino, BC</b><br />Where I surfed until I died.").openPopup(onclick);
+        
+    L.marker([51.0478,-114.0593]).addTo(mymap)
+       .bindPopup("<b>Calgary, AB</b><br />Where it all began!").openPopup(); 
+   
         </script>
         </div>
 
+    <div id="intro" class="left">
+        <h3> The Year of the Lost Purpose (Introduction)</h3>
+        <p>After spending 13 years of my life in school, having worked hard for my grades and played harder (being a student athlete was tiring work), I found myself on a year off. Unsure about my future, I worked as a barista and saved money for whatever was to come. Whether that was school, travel, or something else entirely I did not know. What I did know was that I wanted to do something cool.  </p>
+        <p> <strong>In comes Ucluelet (Ukee)</strong> - out of nowhere, a close friend throws the idea at me of road tripping out to the island (Vancouver Island, that is) in March. Beginning as a joke, it soon became very real. We took 2 weeks off, packed her old automobile up, and headed west.</p>
+        </div>   
+        
+    <div id="phaseuno" class="right">
+        <h3> Phase Uno - Slow & Slightly Upset</h3> 
 
+          <p>The trip began with us shooting straight through Alberta and a chunk of BC, following the TransCanada/AB-1 W Hwy. My friend (lets call her Ji) drove through to Sicamous before exploding. </p>
+          <p> <strong>"Why did she explode?"</strong> you ask. Well... her car was old, small, and <em>standard</em>. "My wrist hurts!" Ji exclaimed. I just laughed it off and encouraged her to pull over at a Tim's for a break. She glared at me.  </p>
+          <p>"No," she said, "it's <em>your</em> turn to drive."</p>
+          <p>I panicked, we argued, and I eventually ended up behind the wheel. I'd driven standard ONCE before. Getting the car started was a hastle, I stalled and cursed my way through it. <strong>First gear IS the devil himself.</strong> We moved slow, and I was stressed and slightly upset. We eventaully made it onto the highway where I never went below 5th and thanked the heavens for it.  </p>
+        </div>
+
+    <div id="phasedos" class="left" >
+      <h3> Phase Dos - Van, Stanley, and Other Friends </h3>  
+        <p>Driving into Vancouver as a new standard driver cost me my sanity, my blood pressure, and Ji's tires. Howe Street will forever have the burnt rubber of the tires I completely obliterated when accelerating while uphill from a complete stop. </p>
+        <p>Here we stayed at an old friend's home. We drank, we ate, we made new friends, and I was introduced to the best cononut latte I had ever had. </p>
+        <p>The second day there we explored Stanley Park - one of the coolest urban forests to ever exist. I will forever remember climbing its big trees. Grandville Island was another cool place to become acquainted with. The fish and chips were to die for. The last friend I met was the BC ferry at the Tsawwassen terminal bay. I'd riden on ferries before but nothing that big. This is how we got to the island.</p>
+        </div>
+
+
+      <div id="phasetres" class="right">
+        <h3> Phase Tres - Surf till you die </h3>   
+        <p>Once on the island we drove from Victoria to Ukee. I finally checked "Learn to surf" off my bucket list on Long Beach. Nothing cooler than learning how to surf right next to a giant rock dubbed "Incinerator Rock" (look up why it has that name, it's pretty cool). The rest of the time was spent surfing for 8 hours a day, sleeping, eating, then rinse and repeat. I surfed until my limbs were sore, my lungs were full of sand, and my face was frozen solid. Highlight of my life so far.</p>  
+        </div>
+        
         </body>
 </html>
