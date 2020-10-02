@@ -34,9 +34,9 @@
 <body>
 
 <div id="header" class="textformat">
-	<h1 style="text-align:center;">NE Calgary</h1>
+	<h1 style="text-align:center;">Coventry Hills and the Surrounding Area, Calgary</h1>
 	<h2 style="text-align:center;">By Ethan Jerome - 30053230</h2>
-	<p style="text-align:center;">This map will help you get to know me better. It shows where I live, as well as the local landmarks and amenities. </p>
+	<p style="text-align:center;">This map will help you get to know me better. It shows where I live, as well as the local landmarks and amenities I tend to frequent. </p>
 </div>
 
 <div id="Lab1Map" class="center"></div>
@@ -49,7 +49,7 @@
 	}).addTo(map);
 
 	L.marker([51.155797, -114.068550]).addTo(map)
-		.bindPopup('Local Movie Theatre, Landmark Cinemas: <br> Currently getting wrecked by Big Rona.')
+		.bindPopup('Local Movie Theatre, Landmark Cinemas: Currently getting wrecked by COVID.')
 		.openPopup();
 		
 	L.marker([51.170416, -114.039086]).addTo(map)
@@ -65,7 +65,7 @@
 		.openPopup();
 	
 	L.marker([51.161904, -114.035584]).addTo(map)
-		.bindPopup('Local Glacial Erratic.')
+		.bindPopup('Local Glacial Erratic I enjoy walking to.')
 		.openPopup();
 	
 	L.marker([51.155487, -114.057829]).addTo(map)
@@ -96,12 +96,16 @@
 		.bindPopup("Seniore's Pizza: My favorite Pizza place.")
 		.openPopup();
 		
+	L.marker([51.160986, -114.063404]).addTo(map)
+		.bindPopup("EB Games: where I currently work, part time.")
+		.openPopup();
+		
 	 var polygon = L.polygon([
 		[51.167908, -114.037074],
 		[51.165682, -114.039057],
 		[51.165335, -114.036730]
 	]).addTo(map);
-		polygon.bindPopup('The Field where I walk my Dog, Lily.')
+		polygon.bindPopup('The Field where I walk my Dogs, Lily and Colby.')
 		polygon.openPopup();
 		
 	 var polygonPark = L.polygon([
@@ -110,7 +114,7 @@
 		[51.162155, -114.041815],
 		[51.161634, -114.042354]
 	]).addTo(map);
-		polygonPark.bindPopup('One of many Local Playgrounds.')
+		polygonPark.bindPopup('One of many Local Playgrounds I enjoy playing Pokemon Go at.')
 		polygonPark.openPopup();
 		
 	</script>
