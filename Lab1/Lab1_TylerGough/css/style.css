@@ -32,7 +32,6 @@
 	}
 	
 	#info {
-	border: 3px solid blue;
 	font: Times New Roman;
 	max-width: 1000px;
     margin: auto;
@@ -42,7 +41,6 @@
 	}
 	
 	#map_intro {
-	border: 3px solid blue;
 	font: Times New Roman;
 	max-width: 1000px;
     margin: auto;
@@ -52,7 +50,6 @@
 	}
 	
 	#more_resources {
-	border: 3px solid blue;
 	font: Times New Roman;
 	max-width: 1000px;
     margin: auto;
