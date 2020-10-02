@@ -3,7 +3,9 @@
 <head>
 
 	<style>
-		#map { height: 180px; }
+		#map { height: 500px; 
+		        width: 1250px;}
+				         
 	</style>
 
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity=
@@ -25,16 +27,52 @@
 <div id="map"></div>
 
 <script type="application/javascript">
-		var map = L.map('map').setView([10.3, -85.838], 13);
+		var map = L.map('map').setView([10.302725, -85.837146], 15);
 
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(map);
 
-		L.marker([10.3, -85.838]).addTo(map)
-			.bindPopup('This is crazy.<br> Yes it is.')
+		L.marker([10.302210, -85.830550]).addTo(map)
+			.bindPopup('Tamarindo look out<br> Way up on a hill, great place for photos!')
 			.openPopup();
-	</script>
+			
+        L.marker([10.297991, -85.841281]).addTo(map)
+			.bindPopup('Sharkys Sports Bar.<br> Where we watched the World Juniors.')
+			.openPopup();
+			
+		L.marker([10.299691, -85.841616]).addTo(map)
+			.bindPopup('Waffle Monkey.<br> Best waffles in town.')
+			.openPopup();
+			
+		L.marker([10.300395, -85.840909]).addTo(map)
+			.bindPopup('Dreamland Sunglasses.<br> High quality, Costa Rican made.')
+			.openPopup();
+			
+		L.marker([10.306617, -85.836437]).addTo(map)
+			.bindPopup('Pangas Beach Club.<br> Best resturant in town, You eat on the beach!')
+			.openPopup();
+			
+		L.marker([10.302297, -85.839850]).addTo(map)
+			.bindPopup('Iguana Surf Shop.<br> Perfect place to rent surf boards.')
+			.openPopup();
+			
+		L.marker([10.303017, -85.840595]).addTo(map)
+			.bindPopup('New Years Eve Fireworks.<br> Perfect view of them from our rental!')
+			.openPopup();
+			
+		L.marker([10.307657, -85.838246]).addTo(map)
+			.bindPopup('Estero de Playa Grande.<br> Which translates to Big Beach Estuary.<br> Stay away! There are Crocodiles!')
+			.openPopup();
+
+		L.marker([10.297192, -85.840934]).addTo(map)
+			.bindPopup('ATV Tamarindo.<br> Great excursion!')
+			.openPopup();
+			
+		L.marker([10.303066, -85.833126]).addTo(map)
+			.bindPopup('Casa Catalina.<br> Where I stayed.')
+			.openPopup();			
+</script>
 
 </body>
 </html>
