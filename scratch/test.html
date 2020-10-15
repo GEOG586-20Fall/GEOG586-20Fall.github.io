@@ -2,8 +2,8 @@
 <head>
 
 	<style>
-		#primaryMap {	height: 180px;
-						width: 350px;
+		#primaryMap {	height: 500px;
+						width: 500px;
 		}
 	</style>
 
@@ -14,6 +14,12 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
 
+	
+	<script>
+		function newFunction(pN){
+			alert(pN);	
+		}
+	</script>
 
 </head>
 
@@ -39,6 +45,9 @@
 			.bindPopup("Ryan's second popup.<br> Easily customizable.")
 			.openPopup();
 	</script>
+	<br /><br />
+	<button onClick="newFunction('Dr. Burns')">Hi, I'm a button.</button>
+      
 <body>
 
 </html>

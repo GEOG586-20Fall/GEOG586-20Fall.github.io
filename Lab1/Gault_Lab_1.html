@@ -1,0 +1,89 @@
+
+<html>
+
+<head>
+
+	<style>
+		#primaryMap {
+			height: 515px;
+			width: 940px;
+			margin: auto;
+			}
+		
+		h1 {
+			color: blue;
+			text-align: center;
+			}
+				
+		h2 {
+			color: indigo;
+			text-align: center;
+			}
+				
+		h3 {
+			color: purple;
+			text-align: right;
+			}
+				
+		p {
+			font-family: times new roman;
+			}
+			
+		body {
+			background-color: lightgrey;
+			}
+			
+	</style>
+
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin=""/>
+   
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+
+</head>
+
+<body>
+
+	<h1>Lab 1</h1>
+	<h2>Where I spent my time growing up in Burnaby</h2>
+	<h3>Prepared by Samantha Gault</h3>
+	<p> I was born and raised in Burnaby, I moved to Calgary in 2017 to start my first year of univeristy at the University of Calgary. I have lived in Calgary for the vast majority of time these past three years but Burnaby will always hold a special place in my heart. Being able to do thinks like play outdoor soccer year round and not freeze in the snow is something that I will always missed as I played on a soccer team for 14 years.</p>
+
+
+		<div id="primaryMap"></div>
+		<script type="application/javascript">
+			var map = L.map('primaryMap').setView([49.23640, -122.94572], 13.5);
+			
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			}).addTo(map);
+		
+			L.marker([49.226866, -122.942539]).addTo(map)
+				.bindPopup("This is the house that I spent most of my life in.");
+				
+			L.marker([49.231465, -122.946181]).addTo(map)
+				.bindPopup("This is where I lived before I moved when I was 6 years old. It happened to be just across the streat from my elementary school.");
+		
+			L.marker([49.230141, -122.944943]).addTo(map)
+				.bindPopup("This is Lakeview Elementary school, I did preschool here as well");
+				
+			L.marker([49.236151, -122.970885]).addTo(map)
+				.bindPopup("Deer Lake, a lake that no one swims in as it is totally filled with geese poop. I often went for runs around the lake during high school.");
+				
+			L.marker([49.243213, -122.975331]).addTo(map)
+				.bindPopup("Burnaby Central Secondary School, my high school. It was also my home field for soccer, so I spent a lot of time here");
+				
+			L.marker([49.231317, -122.932556]).addTo(map)
+				.bindPopup("Robert Burnaby Park, has a baseball diamond, swiming pool, tennis courts, playground and off leash dog area. I swam here 3 or 4 times a week growing up.");
+					
+		</script>	
+		
+	<script>
+		alert("Hello!");
+	</script>
+</body>
+
+</html>
