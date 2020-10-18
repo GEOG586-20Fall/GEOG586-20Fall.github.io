@@ -5,14 +5,15 @@
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-        <script src="popups.js"></script>    
+    <script src="popupsL2.js"></script>   
     <script> 
-        L.geoJSON(geojsonFeature).addTo(mymap);
+        L.geoJSON(geojsonFeature).addTo(map);
         function locationpopups(feature, layer) {
             if (feature.properties && feature.properties.popupContent) {
             layer.bindPopup(feature.properties.popupContent);
-            }
-        }</script>    
+            }}
+        </script>  
+        
     
     <title>My Ucluelet Adventure</title>
 
@@ -64,54 +65,57 @@
         
         <h4>Highlights of my Ucluelet road trip - click on the icons for fun facts!</h4>
         
-        
-        <div id="mapid" class="centermap outline" style="height: 700px; width: 90%;">
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" type="text/javascript"></script>   
+        <div id="mapid" class="centermap outline" style="height: 600px; width: 80%;">
+             <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+            <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script> 
+            <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
 
     <script> 
-    
-        var mymap = L.map('mapid').setView([50.6745,-120.3273], 7); 
-
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    var map = L.map('mapid').setView([50.8378,-118.9768], 6);  
+        
+      var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        subdomains: 'abcd',
+        minZoom: 0,
         maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
+        ext: 'png',
         accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A'
-        }).addTo(mymap);
+        }).addTo(map);
+
 
         L.geoJSON(sicamous, {
         onEachFeature: locationpopups
-        }).addTo(mymap);
-        
+        }).addTo(map);
+    
         L.geoJSON(van1, {
         onEachFeature: locationpopups
-        }).addTo(mymap);
+        }).addTo(map);
         
         L.geoJSON(van2, {
         onEachFeature: locationpopups
-        }).addTo(mymap);
+        }).addTo(map);
         
         L.geoJSON(van3, {
         onEachFeature: locationpopups
-        }).addTo(mymap);
+        }).addTo(map);
         
         L.geoJSON(van4, {
         onEachFeature: locationpopups
-        }).addTo(mymap);
+        }).addTo(map);
         
         L.geoJSON(tofino, {
         onEachFeature: locationpopups
-        }).addTo(mymap);
+        }).addTo(map);
         
         L.geoJSON(ucluelet, {
         onEachFeature: locationpopups
-        }).addTo(mymap);
+        }).addTo(map);
         
         L.geoJSON(calgary, {
         onEachFeature: locationpopups
-        }).addTo(mymap);
+        }).addTo(map);
             </script>
             </div>
 

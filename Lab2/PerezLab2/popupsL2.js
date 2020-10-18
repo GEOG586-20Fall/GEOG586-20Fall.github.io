@@ -1,4 +1,4 @@
-  var sicamous = {
+var sicamous = {
         "type": "Feature",
         "properties": {
             "name": "Sicamous",
