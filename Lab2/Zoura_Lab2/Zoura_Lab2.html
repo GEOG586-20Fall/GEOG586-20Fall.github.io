@@ -4,8 +4,12 @@
 	<head>
 		<style> 
 			#mainMap { 
-				height: 425px;
+				height: 400px;
 			}
+			
+			body{
+			 background-image: url("https://images3.alphacoders.com/195/195327.jpg");
+			 }
 
 			h1 { 
 				color: orange;
@@ -25,6 +29,11 @@
 				text-align: center;
 			}
 			
+			.center	{
+				max-width: 900px; 
+				margin: auto; 
+				}
+			
 		</style>
 		
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -41,7 +50,7 @@
 		<h2>By Rita Zoura</h2>
 		<h3>This is a webmap of the places I like to walk to in my neighbourhood.<br>I have lived in this area for most of my life and I know the area really well.<br>Click on a marker on the map to learn more about it!</h3>
 		
-		<div id="mainMap"></div>
+		<div id="mainMap" class="center"></div>
 
 			<script type="application/javascript">
 				var map = L.map('mainMap').setView([50.986103, -114.099397], 14);
@@ -84,10 +93,10 @@
 				
 				
 				<!-- <!-- var polygon = L.polygon([ -->
-					[50.993989, -114.083003],
-					[50.994136, -114.071481],
-					[50.979552, -114.071430],
-					[50.979540, -114.083018]
+					<!-- [50.993989, -114.083003], -->
+					<!-- [50.994136, -114.071481], -->
+					<!-- [50.979552, -114.071430], -->
+					<!-- [50.979540, -114.083018] -->
 				<!-- ]).addTo(map) -->
 					<!-- .bindPopup("This is the community of Kingsland. I have lived here for most of my life and grown up in this area. The markers around are some of my favourite places to walk to! I hope you enjoy getting to know my neighbourhood.") -->
 					<!-- .openPopup(); --> -->
