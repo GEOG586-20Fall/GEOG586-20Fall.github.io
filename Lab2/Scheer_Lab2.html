@@ -63,8 +63,6 @@
 				layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
 			}
 
-			var geojsonlayer = L.geoJson(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
-
 			
 			var myGeoJSON = {
 				‘type’ : ‘FeatureCollection’,
@@ -85,8 +83,10 @@
 							'geometry':{'type':'Point','coordinates':[-75.1474439, 39.9716709]}}
 
 			]};
+			
+			var geojsonlayer = L.geoJson(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
 
-		
+		/*
 			L.marker([51.102623, -114.146024]).addTo(map)
 				.bindPopup("Co-op. A chain grocery store co-operative which sources a decent amount of local products " +
 					"and rewards its members with money back every year.");
@@ -116,6 +116,7 @@
 			L.marker([51.104700, -114.156647]).addTo(map)
 				.bindPopup("Public outdoor tennis and basketball courts.");
 					
+			*/
 		</script>
 	
 		<p>This map made by Alex Scheer, October 2020. Location coordinates selected from Google Maps.</p>
