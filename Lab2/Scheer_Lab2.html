@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<style>
+			#myMap {
+				height: 500px;
+				width: 889px;
+				margin: auto;
+			}
+			#top {
+				background-image: url("https://www.frankandoak.com/media/assets/website/misc/ux/lazyload.jpg");
+			}
+			body {
+				font-family: calibri, sans-serif;
+				text-align: center;
+				color: black;
+				background-image: url("https://images-na.ssl-images-amazon.com/images/I/21%2BWVaH%2BLIL._AC_.jpg");
+			}
+			h1 {
+				font-size: 16;
+			}
+			h2 {
+				font-size: 13;
+			}
+			p {
+				font-size: 11;
+				text-align: center;
+			}
+			
+		</style>
+
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin=""/>
+   
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+
+	</head>
+
+	<body>
+
+		<div id="top">
+		<h1>The Many Amenities of Dalhousie!</h1>
+		<h2>A map showing a selection of the surprising amount of walkable things that this community has to offer.</h2>
+		<br>
+		<p>For a Calgary community this far out of city centre, and this affordable, Dalhousie is loaded with essential amenities, options for places to shop and eat, multimodal transportation infrastructure, and parks. I've highlighted just a few on the map here, but this barely broaches the surface; each popup selection is near at least one decently-sized commercial cluster, and every one of them is within walking distance of pretty much the entire neighbourhood. Around the LRT station are a few townhouse complexes, as well as some 4 storey condo buildings and a few highrises sprinkled throughout. The rest of the neighbourhood is primarily lower density with single-family detached residential, and duplexes act as the bridge between the two for a seamless transition. For drivers, Crowchild, Shaganappi, John Laurie, and Sarcee are all right nearby. Though it might appear that the neighbourhood is isolated by freeways, in reality adequate pedestrian infrastructure like bridges and crosswalks make these roads and intersections very navigable. A few of the parks you can see on the map happen to be off-leash dog parks as well. All in all, I love living here. While there are some awkward uses of space throughout, I think overall the city is doing a pretty great job turning this somewhat older, mostly suburban neighbourhood into a transit-oriented development.</p>
+		<br>
+		</div>
+
+		<div id="myMap"></div>
+		<script type="application/javascript">
+			var map = L.map('myMap').setView([51.102054, -114.151605], 15);
+			
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			}).addTo(map);
+			
+			function onEachFeature(feature, layer) {
+				layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
+			}
+
+			
+			var myGeoJSON = {
+				'type' : 'FeatureCollection',
+					'features' : [
+						{
+						'type':'Feature', 
+						'properties':{
+							'name':'myPlace1',
+							'caption':'this is the body text',
+							'img':'<img src=”http://link/to/source.jpg”/>'},
+							'geometry':{'type':'Point','coordinates':[-75.1474139, 39.9816609]}
+						},
+						{'type':'Feature',
+							'properties':{
+							'name':'myPlace2',
+							'caption':'this is ALSO the body text'
+							'img':'<img src=”http://link/to/source.jpg”/>'},
+							'geometry':{'type':'Point','coordinates':[-75.1474439, 39.9716709]}}
+
+			]};
+			
+			var geojsonlayer = L.geoJson(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
+			
+		/*
+			L.marker([51.102623, -114.146024]).addTo(map)
+				.bindPopup("Co-op. A chain grocery store co-operative which sources a decent amount of local products " +
+					"and rewards its members with money back every year.");
+				
+			L.marker([51.106917, -114.161792]).addTo(map)
+				.bindPopup("Safeway. Another grocery option, sometimes cheaper than Co-op.");
+		
+			L.marker([51.096534, -114.138670]).addTo(map)
+				.bindPopup("Nose Hill Library. A nice, equitable place to read and learn, or use a computer");
+				
+			L.marker([51.096871, -114.137479]).addTo(map)
+				.bindPopup("Sir Winston Churchill Aquatic & Recreation Centre. Has a pool and a gym.");
+				
+			L.marker([51.103284, -114.159946]).addTo(map)
+				.bindPopup("Dalhousie LRT station. Provides zoomy access to jobs, education, recreation, you name it, all over the city.");
+				
+			L.marker([51.105360, -114.160658]).addTo(map)
+				.bindPopup("A medical clinic. For when you're sick or injured, obviously.");
+				
+			L.marker([51.101344, -114.140063]).addTo(map)
+				.bindPopup("Canadian Pizza Unlimited (CPU). Essential for survival, but also just one of many other food options around " +
+					"for when pizza (or cheap) isn't the name of the game.");
+			
+			L.marker([51.103814, -114.153236]).addTo(map)
+				.bindPopup("My home. A townhouse, in one of the 4 or 5 complexes around here.");
+				
+			L.marker([51.104700, -114.156647]).addTo(map)
+				.bindPopup("Public outdoor tennis and basketball courts.");
+					
+			*/
+		</script>
+	
+		<p>This map made by Alex Scheer, October 2020. Location coordinates selected from Google Maps.</p>
+
+	</body>
+
+</html>
