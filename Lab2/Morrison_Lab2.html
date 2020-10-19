@@ -92,81 +92,92 @@
 			{"type": "Feature", 
 					"properties": { 
 							"name": "Ten Foot Henry", 
-							"description": 'Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.',
+							"caption": 'Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.',
 							"img": <img src= "https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/04/Ten-Foot-Henry-Calgary-7.jpg?resize=640%2C427&ssl=1"/>},
 					"geometry" : {"type": "Point", "coordinates": [51.0410501, -114.0659303]}},
 			
 			{"type": "Feature", 
 					"properties": { 
 							"name": "Bridgette Bar", 
-							"description": 'Chef-driven food with a unique lounge atmosphere. $$$$.',
+							"caption": 'Chef-driven food with a unique lounge atmosphere. $$$$.',
 							"img": <img src= "https://3di6zv3beqwj3om56f47wlza-wpengine.netdna-ssl.com/wp-content/uploads/2020/06/Bridgette_Bar_01-900x600.jpg"/>},
 					"geometry" : {"type": "Point", "coordinates": [51.0437007, -114.0786483]}},
 			
 			{"type": "Feature", 
 					"properties": { 
-							"name": "UNA", 
-							"description": 'Hip local elevated pizzeria. $$.',
+							"name": "UNA Pizza and Wine", 
+							"caption": 'Hip local elevated pizzeria. $$.',
 							"img": <img src= https://www.narcity.com/u/2020/01/20/a4c5a2a265191e631a204d956a8ddb37.jpg_1200x630.jpg/>},
 					"geometry" : {"type": "Point", "coordinates":[51.0379030, -114.0754840] }},
 								
+			{"type": "Feature", 
+					"properties": { 
+							"name": "Village Ice Cream", 
+							"caption": 'Homemade ice cream with a trendy twist. $.',
+							"img": <img src= />},
+					"geometry" : {"type": "Point", "coordinates": [51.0427140, -114.0542788] }},
+			
+			{"type": "Feature", 
+					"properties": { 
+							"name": "Calcutta Cricket Club", 
+							"caption": 'Modern Indian Cuisine. $$.',
+							"img": <img src= />},
+					"geometry" : {"type": "Point", "coordinates": [51.0379171, -114.0708578] }},		
+					
+			{"type": "Feature", 
+					"properties": { 
+							"name": "Sidewalk Citizen", 
+							"caption": 'Rustic bakery and cafe. $ .',
+							"img": <img src= />},
+					"geometry" : {"type": "Point", "coordinates": [51.0481298, -114.0466905] }},
+					
+			{"type": "Feature", 
+					"properties": { 
+							"name": "Anejo", 
+							"caption": 'Contemperary mexican and famous margaritas. $$.',
+							"img": <img src= />},
+					"geometry" : {"type": "Point", "coordinates": [51.0337300, -114.0714570] }},
+					
+			{"type": "Feature", 
+					"properties": { 
+							"name": "The Nash", 
+							"caption": 'inventive dishes served in an old 1900s hotel.$$$$ .',
+							"img": <img src= />},
+					"geometry" : {"type": "Point", "coordinates": [51.0415189, -114.0369155]}},
+			
+			{"type": "Feature", 
+					"properties": { 
+							"name": "OEB", 
+							"caption": 'Very funky Brunch spot. $$.',
+							"img": <img src= />},
+					"geometry" : {"type": "Point", "coordinates": [51.0487096, -114.0660517]}},
+					
+			{"type": "Feature", 
+					"properties": { 
+							"name": "Point Sushi", 
+							"caption": 'Infamous bullet train sushi bar.$$.',
+							"img": <img src= />},
+					"geometry" : {"type": "Point", "coordinates": [51.0513535, -114.0635280] }},
+			
+			{"type": "Feature", 
+					"properties": { 
+							"name": "Clive Burger", 
+							"caption": 'Locally sourced hamburgers and shakes with a retro vibe.$.',
+							"img": <img src= />},
+					"geometry" : {"type": "Point", "coordinates": [51.0379097, -114.0789122]}},
+					
+			{"type": "Feature", 
+					"properties": { 
+							"name": "Trolley 5", 
+							"caption": ' Brews their own beer on site as well as featuring other local Micro-breweries, plus amazing wings. $$.',
+							"img": <img src= />},
+					"geometry" : {"type": "Point", "coordinates": [51.0379095, -114.0784720]}},
+			
 		]};
 		
 	L.geoJSON(geojsonFeature), {
 		onEachFeature:onEachFeature
-		}).addTo(map);
-
-
-	L.marker([51.0410501, -114.0659303]).addTo(map)
-		.bindPopup('<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.')
-		.openPopup();
-	
-	L.marker([51.0437007, -114.0786483]).addTo(map)
-		.bindPopup('<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$$.')
-		.openPopup();
-		
-	L.marker([51.0379030, -114.0754840]).addTo(map)
-		.bindPopup('<b>UNA Pizza and Wine</b><br> Hip local elevated pizzeria. $$.')
-		.openPopup();
-
-	L.marker([51.0427140, -114.0542788]).addTo(map)
-		.bindPopup('<b>Village Ice Cream</b><br> Homemade ice cream with a trendy twist. $.')
-		.openPopup();
-	
-	L.marker([51.0379171, -114.0708578]).addTo(map)
-		.bindPopup('<b>Calcutta Cricket Club</b><br> Modern Indian Cuisine. $$.')
-		.openPopup();
-	
-	L.marker([51.0481298, -114.0466905]).addTo(map)
-		.bindPopup('<b>Sidewalk Citizen</b><br> Rustic bakery and cafe. $ .')
-		.openPopup();
-		
-	L.marker([51.0337300, -114.0714570]).addTo(map)
-		.bindPopup('<b>Anejo</b><br> Contemperary mexican and famous margaritas. $$.')
-		.openPopup();
-		
-	L.marker([51.0415189, -114.0369155]).addTo(map)
-		.bindPopup('<b>The Nash</b><br> Inventive dishes served in an old 1900s hotel.$$$$ .')
-		.openPopup();
-		
-	L.marker([51.0487096, -114.0660517]).addTo(map)
-		.bindPopup('<b>OEB</b><br> Very funky Brunch spot. $$.')
-		.openPopup();
-	
-	L.marker([51.0513535, -114.0635280]).addTo(map)
-		.bindPopup('<b>Point Sushi</b><br> Infamous bullet train sushi bar.$$.')
-		.openPopup();
-	
-	L.marker([51.0379097, -114.0789122]).addTo(map)
-		.bindPopup('<b>Clive burger</b><br> Locally sourced hamburgers and shakes with a retro vibe.$.')
-		.openPopup();
-		
-	L.marker([51.0379095, -114.0784720]).addTo(map)
-		.bindPopup('<b>Trolley 5</b><br> Brews their own beer on site as well as featuring other local Micro-breweries, plus amazing wings. $$.')
-		.openPopup();
-		
-	
-		
+		}).addTo(map);	
 		
 </script> 	
 
