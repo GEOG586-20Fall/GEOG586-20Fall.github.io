@@ -1,0 +1,121 @@
+<html>
+	<title> Lab 2
+	</title>
+	<head>
+		<style> 
+			#mainMap { 
+				height: 425px;
+			}
+
+			h1 { 
+				color: orange;
+				font-family: verdana, sans-serif;
+				text-align: center;
+			}
+			
+			h2 {
+				color: D8AB30;
+				font-family: verdana, sans-serif;
+				text-align: center;
+			}
+			
+			h3 {
+				color: FA4DBE;
+				font-family: verdana, sans-serif;
+				text-align: center;
+			}
+			
+		</style>
+		
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin=""/>
+		
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+
+	</head>
+
+	<body>
+		<h1>Favourite Places in My Neighbourhood</h1>
+		<h2>By Rita Zoura</h2>
+		<h3>This is a webmap of the places I like to walk to in my neighbourhood.<br>I have lived in this area for most of my life and I know the area really well.<br>Click on a marker on the map to learn more about it!</h3>
+		
+		<div id="mainMap"></div>
+
+			<script type="application/javascript">
+				var map = L.map('mainMap').setView([50.986103, -114.099397], 14);
+
+				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+				}).addTo(map);
+				
+				function onEachFeature(feature, layer) {
+					// does this feature have a property named popupContent?
+					if (feature.properties && feature.properties.popupContent) {
+						layer.bindPopup(feature.properties.popupContent);
+					}
+				}
+
+				var geojsonFeature = {
+					"type": "Feature",
+					"properties": {
+						"name": "Kingsland",
+						"amenity": "Park",
+						"popupContent": "This is Kingsland's Dry Pond. It has a long paved walkway going around it, good for biking or a short walk. There is also a large hill great for sledding down in the winter. Just be careful of the storm grates at the bottom of the hill!"
+					},
+					"geometry": {
+						"type": "Point",
+						"coordinates": [
+							[
+								[50.993989, -114.083003],
+								[50.994136, -114.071481],
+								[50.979552, -114.071430],
+								[50.979540, -114.083018],
+								[50.993989, -114.083003]
+							]
+						]
+					}
+				};
+
+				L.geoJSON(geojsonFeature, {
+					onEachFeature: onEachFeature
+				}).addTo(map);
+				
+				
+				<!-- <!-- var polygon = L.polygon([ -->
+					[50.993989, -114.083003],
+					[50.994136, -114.071481],
+					[50.979552, -114.071430],
+					[50.979540, -114.083018]
+				<!-- ]).addTo(map) -->
+					<!-- .bindPopup("This is the community of Kingsland. I have lived here for most of my life and grown up in this area. The markers around are some of my favourite places to walk to! I hope you enjoy getting to know my neighbourhood.") -->
+					<!-- .openPopup(); --> -->
+				
+				L.marker([50.981787, -114.073834]).addTo(map) <!--dry pond-->
+					.bindPopup("This is Kingsland's Dry Pond. It has a long paved walkway going around it, good for biking or a short walk. There is also a large hill great for sledding down in the winter. Just be careful of the storm grates at the bottom of the hill!");
+				 
+				L.marker([50.979012, -114.074716]).addTo(map) <!--Heritage Station-->
+					.bindPopup("One of the things I really like about my neighbourhood is how close it is to transit. This is Heritage station, I just have to walk 5 min to hop on the to the train and head toward the University, which is only about a 30 min train ride. Buses like the 3 can easily take me downtown, and the 20 can also take me to the University if the trains go down (as they usually do in the winter time lol)"); 
+				
+				L.marker([50.986297, -114.084718]).addTo(map) <!--wise wood hs-->
+					.bindPopup("This is the highschool I went to! Henry Wise Wood Highschool. I would usually walk early in the mornings to band rehearsal and then walk back home from jazz band rehearsal in the afternoons. Shoppers Drug Mart, Starbucks, and COBS Bread across the street were popular places to go to during our lunch hour."); 
+				
+				L.marker([50.991179, -114.082744]).addTo(map) <!--7/11-->
+					.bindPopup("This is where the closest 7/11 is, it was also a hot spot to walk to in higschool when it was warmer outside. Even during summer break it was a nice treat when my dad would take me and my brother out for a slurpee on a hot day."); 
+				
+				L.marker([50.982679, -114.101362]).addTo(map) <!--Heritage Park-->
+					.bindPopup("This is heritage park, its not as close as some of the other locations but it is still really nice to visit once in a while. I remember when i was a kid, Canada Day fireworks used to be launched from there. I'm pretty sure I saw the 100th anniversary of Canada fireworks there as they were launched over the Glenmore Reservoir. Recently we just go to center street as I don't think they launch near us anymore."); 
+					
+				L.marker([50.981366, -114.117666]).addTo(map) <!--glenmore reservoir-->
+					.bindPopup("This is the Glenmore Reservoir. When it's not too cold to go for a walk outside, me and my family would go up and take a walk around in evening, you can see the sun set arcoss the water and its really really refreshing, relaxing and just all around nice to watch as you walk around for a bit. Even during this quarantine I've gone around the pathway with my friends on socially distanced walks to enjoy the outdoors for a bit after being inside at home for so long. Many people in the city enjoy biking around the entire thing and going to the north and south parks for picnics and barbeque's!"); 
+					
+				L.marker([50.976022, -114.083541]).addTo(map) <!--woodman-->
+					.bindPopup("This is my junior high school I went to. There are 2 large fields and the baseball diamond was shared with Bishop Grandin highschool. When I started at Woodman Jr. High in Gr. 7, I was really excited to be starting a school year without my brother being at the same school as me. Little did I know that Woodman had just introduced grades 5 and 6 that same year and my parents had him trasfered so that we could still be together. We would walk and bike to and from school. Only grades 7-9 were allowed off school grounds for lunch so many of us would go across to Dairy Queen for a blizzard."); 
+				
+				
+				
+			</script>
+	</body>
+
+</html>
