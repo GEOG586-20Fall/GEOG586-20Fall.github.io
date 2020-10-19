@@ -58,6 +58,34 @@
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
+			
+			function onEachFeature(feature, layer) {
+				layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
+			}
+
+			var geojsonlayer = L.geoJson(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
+
+			
+			var myGeoJSON = {
+				‘type’ : ‘FeatureCollection’,
+					‘features’ : [
+						{
+						'type':'Feature', 
+						'properties':{
+							'name':'myPlace1',
+							'caption':'this is the body text',
+							'img':'<img src=”http://link/to/source.jpg”/>'},
+							'geometry':{'type':'Point','coordinates':[-75.1474139, 39.9816609]}
+						},
+						{'type':'Feature',
+							'properties':{
+							'name':'myPlace2',
+							'caption':'this is ALSO the body text'
+							'img':'<img src=”http://link/to/source.jpg”/>'},
+							'geometry':{'type':'Point','coordinates':[-75.1474439, 39.9716709]}}
+
+			]};
+
 		
 			L.marker([51.102623, -114.146024]).addTo(map)
 				.bindPopup("Co-op. A chain grocery store co-operative which sources a decent amount of local products " +
