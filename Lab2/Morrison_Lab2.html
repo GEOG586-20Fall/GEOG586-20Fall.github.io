@@ -92,7 +92,11 @@
 					"geometry" : {"type": "Point", "coordinates":[51.0379030, -114.0754840] }},
 								
 		]};
-			
+		
+		
+	function onEachFeature(feature, layer) {
+        layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
+	}	
 	
 	var map = L.map('MyMap').setView([51.048, -114.07], 13);
 	
@@ -107,6 +111,8 @@
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
+	
+	var geojsonlayer = L.geoJson(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
 
 	L.marker([51.0410501, -114.0659303]).addTo(map)
 		.bindPopup('<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.')
