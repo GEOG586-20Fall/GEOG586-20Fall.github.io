@@ -4,59 +4,21 @@
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
+    <link rel="stylesheet" type="text/css" href="L2main.css" media="screen"/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
     <script src="popupsL2.js"></script>   
+          
     <script> 
-        L.geoJSON(geojsonFeature).addTo(map);
+        L.geoJSON(geojsonFeature).addTo(mymap);
         function locationpopups(feature, layer) {
             if (feature.properties && feature.properties.popupContent) {
             layer.bindPopup(feature.properties.popupContent);
             }}
         </script>  
         
-    
     <title>My Ucluelet Adventure</title>
 
-    <style> 
-        body {background-image: url(Beach.jpg);}  
-
-        h1 {color: darkkhaki;
-        font-family:Verdana;
-       text-align: center;
-        font-size: 50px;    
-        } 
-        
-        h3{color: darkseagreen}
-        
-        h4{text-align:center;
-           color:darkseagreen;
-           font-family: Verdana}
-        
-        p {color: white;
-        font-family: arial;}
-        
-        .centermap{
-              margin: auto;
-            width: 200px;
-            border: 3px clear;
-            padding: 10px;
-            }
-        
-        .left {float: left;
-            width: 700px;
-            border: 3px clear;
-            padding: 2px;}
-        
-        .right{ float: right;
-            width: 700px;
-            border: 3px clear;
-            padding: 2px;}
-        
-            
-    </style>
     </head>
-    
-    
     
     <body>
 
@@ -69,53 +31,25 @@
              <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
-            <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script> 
-            <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
+        <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script> 
 
-    <script> 
-    var map = L.map('mapid').setView([50.8378,-118.9768], 6);  
-        
-      var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
-        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        subdomains: 'abcd',
-        minZoom: 0,
-        maxZoom: 18,
-        ext: 'png',
-        accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A'
-        }).addTo(map);
+        <script> 
+        var mymap = L.map('mapid').setView([50.8378,-118.9768], 6);  
 
+          var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            subdomains: 'abcd',
+            minZoom: 0,
+            maxZoom: 18,
+            ext: 'png',
+            accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A'
+          }).addTo(mymap); 
+        
+            L.geoJSON(ontheway, {
+                onEachFeature: locationpopups
+            }).addTo(mymap); 
 
-        L.geoJSON(sicamous, {
-        onEachFeature: locationpopups
-        }).addTo(map);
-    
-        L.geoJSON(van1, {
-        onEachFeature: locationpopups
-        }).addTo(map);
         
-        L.geoJSON(van2, {
-        onEachFeature: locationpopups
-        }).addTo(map);
-        
-        L.geoJSON(van3, {
-        onEachFeature: locationpopups
-        }).addTo(map);
-        
-        L.geoJSON(van4, {
-        onEachFeature: locationpopups
-        }).addTo(map);
-        
-        L.geoJSON(tofino, {
-        onEachFeature: locationpopups
-        }).addTo(map);
-        
-        L.geoJSON(ucluelet, {
-        onEachFeature: locationpopups
-        }).addTo(map);
-        
-        L.geoJSON(calgary, {
-        onEachFeature: locationpopups
-        }).addTo(map);
             </script>
             </div>
 
