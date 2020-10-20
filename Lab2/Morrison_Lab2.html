@@ -54,7 +54,7 @@
    </script>
    
    <script> 
-   <script src="restaurants.js" </script>
+   <script src="restaurants.js" type="text/javascript"></script>
 
   
    
@@ -73,32 +73,19 @@
 <div id="MyMap" class="center"></div>
 
 <script type= "application/javascript">
+		function onEachFeature (feature, layer) {
+			layer.bindPopup(("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.popupContent+"</p>"+feature.properties.imgpopupContent,img);
+			}
 
-			var map = L.map('MyMap').setView([51.048, -114.07], 13);
+		var map = L.map('MyMap').setView([51.048, -114.07], 13);
 
 
-			L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+		L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 			}).addTo(map);
-		
-			function onEachFeature(feature, layer) {
-		var popupContent = feature.properties.popupContent +
-				feature.geometry.type + ;
-
-		if (feature.properties && feature.properties.popupContent) {
-			popupContent += feature.properties.popupContent;
-		}
-
-		layer.bindPopup(popupContent);
-	}
-
-	L.geoJSON(geojsonFeature, {
-
-		style: function (feature) {
-			return feature.img && feature.properties.popupContent;
-		},
-
-		onEachFeature: onEachFeature,
+			
+		var restaurants = L.geoJson(geojsonFeature, {
+		onEachFeature: onEachFeature},
 
 		pointToLayer: function (feature, latlng) {
 			return L.circleMarker(latlng, {
