@@ -84,28 +84,23 @@
 			
 		function popups (feature, layer) {
     // does this feature have a property named popupContent?
-    if (feature.properties && feature.properties.popupContent && feature.properties.img) {
-        layer.bindPopup("<h1>"+feature.properties.popupContent+"</h1>, "+feature.properties.img+");
+    if (feature.properties && feature.properties.popupContent ) {
+        layer.bindPopup("<h1>"+feature.properties.popupContent+"</h1>,);
     }
 }
-
-
-    }
-}
-
 
 			var geojsonFeature = {
 				"type": "Feature",
 				"properties": {
 					"name": "TenFoot",
 					"amenity": "resturant",
-					"img": '<img src="https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/04/Ten-Foot-Henry-Calgary-7.jpg?resize=640%2C427&ssl=1" style="width: 75px"/>,
+					<!-- "img": '<img src="https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/04/Ten-Foot-Henry-Calgary-7.jpg?resize=640%2C427&ssl=1" style="width: 75px"/>, -->
 					"popupContent": '<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.'
 						},
 				"geometry": {
 					"type": "Point",
 					"coordinates": [ -114.0659303, 51.0410501]
-				},
+				}},
 				"type": "Feature",
 				"properties": {
 					"name": "BridgetteBar",
@@ -115,7 +110,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [ -114.0786483, 51.0437007]
-				},	
+				}},	
 				
 				"type": "Feature",
 				"properties": {
@@ -126,7 +121,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [ -114.0754840,51.0379030]
-				},	
+				}},	
 				
 				"type": "Feature",
 				"properties": {
@@ -137,7 +132,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [-114.0542788, 51.0427140]
-				},	
+				}},	
 					
 				"type": "Feature",
 				"properties": {
@@ -148,7 +143,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [ -114.0708578, 51.0379171]
-				},	
+				}},	
 				
 				"type": "Feature",
 				"properties": {
@@ -159,7 +154,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [ -114.0466905,51.0481298]
-				},	
+				}},	
 					
 				"type": "Feature",
 				"properties": {
@@ -170,7 +165,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [ -114.0466905,51.0481298]
-				},	
+				}},	
 				
 				"type": "Feature",
 				"properties": {
@@ -181,7 +176,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [ -114.0714570, 51.0337300]
-				},	
+				}},	
 				
 				"type": "Feature",
 				"properties": {
@@ -192,7 +187,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [ -114.0369155, 51.0415189]
-				},	
+				}},	
 				
 				"type": "Feature",
 				"properties": {
@@ -203,7 +198,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [-114.0660517, 51.0487096]
-				},	
+				}},	
 				
 				"type": "Feature",
 				"properties": {
@@ -214,7 +209,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [-114.0635280,51.0513535]
-				},	
+				}},	
 				
 				"type": "Feature",
 				"properties": {
@@ -225,7 +220,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [ -114.0789122, 51.0379097]
-				},	
+				}},	
 				
 				"type": "Feature",
 				"properties": {
@@ -236,8 +231,7 @@
 				"geometry": {
 					"type": "Point",
 					"coordinates": [-114.0784720, 51.0379095]
-				},		
-			};
+				}}]};
 
 
 
