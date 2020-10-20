@@ -54,7 +54,7 @@
    </script>
    
    <script> 
-		L.geoJSON(geojsonFeatures).addTo(map);
+		L.geoJSON(geojsonFeature).addTo(map);
 			function popups(feature, layer) { 
 			if  (feature.properties && feature.properties.popupContent){ 
 			layer.bindPopup (feature.properties.popupContent; 
@@ -85,11 +85,11 @@
 			}).addTo(map);
 			
 			
-			var geojsonFeatures = {
+			var Restaurants = {
 					"type": "Feature",
 					"properties": {
 						"name": "Place1",
-						"popupContent": " <b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.'
+						"popupContent": " <b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$."
 					},
 					"geometry": {
 						"type": "Point",
@@ -98,7 +98,7 @@
 					}
 				};
 
-				L.geoJSON(geojsonFeatures, {
+				L.geoJSON(Restaurants, {
 					onEachFeature: popups
 				}).addTo(map);
 			
