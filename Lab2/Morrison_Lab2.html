@@ -76,14 +76,6 @@ var map = L.map('map'.setView([51.048, -114.07], 13);
 var stamenLayer = new L.StamenTileLayer(“watercolor”);
 map.addLayer(stamenLayer);
 
-
-function onEachFeature(feature, layer) {
-    // does this feature have a property named caption?
-    if (feature.properties && feature.properties.caption) {
-        layer.bindPopup(feature.properties.caption);
-    }
-}
-
 var geojsonFeature = { 
 		"type": "FeatureCollection", 
 		"features": [
@@ -172,6 +164,13 @@ var geojsonFeature = {
 					"geometry" : {"type": "Point", "coordinates": [51.0379095, -114.0784720]}},
 			
 		]};
+		
+		function onEachFeature(feature, layer) {
+    // does this feature have a property named caption?
+    if (feature.properties && feature.properties.caption) {
+        layer.bindPopup(feature.properties.caption);
+    }
+}
 		
 				L.geoJSON(geojsonFeature, {
 					onEachFeature: onEachFeature
