@@ -85,7 +85,7 @@
 		function popups (feature, layer) {
     // does this feature have a property named popupContent?
     if (feature.properties && feature.properties.popupContent) {
-        layer.bindPopup(feature.properties.popupContent);
+        layer.bindPopup(feature.properties.popupContent + feature.properties.img);
     }
 }
 
@@ -95,6 +95,7 @@ var geojsonFeature = {
         "name": "TenFoot",
         "amenity": "resturant",
         "popupContent": "This is the best!"
+		"img"  <img src= "https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/04/Ten-Foot-Henry-Calgary-7.jpg?resize=640%2C427&ssl=1"/>},
     },
     "geometry": {
         "type": "Point",
