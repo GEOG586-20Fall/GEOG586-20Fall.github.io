@@ -84,17 +84,15 @@
 			
 		function popups (feature, layer) {
     // does this feature have a property named popupContent?
-    if (feature.properties && feature.properties.popupContent) {
-        layer.bindPopup(feature.properties.popupContent);
+    if (feature.properties && feature.properties.popupContent && feature.properties.img) {
+        layer.bindPopup("<h1>"+feature.properties.popupContent+"</h1>, "+feature.properties.img+");
     }
 }
 
-function popups (feature, layer) {
-    // does this feature have a property named popupContent?
-    if (feature.properties && feature.properties.img) {
-        layer.bindPopup(feature.properties.img);
+
     }
 }
+
 
 			var geojsonFeature = {
 				"type": "Feature",
@@ -243,12 +241,11 @@ function popups (feature, layer) {
 
 
 
-			L.geoJSON(geojsonFeature, {
-				onEachFeature: popups
-			}).addTo(map);	
+	L.geoJSON(geojsonFeature, {
+		onEachFeature: popups
+	}).addTo(map);	
 						
-			
-			
+	
 				
 </script>
 
