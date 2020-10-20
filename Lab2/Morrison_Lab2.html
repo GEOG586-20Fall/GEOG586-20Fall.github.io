@@ -68,27 +68,32 @@
 <div id="MyMap" class="center"></div>
 
 <script type= "application/javascript">
-var map = L.map('MyMap').setView([51.048, -114.07], 13);
+
+			L.geoJSON(geojsonFeature).addTo(map);
+			function popups(feature, layer) { 
+			if  (feature.properties && feature.properties.popupContent){ 
+			layer.bindPopup (feature.properties.popupContent; 
+			}} 
+
+			var map = L.map('MyMap').setView([51.048, -114.07], 13);
 	
 
-	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-		attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-	}).addTo(map);
+			L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+			}).addTo(map);
+			
+			
+            L.geoJSON(geojsonFeature, {
+                onEachFeature: popups
+            }).addTo(mymap); 
 
 
-				function onEachFeature(feature, layer) {
-					// does this feature have a property named popupContent?
-					if (feature.properties && feature.properties.popupContent) {
-						layer.bindPopup(feature.properties.popupContent);
-					}
-				}
-
+			
 				var geojsonFeature = {
 					"type": "Feature",
 					"properties": {
-						"name": "TenFoot",
-						"amenity": "restaurant",
-						"popupContent": " Hip atmosphere with modern vegtable-anchored plates for sharing. $$$"
+						"name": "Place1",
+						"popupContent": " <b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.'Hip atmosphere with modern vegtable-anchored plates for sharing. $$$"
 					},
 					"geometry": {
 						"type": "Point",
@@ -100,23 +105,7 @@ var map = L.map('MyMap').setView([51.048, -114.07], 13);
 				L.geoJSON(geojsonFeature, {
 					onEachFeature: onEachFeature
 				}).addTo(map);
-				
-			var geojsonMarkerOptions = {
-						radius: 30,
-						fillColor: "pink",
-						color: "red",
-						weight: 1,
-						opacity: 1,
-						fillOpacity: 0.8
-					};
-
-					L.geoJSON(geojsonFeature, {
-						pointToLayer: function (feature, layer) {
-							return L.circleMarker(layer, geojsonMarkerOptions);
-						}
-					}).addTo(map);
-
-									
+			
 
 </script> 	
 
@@ -127,6 +116,15 @@ var map = L.map('MyMap').setView([51.048, -114.07], 13);
 <body> 
 
 </html>
+
+
+
+
+
+
+
+
+
 
 var geojsonFeature = { 
 		"type": "FeatureCollection", 
