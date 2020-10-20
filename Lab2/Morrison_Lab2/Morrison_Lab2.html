@@ -89,178 +89,164 @@
     }
 }
 
-var geojsonFeature = {
-    "type": "Feature",
-    "properties": {
-        "name": "TenFoot",
-        "amenity": "resturant",
-        "popupContent": '<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0659303, 51.0410501]
-    },
-    "type": "Feature",
-    "properties": {
-        "name": "BridgetteBar",
-        "amenity": "resturant",
-        "popupContent": '<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0786483, 51.0437007]
-    },	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "BridgetteBar",
-        "amenity": "resturant",
-        "popupContent": '<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0786483, 51.0437007]
-    },	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "BridgetteBar",
-        "amenity": "resturant",
-        "popupContent": '<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0786483, 51.0437007]
-    },	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "UNA",
-        "amenity": "resturant",
-        "popupContent": '<b>UNA Pizza and Wine</b><br> Hip local elevated pizzeria. $$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0754840,51.0379030]
-    },	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "Village",
-        "amenity": "resturant",
-        "popupContent": '<b>Village Ice Cream</b><br> Homemade ice cream with a trendy twist. $.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [-114.0542788, 51.0427140]
-	},	
-		
-	"type": "Feature",
-    "properties": {
-        "name": "Calcutta",
-        "amenity": "resturant",
-        "popupContent": '<b>Calcutta Cricket Club</b><br> Modern Indian Cuisine. $$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0708578, 51.0379171]
-	},	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "Sidewalk ",
-        "amenity": "resturant",
-        "popupContent": '<b>Sidewalk Citizen</b><br> Rustic bakery and cafe. $ .'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0466905,51.0481298]
-	},	
-		
-	"type": "Feature",
-    "properties": {
-        "name": "Sidewalk ",
-        "amenity": "resturant",
-        "popupContent": '<b>Sidewalk Citizen</b><br> Rustic bakery and cafe. $ .'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0466905,51.0481298]
-	},	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "Anejo ",
-        "amenity": "resturant",
-        "popupContent": '<b>Anejo</b><br> Contemperary mexican and famous margaritas. $$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0714570, 51.0337300]
-	},	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "Nash",
-        "amenity": "resturant",
-        "popupContent": '<b>The Nash</b><br> Inventive dishes served in an old 1900s hotel.$$$$ .'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0369155, 51.0415189]
-	},	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "OEB",
-        "amenity": "resturant",
-        "popupContent": '<b>OEB</b><br> Very funky Brunch spot. $$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [-114.0660517, 51.0487096]
-	},	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "Sushi",
-        "amenity": "resturant",
-        "popupContent": '<b>Point Sushi</b><br> Infamous bullet train sushi bar.$$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [-114.0635280,51.0513535]
-	},	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "clive",
-        "amenity": "resturant",
-        "popupContent": '<b>Clive burger</b><br> Locally sourced hamburgers and shakes with a retro vibe.$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [ -114.0789122, 51.0379097]
-	},	
-	
-	"type": "Feature",
-    "properties": {
-        "name": "Trolley5",
-        "amenity": "resturant",
-        "popupContent":'<b>Trolley 5</b><br> Brews their own beer on site as well as featuring other local Micro-breweries, plus amazing wings. $$.'
-		    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": [-114.0784720, 51.0379095]
-	},		
-};
+function popups (feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties && feature.properties.img) {
+        layer.bindPopup(feature.properties.img);
+    }
+}
+
+			var geojsonFeature = {
+				"type": "Feature",
+				"properties": {
+					"name": "TenFoot",
+					"amenity": "resturant",
+					"img": '<img src="https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/04/Ten-Foot-Henry-Calgary-7.jpg?resize=640%2C427&ssl=1"/>,
+					"popupContent": '<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ -114.0659303, 51.0410501]
+				},
+				"type": "Feature",
+				"properties": {
+					"name": "BridgetteBar",
+					"amenity": "resturant",
+					"popupContent": '<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$$.'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ -114.0786483, 51.0437007]
+				},	
+				
+				"type": "Feature",
+				"properties": {
+					"name": "UNA",
+					"amenity": "resturant",
+					"popupContent": '<b>UNA Pizza and Wine</b><br> Hip local elevated pizzeria. $$.'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ -114.0754840,51.0379030]
+				},	
+				
+				"type": "Feature",
+				"properties": {
+					"name": "Village",
+					"amenity": "resturant",
+					"popupContent": '<b>Village Ice Cream</b><br> Homemade ice cream with a trendy twist. $.'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.0542788, 51.0427140]
+				},	
+					
+				"type": "Feature",
+				"properties": {
+					"name": "Calcutta",
+					"amenity": "resturant",
+					"popupContent": '<b>Calcutta Cricket Club</b><br> Modern Indian Cuisine. $$.'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ -114.0708578, 51.0379171]
+				},	
+				
+				"type": "Feature",
+				"properties": {
+					"name": "Sidewalk ",
+					"amenity": "resturant",
+					"popupContent": '<b>Sidewalk Citizen</b><br> Rustic bakery and cafe. $ .'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ -114.0466905,51.0481298]
+				},	
+					
+				"type": "Feature",
+				"properties": {
+					"name": "Sidewalk ",
+					"amenity": "resturant",
+					"popupContent": '<b>Sidewalk Citizen</b><br> Rustic bakery and cafe. $ .'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ -114.0466905,51.0481298]
+				},	
+				
+				"type": "Feature",
+				"properties": {
+					"name": "Anejo ",
+					"amenity": "resturant",
+					"popupContent": '<b>Anejo</b><br> Contemperary mexican and famous margaritas. $$.'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ -114.0714570, 51.0337300]
+				},	
+				
+				"type": "Feature",
+				"properties": {
+					"name": "Nash",
+					"amenity": "resturant",
+					"popupContent": '<b>The Nash</b><br> Inventive dishes served in an old 1900s hotel.$$$$ .'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ -114.0369155, 51.0415189]
+				},	
+				
+				"type": "Feature",
+				"properties": {
+					"name": "OEB",
+					"amenity": "resturant",
+					"popupContent": '<b>OEB</b><br> Very funky Brunch spot. $$.'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.0660517, 51.0487096]
+				},	
+				
+				"type": "Feature",
+				"properties": {
+					"name": "Sushi",
+					"amenity": "resturant",
+					"popupContent": '<b>Point Sushi</b><br> Infamous bullet train sushi bar.$$.'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.0635280,51.0513535]
+				},	
+				
+				"type": "Feature",
+				"properties": {
+					"name": "clive",
+					"amenity": "resturant",
+					"popupContent": '<b>Clive burger</b><br> Locally sourced hamburgers and shakes with a retro vibe.$.'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [ -114.0789122, 51.0379097]
+				},	
+				
+				"type": "Feature",
+				"properties": {
+					"name": "Trolley5",
+					"amenity": "resturant",
+					"popupContent":'<b>Trolley 5</b><br> Brews their own beer on site as well as featuring other local Micro-breweries, plus amazing wings. $$.'
+						},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.0784720, 51.0379095]
+				},		
+			};
 
 
 
-L.geoJSON(geojsonFeature, {
-    onEachFeature: popups
-}).addTo(map);	
-			
+			L.geoJSON(geojsonFeature, {
+				onEachFeature: popups
+			}).addTo(map);	
+						
 			
 			
 				
