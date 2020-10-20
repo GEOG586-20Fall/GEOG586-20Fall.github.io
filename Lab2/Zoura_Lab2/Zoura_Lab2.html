@@ -4,26 +4,45 @@
 	<head>
 		<style> 
 			#mainMap { 
-				height: 425px;
+				height: 600px;
 			}
+			
+			body{
+			 background-image: url("https://images3.alphacoders.com/195/195327.jpg")
+			 
+			 }
 
 			h1 { 
 				color: orange;
 				font-family: verdana, sans-serif;
 				text-align: center;
+				background-color: white;
+				max-width: 750px;
+				margin: auto;
 			}
 			
 			h2 {
 				color: D8AB30;
 				font-family: verdana, sans-serif;
 				text-align: center;
+				background-color: white;
+				max-width: 750px;
+				margin: auto;
 			}
 			
 			h3 {
 				color: FA4DBE;
 				font-family: verdana, sans-serif;
 				text-align: center;
+				background-color: white;
+				max-width: 750px;
+				margin: auto;
 			}
+			
+			.center	{
+				max-width: 750px;
+				margin: auto; 
+				}
 			
 		</style>
 		
@@ -41,7 +60,7 @@
 		<h2>By Rita Zoura</h2>
 		<h3>This is a webmap of the places I like to walk to in my neighbourhood.<br>I have lived in this area for most of my life and I know the area really well.<br>Click on a marker on the map to learn more about it!</h3>
 		
-		<div id="mainMap"></div>
+		<div id="mainMap" class="center"></div>
 
 			<script type="application/javascript">
 				var map = L.map('mainMap').setView([50.986103, -114.099397], 14);
@@ -65,14 +84,14 @@
 						"popupContent": "This is Kingsland's Dry Pond. It has a long paved walkway going around it, good for biking or a short walk. There is also a large hill great for sledding down in the winter. Just be careful of the storm grates at the bottom of the hill!"
 					},
 					"geometry": {
-						"type": "Point",
+						"type": "Polygon",
 						"coordinates": [
 							[
-								[50.993989, -114.083003],
-								[50.994136, -114.071481],
-								[50.979552, -114.071430],
-								[50.979540, -114.083018],
-								[50.993989, -114.083003]
+								[-114.083003, 50.993989],
+								[-114.071481, 50.994136],
+								[-114.071430, 50.979552],
+								[-114.083018, 50.979540],
+								[-114.083003, 50.993989]
 							]
 						]
 					}
@@ -84,10 +103,10 @@
 				
 				
 				<!-- <!-- var polygon = L.polygon([ -->
-					[50.993989, -114.083003],
-					[50.994136, -114.071481],
-					[50.979552, -114.071430],
-					[50.979540, -114.083018]
+					<!-- [50.993989, -114.083003], -->
+					<!-- [50.994136, -114.071481], -->
+					<!-- [50.979552, -114.071430], -->
+					<!-- [50.979540, -114.083018] -->
 				<!-- ]).addTo(map) -->
 					<!-- .bindPopup("This is the community of Kingsland. I have lived here for most of my life and grown up in this area. The markers around are some of my favourite places to walk to! I hope you enjoy getting to know my neighbourhood.") -->
 					<!-- .openPopup(); --> -->
