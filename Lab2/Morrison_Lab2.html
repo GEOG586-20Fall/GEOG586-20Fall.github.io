@@ -86,9 +86,9 @@ var geojsonMarkerOptions = {
 
 
 function onEachFeature(feature, layer) {
-    // does this feature have a property named popupContent?
-    if (feature.properties && feature.properties.popupContent) {
-        layer.bindPopup(feature.properties.popupContent);
+    // does this feature have a property named caption?
+    if (feature.properties && feature.properties.caption) {
+        layer.bindPopup(feature.properties.caption);
     }
 }
 
