@@ -1,0 +1,125 @@
+<html> 
+<head> 
+
+	<style>
+		#MyMap { height: 500px;
+				 width: 850px;
+		}
+		body{
+			 background-image: url("https://www.besthealthmag.ca/wp-content/uploads/2019/07/junk-food-1.gif");
+			 }
+
+		body{font-family: cooper black;}
+		.pinkText{color:DeepPink;
+				  max-width :850px; 
+				  margin: auto;
+				  background-color : white;
+				  text-align: center;
+				  font-size: 25px;
+		}
+		p {color: PaleVioletRed;
+					 max-width:850px;
+					 margin: auto; 
+					 background-color: white;
+					 text-align: left; 
+					 font-size: 20px;
+		} 
+		.center{max-width: 850px; 
+				margin: auto; 
+				}
+		
+		.nicole {color: PaleVioletRed;
+					 max-width:850px;
+					 margin: auto; 
+					 background-color: white;
+					 text-align: left; 
+					 font-size: 20px;
+				}
+				
+	</style>
+	
+	
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+	   
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+  
+
+
+   <script>
+		alert("Hello, click OK to view my web map")
+   </script>
+   
+   <script src="restaurants.js" type="text/javascript"></script>
+
+  
+   
+</head> 
+<body>
+
+	<div id="Header" class="pinkText">
+	<h1> Nicole's Favorite Local Calgary Eateries</h1> 
+	<h2> "For all the foodies out there"</h2>
+	<p>One of the things I love most about Calgary is the great food it has to offer! </p>
+	<p>This map will show you some of my favourite places to eat in the inner city.</P>
+	<p> Click on a marker or the circle to explore the cities eateries.</p>
+	</div> 
+
+
+<div id="MyMap" class="center"></div>
+
+<script type= "application/javascript">
+		
+		 
+			
+		var map = L.map('MyMap').setView([51.048, -114.05], 13);
+
+
+		L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+			}).addTo(map);
+			
+		function popups (feature, layer) {
+    // does this feature have a property named popupContent?
+    if (feature.properties && feature.properties.popupContent) {
+        layer.bindPopup(feature.properties.popupContent);
+    }
+}
+
+var geojsonFeature = {
+    "type": "Feature",
+    "properties": {
+        "name": "TenFoot",
+        "amenity": "resturant",
+        "popupContent": "This is the best!"
+		    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [ -114.0754840, 51.037]
+    }
+};
+
+L.geoJSON(geojsonFeature, {
+    onEachFeature: popups
+}).addTo(map);	
+			
+			
+			
+				
+</script>
+
+	
+
+<div id="author" class="nicole"> 
+	<p>By Nicole Morrison </p> 
+</div> 
+
+<body> 
+
+</html>
+
+
+
