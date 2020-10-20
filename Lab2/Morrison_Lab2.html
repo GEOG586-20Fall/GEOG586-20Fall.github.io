@@ -163,7 +163,7 @@ var geojsonFeature = {
 			
 		]};
 		
-		L.geoJSON(geojsonFeature, {
+				L.geoJSON(geojsonFeature, {
 					onEachFeature: onEachFeature
 				}).addTo(map);
 
@@ -176,9 +176,9 @@ var geojsonMarkerOptions = {
     fillOpacity: 0.8
 };
 
-L.geoJSON(geojsonFeature).addTo(map); {
-    pointToLayer: function (feature, layer) {
-        return L.circleMarker(layer, geojsonMarkerOptions);
+L.geoJSON(geojsonFeature, {
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, geojsonMarkerOptions);
     }
 }).addTo(map);
 
@@ -191,7 +191,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		}).addTo(map);
 
 
-var geojsonlayer = L.geoJson(geojsonFeature, {onEachFeature: onEachFeature}).addTo(map);
+
  
 
 </script> 	
