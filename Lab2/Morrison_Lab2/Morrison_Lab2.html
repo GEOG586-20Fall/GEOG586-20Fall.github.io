@@ -72,10 +72,13 @@
 <div id="MyMap" class="center"></div>
 
 <script type= "application/javascript">
-		function onEachFeature (feature, layer) {
-			layer.bindPopup(("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.popupContent+"</p>"+feature.properties.imgpopupContent,img);
-			}
-
+		
+		 L.geoJSON(geojsonFeature).addTo(map);
+        function locationpopups(feature, layer) {
+            if (feature.properties && feature.properties.popupContent) {
+            layer.bindPopup(feature.properties.popupContent);
+            }}
+			
 		var map = L.map('MyMap').setView([51.048, -114.07], 13);
 
 
@@ -83,26 +86,30 @@
 			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 			}).addTo(map);
 			
-		var layer = L.geoJson(geojsonFeature,{
+		<!-- var layer = L.geoJson(geojsonFeature,{ -->
 		
 
-		style: function (feature) {
-			return feature.properties;
-		},
+		<!-- style: function (feature) { -->
+			<!-- return feature.properties; -->
+		<!-- }, -->
 
-		onEachFeature: onEachFeature,
+		<!-- onEachFeature: onEachFeature, -->
 
-		pointToLayer: function (feature, latlng) {
-			return L.circleMarker(latlng, {
-				radius: 8,
-				fillColor: "#ff7800",
-				color: "#000",
-				weight: 1,
-				opacity: 1,
-				fillOpacity: 0.8
-			});
-		}
-	}).addTo(map);
+		<!-- pointToLayer: function (feature, latlng) { -->
+			<!-- return L.circleMarker(latlng, { -->
+				<!-- radius: 8, -->
+				<!-- fillColor: "#ff7800", -->
+				<!-- color: "#000", -->
+				<!-- weight: 1, -->
+				<!-- opacity: 1, -->
+				<!-- fillOpacity: 0.8 -->
+			<!-- }); -->
+		<!-- } -->
+	<!-- }).addTo(map); -->
+		
+		 L.geoJSON(geojsonFeature, {
+                onEachFeature: popups
+            }).addTo(mymap); 
 
 	
 			
