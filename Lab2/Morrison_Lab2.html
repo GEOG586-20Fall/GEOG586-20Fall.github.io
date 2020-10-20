@@ -67,6 +67,11 @@
 
 <script type= "application/javascript">
 
+
+L.tileLayer(m %>% addProviderTiles(providers$CartoDB.Positron)', {
+		}).addTo(map);
+
+
 function onEachFeature(feature, layer) {
     // does this feature have a property named caption?
     if (feature.properties && feature.properties.caption) {
@@ -184,11 +189,6 @@ L.geoJSON(geojsonFeature, {
 
 
 var map = L.map('Mymap').setView([51.048, -114.07], 13);
-
-
-L.tileLayer(m %>% addProviderTiles(providers$CartoDB.Positron)', {
-		}).addTo(map);
-
 
 
  
