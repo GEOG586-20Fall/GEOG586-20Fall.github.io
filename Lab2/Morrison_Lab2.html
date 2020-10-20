@@ -165,7 +165,20 @@ var geojsonFeature = {
 			
 		]};
 		
-		function onEachFeature(feature, latlng) {
+	
+
+</script> 	
+
+<div id="author" class="nicole"> 
+	<p>By Nicole Morrison </p> 
+</div> 
+
+<body> 
+
+</html>
+
+
+	function onEachFeature(feature, latlng) {
     // does this feature have a property named caption?
     if (feature.properties && feature.properties.caption) {
         layer.bindPopup(feature.properties.caption);
@@ -190,16 +203,4 @@ L.geoJSON(geojsonFeature, {
         return L.circleMarker(latlng, geojsonMarkerOptions);
     }
 }).addTo(map);
-
-</script> 	
-
-<div id="author" class="nicole"> 
-	<p>By Nicole Morrison </p> 
-</div> 
-
-<body> 
-
-</html>
-
-
 
