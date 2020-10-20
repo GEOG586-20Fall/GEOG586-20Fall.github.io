@@ -165,7 +165,7 @@ var geojsonFeature = {
 			
 		]};
 		
-		function onEachFeature(feature, layer) {
+		function onEachFeature(feature, latlng) {
     // does this feature have a property named caption?
     if (feature.properties && feature.properties.caption) {
         layer.bindPopup(feature.properties.caption);
