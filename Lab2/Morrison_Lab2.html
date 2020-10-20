@@ -67,16 +67,15 @@
 
 <div id="MyMap" class="center"></div>
 
-<script type= "application/javascript"></script>
+<script type= "application/javascript">
 
-<script>
+
 
 			L.geoJSON(geojsonFeature).addTo(map);
 			function popups(feature, layer) { 
 			if  (feature.properties && feature.properties.popupContent){ 
 			layer.bindPopup (feature.properties.popupContent; 
 			}} 
-</script>
 			var map = L.map('MyMap').setView([51.048, -114.07], 13);
 
 
@@ -84,7 +83,7 @@
 			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 			}).addTo(map);
 			
-			<script>
+			
 			var geojsonFeatures = {
 					"type": "Feature",
 					"properties": {
@@ -102,7 +101,7 @@
 					onEachFeature: popups
 				}).addTo(map);
 			
-			</script>
+</script>
 
 	
 
