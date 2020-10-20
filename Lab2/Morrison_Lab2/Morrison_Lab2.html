@@ -84,24 +84,22 @@
 			
 		function popups (feature, layer) {
     // does this feature have a property named popupContent?
-    if (feature.properties && feature.properties.popupContent) {
-        layer.bindPopup(feature.properties.popupContent);
+    if (feature.properties && feature.properties.popupContent && feature.properties.img) {
+        layer.bindPopup("<h1>"+feature.properties.popupContent+"</h1>, "+feature.properties.img+");
     }
 }
 
-function popups (feature, layer) {
-    // does this feature have a property named popupContent?
-    if (feature.properties && feature.properties.img) {
-        layer.bindPopup(feature.properties.img);
+
     }
 }
+
 
 			var geojsonFeature = {
 				"type": "Feature",
 				"properties": {
 					"name": "TenFoot",
 					"amenity": "resturant",
-					"img": '<img src="https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/04/Ten-Foot-Henry-Calgary-7.jpg?resize=640%2C427&ssl=1"/>,
+					"img": '<img src="https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/04/Ten-Foot-Henry-Calgary-7.jpg?resize=640%2C427&ssl=1" style="width: 75px"/>,
 					"popupContent": '<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.'
 						},
 				"geometry": {
@@ -243,12 +241,11 @@ function popups (feature, layer) {
 
 
 
-			L.geoJSON(geojsonFeature, {
-				onEachFeature: popups
-			}).addTo(map);	
+	L.geoJSON(geojsonFeature, {
+		onEachFeature: popups
+	}).addTo(map);	
 						
-			
-			
+	
 				
 </script>
 
