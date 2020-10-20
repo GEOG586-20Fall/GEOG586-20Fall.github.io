@@ -48,11 +48,7 @@
    crossorigin=""></script>
    
  <head>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css" rel='stylesheet' />
-  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js"></script>
-  <script src="/js/leaflet-mapbox-gl.js"></script>
+  <script type=”text/javascript” src=”http://maps.stamen.com/js/tile.stamen.js?v1.2.3″></script>
 </head>
 
    
@@ -77,16 +73,9 @@
 <script type= "application/javascript">
 
 var map = L.map('map'.setView([51.048, -114.07], 13);
-map.options.minZoom = 2;
-var gl = L.mapboxGL({
-    accessToken: '{token}',
-    style: 'https://openmaptiles.github.io/osm-bright-gl-style/style-cdn.json'
-}).addTo(map);
-map.fitWorld();
 
-
-
-
+var stamenLayer = new L.StamenTileLayer(“watercolor”);
+map.addLayer(stamenLayer);
 
 
 function onEachFeature(feature, layer) {
@@ -204,8 +193,6 @@ L.geoJSON(geojsonFeature, {
     }
 }).addTo(map);
 
-
-var map = L.map('Mymap').setView([51.048, -114.07], 13);
 
 
  
