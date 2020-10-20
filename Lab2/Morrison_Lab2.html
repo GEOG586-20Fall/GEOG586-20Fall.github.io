@@ -68,7 +68,7 @@
 <div id="MyMap" class="center"></div>
 
 <script type= "application/javascript">
-var map = L.map('MyMap').setView([50.986103, -114.099397], 14);
+var map = L.map('MyMap').setView([51.048, -114.07], 13);
 	
 
 	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -86,21 +86,14 @@ var map = L.map('MyMap').setView([50.986103, -114.099397], 14);
 				var geojsonFeature = {
 					"type": "Feature",
 					"properties": {
-						"name": "Kingsland",
-						"amenity": "Park",
-						"popupContent": "This is Kingsland's Dry Pond. It has a long paved walkway going around it, good for biking or a short walk. There is also a large hill great for sledding down in the winter. Just be careful of the storm grates at the bottom of the hill!"
+						"name": "TenFoot",
+						"amenity": "restaurant",
+						"popupContent": " Hip atmosphere with modern vegtable-anchored plates for sharing. $$$"
 					},
 					"geometry": {
-						"type": "Polygon",
-						"coordinates": [
-							[
-								[-114.083003, 50.993989],
-								[-114.071481, 50.994136],
-								[-114.071430, 50.979552],
-								[-114.083018, 50.979540],
-								[-114.083003, 50.993989]
-							]
-						]
+						"type": "Point",
+						"coordinates": [51.0410501, -114.0659303]
+					
 					}
 				};
 
