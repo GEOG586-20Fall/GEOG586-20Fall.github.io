@@ -63,18 +63,20 @@
 		<div id="mainMap" class="center"></div>
 
 			<script type="application/javascript">
-				var map = L.map('mainMap').setView([50.986103, -114.099397], 14);
-
-				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-				}).addTo(map);
-				
 				function onEachFeature(feature, layer) {
 					// does this feature have a property named popupContent?
 					if (feature.properties && feature.properties.popupContent) {
 						layer.bindPopup(feature.properties.popupContent);
 					}
 				}
+				
+				var map = L.map('mainMap').setView([50.986103, -114.099397], 14);
+
+				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+				}).addTo(map);
+				
+				
 
 				var myGeoJSON = {
 					"type": "FeatureCollection",
@@ -88,11 +90,11 @@
 							"geometry": {
 								"type": "Polygon",
 								"coordinates": [
-									[-114.083003, 50.993989],
-									[-114.071481, 50.994136],
-									[-114.071430, 50.979552],
-									[-114.083018, 50.979540],
-									[-114.083003, 50.993989]
+									[50.993989, -114.083003],
+									[50.994136, -114.071481],
+									[50.979552, -114.071430],
+									[50.979540, -114.083018],
+									[50.993989, -114.083003]
 								]}},
 						
 						{"type": "Feature",
@@ -103,7 +105,7 @@
 							},
 							"geometry": {
 								"type": "Point",
-								"coordinates": [-114.073834, 50.981787]
+								"coordinates": [50.981787, -114.073834]
 								}},
 						
 						{"type": "Feature",
@@ -114,7 +116,7 @@
 							},
 							"geometry": {
 								"type": "Point",
-								"coordinates": [-114.073834, 50.979012]
+								"coordinates": [50.986297, -114.084718]
 							}},
 						
 						{"type": "Feature",
@@ -125,7 +127,7 @@
 							},
 							"geometry": {
 								"type": "Point",
-								"coordinates": [-114.084718, 50.986297 ]
+								"coordinates": [50.986297, -114.084718]
 								}},
 						
 						{"type": "Feature",
@@ -136,7 +138,7 @@
 							},
 							"geometry": {
 								"type": "Point",
-								"coordinates": [-114.082744, 50.991179]
+								"coordinates": [50.991179, -114.082744]
 								}},
 						
 						{"type": "Feature",
@@ -147,7 +149,7 @@
 							},
 							"geometry": {
 								"type": "Point",
-								"coordinates": [-114.101362, 50.982679]
+								"coordinates": [50.982679, -114.101362]
 								}},
 						
 						{"type": "Feature",
@@ -158,7 +160,7 @@
 							},
 							"geometry": {
 								"type": "Point",
-								"coordinates": [-114.117666, 50.981366]
+								"coordinates": [50.981366, -114.117666]
 								}},
 						
 						{"type": "Feature",
@@ -169,13 +171,13 @@
 							},
 							"geometry": {
 								"type": "Point",
-								"coordinates": [-114.083541, 50.976022]
+								"coordinates": [50.976022, -114.083541]
 								}},
 								
 					]};
 					
 				
-				var geojsonlayer = L.geoJson(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
+				var geoJSONlayer = L.geoJSON(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
 				
 				<!-- <!-- var polygon = L.polygon([ -->
 					<!-- [50.993989, -114.083003], -->
