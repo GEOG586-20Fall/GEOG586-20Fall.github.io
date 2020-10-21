@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+   <style>
+      body{font-family:Times New Roman
+      }
+      
+      .blueText{color:DarkSlateBlue;
+         max-width: 700px;
+         margin: auto;
+         text-align: center;
+      }
+      
+      .bg{height: 80px;
+         width: 100%;
+         border: 5px outset LightBlue;
+         background-color: DarkSlateBlue;
+         text-align: center;
+         color: GhostWhite;
+      }
+      
+      .wbg{height: 30px;
+         width: 100%;
+         background-color: White;
+         text-align: center;
+         color: Black
+      }
+      
+      .wbg2{height: 10px;
+         width: 60%;
+         background-color: White;
+         text-align: center;
+         color: Black
+      }
+      
+      p{color:Black;
+         max-width: 700px;
+         margin: auto;
+         text-align: left;
+      }
+      
+      .center{max-width: 700px;
+         margin: auto;
+         width: 60%;
+         border: 6px solid #483D8B;
+         padding: 10px;
+      }
+   </style>
+   
+   <style>
+      #mapCalgary {height: 380px; width: 700px}
+   </style>
+
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+</head>
+
+
+<body>
+   <div class="bg">
+   <h1>
+      Peter's Calgary Key Attractions
+   </h1>
+   </div>
+   
+   <div class="blueText">
+   <h3>
+      By Yihuan Jiang
+   </h3>
+
+   <hr>   
+      
+   <p>
+      For those who love to do shopping, the <b>Chinook Centre</b> will be a
+      must-visit location! It is <b>the largest mall in Calgary</b> and it has 
+      one of the city's biggest Cineplex theatre, which I adore and visit often!
+   </p>
+   
+   <div class="wbg2"></div>
+   
+   <p>
+      For those who are interested in firearms, I would like to introduce the
+      <b>Calgary Shooting Centre</b>! It has a very nice indoor range for target practices
+      and it has <b>the largest collection of firearms in Calgary</b>!
+   </p>
+   
+   <div class="wbg2"></div>
+   
+   <p>
+      For group entertainments, the <b>Arcadia Adventures Escape Room</b> is an optimal
+      place! The Ye Olde Horrible Dungeon is my personal favourite with its Medieval atmosphere!
+   </p>
+   
+   <div class="wbg2"></div>
+   
+   <p>
+      In terms of food, I want to bring up a restaurant that I dore personally, which is
+      the <b>Five Guys Burgers and Fries</b>! It is my go-to burger joint in Calgary!
+   </p>
+   
+   <div class="wbg2"></div>
+   
+   <p>
+      Lastly, for those who plan on doing some golfing, the <b>Earl Grey Golf Club</b> is
+      a wonderful choice with its sub-urb location and the great views by the Glenmore Reservoir!
+   </p>
+   </div>
+   
+   <div class="wbg2"></div>
+   
+   <div id="mapCalgary" class="center"></div>
+
+   <div class="wbg"></div>
+   
+   <div class="bg"></div>
+   
+   <script type="application/javascript">
+      function onEachFeature(feature, layer) {
+         if (feature.properties && feature.properties.popupContent) {
+            layer.bindPopup(feature.properties.popupContent);
+         }
+      }
+   
+      var mymap=L.map("mapCalgary").setView([50.9970, -114.073935], 13);
+      
+      L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+         attribution: '<a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> | Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(mymap);
+      
+      var geojsonFeature = {
+         "type": "FeatureCollection",
+         "features": [
+            {"type": "Feature",
+            "properties": {
+               "name": "Chinook Attractions",
+               "caption": "Area Coverage"},
+            "geometry": {
+               "type": "Polygon",
+               "coordinates": [[
+                              [-114.0760, 51.0015],
+                              [-114.0760, 50.9850],
+                              [-114.0650, 50.9850],
+                              [-114.0650, 51.0015]
+                              ]]}},
+         
+            {"type": "Feature",
+            "properties": {
+               "name": "CF Chinook Centre",
+               "caption": "Mall",
+               "popupContent": "<b>CF Chinook Centre:</b><br>In my opinion, this is the best place<br>in Calgary for shopping."},
+            "geometry": {
+               "type": "Point",
+               "coordinates": [-114.073935, 50.9970]}},
+               
+            {"type": "Feature",
+            "properties": {
+               "name": "Calgary Shooting Centre",
+               "caption": "Gun range and shop",
+               "popupContent": "<b>Calgary Shooting Centre:</b><br>A great indoor range alongside the<br>biggest gun store in Calgary."},
+            "geometry": {
+               "type": "Point",
+               "coordinates": [-114.067321, 50.9903]}},
+            
+            {"type": "Feature",
+            "properties": {
+               "name": "Five Guys Burgers and Fries",
+               "caption": "Restaurant",
+               "popupContent": "<b>Five Guys Burgers and Fries:</b><br>My favourite burger joint in Calgary."},
+            "geometry": {
+               "type": "Point",
+               "coordinates": [-114.074220, 50.98805]}},
+            
+            {"type": "Feature",
+            "properties": {
+               "name": "Scotiabank Theatre Chinook",
+               "caption": "Movie Theatre",
+               "popupContent": "<b>Scotiabank Theatre Chinook:</b><br>My favourite movie theatre location<br>in Calgary."},
+            "geometry": {
+               "type": "Point",
+               "coordinates": [-114.074750, 50.99515]}},
+            
+            {"type": "Feature",
+            "properties": {
+               "name": "Arcadia Adventures Escape Room",
+               "caption": "Puzzle-Solving Entertainment",
+               "popupContent": "<b>Arcadia Adventures Escape Room:</b><br>A pleasant and fun entertainment place for<br>family groups and friends."},
+            "geometry": {
+               "type": "Point",
+               "coordinates": [-114.06928, 50.99973]}},
+               
+            {"type": "Feature",
+            "properties": {
+               "name": "Earl Grey Golf Club",
+               "caption": "Golf Club",
+               "img": "<img src='https://golfadvisor.brightspotcdn.com/dims4/default/0116e39/2147483647/strip/true/crop/1128x728+156+0/resize/930x600!/quality/90/?url=https%3A%2F%2Fgolfadvisor.brightspotcdn.com%2F91%2F77%2Fb96217f3e0b5bded67525ba3be4d%2F99214.jpg'/>",
+               "popupContent": "<b>Earl Grey Golf Club:</b><br>A very nice sub-urb golf club next<br>to the Glenmore Reservoir."},
+            "geometry": {
+               "type": "Point",
+               "coordinates": [-114.10780, 50.99445]}},
+      ]};
+      
+      var myStyle = {
+         "color": "Aquamarine",
+         "fillColor": '#f03',
+         "fillOpacity": 0.2,
+         "weight": 10,
+         "opacity": 0.75
+      };
+      
+      L.geoJSON(geojsonFeature, {
+         style: myStyle
+      }).addTo(mymap);
+      
+      var geoJSONlayer = L.geoJSON(geojsonFeature, {onEachFeature: onEachFeature}).addTo(mymap);
+   </script>
+
+   <script>
+      alert("Welcome to my website!");
+   </script>
+</body>
+
+
+</html>
