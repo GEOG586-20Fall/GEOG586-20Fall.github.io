@@ -9,7 +9,8 @@ font-size: 50px;
 
 h2{color:darkseagreen}
 
-h3{color: darkseagreen}
+h3{color: darkseagreen;
+    font-family: arial;}
 
 h4{text-align:center;
    color:darkseagreen;
@@ -34,3 +35,9 @@ font-family: arial;}
     width: 700px;
     border: 3px clear;
             padding: 2px;}
+.center{text-align: center;}
+
+img { float:;
+width :300px; 
+height:300px; 
+object-fit: scale-down;}
