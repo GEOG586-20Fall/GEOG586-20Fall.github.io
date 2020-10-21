@@ -3,6 +3,20 @@
 
 	<head>
 
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin=""/>
+   
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+
+		 <script> 
+        function bindPopups(feature, layer) {
+            layer.bindPopup(feature.properties.popupContent);
+            }
+        </script>  
+
 		<style>
 			#myMap {
 				height: 500px;
@@ -27,18 +41,8 @@
 			p {
 				font-size: 11;
 				text-align: center;
-			}
-			
 		</style>
-
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-		crossorigin=""/>
-   
-		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-		crossorigin=""></script>
-
+				
 	</head>
 
 	<body>
@@ -59,32 +63,31 @@
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
 			
-			function onEachFeature(feature, layer) {
-				layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
-			}
-
-			
 			var myGeoJSON = {
-				'type' : 'FeatureCollection',
-					'features' : [
+				"type" : "FeatureCollection",
+					"features" : [
 						{
-						'type':'Feature', 
-						'properties':{
-							'name':'myPlace1',
-							'caption':'this is the body text',
-							'img':'<img src=”http://link/to/source.jpg”/>'},
-							'geometry':{'type':'Point','coordinates':[-75.1474139, 39.9816609]}
+						"type":"Feature", 
+						"properties":{
+							"name":"CoOp",
+							"popupContent": "Co-op. A chain grocery store co-operative which sources a decent amount of local products " +
+					"and rewards its members with money back every year.",
+							"caption":"this is the body text",
+							"img":"<img src=”http://link/to/source.jpg”/>"},
+						"geometry":{"type":"Point","coordinates":[51.102623, -114.146024]}
 						},
-						{'type':'Feature',
-							'properties':{
-							'name':'myPlace2',
-							'caption':'this is ALSO the body text'
-							'img':'<img src=”http://link/to/source.jpg”/>'},
-							'geometry':{'type':'Point','coordinates':[-75.1474439, 39.9716709]}}
-
-			]};
+						{
+						"type":"Feature", 
+						"properties":{
+							"name":"myPlace1",
+							"caption":"this is the body text",
+							"img":"<img src=”http://link/to/source.jpg”/>"},
+						"geometry":{"type":"Point","coordinates":[-75.1474139, 39.9816609]}
+						}
+					]
+			};
 			
-			var geojsonlayer = L.geoJson(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
+			L.geoJSON(myGeoJSON, {onEachFeature: bindPopups}).addTo(map);
 			
 		/*
 			L.marker([51.102623, -114.146024]).addTo(map)
