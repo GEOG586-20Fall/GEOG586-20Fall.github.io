@@ -107,13 +107,5 @@ var Eateries = {
 				"img": "<img src= https://eatwithshar0n.files.wordpress.com/2018/07/img-20180704-wa0000.jpg?w=750>"},
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [-114.0635280,51.0513535]};
+			"coordinates": [-114.0635280,51.0513535]}]};
 					
-			{"type": "Feature",
-            "properties": {
-                "name": "17th",
-                "popupContent":"<b>17th Avenue </b><br> 17th Avenue is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave.",
-				"img": "<img src=https://i.cbc.ca/1.3434783.1454700901!/fileImage/httpImage/image.jpg_gen/derivatives/16x9_780/17th-avenue-calgary.jpg>"},
-                "geometry": {
-                    "type": "Circle",
-                    "coordinates": [-114.076, 51.039]}}]};

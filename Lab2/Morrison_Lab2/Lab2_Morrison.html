@@ -107,13 +107,13 @@
 			}).addTo(map);
 			
 
-	<!-- var circle = L.circle([51.039, -114.076], { -->
-		<!-- color: 'red', -->
-		<!-- fillColor: '#f03', -->
-		<!-- fillOpacity: 0.5, -->
-		<!-- radius: 900 -->
-	<!-- }).addTo(map).bindPopup('<b>17th Avenue </b><br> 17th Avenue is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave.') -->
-		<!-- .openPopup(); -->
+	var circle = L.circle([51.039, -114.076], {
+		color: 'red',
+		fillColor: '#f03',
+		fillOpacity: 0.5,
+		radius: 900
+	}).addTo(map).bindPopup('<b>17th Avenue </b><br> 17th Avenue is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave.')
+		.openPopup();
 
 
 	L.geoJSON(Eateries, {
