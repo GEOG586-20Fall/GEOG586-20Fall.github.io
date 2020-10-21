@@ -107,5 +107,4 @@ var Eateries = {
 				"img": "<img src= https://eatwithshar0n.files.wordpress.com/2018/07/img-20180704-wa0000.jpg?w=750>"},
                 "geometry": {
                     "type": "Point",
-					"coordinates": [-114.0635280,51.0513535]}]};
-					
+                    "coordinates": [-114.0635280,51.0513535]}}]};
