@@ -13,7 +13,6 @@
 
 		<script src="scripts.js"></script>
 
-
 		<style>
 			#myMap {
 				height: 500px;
@@ -59,121 +58,7 @@
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
-			
-			var commPlaces = {
-				"type" : "FeatureCollection",
-					"features" : [
-						{"type":"Feature", 
-						"properties":{
-							"name":"coop",
-							"popupContent":"Co-op. A chain grocery store co-operative which sources a decent amount of local products and rewards its members with money back every year.",
-							"img":"<img src=”dalhousie_coop.png”>"},
-						"geometry":{
-							"type":"Point",
-							"coordinates":[-114.146024, 51.102623]}
-						},
-						{"type":"Feature", 
-						"properties":{
-							"name":"safeway",
-							"popupContent":"Safeway. Another grocery option, sometimes cheaper than Co-op."},
-						"geometry":{
-							"type":"Point",
-							"coordinates":[-114.161792, 51.106917]}
-						},
-						{"type":"Feature", 
-						"properties":{
-							"name":"library",
-							"popupContent":"Nose Hill Library. A nice, equitable place to read and learn, or use a computer"},
-						"geometry":{
-							"type":"Point",
-							"coordinates":[-114.138670, 51.096534]}
-						},
-						{"type":"Feature", 
-						"properties":{
-							"name":"pubRec",
-							"popupContent":"Sir Winston Churchill Aquatic & Recreation Centre. Has a pool and a gym."},
-						"geometry":{
-							"type":"Point",
-							"coordinates":[-114.137479, 51.096871]}
-						},
-						{"type":"Feature", 
-						"properties":{
-							"name":"lrt",
-							"popupContent":"Dalhousie LRT station. Provides zoomy access to jobs, education, recreation, you name it, all over the city."},
-						"geometry":{
-							"type":"Point",
-							"coordinates":[-114.159946, 51.103284]}
-						},
-						{"type":"Feature", 
-						"properties":{
-							"name":"clinic",
-							"popupContent":"A medical clinic. For when you're sick or injured, obviously."},
-						"geometry":{
-							"type":"Point",
-							"coordinates":[-114.160658, 51.105360]}
-						},
-						{"type":"Feature", 
-						"properties":{
-							"name":"pizza",
-							"popupContent":"Canadian Pizza Unlimited (CPU). Essential for survival, but also just one of many other food options around for when pizza (or cheap) isn't the name of the game."},
-						"geometry":{
-							"type":"Point",
-							"coordinates":[-114.14006, 51.101344]}
-						},
-						{"type":"Feature", 
-						"properties":{
-							"name":"home",
-							"popupContent":"My home. A townhouse, in one of the 4 or 5 complexes around here."},
-						"geometry":{
-							"type":"Point",
-							"coordinates":[-114.153236, 51.103814]}
-						},
-						{"type":"Feature", 
-						"properties":{
-							"name":"outdoorPubRec",
-							"popupContent":"Public outdoor tennis and basketball courts."},
-						"geometry":{
-							"type":"Point",
-							"coordinates":[-114.156647, 51.104700]}
-						}
-						
-						
-					]
-			}
-			
 			L.geoJSON(commPlaces, {onEachFeature: bindPopups}).addTo(map);
-			
-		/*
-			L.marker([51.102623, -114.146024]).addTo(map)
-				.bindPopup("Co-op. A chain grocery store co-operative which sources a decent amount of local products " +
-					"and rewards its members with money back every year.");
-				
-			L.marker([51.106917, -114.161792]).addTo(map)
-				.bindPopup("Safeway. Another grocery option, sometimes cheaper than Co-op.");
-		
-			L.marker([51.096534, -114.138670]).addTo(map)
-				.bindPopup("Nose Hill Library. A nice, equitable place to read and learn, or use a computer");
-				
-			L.marker([51.096871, -114.137479]).addTo(map)
-				.bindPopup("Sir Winston Churchill Aquatic & Recreation Centre. Has a pool and a gym.");
-				
-			L.marker([51.103284, -114.159946]).addTo(map)
-				.bindPopup("Dalhousie LRT station. Provides zoomy access to jobs, education, recreation, you name it, all over the city.");
-				
-			L.marker([51.105360, -114.160658]).addTo(map)
-				.bindPopup("A medical clinic. For when you're sick or injured, obviously.");
-				
-			L.marker([51.101344, -114.140063]).addTo(map)
-				.bindPopup("Canadian Pizza Unlimited (CPU). Essential for survival, but also just one of many other food options around " +
-					"for when pizza (or cheap) isn't the name of the game.");
-			
-			L.marker([51.103814, -114.153236]).addTo(map)
-				.bindPopup("My home. A townhouse, in one of the 4 or 5 complexes around here.");
-				
-			L.marker([51.104700, -114.156647]).addTo(map)
-				.bindPopup("Public outdoor tennis and basketball courts.");
-					
-			*/
 		</script>
 	
 		<p>This map made by Alex Scheer, October 2020. Location coordinates selected from Google Maps.</p>
