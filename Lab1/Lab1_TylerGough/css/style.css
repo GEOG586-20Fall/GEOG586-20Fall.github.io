@@ -1,0 +1,66 @@
+body {
+		color: #162F77
+		background-color: #FDFFFC;
+	}
+
+	#map {  height: 600px; 
+	border: 3px solid black;
+	max-width: 60%;
+    margin: auto;
+	border-radius: 25px;
+    text-align: center;
+	margin-top: 8px
+	}
+ 
+	h1 {
+	background-color: #FFDE00;
+	color: #162F77;
+	}
+	
+	h2 {
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	color: #162F77
+	}
+	
+	h3 {
+	color: white;
+	}
+	
+	#title {
+	background-image: url("https://www.rd.com/wp-content/uploads/2020/01/GettyImages-877122254.jpg");
+	background-color: #cccccc;
+	font-family: 'Montserrat', sans-serif;
+	max-width: 60%;
+    margin: auto;
+    text-align: center;
+	border-radius: 25px;
+	}
+	
+	#info {
+	font: Times New Roman;
+	max-width: 60%;
+    margin: auto;
+    text-align: center;
+	border-radius: 25px;
+	margin-top: 8px
+	}
+	
+	#map_intro {
+	font: Times New Roman;
+	max-width: 60%;
+    margin: auto;
+    text-align: center;
+	border-radius: 25px;
+	margin-top: 8px
+	}
+	
+	#more_resources {
+	font: Times New Roman;
+	max-width: 60%;
+    margin: auto;
+    text-align: center;
+	border-radius: 25px;
+	margin-top: 8px
+	}
+	
