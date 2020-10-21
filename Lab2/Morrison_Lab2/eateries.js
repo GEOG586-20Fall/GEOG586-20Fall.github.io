@@ -114,7 +114,7 @@ var Eateries = {
 					[-114.094,510384480],
 				]]},
 					"style": {
-						"color":"red"
+						"color":"red",
 						"fillColour": 'pink',
 						"fillOpacity": 0.5
 				}},
