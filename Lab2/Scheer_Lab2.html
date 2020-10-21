@@ -12,7 +12,6 @@
 		crossorigin=""></script>
 
 		 <script> 
-        L.geoJSON(geojsonFeature).addTo(myMap);
         function bindPopups(feature, layer) {
             if (feature.properties && feature.properties.popupContent) {
             layer.bindPopup(feature.properties.popupContent);
@@ -74,7 +73,7 @@
 							"name":"myPlace1",
 							"caption":"this is the body text",
 							"img":"<img src=”http://link/to/source.jpg”/>"},
-						"geometry":{"type":"Point","coordinates":[-75.1474139, 39.9816609]}
+						"geometry":{"type":"Point","coordinates":[51.102623, -114.146024]}
 						},
 						{
 						"type":"Feature", 
