@@ -12,8 +12,8 @@
 		crossorigin=""></script>
 
 		 <script> 
-        L.geoJSON(geojsonFeature).addTo(mymap);
-        function locationpopups(feature, layer) {
+        L.geoJSON(geojsonFeature).addTo(myMap);
+        function bindPopups(feature, layer) {
             if (feature.properties && feature.properties.popupContent) {
             layer.bindPopup(feature.properties.popupContent);
             }}
@@ -65,32 +65,29 @@
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
 			
-			function onEachFeature(feature, layer) {
-				layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
-			}
-
-			
 			var myGeoJSON = {
-				'type' : 'FeatureCollection',
-					'features' : [
+				"type" : "FeatureCollection",
+					"features" : [
 						{
-						'type':'Feature', 
-						'properties':{
-							'name':'myPlace1',
-							'caption':'this is the body text',
-							'img':'<img src=”http://link/to/source.jpg”/>'},
-							'geometry':{'type':'Point','coordinates':[-75.1474139, 39.9816609]}
+						"type":"Feature", 
+						"properties":{
+							"name":"myPlace1",
+							"caption":"this is the body text",
+							"img":"<img src=”http://link/to/source.jpg”/>"},
+						"geometry":{"type":"Point","coordinates":[-75.1474139, 39.9816609]}
 						},
-						{'type':'Feature',
-							'properties':{
-							'name':'myPlace2',
-							'caption':'this is ALSO the body text'
-							'img':'<img src=”http://link/to/source.jpg”/>'},
-							'geometry':{'type':'Point','coordinates':[-75.1474439, 39.9716709]}}
-
-			]};
+						{
+						"type":"Feature", 
+						"properties":{
+							"name":"myPlace1",
+							"caption":"this is the body text",
+							"img":"<img src=”http://link/to/source.jpg”/>"},
+						"geometry":{"type":"Point","coordinates":[-75.1474139, 39.9816609]}
+						}
+					]
+			};
 			
-			var geojsonlayer = L.geoJson(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
+			L.geoJson(myGeoJSON, {onEachFeature: bindPopups}).addTo(map);
 			
 		/*
 			L.marker([51.102623, -114.146024]).addTo(map)
