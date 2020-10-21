@@ -106,8 +106,8 @@ var Eateries = {
 				"popupContent": "<b>17th Avenue </b><br> 17th Avenue is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave",
 				"img": "<img src= https://images.squarespace-cdn.com/content/v1/529fc0c0e4b088b079c3fb6d/1550196096061-XONE56DCRSX8H2XG88R6/ke17ZwdGBToddI8pDm48kNO2SymwcR0CNt03aX8zdCd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmyh-8_5GJNvrfz4o4yOfLS6zQbzUiTKHw9oGJVKerm66NTpMeMsHjVpXC93GFBavO/image-asset.jpeg>"},
 				"geometry": {
-					"type": "circle" 
-				"coordinates": [-114.076,51.039]}, 
+					"type": "circle", 
+					"coordinates": [-114.076,51.039]}, 
 					"style": {
 						"color": 'red',
 						"fillColor": '#f03',
