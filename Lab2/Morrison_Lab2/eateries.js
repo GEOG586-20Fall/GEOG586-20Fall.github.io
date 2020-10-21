@@ -15,7 +15,7 @@ var Eateries = {
                 "popupContent":"<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$$."},
                 "geometry":{
                     "type":"Point",
-                    "coordinates":[-114.0786483, 51.0437007}},
+				"coordinates":[-114.0786483, 51.0437007]}},
 
             {"type":"Feature", 
             "properties":{
