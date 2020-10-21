@@ -4,6 +4,7 @@ var ontheway = {
             {"type":"Feature", 
             "properties":{
                 "name":"Sicamous",
+                "place":"onward",
                 "popupContent":"<strong> Sicamous, BC </strong><br> Where I met Stickshift (my worst enemy)."},
                 "geometry":{
                     "type":"Point",
@@ -12,14 +13,19 @@ var ontheway = {
             {"type":"Feature", 
             "properties":{
                 "name":"Calgary",
+                "place":"onward",
                 "popupContent":"<b>Calgary, AB</b><br />Where it all began!"},
                 "geometry":{
                     "type":"Point",
-                    "coordinates":[-114.0593, 51.0478]}},
+                    "coordinates":[-114.0593, 51.0478]}}]};
 
+var van = {
+     "type" : "FeatureCollection",
+        "features" : [
             {"type":"Feature", 
             "properties":{
                 "name":"Stanley",
+                "place":"van",
                 "popupContent":"<strong>Stanley Park, Vancouver, BC. AB</strong><br>Where we climbed trees and explored nature."},
                 "geometry": {
                     "type": "Point",
@@ -28,6 +34,7 @@ var ontheway = {
             {"type":"Feature", 
             "properties":{
                 "name":"VCoffee",
+                "place":"van",
                 "popupContent":"<strong>Bean Around the World, Vancouver, BC</strong><br>Where I fell in love with a coconut latte."},
                 "geometry":{
                     "type":"Point",
@@ -36,22 +43,28 @@ var ontheway = {
             {"type": "Feature",
             "properties": {
                 "name": "Granville",
+                "place":"van",
                 "popupContent": "<strong>Grandville Island, Vancouver, BC</strong><br>Where  I had top notch fish and chips"},
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-123.1340,49.2712]}},
-            
+ 
             {"type": "Feature",
             "properties": {
                 "name": "Terminal",
+                "place":"van",
                 "popupContent": "<strong>Tsawwassen Terminal</strong><br>Where we took off for the island."},
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [-123.1304,49.0069]}},
+                    "coordinates": [-123.1304,49.0069]}}]};
 
+    var ukee = {
+     "type" : "FeatureCollection",
+        "features" : [
             {"type": "Feature",
             "properties": {
                 "name": "Long beach",
+                "place":"ukee",
                 "popupContent": "<strong>Long Beach, Tofino, BC</strong><br>Where I surfed until I died."},
                 "geometry": {
                     "type": "Point",
@@ -60,6 +73,7 @@ var ontheway = {
             {"type": "Feature",
             "properties": {
                 "name": "Ucluelet",
+                "place":"ukee",
                 "popupContent": "<strong> Ucluelet, BC</strong><br>Where we stayed and relaxed every night."},
                 "geometry": {
                     "type": "Point",
@@ -68,6 +82,7 @@ var ontheway = {
              {"type": "Feature",
             "properties": {
                 "name": "Tofinobrewing",
+                "place":"ukee",
                 "popupContent": "<strong> Tofino Brewing Co, Tofino, BC</strong><br>Where you can get some pretty good beer, although nothing compares to AB's selection."},
                 "geometry": {
                     "type": "Point",
@@ -76,7 +91,9 @@ var ontheway = {
             {"type": "Feature",
             "properties": {
                 "name": "Victoria",
+                "place":"ukee",
                 "popupContent": "<strong> Victoria, BC</strong><br>Where we explored Mile 0, Chinatown, and its spooky and ghostly downtown areas."},
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-123.3656,48.4284]}}]};
+        

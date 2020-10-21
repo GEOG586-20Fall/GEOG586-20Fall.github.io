@@ -1,0 +1,36 @@
+
+body {background-image: url(Beach.jpg);}  
+
+h1 {color: darkkhaki;
+font-family:Verdana;
+text-align: center;
+font-size: 50px;    
+} 
+
+h2{color:darkseagreen}
+
+h3{color: darkseagreen}
+
+h4{text-align:center;
+   color:darkseagreen;
+   font-family: Verdana}
+
+p {color: white;
+font-family: arial;}
+
+.centermap{
+      margin: auto;
+    width: 200px;
+    border: 3px clear;
+    padding: 10px;
+    }
+
+.left {float: left;
+    width: 700px;
+    border: 3px clear;
+    padding: 2px;}
+
+.right{ float: right;
+    width: 700px;
+    border: 3px clear;
+            padding: 2px;}
