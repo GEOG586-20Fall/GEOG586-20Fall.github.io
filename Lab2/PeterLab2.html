@@ -47,6 +47,11 @@
          border: 6px solid #483D8B;
          padding: 10px;
       }
+      
+      img{
+         max-width: 200px;
+         margin: auto;
+      }
    </style>
    
    <style>
@@ -123,10 +128,8 @@
    
    <script type="application/javascript">
       function onEachFeature(feature, layer) {
-         if (feature.properties && feature.properties.popupContent) {
-            layer.bindPopup(feature.properties.popupContent);
-         }
-      }
+         layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
+      };
    
       var mymap=L.map("mapCalgary").setView([50.9970, -114.073935], 13);
       
