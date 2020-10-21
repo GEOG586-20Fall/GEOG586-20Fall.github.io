@@ -55,13 +55,11 @@
 
 <script>
 
-
+	L.geoJSON(geojsonFeature).addTo(map);
         function Popups(feature, layer) {
             if (feature.properties && feature.properties.popupContent) {
 				layer.bindPopup(feature.properties.popupContent);
             };
-			layer.bindPopup(feature.geometry.coordinates);
-			}; 
 			
 </script>
 
@@ -78,7 +76,7 @@
 	</div> 
 
 
-<div id="MyMap" class="center"></div>
+<div id="MyMap" class="center">
 
 <script type= "application/javascript">
 
@@ -99,25 +97,14 @@
 		.openPopup();
 
 
-	L.geoJSON(Popups, {
-		onEachFeature: Popups
-	}).addTo(map);
-
 	L.geoJSON(Eateries, {
 		onEachFeature: Popups
 	}).addTo(map);
  
-	eateriesLayer = L.geoJson(Eateries, { 
-	style: {
-		weight: 0.5,
-		color: 'white',
-		fillOpacity: 1,
-		fillColor: 'green',
-	}
-}).addTo(map);
+
 		
 </script> 	
-
+</div>
 <div id="author" class="nicole"> 
 	<p>By Nicole Morrison </p> 
 </div> 
