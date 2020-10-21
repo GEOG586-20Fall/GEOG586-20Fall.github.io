@@ -57,8 +57,8 @@
 
 	
         function Popups(feature, layer) {
-            if (feature.properties && feature.properties.popupContent) {
-				layer.bindPopup(feature.properties.popupContent);
+            if (feature.properties && feature.properties.popupContent && feature.properties.img) {
+				layer.bindPopup(feature.properties.popupContent+feature.properties.img);
             };
 			};
 			
