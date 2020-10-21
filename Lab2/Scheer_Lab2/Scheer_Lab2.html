@@ -39,8 +39,8 @@
 			}
 				
 			img {
-				width: 100%;
-				height: 100%;
+				width: 300px;
+				height: 300px;
 				object-fit: scale-down;
 				}
 		</style>
@@ -61,10 +61,12 @@
 
 		<div id="myMap"></div>
 		<script type="application/javascript">
-			var map = L.map('myMap').setView([51.102054, -114.151605], 15);
+			var map = new L.map('myMap').setView([51.102054, -114.151605], 15);
 			
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=acd07f92a2414dd0a37590de1d0917c7', {
+				attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+				apikey: '<your apikey>',
+				maxZoom: 22
 			}).addTo(map);
 			L.geoJSON(commPlaces, {onEachFeature: bindPopups}).addTo(map);
 		</script>
