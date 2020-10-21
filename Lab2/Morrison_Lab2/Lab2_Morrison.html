@@ -55,11 +55,13 @@
 
 <script>
 
-	L.geoJSON(geojsonFeature).addTo(map);
+	
         function Popups(feature, layer) {
             if (feature.properties && feature.properties.popupContent) {
 				layer.bindPopup(feature.properties.popupContent);
             };
+			
+			};
 			
 </script>
 
@@ -76,7 +78,7 @@
 	</div> 
 
 
-<div id="MyMap" class="center">
+<div id="MyMap" class="center"></div>
 
 <script type= "application/javascript">
 
@@ -104,12 +106,11 @@
 
 		
 </script> 	
-</div>
 <div id="author" class="nicole"> 
 	<p>By Nicole Morrison </p> 
 </div> 
 
-<body> 
+</body> 
 
 </html>
 
