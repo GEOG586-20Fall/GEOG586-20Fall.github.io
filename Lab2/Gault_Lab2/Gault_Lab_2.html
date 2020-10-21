@@ -1,0 +1,220 @@
+<html>
+
+<head>
+
+	<style>
+
+		#primaryMap {
+			height: 515px;
+			width: 940px;
+			margin: auto;
+			}
+		
+		h1 {
+			color: blue;
+			text-align: center;
+			}
+				
+		h2 {
+			color: indigo;
+			text-align: center;
+			}
+				
+		h3 {
+			color: purple;
+			text-align: right;
+			opacity: 92%;
+			}
+				
+		p {
+			font-family: times new roman;
+			}
+			
+		body {
+			background-image: url("https://i5.walmartimages.com/asr/6ac773c5-813f-4bc3-8c1f-67aefe1b5098_1.1e8080d49b2f13fa8094a9ec6c133964.jpeg");
+			background-size: 100%;
+			}
+		
+		img {
+			max-width: 300;
+			margin: auto;
+			}
+			
+		
+}
+			
+	</style>
+
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin=""/>
+   
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+
+
+	</script>
+	
+</head>
+
+<body>
+
+	<h1>Lab 2</h1>
+	<h2>Where I spent my time growing up in Burnaby</h2>
+	<h3>Prepared by Samantha Gault</h3>
+	<p> I was born and raised in Burnaby, I moved to Calgary in 2017 to start my first year of univeristy at the University of Calgary. I have lived in Calgary for the vast majority of time these past three years but Burnaby will always hold a special place in my heart. Being able to do things like play outdoor soccer year round and not freeze in the snow is something that I will always miss.</p>
+
+	<div id="primaryMap"></div>
+		<script type="application/javascript">
+		
+			function onEachFeature(feature, layer) {
+				layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
+			};
+
+			var map = L.map('primaryMap').setView([49.23640, -122.94572], 13.5);
+			
+			L.tileLayer('https://{s}.tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?', {
+			attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			}).addTo(map);
+		
+		
+
+			var myGeoJSON = {
+				"type" : "FeatureCollection",
+				"features" : [
+					{"type":"Feature", 
+						"properties":{
+							"name":"My Parents House",
+							"caption":"This is the house that I spent most of my life in. My Mom and Step-Dad still live there today. It's the one on the right.",
+							"img":"<img src='https://github.com/GEOG586-20Fall/GEOG586-20Fall.github.io/blob/master/Lab2/Gault_Lab2/6958_Cunningham.PNG?raw=true'/>"},
+						"geometry":{
+							"type":"Point",
+							"coordinates":[-122.942539, 49.226866]
+			}},
+			
+				{"type":"Feature", 
+					"properties":{
+						"name":"My Dad's House",
+						"caption":"This is where I lived before I moved when I was 6 years old, when my parents divorced  It happened to be just across the street from my elementary school.",
+						"img":"<img src='https://github.com/GEOG586-20Fall/GEOG586-20Fall.github.io/blob/master/Lab2/Gault_Lab2/Berkley.PNG?raw=true'/>"},
+					"geometry":{
+							"type":"Point",
+							"coordinates":[-122.946181, 49.231465]
+				}},
+				
+				{"type":"Feature", 
+					"properties":{
+						"name":"Lakeview Elementary School",
+						"caption":"My elementary school, I did pre-school till grade 7 there.",
+						"img":"<img src='https://github.com/GEOG586-20Fall/GEOG586-20Fall.github.io/blob/master/Lab2/Gault_Lab2/Lakeview.PNG?raw=true'/>"},
+					"geometry":{
+							"type":"Point",
+							"coordinates":[-122.944943, 49.230141]
+				}},
+			
+				{"type":"Feature", 
+					"properties":{
+						"name":"Deer Lake",
+						"caption":"A lake that no one swims in as it is totally filled with geese poop. I often went for runs around the lake during high school.",
+						"img":"<img src='https://media-cdn.tripadvisor.com/media/photo-s/13/1a/26/b0/deer-lake-park.jpg'/>"},
+					"geometry":{
+							"type":"Point",
+							"coordinates":[-122.970885, 49.236151]
+				}},
+				
+				{"type":"Feature", 
+					"properties":{
+						"name":"Burnaby Central Secondary School",
+						"caption":"Home of the Wild Cats. I did all five years of high school here. It was also my home field for soccer for 4 years which was super convenient.",
+						"img":"<img src='https://central.burnabyschools.ca/wp-content/uploads/2014/11/welcome_to_central-620x250.jpg'/>"},
+					"geometry":{
+							"type":"Point",
+							"coordinates":[-122.975331, 49.243213]
+				}},
+				
+				{"type":"Feature", 
+					"properties":{
+						"name":"Robert Burnaby Park",
+						"caption":"This park has a baseball diamond, off leash dog park, playground, tennis courts and a swiming pool. I spent many many hours at the pool as I did competitive swimming and this was one of the pools I trained at.",
+						"img":"<img src='https://burnabymantas.files.wordpress.com/2019/08/lochdale_community_pool.jpg?w=1024'/>"},
+					"geometry":{
+							"type":"Point",
+							"coordinates":[-122.931682, 49.230800]
+				}},
+				
+				{"type":"Feature", 
+					"properties":{
+						"name":"7/11",
+						"caption":"The closet 7/11 to where I lived, I went to it often on the way home from school.",
+						"img":"<img src='http://www.thestarphoenix.com/news/cms/binary/10853312.jpg?size=640x420'/>"},
+					"geometry":{
+							"type":"Point",
+							"coordinates":[-122.941530, 49.223971]
+				}},
+		]};
+
+			var geojsonlayer = L.geoJson(myGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
+
+	
+		
+			<!-- L.marker([49.226866, -122.942539]).addTo(map) -->
+				<!-- .bindPopup("This is the house that I spent most of my life in."); -->
+				
+			<!-- L.marker([49.231465, -122.946181]).addTo(map) -->
+				<!-- .bindPopup("This is where I lived before I moved when I was 6 years old. It happened to be just across the streat from my elementary school."); -->
+		
+			<!-- L.marker([49.230141, -122.944943]).addTo(map) -->
+				<!-- .bindPopup("This is Lakeview Elementary school, I did preschool here as well"); -->
+				
+			<!-- L.marker([49.236151, -122.970885]).addTo(map) -->
+				<!-- .bindPopup("Deer Lake, a lake that no one swims in as it is totally filled with geese poop. I often went for runs around the lake during high school."); -->
+				
+			<!-- L.marker([49.243213, -122.975331]).addTo(map) -->
+				<!-- .bindPopup("Burnaby Central Secondary School, my high school. It was also my home field for soccer, so I spent a lot of time here"); -->
+				
+			<!-- L.marker([49.231317, -122.932556]).addTo(map) -->
+				<!-- .bindPopup("Robert Burnaby Park, has a baseball diamond, swiming pool, tennis courts, playground and off leash dog area. I swam here 3 or 4 times a week growing up."); -->
+					
+		</script>	
+		
+	</script>	
+		
+	
+	
+	<input type="button" id="the_button" 
+		value="Click me to see a cute dog!"/>
+		<div id="image_container">
+			<img src="https://bl3301files.storage.live.com/y4p-wXF93LXT-4EuFgbtVmKT-DmuEXXga2ifUgEPVyvDJafUaCrZEw5yKGQtQsDNNetkpb8AfxjvY9d20p0hHZ4rJSOKxNaVEXPIU3pyjM3pp7MGAns2OzQrO5YvtqHyv4vCdc53d8Il5Gjh3Kug9mmWi_mYaxxxLe0KHTtC2scOBsj_tKiNrONSXESpKpQhrYeFaPzGzs3qVzF7YpYtJ75x6d_h1qucigB73Bt-6SP0Qg/Screenshot_20201005-154249_Snapchat.jpg?psid=1&width=290&height=627" />
+		</div>
+<script>
+		
+	// wait until the document (entire webpage) is ready
+document.addEventListener("DOMContentLoaded", function() {
+  // select the element that contains the <img> tag within
+	var image_container = document.getElementById('image_container');
+  
+  // select the button element for listening
+  var the_button = document.getElementById('the_button');
+  
+  // listen for Clicks on the button element
+  the_button.addEventListener("click",function(e){
+  
+    // if the image_container is hidden
+  	if (image_container.style.display === "none") {
+    	// display it
+      image_container.style.display = "block";
+    } else {
+    	// hide it
+      image_container.style.display = "none";
+    }
+  });
+});
+	
+		alert("Hello!");
+		
+</script>
+
+</body>
+
+</html>
