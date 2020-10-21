@@ -76,11 +76,6 @@
             };
 			};
 		
-		function Style(feature, layer) {
-            if (feature.style && feature.style.fillColor && feature.style.fillOpacity) {
-				layer.bindPopup(feature.style.fillColor+feature.style.fillOpacity);
-            };
-			};
 			
 </script>
 
@@ -126,9 +121,6 @@
 		onEachFeature: Popups
 	}).addTo(map);
  
-	L.geoJSON(Eateries,{
-		onEachFeature: Style
-	}).addTo(map); 
 
 		
 </script> 	
