@@ -44,8 +44,8 @@
 				margin: auto; 
 				}
 			
-			img {
-				max-width: 300px;
+			.center-img {
+				width: 300px;
 				margin: auto;
 			}
 			
@@ -64,14 +64,14 @@
 	<body>
 		<h1>Favourite Places in My Neighbourhood</h1>
 		<h2>By Rita Zoura</h2>
-		<h3>This is a webmap of the places I like to walk to in my neighbourhood.<br>I have lived in this area for most of my life and I know the area really well.<br>Click on a marker on the map to learn more about it!</h3>
+		<h2>This is a webmap of the places I like to walk to in my neighbourhood.<br>I have lived in this area for most of my life and I know the area really well.<br>Click on a marker on the map to learn more about it!</h2>
 		
 		<div id="mainMap" class="center"></div>
 
 			<script type="application/javascript">
 				
 				function onEachFeature(feature, layer) {
-					layer.bindPopup("<h1>"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p>"+feature.properties.img);
+					layer.bindPopup("<h3>"+feature.properties.name+"</h3><p>"+feature.properties.caption+"</p>"+feature.properties.img);
 				};
 
 				
@@ -87,9 +87,9 @@
 					"features": [
 						{"type": "Feature",
 							"properties": {
-								"name": "Kingsland neighbourhood",
+								"name": "Kingsland Neighbourhood",
 								"caption": "This is the community of Kingsland. I have lived here for most of my life and grown up in this area. The markers around are some of my favourite places to walk to! I hope you enjoy getting to know my neighbourhood.",
-								"img":"<img src='http://www.kingslandcommunity.ca/images/KingslandHeader.gif'/>",
+								"img":"<img src='http://www.kingslandcommunity.ca/images/KingslandHeader.gif' class='center-img'/>",
 							},
 							"geometry": {
 								"type": "Polygon",
@@ -104,8 +104,8 @@
 						{"type": "Feature",
 							"properties": {
 								"name": "Dry Pond",
-								"caption": "more text",
-								"img": "<img src='https://calgaryplaygroundreview.com/wp-content/uploads/2012/02/DSC_0455-700x465.jpg'/>"
+								"caption": "This is Kingsland's Dry Pond. It has a long paved walkway going around it, good for biking or a short walk. There is also a large hill great for sledding down in the winter. Just be careful of the storm grates at the bottom of the hill!",
+								"img": "<img src='https://calgaryplaygroundreview.com/wp-content/uploads/2012/02/DSC_0455-700x465.jpg' class='center-img'/>"
 							},
 							"geometry": {
 								"type": "Point",
@@ -115,8 +115,8 @@
 						{"type": "Feature",
 							"properties": {
 								"name": "Heritage Station",
-								"caption": "more text",
-								<!-- "img": "<img src="link"/> -->
+								"caption": "One of the things I really like about my neighbourhood is how close it is to transit. This is Heritage station, I just have to walk 5 min to hop on the to the train and head toward the University, which is only about a 30 min train ride. Buses like the 3 can easily take me downtown, and the 20 can also take me to the University if the trains go down (as they usually do in the winter time lol)",
+								"img": "<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Heritage_%28C-Train%29_1.jpg/300px-Heritage_%28C-Train%29_1.jpg' class='center-img'/>"
 							},
 							"geometry": {
 								"type": "Point",
@@ -126,8 +126,8 @@
 						{"type": "Feature",
 							"properties": {
 								"name": "Henry Wise Wood Senior High School",
-								"caption": "more text",
-								<!-- "img": "<img src="link"/> -->
+								"caption": "This is the highschool I went to! Henry Wise Wood Highschool. I would usually walk early in the mornings to band rehearsal and then walk back home from jazz band rehearsal in the afternoons. Shoppers Drug Mart, Starbucks, and COBS Bread across the street were popular places to go to during our lunch hour.",
+								"img": "<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Henry_Wise_Wood_Main_Entrance.jpg/220px-Henry_Wise_Wood_Main_Entrance.jpg' class='center-img'/>"
 							},
 							"geometry": {
 								"type": "Point",
@@ -137,8 +137,8 @@
 						{"type": "Feature",
 							"properties": {
 								"name": "7/11",
-								"caption": "more text",
-								<!-- "img": "<img src="link"/> -->
+								"caption": "This is where the closest 7/11 is, it was also a hot spot to walk to in higschool when it was warmer outside. Even during summer break it was a nice treat when my dad would take me and my brother out for a slurpee on a hot day.",
+								"img": "<img src='https://github.com/GEOG586-20Fall/GEOG586-20Fall.github.io/blob/master/Lab2/Zoura_Lab2/7-11-pic.png?raw=true' class='center-img'/>"
 							},
 							"geometry": {
 								"type": "Point",
@@ -148,8 +148,8 @@
 						{"type": "Feature",
 							"properties": {
 								"name": "Heritage Park",
-								"caption": "more text",
-								<!-- "img": "<img src="link"/> -->
+								"caption": "This is heritage park, its not as close as some of the other locations but it is still really nice to visit once in a while. I remember when i was a kid, Canada Day fireworks used to be launched from there. I'm pretty sure I saw the 100th anniversary of Canada fireworks there as they were launched over the Glenmore Reservoir. Recently we just go to center street as I don't think they launch near us anymore.",
+								"img": "<img src='https://globalnews.ca/wp-content/uploads/2019/04/heritage-park-1-e1554587633127.jpg?quality=85&strip=all' class='center-img'/>"
 							},
 							"geometry": {
 								"type": "Point",
@@ -159,8 +159,8 @@
 						{"type": "Feature",
 							"properties": {
 								"name": "Glenmore Reservoir",
-								"caption": "more text",
-								<!-- "img": "<img src="link"/> -->
+								"caption": "This is the Glenmore Reservoir. When it's not too cold to go for a walk outside, me and my family would go up and take a walk around in evening, you can see the sun set arcoss the water and its really really refreshing, relaxing and just all around nice to watch as you walk around for a bit. Even during this quarantine I've gone around the pathway with my friends on socially distanced walks to enjoy the outdoors for a bit after being inside at home for so long. Many people in the city enjoy biking around the entire thing and going to the north and south parks for picnics and barbeque's!",
+								"img": "<img src='https://github.com/GEOG586-20Fall/GEOG586-20Fall.github.io/blob/master/Lab2/Zoura_Lab2/reservoir-img.jpg?raw=true' class='center-img'/>"
 							},
 							"geometry": {
 								"type": "Point",
@@ -170,8 +170,8 @@
 						{"type": "Feature",
 							"properties": {
 								"name": "Woodman Junior High School",
-								"caption": "more text",
-								<!-- "img": "<img src="link"/> -->
+								"caption": "This is my junior high school I went to. There are 2 large fields and the baseball diamond was shared with Bishop Grandin highschool. When I started at Woodman Jr. High in Gr. 7, I was really excited to be starting a school year without my brother being at the same school as me. Little did I know that Woodman had just introduced grades 5 and 6 that same year and my parents had him trasfered so that we could still be together. We would walk and bike to and from school. Only grades 7-9 were allowed off school grounds for lunch so many of us would go across the street to Dairy Queen for a blizzard.",
+								"img": "<img src='https://school.cbe.ab.ca/School/Repository/SBPictureLibrary/20f64520-6b7a-4c22-a732-1a507701e27d_IMG_5868-HDR_2.png' class='center-img'/>"
 							},
 							"geometry": {
 								"type": "Point",
