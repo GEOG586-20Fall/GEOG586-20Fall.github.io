@@ -1,5 +1,5 @@
 function bindPopups(feature, layer) {
-            layer.bindPopup(feature.properties.popupContent);
+            layer.bindPopup(feature.properties.popupContent+feature.properties.img);
 }
 
 var commPlaces = {
@@ -9,7 +9,7 @@ var commPlaces = {
 						"properties":{
 							"name":"coop",
 							"popupContent":"Co-op. A chain grocery store co-operative which sources a decent amount of local products and rewards its members with money back every year.",
-							"img":"<img src=”dalhousie_coop.png”>"},
+							"img":"<img src=dalhousie_coop.png>"},
 						"geometry":{
 							"type":"Point",
 							"coordinates":[-114.146024, 51.102623]}
