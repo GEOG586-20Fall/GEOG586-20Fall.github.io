@@ -13,9 +13,8 @@
 
 		 <script> 
         function bindPopups(feature, layer) {
-            if (feature.properties && feature.properties.popupContent) {
             layer.bindPopup(feature.properties.popupContent);
-            }}
+            }
         </script>  
 
 		<style>
@@ -70,7 +69,9 @@
 						{
 						"type":"Feature", 
 						"properties":{
-							"name":"myPlace1",
+							"name":"CoOp",
+							"popupContent": "Co-op. A chain grocery store co-operative which sources a decent amount of local products " +
+					"and rewards its members with money back every year.",
 							"caption":"this is the body text",
 							"img":"<img src=”http://link/to/source.jpg”/>"},
 						"geometry":{"type":"Point","coordinates":[51.102623, -114.146024]}
