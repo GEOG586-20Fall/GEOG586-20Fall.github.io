@@ -5,7 +5,7 @@ var Eateries = {
             "properties":{
                 "name":"Ten Foot ",
                 "popupContent":"<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.",
-				"img":"<img src=https://cdn.where.ca/wp-content/uploads/2018/01/ten-foot-henry-web.jpg>"},
+				"img":"<img src=https://cdn.where.ca/wp-content/uploads/2018/01/ten-foot-henry-web.jpg>.scaledown{object-fit:scaledown}"},
                 "geometry":{
                     "type":"Point",
                     "coordinates":[-114.0659303,51.0410501]}},
@@ -14,7 +14,7 @@ var Eateries = {
             "properties":{
                 "name":"bridgetterBar",
                 "popupContent":"<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$$.",
-				"img": "<img src= https://www.visitcalgary.com/sites/default/files/2020-09/visit_during_covid19_header_2020.jpg>"},
+				"img": "<img src= https://www.visitcalgary.com/sites/default/files/2020-09/visit_during_covid19_header_2020.jpg>.scaledown{object-fit:scaledown}"},
                 "geometry":{
                     "type":"Point",
 				"coordinates":[-114.0786483, 51.0437007]}},
