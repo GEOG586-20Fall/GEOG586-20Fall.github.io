@@ -10,6 +10,8 @@
 		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 		crossorigin=""></script>
+		
+		<script src="commPlaces.js"></script>
 
 
 		<style>
@@ -50,10 +52,33 @@
 		function bindPopups(feature, layer) {
 			layer.bindPopup("<h2>"+feature.properties.name+"</h2>"+"<p>"+feature.properties.popupContent+"</p>"+feature.properties.img, {maxWidth: "600", maxHeight: "400"})
 		};
-
+		var styleRec = {
+            radius: 7,
+            fillColor: "pink",
+            color: "#000",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 1
+        };
+		var styleEss = {
+            radius: 7,
+            fillColor: "red",
+            color: "#000",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+        };
+		var styleTransport = {
+            radius: 7,
+            fillColor: "yellow",
+            color: "#000",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+        };
+           
 		</script>
-		<script src="scripts.js"></script>
-				
+		
 	</head>
 
 	<body>
@@ -72,14 +97,33 @@
 			
 			L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=acd07f92a2414dd0a37590de1d0917c7', {
 				attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-				apikey: '<your apikey>',
 				maxZoom: 22
 			}).addTo(map);
-			L.geoJSON(commPlaces, {onEachFeature: bindPopups}).addTo(map);
+			L.geoJSON(essPlaces, {onEachFeature: bindPopups}).addTo(map);
+			L.geoJSON(recPlaces, {onEachFeature: bindPopups}).addTo(map);
+			L.geoJSON(transport, {onEachFeature: bindPopups}).addTo(map);
+			
+			L.marker([-114.153236, 51.103814]).addTo(map)
+				.bindPopup("My home. A townhouse, in one of the 4 or 5 complexes around here.");
+				
+			L.geoJSON(recPlaces, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleRec);
+            }}).addTo(map);
+			
+			L.geoJSON(essPlaces, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleEss);
+            }}).addTo(map);
+			
+			L.geoJSON(transport, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleTransport);
+            }}).addTo(map);
 			
 		</script>
 	
-		<p>This map made by Alex Scheer, October 2020. Location coordinates selected from Google Maps.</p>
+		This map made by Alex Scheer, October 2020. Location coordinates selected from Google Maps.</p>
 
 	</body>
 
