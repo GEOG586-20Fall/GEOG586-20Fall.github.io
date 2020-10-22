@@ -11,12 +11,11 @@
 		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 		crossorigin=""></script>
 
-		<script src="scripts.js"></script>
 
 		<style>
 			#myMap {
-				height: 500px;
-				width: 889px;
+				width: 1200px;
+				height: 675px;
 				margin: auto;
 			}
 			#top {
@@ -37,10 +36,16 @@
 			p {
 				font-size: 11;
 				text-align: center;
+			}
 				
 			img {
+				width: 300px;
+				height: 300px;
+				object-fit: scale-down;
 				}
 		</style>
+		
+		<script src="scripts.js"></script>
 				
 	</head>
 
@@ -56,10 +61,12 @@
 
 		<div id="myMap"></div>
 		<script type="application/javascript">
-			var map = L.map('myMap').setView([51.102054, -114.151605], 15);
+			var map = new L.map('myMap').setView([51.102054, -114.151605], 15);
 			
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=acd07f92a2414dd0a37590de1d0917c7', {
+				attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+				apikey: '<your apikey>',
+				maxZoom: 22
 			}).addTo(map);
 			L.geoJSON(commPlaces, {onEachFeature: bindPopups}).addTo(map);
 		</script>

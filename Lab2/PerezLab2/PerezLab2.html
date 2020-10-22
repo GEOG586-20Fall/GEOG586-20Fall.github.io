@@ -6,7 +6,7 @@
    crossorigin=""/>
     <link rel="stylesheet" type="text/css" href="L2main.css" media="screen"/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-    <script src="popupsL2.js"></script>   
+    <script src="popupsL2.js"></script> 
           
     <script> 
         L.geoJSON(geojsonFeature).addTo(mymap);
@@ -15,6 +15,13 @@
             layer.bindPopup(feature.properties.popupContent);
             }}
         </script>  
+        
+    <script>   function locationpopups(feature, layer) {
+            if (feature.properties && feature.properties.popupContent && feature.properties.img) {
+				layer.bindPopup(feature.properties.popupContent+feature.properties.img);
+            };
+			};
+        </script>
         
     <title>My Ucluelet Adventure</title>
 
@@ -26,6 +33,7 @@
         <h4>A Webmap by Valery</h4>
         
         <h4>Highlights of my Ucluelet road trip - click on the icons for fun facts!</h4>
+        <h3 class="center">Get a closer look at Vancouver and Island locations by zooming in!</h3>
         
         <div id="mapid" class="centermap outline" style="height: 600px; width: 80%;">
              <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -116,6 +124,7 @@
           <p> <strong>"Why did she explode?"</strong> you ask. Well... her car was old, small, and <em>standard</em>. "My wrist hurts!" Ji exclaimed. I just laughed it off and encouraged her to pull over at a Tim's for a break. She glared at me.  </p>
           <p>"No," she said, "it's <em>your</em> turn to drive."</p>
           <p>I panicked, we argued, and I eventually ended up behind the wheel. I'd driven standard ONCE before. Getting the car started was a hastle, I stalled and cursed my way through it. <strong>First gear IS the devil himself.</strong> We moved slow, and I was stressed and slightly upset. We eventaully made it onto the highway where I never went below 5th and thanked the heavens for it.  </p>
+            <p><em>2 memorable locations</em></p>
         </div>
 
     <div id="phasedos" class="left" >
@@ -123,12 +132,14 @@
         <p>Driving into Vancouver as a new standard driver cost me my sanity, my blood pressure, and Ji's tires. Howe Street will forever have the burnt rubber of the tires I completely obliterated when accelerating while uphill from a complete stop. </p>
         <p>Here we stayed at an old friend's home. We drank, we ate, we made new friends, and I was introduced to the best cononut latte I had ever had. </p>
         <p>The second day there we explored Stanley Park - one of the coolest urban forests to ever exist. I will forever remember climbing its big trees. Grandville Island was another cool place to become acquainted with. The fish and chips were to die for. The last friend I met was the BC ferry at the Tsawwassen terminal bay. I'd riden on ferries before but nothing that big. This is how we got to the island.</p>
+         <p><em>4 memorable locations</em></p>
         </div>
-
+       
 
     <div id="phasetres" class="right">
         <h3 style="color: darkgoldenrod;"> Phase Tres - Surf till you die </h3>   
         <p>Once on the island we drove from Victoria to Ukee. I finally checked "Learn to surf" off my bucket list on Long Beach. Nothing cooler than learning how to surf right next to a giant rock dubbed "Incinerator Rock" (look up why it has that name, it's pretty cool). The rest of the time was spent surfing for 8 hours a day, sleeping, eating, then rinse and repeat. I surfed until my limbs were sore, my lungs were full of sand, and my face was frozen solid. Highlight of my life so far.</p>  
+        <p><em>4 memorable locations</em></p>
         </div>
         
         </body>
