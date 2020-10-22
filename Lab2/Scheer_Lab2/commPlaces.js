@@ -1,4 +1,4 @@
-var commPlaces = {
+var essPlaces = { // Essential places
 	"type" : "FeatureCollection",
 		"features" : [
 			{"type":"Feature", 
@@ -39,21 +39,27 @@ var commPlaces = {
 			},
 			{"type":"Feature", 
 			"properties":{
-				"name":"Dalhousie LRT Station",
-				"popupContent":"Dalhousie LRT station. Provides zoomy access to jobs, education, recreation, you name it, all over the city.",
-				"img":"<img src=lrt2.png>"},
-			"geometry":{
-				"type":"Point",
-				"coordinates":[-114.159946, 51.103284]}
-			},
-			{"type":"Feature", 
-			"properties":{
 				"name":"Clinic",
 				"popupContent":"A medical clinic. For when you're sick or injured, obviously.",
 				"img":"<img src=clinic.png>"},
 			"geometry":{
 				"type":"Point",
 				"coordinates":[-114.160658, 51.105360]}
+			}
+		]
+}
+
+var recPlaces = { // Recreational (optional) places
+	"type" : "FeatureCollection",
+		"features" : [
+			{"type":"Feature", 
+			"properties":{
+				"name":"Outdoor Public Tennis and Basketball Courts",
+				"popupContent":"Public outdoor tennis and basketball courts.",
+				"img":"<img src=outdoorPubRec.png>"},
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-114.156647, 51.104700]}
 			},
 			{"type":"Feature", 
 			"properties":{
@@ -63,28 +69,25 @@ var commPlaces = {
 			"geometry":{
 				"type":"Point",
 				"coordinates":[-114.14006, 51.101344]}
-			},
-			{"type":"Feature", 
-			"properties":{
-				"name":"Home",
-				"popupContent":"My home. A townhouse, in one of the 4 or 5 complexes around here.",
-				"img":"<img src=dalhousieDrive.png>"},
-			"geometry":{
-				"type":"Point",
-				"coordinates":[-114.153236, 51.103814]}
-			},
-			{"type":"Feature", 
-			"properties":{
-				"name":"Outdoor Public Tennis and Basketball Courts",
-				"popupContent":"Public outdoor tennis and basketball courts.",
-				"img":"<img src=outdoorPubRec.png>"},
-			"geometry":{
-				"type":"Point",
-				"coordinates":[-114.156647, 51.104700]}
 			}
 		]
 }
-			
+
+var transport = { // Transit stops
+	"type" : "FeatureCollection",
+		"features" : [
+			{"type":"Feature", 
+			"properties":{
+				"name":"Dalhousie LRT Station",
+				"popupContent":"Dalhousie LRT station. Provides zoomy access to jobs, education, recreation, you name it, all over the city.",
+				"img":"<img src=lrt2.png>"},
+			"geometry":{
+				"type":"Point",
+				"coordinates":[-114.159946, 51.103284]}
+			}
+		]
+}
+/*			
 var commBounds = {
     "type": "Feature",
     "geometry": {
@@ -98,3 +101,4 @@ var commBounds = {
         ]]
     }
 }
+*/
