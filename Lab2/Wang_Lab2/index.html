@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+    <meta charset="utf-8" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin=""/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+		<script src="scripts.js"></script>
+
+		<style>
+		body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+height: 100%;
+color: #777;
+line-height: 1.8;
+text-align:center;
+}
+
+.center {
+			 width: 800px;
+			 height: 220px;
+			 /* width: 80%;
+			 height: 10%; */
+			 margin-left:auto;
+			 margin-right:auto;
+}
+				.mapid {
+				         width: 800px;
+				         height: 500px;
+				         /* width: 80%;
+				         height: 40%; */
+				         margin-left:auto;
+				         margin-right:auto;
+				}
+		</style>
+
+		<script>
+				function bindPopups(feature, layer) {
+					layer.bindPopup(feature.properties.popupContent+feature.properties.img);
+				};
+
+				</script>
+
+
+	</head>
+
+	<body>
+		<!-- Add Heading 1 -->
+  <div class="center" id="about">
+    <h1>Brentwood Restaurants</h1>
+    <p>
+    Brentwood community is only one Calgary train(C-Train) stop away from the University station and 2 routes bus accessible. It takes 10 minutes to walk from the Energy Environment and Experiential Learning Building (EEEL) to Brentwood business district. There are different kinds of restaurants in the business district including fast food, Asian restaurants and bar. Most restaurants offer dine-in and take-out, so you can enjoy the in-person meeting with friends while maintaining social distance.
+    </p>
+  </div>
+
+		<div class = "mapid" id = "map" ></div>
+		<script type="application/javascript">
+//51.082330, -114.126308
+			var mapOptions = {
+						 center: [51.082386, -114.126008],
+						 zoom: 15
+					}
+					var map = new L.map('map', mapOptions);
+
+				//Creating a Layer object
+					var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}', {
+				attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				 subdomains: 'abcd',
+				 minZoom: 0,
+				 maxZoom: 20,
+				 ext: 'png'
+		});
+		map.addLayer(Stamen_Toner);
+
+		// Add restaurants on map
+		L.geoJSON(restaurants, {onEachFeature: bindPopups}).addTo(map);
+
+		// Add campus on map
+		L.geoJSON(campus, {
+			onEachFeature: bindPopups,
+			style: function (feature) {
+				return feature.properties && feature.properties.style;
+			},
+		}).addTo(map);
+
+		// Add scale on map
+	  L.control.scale().addTo(map);
+
+		</script>
+<p>Author: Zach Wang. October 2020</p>
+	</body>
+
+</html>
