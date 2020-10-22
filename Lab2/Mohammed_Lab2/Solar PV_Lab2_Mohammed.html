@@ -1,0 +1,471 @@
+<html>
+<head>
+ <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+      crossorigin=""></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" href="L.Control.BetterScale.css" />
+  <script src="L.Control.BetterScale.js"></script>
+
+    <title>Calgary Solar projects</title>
+
+  </head>
+	 
+     
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+body {
+  font-family: font-family: "Raleway";
+ font-position:absolute;
+  color: black; 
+}
+.limit{
+    width:90%;
+	height: 460px;
+	font-size:22;
+    word-wrap: break-word;
+	word-spacing: 5.5;
+
+	}
+.split {
+  height: 83%;
+  width: 35%;
+  margin-top: 120px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 180px;
+}
+
+.left {
+  left: 20;
+  right: 20;
+  background-color: SkyBlue;
+  font-size-adjust
+  backgroun: white;
+}
+
+.right {
+  right: 20;
+  width: 65%;
+  background-color: LightCyan;
+  
+}
+
+.image {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  width: 60%;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align:;
+  font-size-adjust:12;
+}
+
+.centered {
+  width: 97%;
+  border-radius: 98%;
+}
+</style>
+
+<div >
+
+<h1 > 
+  <h1 style="background-color:SkyBlue; font-family:Raleway;color: black; height:100px; width;90%; text-align: center; font-size-adjust:32;" ; ><b>Solar Photovoltaic projects in Calgary, Alberta.	
+  </b></h1><p2> 
+		 
+
+</head>
+
+<body>
+
+<div class="split left">
+  <div class="centered">
+  
+    <p class="limit">In 2012, “Funded by The City of Calgary’s Sustainable Buildings Partnership Program”, The City of Calgary has announced a plan to deploy solar power systems in Calgary in order to “reduce greenhouse gas emissions by 20 percent from 2005 to 2020 and reduced by 80 percent overall in 2050”. As a result, about 22 solar projects are currently active in Calgary and produces a total of more than 5500000000kWh annually (The City of Calgary, n.d).This web map is showing the projects' location, size and year of built.  
+</h2></p1>
+    </h1>
+	
+	 
+  </div>
+</div>
+
+<div class="split right">
+  <div class="centered">
+	<div id="mapid" style = "width:100%; height:700px;"></div>
+
+
+	<script>
+	var mymap= L.map('mapid').setView([51.0447, -114.0719], 11.4);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 19,
+	position: 'center',
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibW9oYW1tZWQtYWwtaGluYWFpIiwiYSI6ImNrZm5mNjh3bjFvdDAyc28wM2R6a3R5dzkifQ.9myRT29Aw5gq1ekO9tEVzw'
+}).addTo(mymap); 
+		L.control.scale().addTo(mymap);
+		 var north = L.control({position: "topright"});
+north.onAdd = function(mymap) {
+    var div = L.DomUtil.create("div", "info legend");
+    div.innerHTML = '<img src="north.png" size=20%>';
+    return div;
+}
+north.addTo(mymap);
+	</script>
+
+    <script>
+	
+var myGeoJSON = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"name": "Municipal Building",
+					 "caption":"project size is 1KW & Built in 2008",
+					 "img":"<img src='NA.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.05628204345702,
+          51.04554915522324
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Fire Station No.30",
+					"caption":"project size is 1KW & Built in 2010",
+					 "img":"<img src='NA.png' />"
+					},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.9631450176239,
+          50.91647150366104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Fire Station No. 22",
+					 "caption":"project size is 1KW & Built in 2011",
+					 "img":"<img src='NA.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.188680,
+          51.037096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Fire Station No. 24",
+					"caption":"project size is 1KW & Built in 2011",
+					"img":"<img src='NA.png' />"
+					},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.957592,
+          51.091694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":" Fire Station No. 8",
+					 "caption":"project size is 1KW & Built in 2011",
+					 "img":"<img src='NA.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.121322,
+          50.957301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":" Fire Station No. 5",
+					 "caption":"project size is 4KW & Built in 2012",
+					 "img":"<img src='Fire Station No. 5.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.152193,
+          51.038610
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Bearspaw Operations Centre",
+					 "caption":"project size is 50KW & Built in 2014",
+					 "img":"<img src='Bearspaw Operations Centre.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.095022,
+          51.025984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Southland Leisure Centre",
+					 "caption":"project size is 153KW & Built in 2015",
+					 "img":"<img src='Southland Leisure Centre.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.230759,
+          51.103424
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Hilhurst-Sunnyside",
+					 "caption":"project size is 30KW & Built in 2016", 
+					 "img":"<img src='Hillhurst-Sunnyside.png' />"
+					
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.108838,
+          50.962810
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Richmond-Knobhill",
+					 "caption":"project size is 11KW & Built in 2016",
+					 "img":"<img src='Richmond-Knobhill.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.092389,
+          51.057496
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":" Glenmore Water ",
+					 "caption":"project size is 292KW & Built in 2017",
+					 "img":"<img src='Glenmore Water.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+         -114.117013,
+          51.029854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":" Fire Headquarters",
+					 "caption":"project size is 17KW & Built in 2017",
+					 "img":"<img src='Fire Headquarters.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.099830,
+          51.003631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"North Corporate Warehouse",
+					 "caption":"project size is 115KW & Built in 2017",
+					 "img":"<img src='North Corporate Warehouse.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.036232,
+          51.017397
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Whitehorn Multi-Services",
+					 "caption":"project size is 415KW & Built in 2017",
+					 "img":"<img src='Whitehorn Multi-Services.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.005432,
+          51.073119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Fire Station No. 7",
+					 "caption":"project size is 32KW & Built in 2017",
+					 "img":"<img src='Fire Station No. 7.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.983322,
+          51.086113
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":" Bearspaw Water",
+					 "caption":"project size is 626KW & Built in 2017",
+					 "img":"<img src='Bearspaw Water.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.071067,
+          51.076373
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Manchester Building",
+					 "caption":"project size is 37KW & Built in 2017",
+					 "img":"<img src='Manchester Building.png' />"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.229543,
+          51.106146
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"TELUS Spark",
+					 "caption":"project size is 108KW & Built in 2017",
+					 "img":"<img src='TELUS Spark.png' />"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+         -114.046389,
+         51.028051
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Shepard Solar Park",
+					 "caption":"project size is 1080KW & Built in 2018",
+					 "img":"<img src='Shepard Solar Park.png' />"
+					 },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+         -114.024431,
+         51.053722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name": "Tuscany Fire station",
+					 "caption":"project size is 20KW & Built in 2018",
+					 "img":"<img src='Tuscany Fire station.png' />"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+         -113.932727,
+         50.944534
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {"name":"Sarcee Operations Centre",
+					 "caption":"project size is 56KW & Built is in progress",
+					 "img":"<img src='Sarcee Operations Centre.png' />"},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.171234,
+          51.013370
+        ]
+      }
+    }
+  ]
+};
+ L.geoJSON(myGeoJSON,{
+    onEachFeature: function(feature){
+
+                // create a marker style
+                var logoMarkerStyle = L.Icon.extend({
+                                                options: {
+                                                iconSize: [45, 45],
+                                            }});
+
+                var logoMarker = new logoMarkerStyle({iconUrl: 'solar.png'});
+
+                var lat = feature.geometry.coordinates[1];
+                var lon = feature.geometry.coordinates[0];
+
+                L.marker([lat,lon],{icon: logoMarker}).addTo(mymap);  
+            }
+        });
+
+function onEachFeature(feature, layer) {
+	layer.bindPopup("<h1 style= font-size-adjust:28 >"+feature.properties.name+"</h1><p>"+feature.properties.caption+"</p><img iconSize:20px"+feature.properties.img);}
+L.geoJSON(myGeoJSON, {
+    onEachFeature: onEachFeature
+}).addTo(mymap);
+ </script>
+ 
+
+</body>
+
+
+</html> 
