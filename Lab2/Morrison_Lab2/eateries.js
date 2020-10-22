@@ -1,5 +1,6 @@
 var EateriesLow = {
-
+		"type" : "FeatureCollection",
+        "features" : [
             {"type":"Feature", 
             "properties":{
                 "name":"Village",
