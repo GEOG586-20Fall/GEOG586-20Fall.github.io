@@ -90,6 +90,13 @@
 			
 </script>
 
+<script> 
+
+	function Color(feature,layer) {
+	  if (feature.properties && feature.properties.price === 1) {
+		L.marker([feature.properties.price, {icon: greenIcon});
+	 
+
 
 </head> 
 <body>
@@ -121,6 +128,10 @@
 
 	L.geoJSON(Eateries, {
 		onEachFeature: Popups
+	}).addTo(map);
+	
+	L.geoJSON(Eateries, {
+		onEachFeature: Color
 	}).addTo(map);
 	
 
@@ -176,14 +187,19 @@
 	L.marker([51.0415189,-114.0369155], {icon: goldIcon}).addTo(map);	
 	
 </script> 	
+
 <br>
+
 <div id= "legend" class= "coded"> 
-<p> The markers are color coded based on price range:</P> 
-<p> Green = $ </p> 
-<p> Purple = $$ </p> 
-<p> Red = $$$ </p> 
-<p> Gold = $$$$ </P> 
+	<p> The markers are color coded based on price range:</P> 
+	<p> Green = $ </p> 
+	<p> Purple = $$ </p> 
+	<p> Red = $$$ </p> 
+	<p> Gold = $$$$ </P> 
 </div> 
+
+<br> 
+
 <div id="author" class="nicole"> 
 	<p>By Nicole Morrison </p> 
 </div> 

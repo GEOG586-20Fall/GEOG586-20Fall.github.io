@@ -95,7 +95,8 @@ var Eateries = {
             "properties": {
                 "name": "Trolley5",
                 "popupContent": "<b>Trolley 5</b><br> Brews their own beer on site as well as featuring other local Micro-breweries, plus amazing wings. $$.",
-				"img": "<img src= https://live.staticflickr.com/866/40348386494_60c4d9c146_b.jpg>"}, 
+				"img": "<img src= https://live.staticflickr.com/866/40348386494_60c4d9c146_b.jpg>"
+				"price": "1"}, 
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-114.0784720,51.0379095]}}, 
