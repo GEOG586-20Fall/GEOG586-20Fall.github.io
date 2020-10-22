@@ -1,33 +1,5 @@
-var Eateries = {
-		"type" : "FeatureCollection",
-        "features" : [
-            {"type":"Feature", 
-            "properties":{
-                "name":"Ten Foot ",
-                "popupContent":"<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$$.",
-				"img":"<img src=https://cdn.where.ca/wp-content/uploads/2018/01/ten-foot-henry-web.jpg>"},
-                "geometry":{
-                    "type":"Point",
-                    "coordinates":[-114.0659303,51.0410501]}},
-            
-            {"type":"Feature", 
-            "properties":{
-                "name":"bridgetterBar",
-                "popupContent":"<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$$.",
-				"img": "<img src= https://www.visitcalgary.com/sites/default/files/2020-09/visit_during_covid19_header_2020.jpg>"},
-                "geometry":{
-                    "type":"Point",
-				"coordinates":[-114.0786483, 51.0437007]}},
+var EateriesLow = {
 
-            {"type":"Feature", 
-            "properties":{
-                "name":"UNA",
-                "popupContent":"<b>UNA Pizza and Wine</b><br> Hip local elevated pizzeria. $$.",
-				"img": "<img src=https://www.narcity.com/u/2020/01/20/a4c5a2a265191e631a204d956a8ddb37.jpg_1200x630.jpg>"},
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-114.0754840, 51.0379030]}},
-            
             {"type":"Feature", 
             "properties":{
                 "name":"Village",
@@ -39,21 +11,45 @@ var Eateries = {
             
             {"type": "Feature",
             "properties": {
-                "name": "Calcutta",
-                "popupContent": "<b>Calcutta Cricket Club</b><br> Modern Indian Cuisine. $$$.",
-				"img": "<img src= https://www.avenuecalgary.com/wp-content/uploads/2017/08/CCC-8198562d.jpeg>"},
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-114.0708578,51.0379171]}},
-            
-            {"type": "Feature",
-            "properties": {
                 "name": "Sidewalk",
                 "popupContent":"<b>Sidewalk Citizen</b><br> Rustic bakery and cafe. $.",
 				"img": "<img src= https://cdn.canada247.info/assets/uploads/b96c91b17e4da30f7613b9514362dbca_-alberta-division-no-6-calgary-downtown-sidewalk-citizen-bakeryhtml.jpg>"},
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-114.0466905,51.0481298]}},
+					
+            {"type": "Feature",
+            "properties": {
+                "name": "clive",
+                "popupContent":"<b>Clive burger</b><br> Locally sourced hamburgers and shakes with a retro vibe.$.",
+				"img": "<img src= https://images.squarespace-cdn.com/content/v1/5af9b3025ffd202a11b88dd3/1537394588780-NK24205ZSWB1SSG8MRPJ/ke17ZwdGBToddI8pDm48kEpVg-ILAPna1wRh-xAJ9fRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwEv36x-EUL2-BSQ5feDhwGCbXuJBFqZ-erYzVouT8yOb9TwqchglLQOCYTRn7ZGxI/image-asset.jpeg>"},
+                "geometry": {
+                    "type": "Point",
+		"coordinates": [-114.0789122,51.0379097]}}]}; 
+		
+			
+					
+var EateriesMedium = {
+		"type" : "FeatureCollection",
+        "features" : [
+            {"type":"Feature", 
+            "properties":{
+                "name":"Ten Foot ",
+                "popupContent":"<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$.",
+				"img":"<img src=https://cdn.where.ca/wp-content/uploads/2018/01/ten-foot-henry-web.jpg>"},
+                "geometry":{
+                    "type":"Point",
+                    "coordinates":[-114.0659303,51.0410501]}},
+
+            {"type":"Feature", 
+            "properties":{
+                "name":"UNA",
+                "popupContent":"<b>UNA Pizza and Wine</b><br> Hip local elevated pizzeria. $$.",
+				"img": "<img src=https://www.narcity.com/u/2020/01/20/a4c5a2a265191e631a204d956a8ddb37.jpg_1200x630.jpg>"},
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-114.0754840, 51.0379030]}},
+          
 
             {"type": "Feature",
             "properties": {
@@ -64,14 +60,6 @@ var Eateries = {
                     "type": "Point",
                     "coordinates": [-114.0714570, 51.0337300]}},
             
-            {"type": "Feature",
-            "properties": {
-                "name": "Nash",
-                "popupContent": "<b>The Nash</b><br> Inventive dishes served in an old 1900s hotel.$$$$ .",
-				"img":"<img src= https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/03/the-nash-calgary-3.jpg?resize=640%2C427&ssl=1>"}, 
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-114.0369155,51.0415189]}},
             
             {"type": "Feature",
             "properties": {
@@ -81,15 +69,7 @@ var Eateries = {
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-114.0660517,51.0487096]}}, 
-					
-            {"type": "Feature",
-            "properties": {
-                "name": "clive",
-                "popupContent":"<b>Clive burger</b><br> Locally sourced hamburgers and shakes with a retro vibe.$.",
-				"img": "<img src= https://images.squarespace-cdn.com/content/v1/5af9b3025ffd202a11b88dd3/1537394588780-NK24205ZSWB1SSG8MRPJ/ke17ZwdGBToddI8pDm48kEpVg-ILAPna1wRh-xAJ9fRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwEv36x-EUL2-BSQ5feDhwGCbXuJBFqZ-erYzVouT8yOb9TwqchglLQOCYTRn7ZGxI/image-asset.jpeg>"},
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-114.0789122,51.0379097]}}, 
+				
 			
 			{"type": "Feature",
             "properties": {
@@ -100,25 +80,6 @@ var Eateries = {
                     "type": "Point",
                     "coordinates": [-114.0784720,51.0379095]}}, 
 			
-			{"type": "Feature", 
-			"properties": { 
-				"name": "17th", 
-				"popupContent": "<b>17th Avenue </b><br> 17th Avenue is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave",
-				"img": "<img src= https://images.squarespace-cdn.com/content/v1/529fc0c0e4b088b079c3fb6d/1550196096061-XONE56DCRSX8H2XG88R6/ke17ZwdGBToddI8pDm48kNO2SymwcR0CNt03aX8zdCd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmyh-8_5GJNvrfz4o4yOfLS6zQbzUiTKHw9oGJVKerm66NTpMeMsHjVpXC93GFBavO/image-asset.jpeg>"},
-				"geometry": {
-					"type": "Polygon", 
-					"coordinates": [[
-					[-114.1121458,51.0369496],
-					[-114.1122195,51.0386217],
-					[-114.0595547,51.0385515],
-					[-114.0594340,51.0368303],
-				]]},
-					"style": {
-						"color":"blue",
-						"fillColour": 'blue',
-						"fillOpacity": 0.5
-				}},
-			
             {"type": "Feature",
             "properties": {
                 "name": "Sushi",
@@ -127,3 +88,39 @@ var Eateries = {
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-114.0635280,51.0513535]}}]};
+
+var EateriesHigh = {
+		"type" : "FeatureCollection",
+        "features" : [
+            
+            {"type":"Feature", 
+            "properties":{
+                "name":"bridgetterBar",
+                "popupContent":"<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$.",
+				"img": "<img src= https://www.visitcalgary.com/sites/default/files/2020-09/visit_during_covid19_header_2020.jpg>"},
+                "geometry":{
+                    "type":"Point",
+				"coordinates":[-114.0786483, 51.0437007]}},
+            
+    
+            {"type": "Feature",
+            "properties": {
+                "name": "Calcutta",
+                "popupContent": "<b>Calcutta Cricket Club</b><br> Modern Indian Cuisine. $$$.",
+				"img": "<img src= https://www.avenuecalgary.com/wp-content/uploads/2017/08/CCC-8198562d.jpeg>"},
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-114.0708578,51.0379171]}},
+           
+            
+            {"type": "Feature",
+            "properties": {
+                "name": "Nash",
+                "popupContent": "<b>The Nash</b><br> Inventive dishes served in an old 1900s hotel.$$$ .",
+				"img":"<img src= https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/03/the-nash-calgary-3.jpg?resize=640%2C427&ssl=1>"}, 
+                "geometry": {
+                    "type": "Point",
+			"coordinates": [-114.0369155,51.0415189]}}]};
+            
+           
+			
