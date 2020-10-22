@@ -32,6 +32,17 @@
 				margin: auto; 
 				}
 		
+		.coded {color: PaleVioletRed;
+					 max-width:850px;
+					 margin: auto; 
+					 background-color: white;
+					 text-align: left; 
+					 font-size: 20px;
+					 border-color: black;
+					 border-style: solid;
+				}
+		
+		
 		.nicole {color: PaleVioletRed;
 					 max-width:850px;
 					 margin: auto; 
@@ -139,7 +150,7 @@
 	L.marker([51.0337300,-114.0714570 ], {icon: purpleIcon}).addTo(map);
 	L.marker([51.0487096,-114.0660517], {icon: purpleIcon}).addTo(map);
 	L.marker([51.0513535,-114.0635280], {icon: purpleIcon}).addTo(map);
-	L.marker([51.0379095,-114.0784720], {icon: purpleIcon}).addTo(map);
+	//L.marker([51.0379095,-114.0784720], {icon: purpleIcon}).addTo(map);
 	
 	var redIcon = L.icon({
 		iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
@@ -166,6 +177,13 @@
 	
 </script> 	
 <br>
+<div id= "legend" class= "coded"> 
+<p> The markers are color coded based on price range:</P> 
+<p> Green = $ </p> 
+<p> Purple = $$ </p> 
+<p> Red = $$$ </p> 
+<p> Gold = $$$$ </P> 
+</div> 
 <div id="author" class="nicole"> 
 	<p>By Nicole Morrison </p> 
 </div> 
