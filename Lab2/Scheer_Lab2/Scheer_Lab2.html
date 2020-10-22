@@ -38,11 +38,11 @@
 				text-align: center;
 			}
 			
-			puh1 {
+			name {
 				text-align:center;
 				font: bold;
 			}
-			pubody {
+			popupContent {
 				text-align: center;
 			}
 				
@@ -55,7 +55,7 @@
 		
 		<script>
 		function bindPopups(feature, layer) {
-			layer.bindPopup("<puh1>"+feature.properties.name+"<br>"+"<pubody>"+feature.properties.popupContent+feature.properties.img, {maxWidth: "600px", maxHeight: "400px"})
+			layer.bindPopup(feature.properties.name+feature.properties.popupContent+feature.properties.img, {maxWidth: "600", maxHeight: "400"})
 		}
 
 		</script>
