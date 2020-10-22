@@ -1,14 +1,15 @@
+/*
 function bindPopups(feature, layer) {
-	//var popup = L.popup({maxWidth: 600, maxHeight: 400})
-    layer.bindPopup(feature.properties.popupContent+feature.properties.img);
+    layer.bindPopup("<puh1>"+feature.properties.name+"<br>"+"<pubody>"+feature.properties.popupContent+feature.properties.img, {width = "600px" height = "400px"});
 }
+*/
 
 var commPlaces = {
 				"type" : "FeatureCollection",
 					"features" : [
 						{"type":"Feature", 
 						"properties":{
-							"name":"coop",
+							"name":"Co-op",
 							"popupContent":"Co-op. A chain grocery store co-operative which sources a decent amount of local products and rewards its members with money back every year.",
 							"img":"<img src=dalhousieCoop.png>"},
 						"geometry":{
@@ -17,7 +18,7 @@ var commPlaces = {
 						},
 						{"type":"Feature", 
 						"properties":{
-							"name":"safeway",
+							"name":"Safeway",
 							"popupContent":"Safeway. Another grocery option, sometimes cheaper than Co-op.",
 							"img":"<img src=dalhousieStation.png>"},
 						"geometry":{
@@ -26,7 +27,7 @@ var commPlaces = {
 						},
 						{"type":"Feature", 
 						"properties":{
-							"name":"library",
+							"name":"Nose Hill Library",
 							"popupContent":"Nose Hill Library. A nice, equitable place to read and learn, or use a computer",
 							"img":"<img src=noseHillLibrary.png>"},
 						"geometry":{
@@ -35,7 +36,7 @@ var commPlaces = {
 						},
 						{"type":"Feature", 
 						"properties":{
-							"name":"pubRec",
+							"name":"Sir Winston Churchill Aquatic & Recreation Centre",
 							"popupContent":"Sir Winston Churchill Aquatic & Recreation Centre. Has a pool and a gym.",
 							"img":"<img src=pubRec.png>"},
 						"geometry":{
@@ -44,7 +45,7 @@ var commPlaces = {
 						},
 						{"type":"Feature", 
 						"properties":{
-							"name":"lrt",
+							"name":"Dalhousie LRT Station",
 							"popupContent":"Dalhousie LRT station. Provides zoomy access to jobs, education, recreation, you name it, all over the city.",
 							"img":"<img src=lrt2.png>"},
 						"geometry":{
@@ -53,7 +54,7 @@ var commPlaces = {
 						},
 						{"type":"Feature", 
 						"properties":{
-							"name":"clinic",
+							"name":"Clinic",
 							"popupContent":"A medical clinic. For when you're sick or injured, obviously.",
 							"img":"<img src=clinic.png>"},
 						"geometry":{
@@ -62,7 +63,7 @@ var commPlaces = {
 						},
 						{"type":"Feature", 
 						"properties":{
-							"name":"pizza",
+							"name":"Cheap Pizza",
 							"popupContent":"Canadian Pizza Unlimited (CPU). Essential for survival, but also just one of many other food options around for when pizza (or cheap) isn't the name of the game.",
 							"img":"<img src=pizza.png>"},
 						"geometry":{
@@ -71,7 +72,7 @@ var commPlaces = {
 						},
 						{"type":"Feature", 
 						"properties":{
-							"name":"home",
+							"name":"Home",
 							"popupContent":"My home. A townhouse, in one of the 4 or 5 complexes around here.",
 							"img":"<img src=dalhousieDrive.png>"},
 						"geometry":{
@@ -80,14 +81,12 @@ var commPlaces = {
 						},
 						{"type":"Feature", 
 						"properties":{
-							"name":"outdoorPubRec",
+							"name":"Outdoor Public Tennis and Basketball Courts",
 							"popupContent":"Public outdoor tennis and basketball courts.",
 							"img":"<img src=outdoorPubRec.png>"},
 						"geometry":{
 							"type":"Point",
 							"coordinates":[-114.156647, 51.104700]}
 						}
-						
-						
 					]
 			}

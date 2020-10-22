@@ -37,14 +37,28 @@
 				font-size: 11;
 				text-align: center;
 			}
+			
+			puh1 {
+				text-align:center;
+				font: bold;
+			}
+			pubody {
+				text-align: center;
+			}
 				
 			img {
-				width: 350px;
-				height: 350px;
+				width: 100%;
+				height: 300px;
 				object-fit: scale-down;
 				}
 		</style>
 		
+		<script>
+		function bindPopups(feature, layer) {
+			layer.bindPopup("<puh1>"+feature.properties.name+"<br>"+"<pubody>"+feature.properties.popupContent+feature.properties.img, {maxWidth: "600px", maxHeight: "400px"})
+		}
+
+		</script>
 		<script src="scripts.js"></script>
 				
 	</head>
