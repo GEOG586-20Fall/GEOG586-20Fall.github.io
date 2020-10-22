@@ -79,7 +79,14 @@
 <script src="eateries.js"></script>
 
 <script>
-
+	var greenIcon = L.icon({
+		iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+		shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+		iconSize: [25, 41],
+		iconAnchor: [12, 41],
+		popupAnchor: [1, -34],
+		shadowSize: [41, 41]
+	});
 	
         function Popups(feature, layer) {
             if (feature.properties && feature.properties.popupContent && feature.properties.img) {
@@ -126,14 +133,14 @@
 	}).addTo(map);
 
 
-	var greenIcon = L.icon({
-		iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-		shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-		iconSize: [25, 41],
-		iconAnchor: [12, 41],
-		popupAnchor: [1, -34],
-		shadowSize: [41, 41]
-	});
+	<!-- var greenIcon = L.icon({ -->
+		<!-- iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png', -->
+		<!-- shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png', -->
+		<!-- iconSize: [25, 41], -->
+		<!-- iconAnchor: [12, 41], -->
+		<!-- popupAnchor: [1, -34], -->
+		<!-- shadowSize: [41, 41] -->
+	<!-- }); -->
 
 	<!-- L.marker([ 51.0427140,-114.0542788], {icon: greenIcon}).addTo(map); -->
 	<!-- L.marker([51.0481298,-114.0466905], {icon: greenIcon}).addTo(map); -->
