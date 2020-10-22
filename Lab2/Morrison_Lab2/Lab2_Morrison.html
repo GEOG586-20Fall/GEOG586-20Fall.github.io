@@ -32,6 +32,17 @@
 				margin: auto; 
 				}
 		
+		.coded {color: PaleVioletRed;
+					 max-width:850px;
+					 margin: auto; 
+					 background-color: white;
+					 text-align: left; 
+					 font-size: 20px;
+					 border-color: black;
+					 border-style: solid;
+				}
+		
+		
 		.nicole {color: PaleVioletRed;
 					 max-width:850px;
 					 margin: auto; 
@@ -122,11 +133,57 @@
 		shadowSize: [41, 41]
 	});
 
-	L.marker([51.0379095,-114.0784720], {icon: greenIcon}).addTo(map);
+	L.marker([ 51.0427140,-114.0542788], {icon: greenIcon}).addTo(map);
+	L.marker([51.0481298,-114.0466905], {icon: greenIcon}).addTo(map);
+	L.marker([51.0379097,-114.0789122], {icon: greenIcon}).addTo(map);
+	
+	var purpleIcon = L.icon({
+		iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+		shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+		iconSize: [25, 41],
+		iconAnchor: [12, 41],
+		popupAnchor: [1, -34],
+		shadowSize: [41, 41]
+	});
 
-		
+	L.marker([51.0379030,-114.0754840], {icon: purpleIcon}).addTo(map);
+	L.marker([51.0337300,-114.0714570 ], {icon: purpleIcon}).addTo(map);
+	L.marker([51.0487096,-114.0660517], {icon: purpleIcon}).addTo(map);
+	L.marker([51.0513535,-114.0635280], {icon: purpleIcon}).addTo(map);
+	//L.marker([51.0379095,-114.0784720], {icon: purpleIcon}).addTo(map);
+	
+	var redIcon = L.icon({
+		iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+		shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+		iconSize: [25, 41],
+		iconAnchor: [12, 41],
+		popupAnchor: [1, -34],
+		shadowSize: [41, 41]
+	});
+
+	L.marker([51.0410501,-114.0659303], {icon: redIcon}).addTo(map);
+	L.marker([51.0379171,-114.0708578], {icon: redIcon}).addTo(map);
+	var goldIcon = L.icon({
+		iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
+		shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+		iconSize: [25, 41],
+		iconAnchor: [12, 41],
+		popupAnchor: [1, -34],
+		shadowSize: [41, 41]
+	});
+
+	L.marker([ 51.0437007,-114.0786483], {icon: goldIcon}).addTo(map);
+	L.marker([51.0415189,-114.0369155], {icon: goldIcon}).addTo(map);	
+	
 </script> 	
 <br>
+<div id= "legend" class= "coded"> 
+<p> The markers are color coded based on price range:</P> 
+<p> Green = $ </p> 
+<p> Purple = $$ </p> 
+<p> Red = $$$ </p> 
+<p> Gold = $$$$ </P> 
+</div> 
 <div id="author" class="nicole"> 
 	<p>By Nicole Morrison </p> 
 </div> 

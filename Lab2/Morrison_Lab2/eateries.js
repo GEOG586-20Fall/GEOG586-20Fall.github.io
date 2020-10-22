@@ -40,7 +40,7 @@ var Eateries = {
             {"type": "Feature",
             "properties": {
                 "name": "Calcutta",
-                "popupContent": "<b>Calcutta Cricket Club</b><br> Modern Indian Cuisine. $$.",
+                "popupContent": "<b>Calcutta Cricket Club</b><br> Modern Indian Cuisine. $$$.",
 				"img": "<img src= https://www.avenuecalgary.com/wp-content/uploads/2017/08/CCC-8198562d.jpeg>"},
                 "geometry": {
                     "type": "Point",
@@ -114,8 +114,8 @@ var Eateries = {
 					[-114.0594340,51.0368303],
 				]]},
 					"style": {
-						"color":"red",
-						"fillColour": 'pink',
+						"color":"blue",
+						"fillColour": 'blue',
 						"fillOpacity": 0.5
 				}},
 			

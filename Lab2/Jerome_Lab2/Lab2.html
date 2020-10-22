@@ -1,0 +1,244 @@
+<html>
+<head>
+
+	<style>
+		#Lab2Map { height: 800px; }
+		#Lab2Map { width: 1500px; }
+		
+		body {
+			background-image: url("https://live.staticflickr.com/65535/50405104093_bca69cc610.jpg");
+			}
+			
+		.center{max-width: 1500px;
+			margin: auto;
+			}
+			
+		.textformat{color:blueviolet;
+			max-width: 850px;
+			margin: auto;
+			background-color: #E28A2b;
+			text-align: center;
+			}
+			
+		.centered-img {
+			width: 300px;
+			margin: auto;
+			}
+			
+	</style>
+	
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+</head>
+
+<body>
+
+<div id="header" class="textformat">
+	<h1 style="text-align:center;">Coventry Hills and the Surrounding Area, Calgary</h1>
+	<h2 style="text-align:center;">By Ethan Jerome - 30053230</h2>
+	<p style="text-align:center;">This map will help you get to know me better. It shows where I live, as well as the local landmarks and amenities I tend to frequent. </p>
+</div>
+
+<div id="Lab2Map" class="center"></div>
+
+	<script type="application/javascript">
+	
+	var map = L.map('Lab2Map').setView([51.155064, -114.066517], 13);
+
+	function onEachFeature(feature, layer) {
+			layer.bindPopup("<h3>"+feature.properties.title+"</h3><p>"+feature.properties.caption+"</p>"+feature.properties.img);
+			};
+		
+	L.tileLayer('https://{s}.tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+		}).addTo(map);
+
+	var ethanGeoJSON = {
+		"type":"FeatureCollection",
+		"features": [
+			{"type": "Feature",
+				"properties": {
+					"title": "My Community and Surrounding Area",
+					"caption": "This is the highlighted area that depicts the extent of where I spend most of my time.",
+					"img": "<img src= 'https://www.calgaryhouse.ca/uploads/Coventry%20Hills.jpg' class='centered-img'/>",
+			},
+			"geometry": {
+				"type": "Polygon",
+			"coordinates" : [[
+					[-114.071067, 51.172284],
+					[-114.033471, 51.173094],
+					[-114.033409, 51.154182],
+					[-114.077062, 51.153931],
+				]]},
+			"style": {
+				"fill": "blue",
+				"fill-opacity": 0.3
+			}},
+		
+		{"type": "Feature",
+			"properties": {
+				"title": "My Humble Abode",
+				"caption": "This is where I live. I moved here earlier this year, and I love living here!",
+				"img": "<img src= 'https://s.realtyninja.com/static/images/listings/med/4255_led5913a3_42_Coville.jpg' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.039086, 51.170416]
+					}},
+					
+		{"type": "Feature",
+			"properties": {
+				"title": "Landmark Cinemas",
+				"caption": "My Local Movie Theatre; currently gettting wrecked by COVID.",
+				"img": "<img src= 'https://www.century21bravo.com/uploads/shared/images/Business%20Blog/Northpointe/Landmark.jpg' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.068550, 51.155797]
+				}},
+		
+		{"type": "Feature",
+			"properties": {
+				"title": "Spiritleaf",
+				"caption": "The Cannabis Dispensary where I get my Recreational Goods.",
+				"img": "<img src= 'https://hemphealthy.co/wp-content/uploads/2019/06/20190529-Leafly-AlbertaDispensaries-0545-1024x683-1.jpg' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-113.999054, 51.155005]
+				}},
+		
+		{"type": "Feature",
+			"properties": {
+				"title": "Vivo for Healthier Generations",
+				"caption": "Local Gym and Recreational Facility -- only a 30 minute walk from my home!",
+				"img": "<img src= 'https://media-cdn.tripadvisor.com/media/photo-s/05/ed/15/ea/cardel-place.jpg' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.065876, 51.159603]
+				}},
+		
+		{"type": "Feature",
+			"properties": {
+				"title": "Glacial Erratic",
+				"caption": "I find Glacial Erratics to be very interesting. This one is within walking distance, which I find very neat! *note the image is of a different erratic, and is meant for reference to what an 'erratic' is.",
+				"img": "<img src= 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Bigrock.jpg/330px-Bigrock.jpg' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.035584, 51.161904]
+				}},
+		
+		{"type": "Feature",
+			"properties": {
+				"title": "Sobeys",
+				"caption": "Where I usually go to get my Groceries.",
+				"img": "<img src= 'https://lh3.googleusercontent.com/proxy/WPJFf7ag6rFn5IZHRfyJ1k43ZryrMXKmkhRJFb2FOHdlrCONvhU3BkBtHk4p8M-uSZdPFCg-vpoona3kEbnvbZDwD7maARsZ5HnqeM5Clficb_LcO9n0b2oiKbBI' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.057829, 51.155487]
+				}},
+		
+		{"type": "Feature",
+			"properties": {
+				"title": "ESSO",
+				"caption": "Where I usually fill up on Gas.",
+				"img": "<img src= 'https://lh3.googleusercontent.com/proxy/bnx6Kv-eJ_KlhJhRy9O7Y7YvLC9XzsxbV51fGn0XCjw-x0W6ySA0HpzTNAVQKhOrRz7ApxFyb3uslJm3geDkKTjKP2o_Y_YSceffliIshE9N6QYtgg' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.060146, 51.154534]
+				}},
+				
+		{"type": "Feature",
+			"properties": {
+				"title": "Alberta Liquor Outlet",
+				"caption": "A small, family run liquor store I usually get my party supplies at.",
+				"img": "<img src= 'https://s3.amazonaws.com/up.411.ca/101/705/2425.jpg' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.043256, 51.158328]
+				}},
+		
+		{"type": "Feature",
+			"properties": {
+				"title": "Relaxation Point",
+				"caption": "A wonderful place to sit, relax, and see beautiful skies around sunset",
+				"img": "<img src= 'https://hikingwithbarry.com/sites/hikingwithbarry.com/files/Confluence%20Park%20036.JPG' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.036286, 51.164798]
+				}},
+				
+		{"type": "Feature",
+			"properties": {
+				"title": "My Old House",
+				"caption": "Where I lived until March of this year, when I then moved to Coventry Hills.",
+				"img": "<img src= 'https://rlp.jumplisting.com/photos/13/53/13/86/13531386_1_lg.jpg' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.079110, 51.136754]
+				}},
+		
+		{"type": "Feature",
+			"properties": {
+				"title": "Cedar's Deli",
+				"caption": "One of my favorite places to eat at! I absolutely LOVE Donairs and Falafels.",
+				"img": "<img src= 'https://cedarsdeli.com/uploads/photos/003.jpg' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.071017, 51.165081]
+				}},
+		
+		{"type": "Feature",
+			"properties": {
+				"title": "Seniore's Pizza",
+				"caption": "My favorite pizza place. Their pizza by-the-slice is an INSANE deal for a broke university student like myself.",
+				"img": "<img src= 'https://ssmscdn.yp.ca/image/resize/850addc9-f168-4dc8-8bf7-66685cfd9f78/ypui-d-mp-pic-gal-lg/seniore-s-pizza-ltd-storefront-1.jpg' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.055830, 51.126959]
+				}},
+				
+		{"type": "Feature",
+			"properties": {
+				"title": "The Park.",
+				"caption": "Where I walk my dogs, Lily and Colby, and like to play Pokemon Go",
+				"img": "<img src= 'https://github.com/GEOG586-20Fall/GEOG586-20Fall.github.io/blob/master/Lab2/Jerome_Lab2/50406054692_48fa4ba7c9_o.jpg?raw=true' class='centered-img'/>",
+				},
+				"geometry": {
+					"type": "Point",
+					"coordinates": [-114.037036, 51.167206]
+					}},
+				
+			]};
+					
+	var ethanStyle = {
+		"color": "Purple",
+		"fillColor": "Purple",
+		"fillOpacity": 0.1,
+		"weight": 15,
+		"opacity": 0.1
+		};
+	
+	L.geoJSON(ethanGeoJSON, {style: ethanStyle}).addTo(map);
+	
+	var geoJSONLayer = L.geoJSON(ethanGeoJSON, {onEachFeature: onEachFeature}).addTo(map);
+	
+	</script>
+	
+</body>
+</html>
