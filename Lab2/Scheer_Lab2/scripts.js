@@ -1,5 +1,6 @@
 function bindPopups(feature, layer) {
-            layer.bindPopup(feature.properties.popupContent+feature.properties.img);
+	//var popup = L.popup({maxWidth: 600, maxHeight: 400})
+    layer.bindPopup(feature.properties.popupContent+feature.properties.img);
 }
 
 var commPlaces = {
