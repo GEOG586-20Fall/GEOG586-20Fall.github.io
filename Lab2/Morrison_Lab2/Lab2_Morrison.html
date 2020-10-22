@@ -118,7 +118,10 @@
 			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 			}).addTo(map);
 
-
+	L.geoJSON(ave, { 
+		onEachFeature : Popups
+	}).addTo(map); 
+	
 	L.geoJSON(EateriesLow, {
 		onEachFeature: Popups
 	}).addTo(map);
@@ -172,7 +175,7 @@
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, styleHigh);
             }}).addTo(map);    
-
+			
 	
 </script> 	
 
