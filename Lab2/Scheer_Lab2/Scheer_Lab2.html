@@ -29,23 +29,16 @@
 			}
 			h1 {
 				font-size: 16;
+				text-align: center;
 			}
 			h2 {
 				font-size: 13;
+				text-align: center;
 			}
 			p {
 				font-size: 11;
 				text-align: center;
-			}
-			
-			name {
-				text-align:center;
-				font: bold;
-			}
-			popupContent {
-				text-align: center;
-			}
-				
+			}	
 			img {
 				width: 100%;
 				height: 300px;
@@ -55,8 +48,8 @@
 		
 		<script>
 		function bindPopups(feature, layer) {
-			layer.bindPopup(feature.properties.name+feature.properties.popupContent+feature.properties.img, {maxWidth: "600", maxHeight: "400"})
-		}
+			layer.bindPopup("<h2>"+feature.properties.name+"</h2>"+"<p>"+feature.properties.popupContent+"</p>"+feature.properties.img, {maxWidth: "600", maxHeight: "400"})
+		};
 
 		</script>
 		<script src="scripts.js"></script>
@@ -87,8 +80,6 @@
 		</script>
 	
 		<p>This map made by Alex Scheer, October 2020. Location coordinates selected from Google Maps.</p>
-		
-		<div>Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 
 	</body>
 
