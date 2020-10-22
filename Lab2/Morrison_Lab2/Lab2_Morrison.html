@@ -123,12 +123,6 @@
 		onEachFeature: Popups
 	}).addTo(map);
 
-	var dat = L.geoJson(data, {
-		pointToLayer: function (feature, latlng) {
-			return L.circleMarker(latlng, style(feature));
-		}
-	});
-	dat.addTo(map);
 
 	<!-- var greenIcon = L.icon({ -->
 		<!-- iconUrl:'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png', -->
@@ -185,15 +179,14 @@
 
 <br>
 
-<div id= "legend" class= "coded"> 
-	<p> The markers are color coded based on price range:</P> 
-	<p> Green = $ </p> 
-	<p> Purple = $$ </p> 
-	<p> Red = $$$ </p> 
-	<p> Gold = $$$$ </P> 
-</div> 
+<!-- <div id= "legend" class= "coded">  -->
+	<!-- <p> The markers are color coded based on price range:</P>  -->
+	<!-- <p> Green = $ </p>  -->
+	<!-- <p> Purple = $$ </p>  -->
+	<!-- <p> Red = $$$ </p>  -->
+	<!-- <p> Gold = $$$$ </P>  -->
+<!-- </div>  -->
 
-<br> 
 
 <div id="author" class="nicole"> 
 	<p>By Nicole Morrison </p> 
