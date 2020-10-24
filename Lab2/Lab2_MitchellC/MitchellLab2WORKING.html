@@ -22,6 +22,23 @@
    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
+   
+   
+<script>
+	alert("Welcome to Mitchell's webmap for GEOG 586 Lab 2!")
+</script>
+
+<script src="pointsOfInterest.js"></script>
+
+<script>
+		function Popups(feature, layer) {
+            if (feature.places && feature.places.popupContent && feature.places.img) {
+				layer.bindPopup(feature.places.popupContent+feature.places.img);
+            };
+			};
+
+</script>
+
 
 </head>
 
@@ -44,41 +61,41 @@
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 		}).addTo(map);
 
-		L.marker([51.076162, -114.132901]).addTo(map)
-			.bindPopup("International House: First Year Residence Building and home to the Campus Service Centre.<br> Fun fact: I currently live here!")
-			.openPopup();
+		L.geoJSON(onCampus, {
+		onEachFeature: Popups
+		}).addTo(map);
+	
+		L.geoJSON(offCampus, { 
+		onEachFeature:Popups
+		}).addTo(map); 
 		
-		L.marker([51.078065, -114.133443]).addTo(map)
-			.bindPopup("Fitness Centre<br> During COVID-19 it is still open to all students.")
-			.openPopup();
+			var onCampusCirc = {
+				radius: 17,
+				fillColor: "yellow",
+				color: "#000",
+				weight: 1,
+				opacity: 2,
+				fillOpacity: 0.5
+				};
+		
+		L.geoJSON(onCampus, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, OnCampusCirc);
+            }}).addTo(map);
 			
-		L.marker([51.074836, -114.136981]).addTo(map)
-			.bindPopup("Yamnuska Hall<br> A first and second year residence building.<br> It has a lot of restaurants that students enjoy, including Starbucks, Domino's, and Subway.")
-			.openPopup();
-			
-		L.marker([51.077530, -114.147416]).addTo(map)
-			.bindPopup("Save-On-Foods<br> This is a new supermarket that opened in August 2020. It is the closest supermarket to residence!")
-			.openPopup();
-			
-		L.marker([51.076424, -114.127228]).addTo(map)
-			.bindPopup("Craigie Hall Bus Terminal<br> An important transportation hub for residence students and commuter students alike")
-			.openPopup();
-			
-		L.marker([51.078409, -114.131054]).addTo(map)
-			.bindPopup("Mac Hall<br>A place to eat, to shop and to access various campus resources")
-			.openPopup();
-			
-		L.marker([51.077386, -114.129835]).addTo(map)
-			.bindPopup("TFDL<br> The library at which I occasionally study at...not so much this year though.")
-			.openPopup();
-			
-		L.marker([51.080100, -114.123122]).addTo(map)
-			.bindPopup("University LRT Station<br>Another important transit hub for students")
-			.openPopup();
-			
-		L.marker([51.069640, -114.143031]).addTo(map)
-			.bindPopup("West Campus Park Duck Pond<br> A place that I like to visit if I need to go off campus for a break.")
-			.openPopup();
+			var offCampusCirc = {
+				radius: 17,
+				fillColor: "blue",
+				color: "#000",
+				weight: 1,
+				opacity: 2,
+				fillOpacity: 0.5
+				};
+		
+		L.geoJSON(offCampus, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, offCampusCirc);
+            }}).addTo(map);
 	</script>
 	
 <p>Living in residence has its perks, but it does suck to be on campus 24/7. My advice to students living here is to make sure you get off campus every once in a while!
