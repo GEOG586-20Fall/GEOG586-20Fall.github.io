@@ -54,7 +54,9 @@ var onCampus = {
 				"img": "<img src= http://www.canaconstruction.com/wp-content/uploads/2015/03/tfdl-1-826x536.jpg>"},
                 "geometry":{
                     "type":"Point",
-                    "coordinates":[-114.129835, 51.077386]}},;
+                    "coordinates":[-114.129835, 51.077386]}}]};
+					
+			
 					
 					
 var offCampus = {
@@ -85,4 +87,4 @@ var offCampus = {
 				"img": "<img src= https://birdscalgary.files.wordpress.com/2013/04/img_2611-e1366851928650.jpg>"},
                 "geometry":{
                     "type":"Point",
-                    "coordinates":[-114.143031, 51.069640]}},;
+                    "coordinates":[-114.143031, 51.069640]}}]};

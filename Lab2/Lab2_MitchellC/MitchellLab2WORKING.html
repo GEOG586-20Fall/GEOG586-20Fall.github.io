@@ -6,8 +6,18 @@
 	h1 {text-align: center;}
 	h2 {text-align: center;}
 	h3 {text-align: center;}
-	p  {text-align: left;}
+	h4 {text-align: center;}
+	p  {text-align: center;}
 	
+	
+	.pagecenter{max-width: 850px; 
+				margin: auto; 
+				}
+
+	.centerbutton {
+		display: flex;
+		justify-content: center;
+		align-items: center;	
 </style>
 
 	<style>
@@ -44,6 +54,7 @@
 
 
 <body>
+
 	<h1>Hotspots for a student living in UofC Residence</h1>
 	<h2>A Guide by Mitchell Cornish, Residence Community Ambassador & Geographer</h2>
 	
@@ -52,7 +63,7 @@
 	<br> There are various areas I like to explore and visit during my days on and around campus. Take a look at the map to see some of my favourite places!</p> 
 	
 	
-<div id="primaryMap"></div>
+<div id="primaryMap" class="pagecenter"></div>
 
 	<script type="application/javascript">
 		var map = L.map('primaryMap').setView([51.076884, -114.131655], 15);
@@ -80,7 +91,7 @@
 		
 		L.geoJSON(onCampus, {
             pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, OnCampusCirc);
+                return L.circleMarker(latlng, onCampusCirc);
             }}).addTo(map);
 			
 			var offCampusCirc = {
@@ -97,12 +108,12 @@
                 return L.circleMarker(latlng, offCampusCirc);
             }}).addTo(map);
 	</script>
+
+<h3> About This Map/Legend</h3>
+<p> This map represents a variety of points-of-interest to students living in residence, based off my personal experiences.<br> The circles in yellow represent places on campus, while blue circles represent off campus.
+<br> All locations on this map are within a 10-15 minute walking distance from residence, so you don't have to wonder far!</p>
 	
-<p>Living in residence has its perks, but it does suck to be on campus 24/7. My advice to students living here is to make sure you get off campus every once in a while!
-<br>Buses and LRT stations around campus are there to get you moving faster, and there are lots of things within walking distance.
-</p>
-	
-<h3> Learn more about living on campus </h3> 
+<h4> Learn more about living on campus </h4> 
 <p> Are you interested in learning more about life on campus? Click this button to go to the Residence Services website!</p>
 
 <style> 
@@ -119,7 +130,9 @@
 }
 </style>
 
+<div class="centerbutton">
 <a href="https://www.ucalgary.ca/ancillary/residence" class="button">Go to Residence Services</a>
+</div>
 	
 </body>
 </html>
