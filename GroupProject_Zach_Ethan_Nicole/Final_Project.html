@@ -6,7 +6,7 @@
 				 width: 850px;
 		}
 		body{
-			 background-image: url("https://www.besthealthmag.ca/wp-content/uploads/2019/07/junk-food-1.gif");
+			 background-image: url("https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2016/10/cerberus.jpg");
 			 }
 
 		body{font-family: cooper black;}
@@ -82,8 +82,8 @@
 
 	
         function Popups(feature, layer) {
-            if (feature.properties && feature.properties.popupContent && feature.properties.img) {
-				layer.bindPopup(feature.properties.popupContent+feature.properties.img);
+            if (feature.properties && feature.properties.popupContent && feature.properties.img && feature.properties.link) {
+				layer.bindPopup(feature.properties.popupContent+feature.properties.img ++ feature.properties.link);
             };
 			};
 		
