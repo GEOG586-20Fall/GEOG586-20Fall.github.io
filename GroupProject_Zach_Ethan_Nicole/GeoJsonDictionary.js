@@ -40,18 +40,7 @@ var Bigfoot = {
 				"img": "<img src= https://cdn.the-scientist.com/assets/articleNo/40145/aImg/23552/suspect-sasquatch-sequencing-m.jpg>"},
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [-90.451886, 34.684019]}},
-			
-			
-					
-            {"type": "Feature",
-            "properties": {
-                "name": "clive",
-                "popupContent":"<b>Clive burger</b><br> Locally sourced hamburgers and shakes with a retro vibe.$.",
-				"img": "<img src= https://images.squarespace-cdn.com/content/v1/5af9b3025ffd202a11b88dd3/1537394588780-NK24205ZSWB1SSG8MRPJ/ke17ZwdGBToddI8pDm48kEpVg-ILAPna1wRh-xAJ9fRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwEv36x-EUL2-BSQ5feDhwGCbXuJBFqZ-erYzVouT8yOb9TwqchglLQOCYTRn7ZGxI/image-asset.jpeg>"},
-                "geometry": {
-                    "type": "Point",
-		"coordinates": [-114.0789122,51.0379097]}}]}; 
+                    "coordinates": [-90.451886, 34.684019]}}]}; 
 		
 			
 					
@@ -81,6 +70,20 @@ var NavajoSkinwalker = {
                 "geometry":{
                     "type":"Point",
 				"coordinates":[-109.887916, 40.258656]}}]};
+				
+var Mothman = {
+		"type" : "FeatureCollection",
+        "features" : [
+            {"type":"Feature", 
+            "properties":{
+                "name":"<b>The Mothman of Point Pleasant:<br> ",
+                "popupContent":"The Mothman was a creature that was reportedly seen in the Point Pleasant, West Virginia, area from 1966 to 1967. It is described as a large, flying man with ten-foot wings and glowing red eyes. Sightings of this cryptid stopped after the Silver Bridge Collapse. Interestingly, decades later, an Annual Mothman Festival is held as a way to attract tourists to the area.",
+				"img": "<img src=https://upload.wikimedia.org/wikipedia/commons/f/f6/Mothman_Artist%27s_Impression.png> ",
+				"link": "</b><a href='https://en.wikipedia.org/wiki/Mothman'>Check out on Wiki</a>"},
+					"geometry": {
+                    "type":"Point",
+                    "coordinates":[-82.137314, 38.845421]}}]}; 
+
             
            
 			

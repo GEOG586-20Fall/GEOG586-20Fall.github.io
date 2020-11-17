@@ -132,6 +132,11 @@
 		onEachFeature:Popups
 	}).addTo(map); 
 	
+	L.geoJSON(Mothman, { 
+		onEachFeature:Popups
+	}).addTo(map); 
+	
+	
 	
 	 var styleBigfoot = {
             radius: 15,
@@ -174,6 +179,20 @@
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, styleNavajoSkinwalker);
             }}).addTo(map);
+			
+		var styleMothman = {
+            radius: 15,
+            fillColor: "Green",
+            color: "Green",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+            };
+            
+         L.geoJSON(Mothman, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleMothman);
+            }}).addTo(map);
         
 	
 </script> 	
@@ -184,7 +203,8 @@
 	<p> The markers are color coded based on price range:</P> 
 	<p> Pink = Bigfoot/Sasquatch </p> 
 	<p> Purple = Ogopopgo</p> 
-	<p> Red = High price range $$$ </p>
+	<p> Blue= Navajo Skinwalker </p>
+	<p> Green = Mothman</p> 
 <br> 
 <p> The blue polygon overlays 17th Avenue. 17th is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave<p>	
 <br>
