@@ -60,60 +60,13 @@ var Ogopopgo = {
         "features" : [
             {"type":"Feature", 
             "properties":{
-                "name":"Ten Foot ",
-                "popupContent":"<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$.",
-				"img":"<img src=https://cdn.where.ca/wp-content/uploads/2018/01/ten-foot-henry-web.jpg>"},
+                "name":"Ogopogo:<br> ",
+                "popupContent":"<b>The Ogopogo is a lake monster that is said to inhabit Lake Okanagan, British Columbia, Canada. It is thought to to have been developed from Indigenous Folklore and other widespread folklore motifs (such as the Loch Ness monster, for example).</b>",
+				"link": "<b> <a href='www.bbc.com/travel/story/20200309-ogopogo-the-monster-lurking-in-okanagan-lake'> Check out on BBC</a>",
+				"img":"<img src= https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/OgoPogo_crop.jpg/1107px-OgoPogo_crop.jpg>>"},
                 "geometry":{
                     "type":"Point",
-                    "coordinates":[-114.0659303,51.0410501]}},
-
-            {"type":"Feature", 
-            "properties":{
-                "name":"UNA",
-                "popupContent":"<b>UNA Pizza and Wine</b><br> Hip local elevated pizzeria. $$.",
-				"img": "<img src=https://www.narcity.com/u/2020/01/20/a4c5a2a265191e631a204d956a8ddb37.jpg_1200x630.jpg>"},
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-114.0754840, 51.0379030]}},
-          
-
-            {"type": "Feature",
-            "properties": {
-                "name": "Anejo",
-                "popupContent":"<b>Anejo</b><br> Contemperary mexican and famous margaritas. $$.",
-				"img":"<img src=https://anejo.ca/4thstreet/wp-content/uploads/sites/4/2018/03/mexican-food-calgary.jpg>"}, 
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-114.0714570, 51.0337300]}},
-            
-            
-            {"type": "Feature",
-            "properties": {
-                "name": "OEB",
-                "popupContent":"<b>OEB</b><br> Very funky Brunch spot. $$.",
-				"img": "<img src= https://eatoeb.com/wp-content/uploads/2018/10/Menu-Page-Header-e1574096414372.jpg>"},
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-114.0660517,51.0487096]}}, 
-				
-			
-			{"type": "Feature",
-            "properties": {
-                "name": "Trolley5",
-                "popupContent": "<b>Trolley 5</b><br> Brews their own beer on site as well as featuring other local Micro-breweries, plus amazing wings. $$.",
-				"img": "<img src= https://live.staticflickr.com/866/40348386494_60c4d9c146_b.jpg>"}, 
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-114.0784720,51.0379095]}}, 
-			
-            {"type": "Feature",
-            "properties": {
-                "name": "Sushi",
-                "popupContent": "<b>Point Sushi</b><br> Infamous bullet train sushi bar.$$.",
-				"img": "<img src= https://eatwithshar0n.files.wordpress.com/2018/07/img-20180704-wa0000.jpg?w=750>"},
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-114.0635280,51.0513535]}}]};
+                    "coordinates":[-119.595556,49.547222]}}]};
 
 var EateriesHigh = {
 		"type" : "FeatureCollection",
