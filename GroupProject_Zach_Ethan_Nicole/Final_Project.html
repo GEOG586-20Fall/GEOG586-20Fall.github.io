@@ -123,7 +123,7 @@
 		onEachFeature: Popups
 	}).addTo(map);
 	
-	L.geoJSON(EateriesMedium, { 
+	L.geoJSON(Ogopopgo, { 
 		onEachFeature:Popups
 	}).addTo(map); 
 	
@@ -154,7 +154,7 @@
             fillOpacity: 0.5
             };
             
-         L.geoJSON(EateriesMedium, {
+         L.geoJSON(Ogopopgo, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, styleMedium);
             }}).addTo(map);
