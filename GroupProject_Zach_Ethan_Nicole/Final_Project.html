@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html> 
 <head> 
 
@@ -197,3 +198,204 @@
 </body> 
 
 </html>
+=======
+<html>
+<head>
+
+	<style>
+		#MyMap { height: 500px;
+				 width: 850px;
+		}
+		body{
+			 background-image: url("https://www.besthealthmag.ca/wp-content/uploads/2019/07/junk-food-1.gif");
+			 }
+
+		body{font-family: cooper black;}
+		.pinkText{color:DeepPink;
+				  max-width :850px;
+				  margin: auto;
+				  background-color : white;
+				  text-align: center;
+				  font-size: 25px;
+				  border-color: black;
+				  border-style: solid;
+		}
+		p {color: PaleVioletRed;
+					 max-width:850px;
+					 margin: auto;
+					 background-color: white;
+					 text-align: left;
+					 font-size: 20px;
+					 padding-bottom: 10px;
+					 padding-top: 10px;
+		}
+		.center{max-width: 850px;
+				margin: auto;
+				}
+
+		.coded {color: PaleVioletRed;
+					 max-width:850px;
+					 margin: auto;
+					 background-color: white;
+					 text-align: left;
+					 font-size: 20px;
+					 border-color: black;
+					 border-style: solid;
+				}
+
+
+		.nicole {color: PaleVioletRed;
+					 max-width:850px;
+					 margin: auto;
+					 background-color: white;
+					 text-align: left;
+					 font-size: 20px;
+					 border-color: black;
+					 border-style: solid;
+				}
+
+	</style>
+	<style>
+	img {
+	width :300px;
+	height:300px;
+	object-fit: scale-down;
+	}
+	</style>
+
+
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+   <script>
+		alert("Hello, click OK to view my web map")
+   </script>
+
+<script src="GeoJsonDictionary.js"></script>
+
+<script>
+
+
+        function Popups(feature, layer) {
+            if (feature.properties && feature.properties.popupContent && feature.properties.img) {
+				layer.bindPopup(feature.properties.popupContent+feature.properties.img);
+            };
+			};
+
+
+</script>
+
+
+</head>
+<body>
+
+	<div id="Header" class="pinkText">
+	<h1> Nicole's Favourite <br> Local Calgary Eateries</h1>
+	<h2> "For all the foodies out there"</h2>
+	</div>
+	<br>
+	<div class="pinkText">
+	<p>One of the things I love most about Calgary is the great food it has to offer! </p>
+	<p>This map will show you some of my favourite places to eat in the inner city.</P>
+	<p> Click on a marker to explore the cities eateries.</p>
+	</div>
+	<br>
+
+
+<div id="MyMap" class="center"></div>
+
+<script type= "application/javascript">
+
+	var map = L.map('MyMap').setView([56.1304, -106.3468], 3);
+
+
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+			}).addTo(map);
+
+
+	L.geoJSON(Bigfoot, {
+		onEachFeature: Popups
+	}).addTo(map);
+
+	L.geoJSON(Ogopogo, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(EateriesHigh, {
+		onEachFeature : Popups
+	}).addTo(map);
+
+	 var styleLow = {
+            radius: 15,
+            fillColor: "pink",
+            color: "#000",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+            };
+
+         L.geoJSON(Bigfoot, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleLow);
+            }}).addTo(map);
+
+        var styleMedium = {
+            radius: 15,
+            fillColor: "purple",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.5
+            };
+
+         L.geoJSON(EateriesMedium, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleMedium);
+            }}).addTo(map);
+
+        var styleHigh = {
+            radius: 15,
+            fillColor: "red",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.5
+            };
+
+         L.geoJSON(EateriesHigh, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleHigh);
+            }}).addTo(map);
+
+
+</script>
+
+<br>
+
+<div id= "legend" class= "coded">
+	<p> The markers are color coded based on price range:</P>
+	<p> Pink = Low price range $ </p>
+	<p> Purple = Medium price range $$</p>
+	<p> Red = High price range $$$ </p>
+<br>
+<p> The blue polygon overlays 17th Avenue. 17th is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave<p>
+<br>
+</div>
+
+<br>
+
+<div id="author" class="nicole">
+	<p>By Nicole Morrison </p>
+</div>
+
+</body>
+
+</html>
+>>>>>>> e21d66b59cee079583e99e836d029a22339364e9
