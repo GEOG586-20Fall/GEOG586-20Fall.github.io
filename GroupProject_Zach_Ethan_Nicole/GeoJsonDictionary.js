@@ -14,32 +14,35 @@ var Bigfoot = {
             
             {"type": "Feature",
             "properties": {
-                "name": "Provo Canyon Encounter",
-                "popupContent":"<b>Sidewalk Citizen</b><br> Rustic bakery and cafe. $.",
-				"link": "<b> https://www.youtube.com/watch?v=Ss_Gm_N5C48&ab_channel=BeardCard",
-				"img": "<img src= https://cdn.canada247.info/assets/uploads/b96c91b17e4da30f7613b9514362dbca_-alberta-division-no-6-calgary-downtown-sidewalk-citizen-bakeryhtml.jpg>"},
+                "name": "Provo Canyon Encounter:<br>",
+                "popupContent":"<b>A hiker was hiking near Provo Canyon, Utah when this encounter occurred. Apparently the encounter threw rocks at him -- a behaviour commonly described in other encounters. The validity of this encounter is questioned, note the video has much more dislikes than likes.",
+				"link": "<b> <a href='https://www.youtube.com/watch?v=Ss_Gm_N5C48&ab_channel=BeardCard'>Video of sighting</a>",
+				"img": "<img src= https://assets.simpleviewinc.com/simpleview/image/fetch/c_limit,q_75,w_1200/https://assets.simpleviewinc.com/simpleview/image/upload/crm/utahvalley/DSC_11990-0304f9215056a36_0304ff08-5056-a36a-0b2597803065e481.jpg>"},
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [-114.0466905,51.0481298]}},
+                    "coordinates": [-111.62564, 40.301917]}},
 			
-			{"type": "Feature", 
-			"properties": { 
-				"name": "17th", 
-				"popupContent": "<b>17th Avenue </b><br> 17th Avenue is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave",
-				"img": "<img src= https://images.squarespace-cdn.com/content/v1/529fc0c0e4b088b079c3fb6d/1550196096061-XONE56DCRSX8H2XG88R6/ke17ZwdGBToddI8pDm48kNO2SymwcR0CNt03aX8zdCd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmyh-8_5GJNvrfz4o4yOfLS6zQbzUiTKHw9oGJVKerm66NTpMeMsHjVpXC93GFBavO/image-asset.jpeg>"},
-				"geometry": {
-					"type": "Polygon", 
-					"coordinates": [[
-					[-114.1121458,51.0369496],
-					[-114.1122195,51.0386217],
-					[-114.0595547,51.0385515],
-					[-114.0594340,51.0368303],
-				]]},
-					"style": {
-						"color":"blue",
-						"fillColour": 'blue',
-						"fillOpacity": 0.5
-				}},
+			{"type": "Feature",
+            "properties": {
+                "name": "Banff National Park Encounter:<br>",
+                "popupContent":"<b>According to the video description, the footage appears to depict a large Bigfoot resting with a baby on her chest.",
+				"link": "<b> <a href='https://www.youtube.com/watch?v=YSOFPUblDFg&feature=share&ab_channel=WyomingPBS'>Video of sighting</a>",
+				"img": "<img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNoTbh-y_i6Eixe-oQjqSm-lJk6_rowYf6Fg&usqp=CAU >"},
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-115.929493, 49.547222]}},
+			
+			{"type": "Feature",
+            "properties": {
+                "name": "Tunica Mississippi Encounter:<br>",
+                "popupContent":"<b>According to the video description, the huge black thing was crouched by the water, with big shoulders and an upright head. It looked like it was digging. When a truck drove by, the beast stood up -- and so, the filmer ran.",
+				"link": "<b> <a href='https://www.youtube.com/watch?v=xb9YcIlkl_c&ab_channel=JoshHighcliff'>Video of sighting</a>",
+				"img": "<img src= https://cdn.the-scientist.com/assets/articleNo/40145/aImg/23552/suspect-sasquatch-sequencing-m.jpg>"},
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-90.451886, 34.684019]}},
+			
+			
 					
             {"type": "Feature",
             "properties": {
