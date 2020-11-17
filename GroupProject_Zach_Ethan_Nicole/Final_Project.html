@@ -136,6 +136,9 @@
 		onEachFeature:Popups
 	}).addTo(map); 
 	
+	L.geoJSON(Thunderbird, { 
+		onEachFeature:Popups
+	}).addTo(map); 
 	
 	
 	 var styleBigfoot = {
@@ -194,7 +197,20 @@
                 return L.circleMarker(latlng, styleMothman);
             }}).addTo(map);
         
-	
+		var styleThunderbird = {
+            radius: 15,
+            fillColor: "Red",
+            color: "Red",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+            };
+            
+         L.geoJSON(Thunderbird, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleThunderbird);
+            }}).addTo(map);
+        
 </script> 	
 
 <br>
@@ -204,7 +220,8 @@
 	<p> Pink = Bigfoot/Sasquatch </p> 
 	<p> Purple = Ogopopgo</p> 
 	<p> Blue= Navajo Skinwalker </p>
-	<p> Green = Mothman</p> 
+	<p> Green = Mothman</p>
+	<p> Red = Thunderbird</p> 
 
 <br>
 </div> 

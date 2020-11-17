@@ -84,6 +84,30 @@ var Mothman = {
                     "type":"Point",
                     "coordinates":[-82.137314, 38.845421]}}]}; 
 
+var Thunderbird = { 
+		"type" : "FeatureCollection",
+        "features" : [
+            {"type":"Feature", 
+            "properties":{
+                "name":"<b>Thunderbird:<br> ",
+                "popupContent":"A bird the size of a small airplane was said to have been seen flying over SW Alaska in 2002; described as ‘something out of the movie Jurassic Park, with a wingspan over 14 feet!  ",
+				"img": "<img src=https://static.wikia.nocookie.net/cryptidz/images/6/62/Giant-thunderbird-56c0d4de5f9b5829f86738ca.png/revision/latest/scale-to-width-down/350?cb=20200710194116 >",
+				"link": "</b><a href='http://www.cnn.com/2002/US/West/10/18/offbeat.alaska.bird.reut/'>For further information</a>"},
+					"geometry": {
+                    "type":"Point",
+                    "coordinates":[-160.375664, 59.063326]}},
+            
+            {"type": "Feature",
+            "properties": {
+                "name": "Thunderbird:<br>",
+                "popupContent":"<b>A bird the size of a small airplane was said to have been seen flying over SW Alaska in 2002; described as ‘something out of the movie Jurassic Park, with a wingspan over 14 feet! ",
+				"link": "<b> <a href='http://www.cnn.com/2002/US/West/10/18/offbeat.alaska.bird.reut/'>For further information</a>",
+				"img": "<img src= https://static.wikia.nocookie.net/cryptidz/images/6/62/Giant-thunderbird-56c0d4de5f9b5829f86738ca.png/revision/latest/scale-to-width-down/350?cb=20200710194116>"},
+                    "geometry": {
+					"type": "Point",
+					"coordinates": [-159.057060, 58.976897]}}]}; 
+
+
             
            
 			

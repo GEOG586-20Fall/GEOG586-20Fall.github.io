@@ -73,12 +73,7 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
    
-   <!-- Import axios library -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
- <!-- Querystring library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
-  <!-- Import our javascript file -->
-  <script src="cases.js"></script>
+
   
 </body>
    
@@ -86,65 +81,29 @@
 		alert("Hello, click OK to view my web map")
    </script>
    
-
 <script>
 
-	
 
-const data = null;
+<div id= "api"> 
 
-const xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+var xhttp = new XMLHttpRequest();
 
-xhr.addEventListener("readystatechange", function () {
-	if (this.readyState === this.DONE) {
-		console.log(JSON.parse(xhr.responseText));
-	}
-});
-
-xhr.open("GET", "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=Canada");
-xhr.setRequestHeader("x-rapidapi-key", "37cb14bd86mshc0975d77ac94936p1fdc0fjsn8b55ae3b2a7b");
-xhr.setRequestHeader("x-rapidapi-host", "covid-19-coronavirus-statistics.p.rapidapi.com");
-
-xhr.send(data);
-
-var APIresponse = xhr.responseText; 
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       document.getElementById("api").innerHTML = xhttp.responseText;
+    }
+};
+xhttp.open("GET", "https://github.com/burnsr77/burnsr77.github.io/blob/92c5deba6d497e068479715cbaff9d98469137e4/GH_demo/PACities.geojson", true);
+xhttp.send();
 
 
 
-var element = document.getElementById('covid-19-coronavirus-statistics')
-if (element) {
-    element.innerHTML = APIresponse
-	}
-
-
-
-
-<!-- document.getElementById('Header').textContent = APIresponse;  -->
-
-
-<!-- var element = document.getElementById("header") -->
-<!-- if (element) { -->
-    <!-- element.innerHTML = APIresponse -->
-<!-- var myJsonDictionary = JSON.parse(xrh.responseText);  -->
-
-
-<!-- document.getElementById('province').textContent = province; -->
-<!-- document.getElementById('confirmed').textContent = confirmed;  -->
-			<!-- async function getData(){ -->
-				<!-- const response =await fetch ('api_url'); -->
-				<!-- const data = await response.json();  -->
-				<!-- console.log(data.province); -->
-				<!-- console.log(data.deaths); -->
-				<!-- console.log(data.confirmed); -->
-			<!-- } -->
-			<!-- const api_url ='https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=Canada'; -->
-			<!-- getData();  -->
+</div> 
 				
 </script>
 
- <!-- <p> province: <span id ="province"></span><br/ ></p>  -->
- <!-- <p> Cases: <span id ="confirmed"></span><br/ ></p>  -->
+
 
 </head> 
 <body>
@@ -163,11 +122,7 @@ if (element) {
 <script type= "application/javascript">
 
 
-        function Popups(feature, layer) {
-            if (feature.properties && feature.properties.covid-19-coronavirus-statistics) {
-				layer.bindPopup(feature.properties.covid-19-coronavirus-statistics);
-            };
-		
+
 
 
 	var map = L.map('MyMap').setView([56.1304, -106.3468], 3);
@@ -177,28 +132,7 @@ if (element) {
 			attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
 			}).addTo(map);
 		
-		var myJsonDictionary =APIresponse
-
-
-		L.geoJSON(myJsonDictionary, {
-			onEachFeature: Popups
-		 }).addTo(map); 
-		
-
-	 <!-- var canada = { -->
-            <!-- radius: 15, -->
-            <!-- fillColor: "pink", -->
-            <!-- color: "#000", -->
-            <!-- weight: 1, -->
-            <!-- opacity: 2, -->
-            <!-- fillOpacity: 0.5 -->
-            <!-- }; -->
-            
-         <!-- L.geoJSON(mygeoJsonDictionary, { -->
-            <!-- pointToLayer: function (feature, latlng) { -->
-                <!-- return L.circleMarker(latlng, canada); -->
-            <!-- }}).addTo(map); -->
-            
+	
    
 			
 	
@@ -225,4 +159,6 @@ if (element) {
 </body> 
 
 </html>
+
+
 
