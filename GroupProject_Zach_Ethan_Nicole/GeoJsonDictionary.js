@@ -68,38 +68,19 @@ var Ogopopgo = {
                     "type":"Point",
                     "coordinates":[-119.595556,49.547222]}}]};
 
-var EateriesHigh = {
+var NavajoSkinwalker = {
 		"type" : "FeatureCollection",
         "features" : [
             
             {"type":"Feature", 
             "properties":{
-                "name":"bridgetterBar",
-                "popupContent":"<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$.",
-				"img": "<img src= https://www.visitcalgary.com/sites/default/files/2020-09/visit_during_covid19_header_2020.jpg>"},
+                "name":"Skinwalker Ranch:<br>",
+                "popupContent":"<b>Skinwalker Ranch, also known as Sherman Ranch, is a property in Utah that is known for its paranormal and UFO-related activities. It is thought that the Navajo Skin Walker is active in the area. This ranch has been the subject of numerous documentaries, such as ‘The Secrets of Skinwalker Ranch",
+				"link": "<b> <a href='https://www.history.com/news/skinwalker-ranch-paranormal-ufos-mutilation'>For further information</a>",
+				"img": "<img src=https://www.history.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTY5ODEwMTYzNTg5NDU3MDk2/skinwalker-ranch-map.jpg >"},
                 "geometry":{
                     "type":"Point",
-				"coordinates":[-114.0786483, 51.0437007]}},
-            
-    
-            {"type": "Feature",
-            "properties": {
-                "name": "Calcutta",
-                "popupContent": "<b>Calcutta Cricket Club</b><br> Modern Indian Cuisine. $$$.",
-				"img": "<img src= https://www.avenuecalgary.com/wp-content/uploads/2017/08/CCC-8198562d.jpeg>"},
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [-114.0708578,51.0379171]}},
-           
-            
-            {"type": "Feature",
-            "properties": {
-                "name": "Nash",
-                "popupContent": "<b>The Nash</b><br> Inventive dishes served in an old 1900s hotel.$$$ .",
-				"img":"<img src= https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/03/the-nash-calgary-3.jpg?resize=640%2C427&ssl=1>"}, 
-                "geometry": {
-                    "type": "Point",
-			"coordinates": [-114.0369155,51.0415189]}}]};
+				"coordinates":[-109.887916, 40.258656]}}]};
             
            
 			

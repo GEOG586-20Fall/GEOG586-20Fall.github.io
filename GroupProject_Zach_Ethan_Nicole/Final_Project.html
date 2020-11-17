@@ -128,11 +128,12 @@
 		onEachFeature:Popups
 	}).addTo(map); 
 	
-	L.geoJSON(EateriesHigh, { 
-		onEachFeature : Popups
+	L.geoJSON(NavajoSkinwalker, { 
+		onEachFeature:Popups
 	}).addTo(map); 
 	
-	 var styleLow = {
+	
+	 var styleBigfoot = {
             radius: 15,
             fillColor: "pink",
             color: "#000",
@@ -143,10 +144,10 @@
             
          L.geoJSON(Bigfoot, {
             pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, styleLow);
+                return L.circleMarker(latlng, styleBigfoot);
             }}).addTo(map);
             
-        var styleMedium = {
+        var styleOgopogo = {
             radius: 15,
             fillColor: "purple",
             color: "#000",
@@ -157,23 +158,23 @@
             
          L.geoJSON(Ogopopgo, {
             pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, styleMedium);
+                return L.circleMarker(latlng, styleOgopogo);
             }}).addTo(map);
             
-        var styleHigh = {
+		var styleNavajoSkinwalker = {
             radius: 15,
-            fillColor: "red",
-            color: "#000",
+            fillColor: "blue",
+            color: "blue",
             weight: 1,
-            opacity: 1,
+            opacity: 2,
             fillOpacity: 0.5
             };
             
-         L.geoJSON(EateriesHigh, {
+         L.geoJSON(NavajoSkinwalker, {
             pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, styleHigh);
-            }}).addTo(map);    
-			
+                return L.circleMarker(latlng, styleNavajoSkinwalker);
+            }}).addTo(map);
+        
 	
 </script> 	
 
