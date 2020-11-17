@@ -2,7 +2,7 @@
 var Bigfoot = {
 		"type" : "FeatureCollection",
         "features" : [
-            {"type":"Feature", 
+            {"type":"Feature",
             "properties":{
                 "name":"<b>Bigfoot Patterson-Gimlin Footage:<br> ",
                 "popupContent":"Perhaps the single most iconic pieces of evidence of bigfoot, this footage has been analyzed, and re-analyzed, by various research times over the decades -- with no real confirmation of whether this is a hoax or not",
@@ -11,7 +11,7 @@ var Bigfoot = {
 					"geometry": {
                     "type":"Point",
                     "coordinates":[-123.705149, 41.322716]}},
-            
+
             {"type": "Feature",
             "properties": {
                 "name": "Provo Canyon Encounter",
@@ -21,14 +21,14 @@ var Bigfoot = {
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-114.0466905,51.0481298]}},
-			
-			{"type": "Feature", 
-			"properties": { 
-				"name": "17th", 
+
+			{"type": "Feature",
+			"properties": {
+				"name": "17th",
 				"popupContent": "<b>17th Avenue </b><br> 17th Avenue is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave",
 				"img": "<img src= https://images.squarespace-cdn.com/content/v1/529fc0c0e4b088b079c3fb6d/1550196096061-XONE56DCRSX8H2XG88R6/ke17ZwdGBToddI8pDm48kNO2SymwcR0CNt03aX8zdCd7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmyh-8_5GJNvrfz4o4yOfLS6zQbzUiTKHw9oGJVKerm66NTpMeMsHjVpXC93GFBavO/image-asset.jpeg>"},
 				"geometry": {
-					"type": "Polygon", 
+					"type": "Polygon",
 					"coordinates": [[
 					[-114.1121458,51.0369496],
 					[-114.1122195,51.0386217],
@@ -40,7 +40,7 @@ var Bigfoot = {
 						"fillColour": 'blue',
 						"fillOpacity": 0.5
 				}},
-					
+
             {"type": "Feature",
             "properties": {
                 "name": "clive",
@@ -48,23 +48,23 @@ var Bigfoot = {
 				"img": "<img src= https://images.squarespace-cdn.com/content/v1/5af9b3025ffd202a11b88dd3/1537394588780-NK24205ZSWB1SSG8MRPJ/ke17ZwdGBToddI8pDm48kEpVg-ILAPna1wRh-xAJ9fRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwEv36x-EUL2-BSQ5feDhwGCbXuJBFqZ-erYzVouT8yOb9TwqchglLQOCYTRn7ZGxI/image-asset.jpeg>"},
                 "geometry": {
                     "type": "Point",
-		"coordinates": [-114.0789122,51.0379097]}}]}; 
-		
-			
-					
-var Ogopopgo = {
-		"type" : "FeatureCollection",
-        "features" : [
-            {"type":"Feature", 
-            "properties":{
-                "name":"Ten Foot ",
-                "popupContent":"<b>Ten Foot Henry</b><br> Hip atmosphere with modern vegtable-anchored plates for sharing. $$.",
-				"img":"<img src=https://cdn.where.ca/wp-content/uploads/2018/01/ten-foot-henry-web.jpg>"},
-                "geometry":{
-                    "type":"Point",
-                    "coordinates":[-114.0659303,51.0410501]}},
+		"coordinates": [-114.0789122,51.0379097]}}]};
 
-            {"type":"Feature", 
+
+
+		var Ogopogo = {
+				"type" : "FeatureCollection",
+		        "features" : [
+		            {"type":"Feature",
+		            "properties":{
+		                "name":"Ogopogo ",
+		                "popupContent":"<b>The Ogopogo is a lake monster that is said to inhabit Lake Okanagan, British Columbia, Canada. It is thought to to have been developed from Indigenous Folklore and other widespread folklore motifs (such as the Loch Ness monster, for example).</b><a href='http://www.bbc.com/travel/story/20200309-ogopogo-the-monster-lurking-in-okanagan-lake'>Check out on BBC</a>",
+						"img":"<img src=https://cdn.where.ca/wp-content/uploads/2018/01/ten-foot-henry-web.jpg>"},
+		                "geometry":{
+		                    "type":"Point",
+		                    "coordinates":[-119.595556,49.547222]}},
+
+            {"type":"Feature",
             "properties":{
                 "name":"UNA",
                 "popupContent":"<b>UNA Pizza and Wine</b><br> Hip local elevated pizzeria. $$.",
@@ -72,18 +72,18 @@ var Ogopopgo = {
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-114.0754840, 51.0379030]}},
-          
+
 
             {"type": "Feature",
             "properties": {
                 "name": "Anejo",
                 "popupContent":"<b>Anejo</b><br> Contemperary mexican and famous margaritas. $$.",
-				"img":"<img src=https://anejo.ca/4thstreet/wp-content/uploads/sites/4/2018/03/mexican-food-calgary.jpg>"}, 
+				"img":"<img src=https://anejo.ca/4thstreet/wp-content/uploads/sites/4/2018/03/mexican-food-calgary.jpg>"},
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-114.0714570, 51.0337300]}},
-            
-            
+
+
             {"type": "Feature",
             "properties": {
                 "name": "OEB",
@@ -91,18 +91,18 @@ var Ogopopgo = {
 				"img": "<img src= https://eatoeb.com/wp-content/uploads/2018/10/Menu-Page-Header-e1574096414372.jpg>"},
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [-114.0660517,51.0487096]}}, 
-				
-			
+                    "coordinates": [-114.0660517,51.0487096]}},
+
+
 			{"type": "Feature",
             "properties": {
                 "name": "Trolley5",
                 "popupContent": "<b>Trolley 5</b><br> Brews their own beer on site as well as featuring other local Micro-breweries, plus amazing wings. $$.",
-				"img": "<img src= https://live.staticflickr.com/866/40348386494_60c4d9c146_b.jpg>"}, 
+				"img": "<img src= https://live.staticflickr.com/866/40348386494_60c4d9c146_b.jpg>"},
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [-114.0784720,51.0379095]}}, 
-			
+                    "coordinates": [-114.0784720,51.0379095]}},
+
             {"type": "Feature",
             "properties": {
                 "name": "Sushi",
@@ -115,8 +115,8 @@ var Ogopopgo = {
 var EateriesHigh = {
 		"type" : "FeatureCollection",
         "features" : [
-            
-            {"type":"Feature", 
+
+            {"type":"Feature",
             "properties":{
                 "name":"bridgetterBar",
                 "popupContent":"<b>Bridgette Bar</b><br> Chef-driven food with a unique lounge atmosphere. $$$.",
@@ -124,8 +124,8 @@ var EateriesHigh = {
                 "geometry":{
                     "type":"Point",
 				"coordinates":[-114.0786483, 51.0437007]}},
-            
-    
+
+
             {"type": "Feature",
             "properties": {
                 "name": "Calcutta",
@@ -134,16 +134,13 @@ var EateriesHigh = {
                 "geometry": {
                     "type": "Point",
                     "coordinates": [-114.0708578,51.0379171]}},
-           
-            
+
+
             {"type": "Feature",
             "properties": {
                 "name": "Nash",
                 "popupContent": "<b>The Nash</b><br> Inventive dishes served in an old 1900s hotel.$$$ .",
-				"img":"<img src= https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/03/the-nash-calgary-3.jpg?resize=640%2C427&ssl=1>"}, 
+				"img":"<img src= https://i1.wp.com/fortwoplz.com/wp-content/uploads/2016/03/the-nash-calgary-3.jpg?resize=640%2C427&ssl=1>"},
                 "geometry": {
                     "type": "Point",
 			"coordinates": [-114.0369155,51.0415189]}}]};
-            
-           
-			
