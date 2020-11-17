@@ -82,8 +82,8 @@
 
 	
         function Popups(feature, layer) {
-            if (feature.properties && feature.properties.popupContent && feature.properties.img && feature.properties.link) {
-				layer.bindPopup(feature.properties.popupContent+feature.properties.img ++ feature.properties.link);
+            if (feature.properties && feature.properties.popupContent && feature.properties.img && feature.properties.link && feature.properties.name) {
+				layer.bindPopup( feature.properties.name + feature.properties.popupContent+feature.properties.img + feature.properties.link );
             };
 			};
 		

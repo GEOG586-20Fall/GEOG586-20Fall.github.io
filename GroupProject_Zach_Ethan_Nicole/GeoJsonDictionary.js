@@ -4,17 +4,19 @@ var Bigfoot = {
         "features" : [
             {"type":"Feature", 
             "properties":{
-                "name":"Bigfoot Patterson-Gimlin Footage",
-                "popupContent":"<b>Perhaps the single most iconic pieces of evidence of bigfoot, this footage has been analyzed, and re-analyzed, by various research times over the decades -- with no real confirmation of whether this is a hoax or not",
+                "name":"<b>Bigfoot Patterson-Gimlin Footage:<br> ",
+                "popupContent":"Perhaps the single most iconic pieces of evidence of bigfoot, this footage has been analyzed, and re-analyzed, by various research times over the decades -- with no real confirmation of whether this is a hoax or not",
 				"img": "<img src= https://www.ctvnews.ca/polopoly_fs/1.4453667.1559775021!/httpImage/image.jpeg_gen/derivatives/landscape_1020/image.jpeg>",
-				"link": "<b>https://www.youtube.com/watch?v=xVo6Vj0_Xbo&ab_channel=OPB"},
+				"link": "</b><a href='https://www.youtube.com/watch?v=xVo6Vj0_Xbo&ab_channel=OPB'>Video of sighting</a>"},
+					"geometry": {
                     "type":"Point",
                     "coordinates":[-123.705149, 41.322716]}},
             
             {"type": "Feature",
             "properties": {
-                "name": "Sidewalk",
+                "name": "Provo Canyon Encounter",
                 "popupContent":"<b>Sidewalk Citizen</b><br> Rustic bakery and cafe. $.",
+				"link": "<b> https://www.youtube.com/watch?v=Ss_Gm_N5C48&ab_channel=BeardCard",
 				"img": "<img src= https://cdn.canada247.info/assets/uploads/b96c91b17e4da30f7613b9514362dbca_-alberta-division-no-6-calgary-downtown-sidewalk-citizen-bakeryhtml.jpg>"},
                 "geometry": {
                     "type": "Point",
