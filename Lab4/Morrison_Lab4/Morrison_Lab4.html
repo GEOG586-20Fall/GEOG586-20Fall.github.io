@@ -4,225 +4,107 @@
 	<style>
 		#MyMap { height: 500px;
 				 width: 850px;
+				 border-color: black;
+				 border-style: solid;
 		}
 		body{
-			 background-image: url("https://media2.s-nbcnews.com/i/newscms/2019_33/2969496/190813-haiti-earthquake-damage-cs-1039a_93c4e29042711eb299a9248ba315a138.jpg");
+			 background-image: url("https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
 			 }
 
-		body{font-family: cooper black;}
-		.pinkText{color:Red;
+		body{font-family: Cooper Black;}
+		.Text{color:DarkSalmon;
 				  max-width :850px; 
 				  margin: auto;
-				  background-color : white;
+				  background-color : Lavender;
 				  text-align: center;
 				  font-size: 25px;
 				  border-color: black;
 				  border-style: solid;
+		
+		body{font-family: Cooper Black;}
+		.Format{color:DarkSalmon;
+				  max-width :850px; 
+				  margin: auto;
+				  background-color : Lavender;
+				  text-align: center;
+				  font-size: 18px;
+				  border-color: black;
+				  border-style: solid;
 		}
-		p {color: PaleVioletRed;
-					 max-width:850px;
-					 margin: auto; 
-					 background-color: white;
-					 text-align: left; 
-					 font-size: 20px;
-					 padding-bottom: 10px; 
-					 padding-top: 10px;
-		} 
+	
+	
 		.center{max-width: 850px; 
 				margin: auto; 
 				}
 		
-		.coded {color: PaleVioletRed;
-					 max-width:850px;
-					 margin: auto; 
-					 background-color: white;
-					 text-align: left; 
-					 font-size: 20px;
-					 border-color: black;
-					 border-style: solid;
-				}
-		
-		
-		.nicole {color: PaleVioletRed;
-					 max-width:850px;
-					 margin: auto; 
-					 background-color: white;
-					 text-align: left; 
-					 font-size: 20px;
-					 border-color: black;
-					 border-style: solid;
-				}
 				
 	</style>
-	<style>
-	img { 
-	width :300px; 
-	height:300px; 
-	object-fit: scale-down;
-	}
-	</style> 
-	
-	
-	
+		
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
 	   
-	  
  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
-   
-   <!-- Import axios library -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
- <!-- Querystring library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
-  <!-- Import our javascript file -->
-  <script src="cases.js"></script>
-  
-</body>
-   
-   <script>
-		alert("Hello, click OK to view my web map")
-   </script>
-   
-
-<script>
-
-	
-
-const data = null;
-
-const xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
-
-xhr.addEventListener("readystatechange", function () {
-	if (this.readyState === this.DONE) {
-		console.log(JSON.parse(xhr.responseText));
-	}
-});
-
-xhr.open("GET", "https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=Canada");
-xhr.setRequestHeader("x-rapidapi-key", "37cb14bd86mshc0975d77ac94936p1fdc0fjsn8b55ae3b2a7b");
-xhr.setRequestHeader("x-rapidapi-host", "covid-19-coronavirus-statistics.p.rapidapi.com");
-
-xhr.send(data);
-
-var APIresponse = xhr.responseText; 
-
-
-
-var element = document.getElementById('covid-19-coronavirus-statistics')
-if (element) {
-    element.innerHTML = APIresponse
-	}
-
-
-
-
-<!-- document.getElementById('Header').textContent = APIresponse;  -->
-
-
-<!-- var element = document.getElementById("header") -->
-<!-- if (element) { -->
-    <!-- element.innerHTML = APIresponse -->
-<!-- var myJsonDictionary = JSON.parse(xrh.responseText);  -->
-
-
-<!-- document.getElementById('province').textContent = province; -->
-<!-- document.getElementById('confirmed').textContent = confirmed;  -->
-			<!-- async function getData(){ -->
-				<!-- const response =await fetch ('api_url'); -->
-				<!-- const data = await response.json();  -->
-				<!-- console.log(data.province); -->
-				<!-- console.log(data.deaths); -->
-				<!-- console.log(data.confirmed); -->
-			<!-- } -->
-			<!-- const api_url ='https://covid-19-coronavirus-statistics.p.rapidapi.com/v1/stats?country=Canada'; -->
-			<!-- getData();  -->
-				
-</script>
-
- <!-- <p> province: <span id ="province"></span><br/ ></p>  -->
- <!-- <p> Cases: <span id ="confirmed"></span><br/ ></p>  -->
 
 </head> 
 <body>
-
-	<div id="Header" class="pinkText">
-	<h1> Earthquakes </h1> 
-	<h2> Annual earthquake data </h2>
+<div id="Header" class="Text">
+	<h1> Cities of Pennsylvania</h1> 
+<div id ="description" class = "format">
+	<p> Click on a popup to learn more about Pennsylvania's Cites! <br> Each popup provides infomation about the name and population (in the year 2000) of each city, as well as the County in which the city is located within. </p>
 	</div>
 	<br>
-	
-
 
 <div id="MyMap" class="center"></div>
 
 
 <script type= "application/javascript">
-
-
-        function Popups(feature, layer) {
-            if (feature.properties && feature.properties.covid-19-coronavirus-statistics) {
-				layer.bindPopup(feature.properties.covid-19-coronavirus-statistics);
-            };
 		
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+		
+		}
+};
+	
+	xhr.open("GET", "http://burnsr77.github.io/GH_demo/PACities.geojson", "synch");
+	
+	xhr.send();
 
+	
 
-	var map = L.map('MyMap').setView([56.1304, -106.3468], 3);
-
+	
+	 function myFunction(newlayer){	
+		var map = L.map('MyMap').setView([40.8214981079102, -77.5], 7);
 
 	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-			attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
-			}).addTo(map);
+				attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+				}).addTo(map);
+				
+	function onEachFeature(feature, layer) {
+				if (feature.properties &&  feature.properties.NAME && feature.properties.COUNTY && feature.properties.POP_2000) {
+					layer.bindPopup("<b> Name: </b>" + feature.properties.NAME + "<br>" + "<b>County: </b>" + feature.properties.COUNTY + "<br>" + "<b>Population: </b>"+ feature.properties.POP_2000);
+				};
+				};	
+
+	var geoJSONlayer = L.geoJSON(newlayer, {
+		onEachFeature: onEachFeature}).addTo(map);			
+	};
 		
-		var myJsonDictionary =APIresponse
-
-
-		L.geoJSON(myJsonDictionary, {
-			onEachFeature: Popups
-		 }).addTo(map); 
-		
-
-	 <!-- var canada = { -->
-            <!-- radius: 15, -->
-            <!-- fillColor: "pink", -->
-            <!-- color: "#000", -->
-            <!-- weight: 1, -->
-            <!-- opacity: 2, -->
-            <!-- fillOpacity: 0.5 -->
-            <!-- }; -->
-            
-         <!-- L.geoJSON(mygeoJsonDictionary, { -->
-            <!-- pointToLayer: function (feature, latlng) { -->
-                <!-- return L.circleMarker(latlng, canada); -->
-            <!-- }}).addTo(map); -->
-            
-   
-			
-	
+  </script>
+</body>
 </script> 	
 
-<br>
 
-<div id= "legend" class= "coded">  
-	<p> The markers are color coded based on price range:</P> 
-	<p> Pink = Low price range $ </p> 
-	<p> Purple = Medium price range $$</p> 
-	<p> Red = High price range $$$ </p>
-<br> 
-<p> The blue polygon overlays 17th Avenue. 17th is home to some of the best food in Calgary, A trip to 17th is a guarentee for some good food.If none of the eateries on this map suit you I recommend checking out more of 17th Ave<p>	
-<br>
-</div> 
-
-<br> 
-
-<div id="author" class="nicole"> 
+<div id="author" class="Text"> 
 	<p>By Nicole Morrison </p> 
 </div> 
+
 
 </body> 
 
 </html>
-
