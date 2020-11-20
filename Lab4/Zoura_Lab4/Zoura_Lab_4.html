@@ -29,21 +29,22 @@
 <script type= "application/javascript">
 		
 
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-        myFunction(myArr);
-		document.getElementById("xhr_request").innerHTML = this.responseText;
-    }
-};
-	
-	xhr.open("GET", "http://burnsr77.github.io/GH_demo/PACo.geojson", "synch");
-	
-	xhr.send();
-	
-	var APIresponse = xhr.responseText;
-	
+	var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+	if (this.readyState === this.DONE) {
+		console.log(this.responseText);
+	}
+});
+
+xhr.open("GET", "https://wft-geo-db.p.rapidapi.com/v1/locale/locales");
+xhr.setRequestHeader("x-rapidapi-host", "wft-geo-db.p.rapidapi.com");
+xhr.setRequestHeader("x-rapidapi-key", "66126feca9mshb1fc37c2700cf4bp14721ajsn4473bc5d7707");
+
+xhr.send(data);
 
 	
  function myFunction(newlayer){	
