@@ -12,3 +12,140 @@
       <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
       <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
       
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<!-- CSS STYLES FOR LABELS, TEXT CONTENT, POPUPS 
+ ------------------------------------------------------------------------------------------------------ --> 
+      <style>
+
+         .button{
+            text-align: center;
+            font-family: 'Roboto Condensed';
+            font-size: 15px;
+            color: white;
+            background-color: #1f2428;
+            border: none;
+            opacity: 1;
+            position: relative;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            font-weight: 100;
+            display: inline-block;
+            margin: 2px;
+            text-decoration: none;
+
+
+        }
+        .button:hover {
+            text-align: center;
+            font-size: 15px;
+            background-color: whitesmoke;
+            color: black;
+            border: none;
+            opacity: 1;
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+
+      </style>
+
+
+      </head>   
+
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<!-- THE TITLE/TEXT & LAYOUT DIV OBJECTS 
+ ------------------------------------------------------------------------------------------------------ --> 
+
+       <body>
+      
+            <div class="center" >
+               <a id="Parkslink" class="button button1" style="float: right;" href="https://www.pc.gc.ca/en/pn-np" target="_blank">Parks Website</a>
+            </div>
+            
+            <h1> WEBSITE TITLE  </h1>
+            <p> INTRODUCTION CONTENT </p>
+
+            <div id="mapid" style="height: 600px; margin: auto; display: block;"></div>
+
+
+<!-- ------------------------------------------------------------------------------------------------------
+THE MAP
+------------------------------------------------------------------------------------------------------ -->
+      <script> 
+
+
+           var basemap1 = L.map('mapid').setView([68.83, -95.07], 2.5); 
+          L.tileLayer(
+         'https://api.mapbox.com/styles/v1/macmulline/ckhqti8eu09v719jq0pccq3kg/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
+           
+          {
+              attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: 'mapbox/streets-v11',
+              tileSize: 512,
+              zoomOffset: -1,
+              accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+          }).addTo(basemap1);
+
+  
+// <!-- ------------------------------------------------------------------------------------------------------ -->
+// <!-- API LISTENER / RESPONSE FOR PA_POLYGONS & ADD TO MAP 
+// <!-- ------------------------------------------------------------------------------------------------------ --> 
+           function reqListenerpa_polygons () {
+            var pa_polygons_style = {
+                        "color": "#40010D",
+                        "weight": "1"
+                        // "fillColor": "#7da19d"
+                    };
+                     var api_pa_polygons = JSON.parse(this.responseText);
+                     L.geoJSON(api_pa_polygons,  {style: pa_polygons_style}).addTo(basemap1)
+                  
+                    }
+
+// <!-- ------------------------------------------------------------------------------------------------------ -->
+// <!-- API LISTENER / RESPONSE FOR tempdata & ADD TO MAP 
+// <!-- ------------------------------------------------------------------------------------------------------ --> 
+           function reqListenertempdata () {
+            var tempdata_style = {
+                        "color": "#A66249",
+                        "weight": "1",
+                        // "fillColor": "#7da19d"
+                    };
+                     var api_tempdata = JSON.parse(this.responseText);
+                     L.geoJSON(api_tempdata,  {style: tempdata_style }).addTo(basemap1)
+
+                    }
+                   
+                   
+// <!-- ------------------------------------------------------------------------------------------------------ -->
+// <!-- THE TWO API CALLS / REPONSE 
+// <!-- ------------------------------------------------------------------------------------------------------ --> 
+           var pa_polygons = new XMLHttpRequest();
+           pa_polygons.addEventListener("load", reqListenerpa_polygons);
+           pa_polygons.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/Parks_Protected_Areas_Albert.geojson");
+           pa_polygons.send();
+                            
+          var tempdata = new XMLHttpRequest();
+           tempdata.addEventListener("load", reqListenertempdata);
+           tempdata.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/OilSandAreas_NAD83.json");
+           tempdata.send();        
+         
+
+
+
+
+
+
+
+
+ 
+         </script>
+     <p>
+     <button id="resetButton" type="button1" onclick="basemap1.flyTo([51, -92], 8) "> RESET </button>
+     </p>
+      </body>
+   </html>
