@@ -17,7 +17,35 @@
  ------------------------------------------------------------------------------------------------------ --> 
       <style>
 
-      
+         .button{
+            text-align: center;
+            font-family: 'Roboto Condensed';
+            font-size: 15px;
+            color: white;
+            background-color: #1f2428;
+            border: none;
+            opacity: 1;
+            position: relative;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            font-weight: 100;
+            display: inline-block;
+            margin: 2px;
+            text-decoration: none;
+
+
+        }
+        .button:hover {
+            text-align: center;
+            font-size: 15px;
+            background-color: whitesmoke;
+            color: black;
+            border: none;
+            opacity: 1;
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 
 
       </style>
@@ -34,7 +62,10 @@
 
        <body>
       
-
+            <div class="center" >
+               <a id="Parkslink" class="button button1" style="float: right;" href="https://www.pc.gc.ca/en/pn-np" target="_blank">Parks Website</a>
+            </div>
+            
             <h1> WEBSITE TITLE  </h1>
             <p> INTRODUCTION CONTENT </p>
 
@@ -113,5 +144,8 @@ THE MAP
 
  
          </script>
+     <p>
+     <button id="resetButton" type="button1" onclick="basemap1.flyTo([51, -92], 8) "> RESET </button>
+     </p>
       </body>
    </html>
