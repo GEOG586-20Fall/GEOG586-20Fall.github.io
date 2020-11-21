@@ -32,33 +32,34 @@
 
 	var data = null;
 
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+	var xhr = new XMLHttpRequest();
+	xhr.withCredentials = true;
 
-xhr.addEventListener("readystatechange", function () {
-	if (this.readyState === this.DONE) {
-		console.log(this.responseText);
-	}
-});
+	xhr.addEventListener("readystatechange", function () {
+		if (this.readyState === this.DONE) {
+			console.log(this.responseText);
+		}
+	});
 
-xhr.open("GET", "https://wft-geo-db.p.rapidapi.com/v1/locale/locales");
-xhr.setRequestHeader("x-rapidapi-host", "wft-geo-db.p.rapidapi.com");
-xhr.setRequestHeader("x-rapidapi-key", "66126feca9mshb1fc37c2700cf4bp14721ajsn4473bc5d7707");
+	xhr.open("GET", "https://wft-geo-db.p.rapidapi.com/v1/locale/locales");
+	xhr.setRequestHeader("x-rapidapi-host", "wft-geo-db.p.rapidapi.com");
+	xhr.setRequestHeader("x-rapidapi-key", "66126feca9mshb1fc37c2700cf4bp14721ajsn4473bc5d7707");
 
-xhr.send(data);
+	xhr.send(data);
 
 	
- function myFunction(newlayer){	
-	var map = L.map('MyMap').setView([40.8214981079102, -77.5], 7);
+	 function myFunction(newlayer){	
+		var map = L.map('MyMap').setView([40.8214981079102, -77.5], 7);
 
 
-	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+		L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 			}).addTo(map);
 	
-var geoJSONlayer = L.geoJSON(newlayer).addTo(map);			
-};
+		var geoJSONlayer = L.geoJSON(newlayer).addTo(map);			
+	};
 
+	myFunction(xhr);
 		
 </script> 	
 
