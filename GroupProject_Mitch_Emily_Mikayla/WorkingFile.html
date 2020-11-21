@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <link rel="stylesheet" href="index.css">
+<!--       <link rel="stylesheet" href="index.css"> -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
          crossorigin=""/>
@@ -11,7 +11,17 @@
          crossorigin=""></script>
       <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
       <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
-      
+ 
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<!-- slider ref
+ ------------------------------------------------------------------------------------------------------ --> 
+<meta charset="utf-8" />
+<title>Create a time slider</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
+
 <!-- ------------------------------------------------------------------------------------------------------ -->
 <!-- CSS STYLES FOR LABELS, TEXT CONTENT, POPUPS 
  ------------------------------------------------------------------------------------------------------ --> 
@@ -69,7 +79,76 @@
             <h1> WEBSITE TITLE  </h1>
             <p> INTRODUCTION CONTENT </p>
 
-            <div id="mapid" style="height: 600px; margin: auto; display: block;"></div>
+            <div id="mapid" style="height: 600px; margin: auto; display: block;">
+        
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<!-- slider legend within in map div 
+ ------------------------------------------------------------------------------------------------------ --> 
+<!-- 							<div class="map-overlay top">
+							<div class="map-overlay-inner">
+							<h2>Significant earthquakes in 2015</h2>
+							<label id="month"></label>
+							<input id="slider" type="range" min="0" max="11" step="1" value="0" />
+							</div>
+							<div class="map-overlay-inner">
+							<div id="legend" class="legend">
+							<div class="bar"></div>
+							<div>Magnitude (m)</div>
+							</div>
+							</div> -->
+
+            </div>
+
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<!-- slider body style??
+ ------------------------------------------------------------------------------------------------------ --> 
+<!-- 	    <style>
+			.map-overlay {
+			font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+			position: absolute;
+			width: 25%;
+			top: 0;
+			left: 0;
+			padding: 10px;
+			}
+			 
+			.map-overlay .map-overlay-inner {
+			background-color: #fff;
+			box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+			border-radius: 3px;
+			padding: 10px;
+			margin-bottom: 10px;
+			}
+			 
+			.map-overlay h2 {
+			line-height: 24px;
+			display: block;
+			margin: 0 0 10px;
+			}
+			 
+			.map-overlay .legend .bar {
+			height: 10px;
+			width: 100%;
+			background: linear-gradient(to right, #fca107, #7f3121);
+			}
+			 
+			.map-overlay input {
+			background-color: transparent;
+			display: inline-block;
+			width: 100%;
+			position: relative;
+			margin: 0;
+			cursor: ew-resize;
+			}
+
+		</style> -->
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<!-- slider script??? this is where I stopped !! 
+ ------------------------------------------------------------------------------------------------------ --> 
+
+<!-- <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
 
 
 <!-- ------------------------------------------------------------------------------------------------------
@@ -109,7 +188,7 @@ THE MAP
 // <!-- ------------------------------------------------------------------------------------------------------ -->
 // <!-- API LISTENER / RESPONSE FOR tempdata & ADD TO MAP 
 // <!-- ------------------------------------------------------------------------------------------------------ --> 
-           function reqListenertempdata () {
+           function reqListenerwf_70s () {
             var tempdata_style = {
                         "color": "#A66249",
                         "weight": "1",
@@ -124,16 +203,35 @@ THE MAP
 // <!-- ------------------------------------------------------------------------------------------------------ -->
 // <!-- THE TWO API CALLS / REPONSE 
 // <!-- ------------------------------------------------------------------------------------------------------ --> 
-           var pa_polygons = new XMLHttpRequest();
+          var pa_polygons = new XMLHttpRequest();
            pa_polygons.addEventListener("load", reqListenerpa_polygons);
-           pa_polygons.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/Parks_Protected_Areas_Albert.geojson");
+           pa_polygons.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/Parks_Protected_Areas_Alberta.geojson");
            pa_polygons.send();
                             
-          var tempdata = new XMLHttpRequest();
-           tempdata.addEventListener("load", reqListenertempdata);
-           tempdata.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/OilSandAreas_NAD83.json");
-           tempdata.send();        
+          var wf_70s = new XMLHttpRequest();
+           wf_70s.addEventListener("load", reqListenerwf_70s);
+           wf_70s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_1970to1979_Simplif.geojson");
+           wf_70s.send();        
          
+          var wf_80s = new XMLHttpRequest();
+           wf_80s.addEventListener("load", reqListenerwf_80s);
+           wf_80s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_1980to1989_Simplif.geojson");
+           wf_80s.send();    
+
+ 		  var wf_90s = new XMLHttpRequest();
+           wf_90s.addEventListener("load", reqListenerwf_90s);
+           wf_90s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_1990to1999_Simplif.geojson");
+           wf_90s.send(); 
+
+          var wf_00s = new XMLHttpRequest();
+           wf_00s.addEventListener("load", reqListenerwf_00s);
+           wf_00s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2000to2009_Simplif.geojson");
+           wf_00s.send(); 
+
+          var wf_10s = new XMLHttpRequest();
+           wf_10s.addEventListener("load", reqListenerwf_10s);
+           wf_10s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2010to2019_Simplif.geojson");
+           wf_10s.send(); 
 
 
 
