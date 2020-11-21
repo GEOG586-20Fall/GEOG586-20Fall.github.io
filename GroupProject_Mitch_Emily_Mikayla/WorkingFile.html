@@ -43,9 +43,9 @@
             display: inline-block;
             margin: 2px;
             text-decoration: none;
-
-
         }
+        
+
         .button:hover {
             text-align: center;
             font-size: 15px;
@@ -57,6 +57,15 @@
             border-radius: 15px;
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 
+         }
+		#popup {text-align: center; color:white; font-size: 18px; font-family:'Roboto Condensed'}
+        .custom .leaflet-popup-tip,
+        .custom .leaflet-popup-content-wrapper {
+            background:rgba(0,0,0,0.5);
+            color: #ffffcf;
+            border-bottom: 6px solid white;
+     
+		}
 
       </style>
 
@@ -81,6 +90,7 @@
 
             <div id="mapid" style="height: 600px; margin: auto; display: block;">
         
+
 <!-- ------------------------------------------------------------------------------------------------------ -->
 <!-- slider legend within in map div 
  ------------------------------------------------------------------------------------------------------ --> 
@@ -98,6 +108,8 @@
 							</div> -->
 
             </div>
+
+
 
 
 <!-- ------------------------------------------------------------------------------------------------------ -->
@@ -151,12 +163,23 @@
 <!-- <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> -->
 
 
-<!-- ------------------------------------------------------------------------------------------------------
-THE MAP
------------------------------------------------------------------------------------------------------- -->
-      <script> 
 
+      <script type="text/javascript"> 
 
+ function onEachFeature(feature, layer) {
+                       var customOptions =
+                       {
+                        'maxWidth': '250',
+                        'className' : 'custom' }
+
+                    if (feature.properties.OC_NAME)  {
+                     layer.bindPopup("<p id='popup'>"+feature.properties.OC_NAME+"</p>", customOptions);
+
+                  } 
+              }
+// <!-- ------------------------------------------------------------------------------------------------------
+// THE MAP
+// ------------------------------------------------------------------------------------------------------ -->
            var basemap1 = L.map('mapid').setView([68.83, -95.07], 2.5); 
           L.tileLayer(
          'https://api.mapbox.com/styles/v1/macmulline/ckhqti8eu09v719jq0pccq3kg/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
@@ -181,7 +204,7 @@ THE MAP
                         // "fillColor": "#7da19d"
                     };
                      var api_pa_polygons = JSON.parse(this.responseText);
-                     L.geoJSON(api_pa_polygons,  {style: pa_polygons_style}).addTo(basemap1)
+                     L.geoJSON(api_pa_polygons,  {onEachFeature: onEachFeature, style: pa_polygons_style}).addTo(basemap1)
                   
                     }
 
@@ -192,7 +215,6 @@ THE MAP
             var tempdata_style = {
                         "color": "#A66249",
                         "weight": "1",
-                        // "fillColor": "#7da19d"
                     };
                      var api_tempdata = JSON.parse(this.responseText);
                      L.geoJSON(api_tempdata,  {style: tempdata_style }).addTo(basemap1)
@@ -213,25 +235,25 @@ THE MAP
            wf_70s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_1970to1979_Simplif.geojson");
            wf_70s.send();        
          
-          var wf_80s = new XMLHttpRequest();
-           wf_80s.addEventListener("load", reqListenerwf_80s);
-           wf_80s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_1980to1989_Simplif.geojson");
-           wf_80s.send();    
+     //      var wf_80s = new XMLHttpRequest();
+     //       wf_80s.addEventListener("load", reqListenerwf_80s);
+     //       wf_80s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_1980to1989_Simplif.geojson");
+     //       wf_80s.send();    
 
- 		  var wf_90s = new XMLHttpRequest();
-           wf_90s.addEventListener("load", reqListenerwf_90s);
-           wf_90s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_1990to1999_Simplif.geojson");
-           wf_90s.send(); 
+ 		  // var wf_90s = new XMLHttpRequest();
+     //       wf_90s.addEventListener("load", reqListenerwf_90s);
+     //       wf_90s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_1990to1999_Simplif.geojson");
+     //       wf_90s.send(); 
 
-          var wf_00s = new XMLHttpRequest();
-           wf_00s.addEventListener("load", reqListenerwf_00s);
-           wf_00s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2000to2009_Simplif.geojson");
-           wf_00s.send(); 
+     //      var wf_00s = new XMLHttpRequest();
+     //       wf_00s.addEventListener("load", reqListenerwf_00s);
+     //       wf_00s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2000to2009_Simplif.geojson");
+     //       wf_00s.send(); 
 
-          var wf_10s = new XMLHttpRequest();
-           wf_10s.addEventListener("load", reqListenerwf_10s);
-           wf_10s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2010to2019_Simplif.geojson");
-           wf_10s.send(); 
+     //      var wf_10s = new XMLHttpRequest();
+     //       wf_10s.addEventListener("load", reqListenerwf_10s);
+     //       wf_10s.open("GET", "https://raw.githubusercontent.com/GEOG586-20Fall/GEOG586-20Fall.github.io/master/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2010to2019_Simplif.geojson");
+     //       wf_10s.send(); 
 
 
 
