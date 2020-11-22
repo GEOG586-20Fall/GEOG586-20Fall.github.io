@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+
+    <body>
+	<!-- Stylesheets for leaflet and web page style-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+	
+	<!--Main title and text-->
+	<h1>A Personalized Greeting from the Internet and your Friend, Mark</h1>
+	<div><div id = "MainText">
+	<p>Hello IP address <span id="ip"></span>! This is your friend the Internet!</p>
+	<p>It looks like you live in <span id="city"></span>. I've been to <span id="country"></span> before!</p> 
+	<p>If I remember correctly the capital of your country is <span id="countryCapital"></span>? 
+	<p>The flag is quite beautiful!</p>
+	<img id="img" width = "190" height = "100">
+	<p>I hope that you are doing well in this tough economy, <span id="currencyNamePlural"></span> aren't worth what they used to be!</p>
+	<p>We should keep in touch because I already feel like I know you so well!</p>
+	<p>I'm not in your country right now but if I call you I'll be sure to use the <span id="phoneCode"></span> international dialing code to reach you!</p>
+	<p>I'm sort of old fashioned so maybe I'll send you a letter.</p>
+	<p>Your postal or zip code starts with <span id="zipCode"></span>, right?</p>
+	<p>Or maybe I could send Mark over to see you right now!</p>
+	<h3>He's in your neighborhood:</h3>
+	</div>
+	<div id="map"><br></div>
+	<!-- Javascript in main html file rather than a separate file. Asynchronous function didn't seem to work when in a separate file?-->
+    <script>
+	//Asynchronous function so that the html can load while we wait for the API
+	async function getGeoLocation() {
+		//API call using fetch method
+		const response = await fetch("https://find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com/iplocation?apikey=873dbe322aea47f89dcf729dcc8f60e8", {
+		"method": "GET",
+		"headers": {
+		"x-rapidapi-key": "aa42423015msh624325790a03e8ap189e60jsn03b50f9771ec",
+		"x-rapidapi-host": "find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com"
+			}
+		})
+		const data = await response.json();
+	
+		//deconstruct returned json into what I need
+		var {latitude, longitude, city, country, countryCapital, currencyNamePlural, flag, zipCode, phoneCode, ip} = data;
+	
+		//format for inclusion in the HTML
+		document.getElementById('city').textContent = city;
+		document.getElementById('country').textContent = country;
+		document.getElementById('countryCapital').textContent = countryCapital;
+		document.getElementById('currencyNamePlural').textContent = currencyNamePlural;
+		document.getElementById('img').src = flag;
+		document.getElementById('zipCode').textContent = zipCode;
+		document.getElementById('phoneCode').textContent = phoneCode;
+		document.getElementById('ip').textContent = ip;
+
+		//Icon
+		var zuckIcon = L.icon({
+		iconUrl: 'https://png2.cleanpng.com/sh/2f4cc3ee2752eaea8ca9e3685c39d374/L0KzQYi4UsE4N2g9fJGAYUO5cbK8WfRjaZdoT5C5OUa5RYq3V8E2OWQ6S6MEOUO7SYqBTwBvbz==/5a36aa59dbafc7.0966590715135319938998.png',
+		iconSize: [95, 100]
+		});
+		//create a marker with null location while waiting to fetch geolocation
+		var userLocation = L.marker([0, 0], {icon:zuckIcon});
+		var map = L.map('map').setView([latitude,longitude],16);
+			L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=GbTgUaI7708nBO7eCLe3',{
+			attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
+			crossOrigin: true
+			}).addTo(map);
+		//Add scale bar
+		L.control.scale().addTo(map);
+		//Set maker location when ready!	
+		userLocation.setLatLng([latitude, longitude]).bindPopup('Your coordinates are: ' +latitude + ', ' + longitude + '. If a student who just learned how to use an API can do this, imagine what someone who knows what they are doing could find out about you!').addTo(map);
+		}
+		// call the mega-function to make everything run!
+		getGeoLocation()
+    </script>
+    </body>
+</html>
