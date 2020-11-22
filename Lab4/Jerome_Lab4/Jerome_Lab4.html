@@ -1,0 +1,80 @@
+<html>
+<head>
+
+	<style>
+		#Lab4Map { height: 500px;
+					width : 850px;
+				}
+				
+			.center{max-width: 850px;
+						margin: auto;
+						}
+						
+		h1 {
+			text-align: center;
+			font-family: verdana;
+			max-width: 800px;
+			margin: auto;
+			}
+			
+		p {
+			text-align: center;
+			font-family: verdana;
+			margin: auto;
+			}
+			
+	</style>
+	
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   
+ </head>
+ 
+ <body>
+	
+	<h1>Cities in Pennsylvania</h1>
+	<p>Click a Marker to see the name of the City!</p>
+	
+	<div id="Lab4Map" class="center"></div>
+	<div id="xhr_test"></div>
+		
+		<script type = "application/javascript">
+		
+			function onEachFeature(feature, layer) {
+				layer.bindPopup("<h2>"+feature.properties.NAME+"</h2>");
+				};
+		
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var myArr = JSON.parse(this.responseText);
+			
+			myFunction(myArr);
+				//document.getElementById("xhr_request").innerhHTML = this.responseText;
+			}
+		};
+		
+			xhr.open("GET", "https://burnsr77.github.io/GH_demo/PACities.geojson", "synch");
+			xhr.send();
+			//var APIresponse = xhr.responseText;
+				
+		function myFunction(newlayer){
+			var map = L.map('Lab4Map').setView([40.8214981079102, -77.5], 7);
+			
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+				}).addTo(map);
+			
+		var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
+		};
+		
+	</script>
+	
+	</body>
+
+</html>
