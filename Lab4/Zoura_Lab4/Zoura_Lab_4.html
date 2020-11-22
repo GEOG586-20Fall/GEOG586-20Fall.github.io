@@ -2,13 +2,27 @@
 <head> 
 
 	<style>
-		#MyMap { height: 500px;
+		#MainMap { height: 500px;
 				 width: 850px;
 		}
-
-		.center{max-width: 850px; 
-				margin: auto; 
-				}
+		
+		h1 {
+			text-align: center;
+			font-family: verdana;
+			max-width: 750px;
+			margin: auto;
+		}
+		
+		p {
+			text-align: center;
+			font-family: verdana;
+			margin: auto;
+		}
+		
+		.center {
+			max-width: 850px; 
+			margin: auto; 
+		}
 						
 	</style>
 		
@@ -22,48 +36,48 @@
 
 </head> 
 <body>
-	<h1> hello </h1>
+	<h1>County Names in Pennsylvania</h1>
+	<p>Click on a county to see it's name popup!</p>
 
-<div id="MyMap" class="center"></div>
-<div id="xhr_test"></div>
+	<div id="MainMap" class="center"></div>
+	<div id="xhr_test"></div>
 
-<script type= "application/javascript">
-		
+		<script type= "application/javascript">
+			
+			function onEachFeature(feature, layer) {
+				layer.bindPopup("<h2>"+feature.properties.COUNTY_NAM+"</h2>");
+			};
 
-	var data = null;
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var myArr = JSON.parse(this.responseText);
+				myFunction(myArr);
+				//document.getElementById("xhr_request").innerHTML = this.responseText;
+			}
+		};
+			
+			xhr.open("GET", "https://burnsr77.github.io/GH_demo/PACo.geojson", "synch");
+			
+			xhr.send();
+			
+			//var APIresponse = xhr.responseText;
+			
 
-	var xhr = new XMLHttpRequest();
-	xhr.withCredentials = true;
+			
+		 function myFunction(newlayer){	
+			var map = L.map('MainMap').setView([40.8214981079102, -77.5], 7);
 
-	xhr.addEventListener("readystatechange", function () {
-		if (this.readyState === this.DONE) {
-			console.log(this.responseText);
-		}
-	});
-
-	xhr.open("GET", "https://wft-geo-db.p.rapidapi.com/v1/locale/locales");
-	xhr.setRequestHeader("x-rapidapi-host", "wft-geo-db.p.rapidapi.com");
-	xhr.setRequestHeader("x-rapidapi-key", "66126feca9mshb1fc37c2700cf4bp14721ajsn4473bc5d7707");
-
-	xhr.send(data);
-
-	
-	 function myFunction(newlayer){	
-		var map = L.map('MyMap').setView([40.8214981079102, -77.5], 7);
-
-
-		L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+			L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 			}).addTo(map);
-	
-		var geoJSONlayer = L.geoJSON(newlayer).addTo(map);			
-	};
+			
+				var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);			
+		};
 
-	myFunction(xhr);
-		
-</script> 	
+				
+		</script> 	
 
-
-</body> 
+	</body> 
 
 </html>
