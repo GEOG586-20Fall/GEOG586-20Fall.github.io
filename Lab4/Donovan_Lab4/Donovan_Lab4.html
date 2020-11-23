@@ -1,1 +1,225 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<style> 
+       
+    body{
+        
+        font-family: 'Roboto', sans-serif;
+        background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/beanstalk-dark.png");
+        position: relative;
+        
+    }
+    .container{
+        display: grid;
+        justify-content: space-evenly;
+        
+    }
+         
+    h1{
+        text-align:center;
+        color:whitesmoke;
+        font-weight: 900;
+        margin-bottom: 0;
+        font-size: 70px;
+    }
+    
+    h2{
+        text-align: center;
+        color:whitesmoke;
+        font-weight: 300;
+        font-size: 20px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+    
+    .button{
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        color: black;
+        background-color: whitesmoke;
+        border: none;
+        opacity: 0.6;
+        position: relative;
+        padding: 5px 15px;
+        border: 0.5px solid black;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        font-weight: 100;
+        display: inline-block;
+        margin: 2px;
+        text-decoration: none;
+        
+       
+    }
+    .button:hover {
+        text-align: center;
+        font-size: 15px;
+        background-color: dimgrey;
+        color: white;
+        border: none;
+        opacity: 0.6;
+        padding: 5px 15px;
+        border: 0.5px solid black;
+        border-radius: 8px;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+       
+    }
+
+      #map {
+            display: block;
+            position: absolute; 
+            top: 240; 
+            bottom: 150; 
+            left: 100; 
+            right: 100;
+            border-radius: 12px;
+          
+    }
+    
+
+    .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background-color: black;
+          opacity: 0.6;
+          color: white;
+          text-align: center;
+    }
+    
+  
+    
+    p{
+        display: grid;
+        justify-content: space-evenly;
+        align-content: center;
+        
+    }
+</style>
+    
+</head>
+<body>
+ 
+    <div class="container">
+        <h1>Pennsylvania</h1>
+        <h2>Counties and Cities</h2>
+
+       <a class="button button1"href="https://www.pa.gov/" target="_blank">Click to learn about Pennsylvania</a>
+    </div>
+    
+    <div class="footer">
+    <p>
+        By Mikayla Donovan
+        </p>
+           
+    </div>
+
+    
+    <div id = "map"></div>
+   
+    
+    
+<script>
+      //-----------------------------------on each feature----------------------------
+     function onEachFeature1(feature, layer, markerPane) {
+				if (feature.properties &&  feature.properties.NAME) {
+					layer.bindPopup("<b> Name: </b>" + feature.properties.NAME);
+				};
+				};
+    
+    function onEachFeature2(feature, layer, tilePane) {
+				if (feature.properties &&  feature.properties.COUNTY_NAM) {
+					layer.bindPopup("<b> Name: </b>" + feature.properties.COUNTY_NAM);
+				};
+				};	
+    
+    	
+    
+    
+
+//----------------------------------- cityicon----------------------------   
+    
+function cityicon (feature, latlng, popupPane) {
+
+                              return L.circleMarker(latlng, Marker);
+         }
+          var Marker = {
+          radius: 6,
+          fillColor: "#ff992b",
+          color: "#ffdf2b",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.3,
+        };
+    
+    
+    
+ //-----------------------------------map----------------------------
+    
+    var map = L.map('map', {zoomSnap: 0.25}).setView([41, -77.5], 8);
+    
+    L.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=TGQCxyBRvyf29NNtjFcv', {
+        attribution:'<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+    }).addTo(map);
+    
+    L.control.scale().addTo(map);
+    
+    
+    
+          //-----------------------------------city function----------------------------
+    
+    function city () {
+        var CityApi=
+            JSON.parse(this.responseText);
+            cityLayer =L.geoJSON(CityApi, {pointToLayer: cityicon, onEachFeature: onEachFeature1}).addTo(map);
+        cityLayer.bringToFront();
+ 
+    }
+    
+          //-----------------------------------city api call----------------------------
+    
+     var cityPoly = new XMLHttpRequest();
+    cityPoly.addEventListener("load", city);
+    cityPoly.open("GET", "http://burnsr77.github.io/GH_demo/PACities.geojson");
+    cityPoly.send();
+    
+    
+    //-----------------------------------county function----------------------------
+   
+    function county () {
+        var style = {
+           "color": "#cf001c",
+            "weight": "1",
+            fillOpacity: 0,
+            fill: "none",
+            };
+        var CountyApi=
+            JSON.parse(this.responseText);
+            countyLayer=L.geoJSON(CountyApi, {onEachFeature: onEachFeature2, style: style}).addTo(map);
+        countyLayer.bringToBack();
+  
+    }
+   
+
+    
+       //----------------------------------- county api call----------------------------
+    
+    var countyPoly = new XMLHttpRequest();
+    countyPoly.addEventListener("load", county);
+    countyPoly.open("GET", "http://burnsr77.github.io/GH_demo/PACo.geojson");
+    countyPoly.send();
+    
+    
+
+    
+
+</script>
+    
+</body>
+</html>
 
