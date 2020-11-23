@@ -1,0 +1,103 @@
+<html>
+<head>
+ <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+      crossorigin=""></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+ 
+ 
+ </head>
+ 
+ <h1 > 
+  <h1 style="background-color:SlateGrey; font-family:Verdana ;color: white; height:100px; width;90%; text-align: center; font-size-adjust:32;" ; ><b> Calgary's Public Artwork	
+  </b></h1><p2> 
+		 
+
+</head>
+  <style>
+.footer {
+  position: fixed;
+  left: 
+  0;
+  bottom: 0;
+height: 200px;
+  width: 100%;  
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+</style>
+
+
+<body>
+ 
+</div>
+
+<div id="mapid" style = "width:100%; height:580px;"></div>
+
+<div id="xhr_test"></div>
+
+<script type= "application/javascript">
+		
+
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+		//document.getElementById("xhr_request").innerHTML = this.responseText;
+    }
+};
+	
+	xhr.open("GET", "https://raw.githubusercontent.com/Mohammed-Hinaai/test_Mo/3b8445fc4082ba931981a9f0a772b90d028e3e40/PublicArt_Calgary.geojson","asynchronously");
+	
+	xhr.send();
+	
+//var APIresponse = xhr.responseText;
+	
+	
+	
+ function myFunction(newlayer){	
+	var mymap = L.map('mapid').setView([51.0447, -114.0719], 11);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+	position: 'center',
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibW9oYW1tZWQtYWwtaGluYWFpIiwiYSI6ImNrZm5mNjh3bjFvdDAyc28wM2R6a3R5dzkifQ.9myRT29Aw5gq1ekO9tEVzw'
+}).addTo(mymap); 
+
+var myJsonDictionary = JSON.parse(xhr.responseText);
+
+ var geoJSONlayer = L.geoJSON(newlayer).addTo(mymap);
+
+function onEachFeature(Feature, layer) {
+	layer.bindPopup("<h1 style= font-size:13>"+'Artwork Title: '+"<p1 style= font-size:12 >"+Feature.properties.TITLE);}
+L.geoJSON(newlayer, {onEachFeature:onEachFeature}).addTo(mymap); 
+};
+
+
+
+	</script>
+
+ 
+</body>
+ <div class="footer">
+  <img style =" height: 80%"  src= https://curiocity.com/calgary/wp-content/uploads/2019/05/58649633_457397508346603_1900727351251891267_n.jpg /img>
+<img style =" height: 80%"  src= https://www.calgary.ca/csps/recreation/public-art/civic-art-collection/_jcr_content/root/maincontentpar/responsivegrid/grid/column-0-r0/grid_layout1334/column-1-r0/image.img.jpeg/1591982314498/chinook-arc-joe-o-connell-blessing-hancock.jpeg /img>
+<img style =" height: 80%"  src=https://images.squarespace-cdn.com/content/v1/5cdb13bf2727be3979909e4e/1569951143816-FIMQL44AL6AHLECXV2OD/ke17ZwdGBToddI8pDm48kCr8xQqtslWqyW8zloD3-057gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UbV8Nw4Tl-XKhksFku8ba5A7EtkynaWxP1zgfDGVFYUXo9UrYDA7WhPJCE0O3E6UwQ/KHS06470.jpg?format=1500w /img>
+<img style =" height: 80%"  src= https://www.calgary.ca/content/dam/www/csps/recreation/publishingimages/artsandculture/publicart/completed-projects/reflection-and-flow.jpg /img>
+  <img style =" height: 80%"  src= https://www.calgary.ca/content/dam/www/csps/recreation/publishingimages/artsandculture/publicart/completed-projects/bowfort-towers.jpg /img>
+  <img style =" height: 80%"  src= https://www.calgary.ca/content/dam/www/csps/recreation/publishingimages/artsandculture/publicart/completed-projects/utility-boxes.jpg /img>
+  <img style =" height: 80%"  src= https://www.calgary.ca/content/dam/www/csps/recreation/publishingimages/artsandculture/publicart/completed-projects/collide.jpg /img>
+
+
+  </div> 
+
+</html> 
