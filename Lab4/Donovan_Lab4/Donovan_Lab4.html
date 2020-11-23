@@ -128,13 +128,13 @@
       //-----------------------------------on each feature----------------------------
      function onEachFeature1(feature, layer, markerPane) {
 				if (feature.properties &&  feature.properties.NAME) {
-					layer.bindPopup("<b> Name: </b>" + feature.properties.NAME);
+					layer.bindPopup("<b> Name: </b>" + feature.properties.NAME+ "<br></br>" + "<b> Population: </b>" + feature.properties.POP_2000);
 				};
 				};
     
     function onEachFeature2(feature, layer, tilePane) {
 				if (feature.properties &&  feature.properties.COUNTY_NAM) {
-					layer.bindPopup("<b> Name: </b>" + feature.properties.COUNTY_NAM);
+					layer.bindPopup("<b> Name: </b>" + feature.properties.COUNTY_NAM+ "<br></br>" + "<b> Area (sqaure miles): </b>" + feature.properties.AREA_SQ_MI);
 				};
 				};	
     
@@ -222,4 +222,3 @@ function cityicon (feature, latlng, popupPane) {
     
 </body>
 </html>
-
