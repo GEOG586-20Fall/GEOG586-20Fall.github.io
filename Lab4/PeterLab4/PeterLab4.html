@@ -100,15 +100,12 @@
       if (this.readyState == 4 && this.status == 200) {
          var myArr = JSON.parse(this.responseText);
          myFunction(myArr);
-		 //document.getElementById("xhr_request").innerHTML = this.responseText;
          }
       };
 	
 	  xhr.open("GET", "https://burnsr77.github.io/GH_demo/PACo.geojson", "synch");
       
 	  xhr.send();
-	
-	  //var APIresponse = xhr.responseText;
       
       function myFunction(maplayer){	
          var mymap = L.map('mapPennsylvania').setView([40.8214981079102, -77.5], 7);
