@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -71,7 +72,7 @@ text-align:center;
   /********** DATA REQUESTS *****************/
   // PACities.geoJSON
     var cities = $.ajax({
-        url:"http://burnsr77.github.io/GH_demo/PACities.geojson",
+        url:"https://burnsr77.github.io/GH_demo/PACities.geojson",
         dataType: "json",
         success: console.log("PACities data successfully loaded."),
         error: function (xhr) {
