@@ -1,0 +1,107 @@
+<html> 
+<head> 
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+
+	<style>
+		#MyMap{
+			height: 700px;
+			width: 1100px;
+			border-style: solid;
+			border-width: medium;
+		}
+		.center{
+			max-width: 1100px; 
+			margin: auto; 
+		}
+		h1 {
+			text-align: center;
+			font-family: 'Nerko One', cursive;
+			font-size: 64;
+			font-weight: bold;
+			background-color: #E6A2C5;
+			border-style: solid;
+			border-width: 0px 0px 5px 0px;
+		}
+		h2{
+			text-align: center;
+			font-family: 'Nerko One', cursive;
+			font-size: 17;
+		}
+		p {
+			text-align: left;
+			font-family: 'Nerko One', cursive;
+			font-size: 13.5;
+		}
+		body{
+			background-color: #7496D2;
+		}
+		#bText{
+			background-color: #C7CEF6;
+			text-align: center;
+			font-family: 'Nerko One', cursive;
+			font-size: 17;
+			border-style: solid;
+			border-width: medium;
+		}	
+						
+	</style>
+		
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+	   
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+</head>
+
+
+<body>
+
+<h1>Cities of Pennsylvania</h1>
+<div id="bText">Consult this map to learn about any city in the state! Click on the popups to see the city's name, the county that it's in, its rough population range (if known), and its "rank". Note that I have no idea what the ranks mean, so let's pretend they're useful for some kind of spatial analysis. Maybe a ranking of -1 means it's an absolutely garbage terrible city to avoid at all costs (defined more precisely elsewhere), 0 means it has nothing to offer, and so on. Or maybe something completely different, I really have no idea. Enjoy!</div><br><br>
+
+<div id="MyMap" class="center"></div>
+<br>
+<div id="bText">By Alex Scheer</div>
+
+<script type="application/javascript">
+		
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var PACities = JSON.parse(this.responseText);
+        makeMap(PACities);
+    }
+};
+	
+	xhr.open("GET", "https://burnsr77.github.io/GH_demo/PACities.geojson", "synch");
+	xhr.send();
+
+function bindPopups(feature, layer) {
+	layer.bindPopup("<h2>"+feature.properties.NAME+"<p>"+"County: "+feature.properties.COUNTY+"<br>Pop. range: "+feature.properties.POP_RANGE+"<br>Rank: "+feature.properties.RANK);
+};
+	
+function makeMap(newLayer){	
+	var map = L.map('MyMap').setView([40.8214981079102, -77.5], 8);
+
+	L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 18,
+	ext: 'png'}).addTo(map);
+			
+	L.geoJSON(newLayer, {onEachFeature: bindPopups}).addTo(map);
+};
+
+		
+</script> 	
+
+
+</body> 
+
+</html>
