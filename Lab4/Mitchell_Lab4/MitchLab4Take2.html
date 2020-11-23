@@ -1,0 +1,96 @@
+<html>
+<head>
+	<body style="background-color:orange;">
+	<style ="font-family:'Arial Narrow'">
+	
+	h1 {text-align: center;}
+	h2 {text-align: center;}
+	h3 {text-align: center;}
+	h4 {text-align: center;}
+	p  {text-align: center;}
+	
+	
+	.pagecenter{max-width: 850px; 
+				margin: auto; 
+				}
+				
+	.centerbutton {
+		display: flex;
+		justify-content: center;
+		align-items: center;			
+				
+</style>
+
+	<style>
+		#primaryMap {	height: 540px;
+						width: 1050px;}
+						
+	</style>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+	crossorigin=""/>
+   
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   
+<script>
+	alert("Welcome to Mitchell's webmap for GEOG 586 Lab 4,otherwise known as the Pennsylvania Real Estate Website!")
+</script>
+</head>
+
+<body>
+
+	<h1> Pennsylvania Real Estate Board of GEOG 586 </h1>
+	<p> Welcome to the Pennsylvania Real Estate Board website. On this website, you can view Pennsylvania's various counties. <br> Click on the counties to get information, such as their names and size by area. </p>
+		
+<div id="primaryMap" class="pagecenter"</div>
+<div id="xhr_test"</div>
+<script type="application/javascript">
+var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+		//document.getElementById("xhr_request").innerHTML = this.responseText;
+    }
+};
+	
+	xhr.open("GET", "https://burnsr77.github.io/GH_demo/PACo.geojson", "synch");
+	
+	xhr.send();
+	
+	//var APIresponse = xhr.responseText;
+	
+
+function myFunction(newlayer){	
+		var map = L.map('primaryMap').setView([40.8214981079109, -77.5], 7);
+
+		L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+        crossOrigin: true
+      }).addTo(map);
+	  
+</script>
+<style> 
+.button {
+  font: bold 15px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+</style>
+
+<div class="centerbutton">
+<a href="https://www.ucalgary.ca/ancillary/residence" class="button">Go to Residence Services</a>
+</div>
+	  
+
+</html>
+	  
+

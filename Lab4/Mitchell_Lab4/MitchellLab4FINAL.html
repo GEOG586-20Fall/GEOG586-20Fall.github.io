@@ -1,0 +1,116 @@
+<html> 
+<head> 
+
+	<body style="background-color:orange;">
+	<style ="font-family:'Arial Narrow'">
+	
+	h1 {text-align: center;}
+	h2 {text-align: center;}
+	h3 {text-align: center;}
+	h4 {text-align: center;}
+	p  {text-align: center;}
+	
+	
+	.pagecenter{max-width: 850px; 
+				margin: auto; 
+				}
+				
+	.centerbutton {
+		display: flex;
+		justify-content: center;
+		align-items: center;			
+				
+</style>
+
+	<style>
+		#primaryMap {	height: 540px;
+						width: 1050px;}
+						
+	</style>
+		
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+	   
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   
+ <script>
+	alert("Welcome to Mitchell's webmap for GEOG 586 Lab 4,otherwise known as the Pennsylvania Tourism Centre Website!")
+</script>  
+
+</head> 
+<body>
+	<h1> Pennsylvania Tourism Centre of GEOG 586 </h1>
+	<p> Welcome to the BETA version of the Pennsylvania Tourism Centre website. On this website, you can view Pennsylvania's various counties. <br> Click on the counties to get information, such as their names. </p>
+		
+
+<div id="primaryMap" class="pagecenter"></div>
+<div id="xhr_callup"></div>
+
+<script type= "application/javascript">
+	function onEachFeature(feature, layer) {
+				layer.bindPopup("<h2>"+feature.properties.COUNTY_NAM+"</h2>");
+				};
+
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+		//document.getElementById("xhr_request").innerHTML = this.responseText;
+    }
+};
+	
+	xhr.open("GET", "https://burnsr77.github.io/GH_demo/PACo.geojson", "synch");
+	
+	xhr.send();
+	
+	//var APIresponse = xhr.responseText;
+	
+
+	
+ function myFunction(newlayer){	
+	var map = L.map('primaryMap').setView([40.8214981079109, -77.5], 7);
+
+
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+			}).addTo(map);
+			
+	L.marker([40.26407025548734, -76.88342957308384]).addTo(map)
+			.bindPopup("HARRISBURG - Capital of Pennsylvania")
+			.openPopup();
+	
+var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
+		};
+		
+</script> 
+<h3> About Pennsylvania </h3>
+<p> Welcome to Pennsylvania! Pennsylvania is one of fifty US states, and has a population of 12.8 million people as of 2019.<br> The capital city of Pennsylvania is Harrisburg, represented by the blue pin on the map.
+		<br>. Travelling to Pennsylvania soon? All of our counties have amazing tourism activities available. While travelling in Pennsylvania, please remember to follow all COVID-19 procedures, and if you are coming from out of country, please self-isolate for 14 days upon arrival.<br></p>
+		
+<h4> BETA Testing our new website </h4>
+<p> We are currently in the process of updating our website. This is the BETA site, which may or may not be working.<br> Want to visit our old and properly functional website? Click the button below.</p>
+<style> 
+.button {
+  font: bold 15px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+</style>
+
+<div class="centerbutton">
+<a href="https://www.visitpa.com/" class="button">Visit the Tourism PA Website</a>
+</div>
+
+</body> 
+
+</html>
