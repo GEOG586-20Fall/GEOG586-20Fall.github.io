@@ -42,7 +42,7 @@
 
         function myFunction(newlayer){	
         var mymap = L.map('mapid').setView([51.0427866,-114.0729713], 14);  
-        var Stadia_OSMBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
+        L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
               maxZoom: 20,
               attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
               accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A',
