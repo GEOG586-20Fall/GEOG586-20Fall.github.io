@@ -5,11 +5,11 @@
        crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
         
-        <link rel="stylesheet" type="text/css" href="L2main.css" media="screen"/> <!-- style sheet, might not need for this one-->
+        <link rel="stylesheet" type="text/css" href="L4main.css" media="screen"/> 
      </head>
     
     <body>
-    <div id="mapid" class="centermap outline" style="height: 900px; width: 60%;">
+    <div id="mapid" class="centermap outline" style="height: 700px; width: 80%;">
         
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
                integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -21,33 +21,32 @@
         var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-            myFunction(myArr);
+        var sites = JSON.parse(this.responseText);
+            myFunction(sites);
         //document.getElementById("xhr_request").innerHTML = this.responseText;
         }};
 
-        xhr.open("GET", "https://data.calgary.ca/resource/99yf-6c5u.geojson","asynchronously");
+        xhr.open("GET", "https://data.calgary.ca/resource/99yf-6c5u.geojson", "synch");
 
         xhr.send();
 
         //var APIresponse = xhr.responseText;
 
         function myFunction(newlayer){	
-        var mymap = L.map('mapid').setView([51.0378,-114.1159], 13);  
+        var mymap = L.map('mapid').setView([51.0427866,-114.0729713], 15);  
         var Stadia_OSMBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
               maxZoom: 20,
               attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
               accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A',
             }).addTo(mymap);
-            
-          function onEachFeature(Feature, layer) {
-        layer.bindPopup("<h>"+'Historic Resource: '+"<p1 style= font-size:12 >"+Feature.properties.NAME);}
+
+        var JsonDic = JSON.parse(xhr.responseText);
+
+
+        function onEachFeature(feature, layer) {
+            layer.bindPopup("<h2>"+"Historic Resource Name: "+"<br>"+feature.properties.name+"<br>"+"Construction Year: " +feature.properties.construction_yr +"<br>"+"Architecture Style: "+feature.properties.architecture_style);}
         L.geoJSON(newlayer, {onEachFeature:onEachFeature}).addTo(mymap); 
-
-        var myJsonDictionary = JSON.parse(xhr.responseText);
-
-        var geoJSONlayer = L.geoJSON(newlayer).addTo(mymap);
-                };
+        };
 
 
     </script>
@@ -55,11 +54,6 @@
     </body>
 
 </html>
-    
-    "<h2>"+feature.properties.NAME+"<p>"+"County: "+feature.properties.COUNTY+"<br>Pop. range: "+feature.properties.POP_RANGE+"<br>Rank: "+feature.properties.RANK);
-};
-    
-    
     
  
         
