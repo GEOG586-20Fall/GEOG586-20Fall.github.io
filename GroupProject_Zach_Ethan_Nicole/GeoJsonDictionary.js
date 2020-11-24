@@ -105,7 +105,107 @@ var Thunderbird = {
 				"img": "<img src= https://static.wikia.nocookie.net/cryptidz/images/6/62/Giant-thunderbird-56c0d4de5f9b5829f86738ca.png/revision/latest/scale-to-width-down/350?cb=20200710194116>"},
                     "geometry": {
 					"type": "Point",
-					"coordinates": [-159.057060, 58.976897]}}]}; 
+					"coordinates": [-159.057060, 58.976897]}}]};
+
+var Seelkee = {
+		"type" : "FeatureCollection",
+        "features" : [
+            {"type":"Feature", 
+				"properties":{
+					"name":"Seelkee 'S’í:lhqey’:<br> ",
+					"popupContent":"<b>The Seelkee is a lake monster that is said to have lived in the swamps of Chilliwack, BC. It is described to be 3 to 4.5 metres long. Sightings of this cryptid go back centuries; and, the indigenous Stó:lō peoples have tales of this cryptid, often painting their longhouses with accent colours mimicking the serpent.</b>",
+					"link": "<b> <a href='https://www.aroundchilliwack.ca/blog//chilliwack-museum-moment-slhqey'> Check out the Chilliwack Museum Website!</a>",
+					"img":"<img src= https://images.squarespace-cdn.com/content/v1/57105601746fb97f5df30963/1571707992072-TV05YBBM2DA11ED7PDSS/ke17ZwdGBToddI8pDm48kIs8KRnF23_3toxB8wR1rsYUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcI6lAXf7gaysNFpW_aRPLLw8mABPSK_ylAE7CEsZfQiMQu0Dgri4fDDmxc9gqhWl2/2004.052.2196.jpg?format=750w>>"},
+					"geometry":{
+						"type":"Point",
+						"coordinates":[-121.950917, 49.157722]}}]};
+					
+var JerseyDevil = {
+		"type" : "FeatureCollection",
+		"features" : [
+			{"type":"Feature",
+				"properties":{
+					"name":"Jersey Devil:<br> ",
+					"popupContent":"<b>Encountered in numerous locations in the USA, the Jersey Devil is described as a flying biped with hooves -- however, more specific descriptions note that is kangaroo-like biped, with a goat-like head, leathery bat-like wings, and claws, hooves, and a forked tail. It is known to emit a high-pitched scream and move very quickly.</b>",
+					"link": "<b> <a href='https://www.southjersey.com/article/9962/History--The-Jersey-Devil'> For more information.</a>",
+					"img":"<img src= https://www.nj.com/resizer/j_y-UvUhDTpH7Zs1K97hECBTM2s=/450x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.nj.com/home/njo-media/width2048/img/entertainment_impact/photo/jd-sketch-coverjpg-27dad0db1d917a33.jpg>>"},
+					"geometry":{
+						"type":"Point",
+						"coordinates":[-74.5163, 39.9501]}}]};
+						
+			{"type":"Feature",
+				"properties":{
+					"name":"Jersey Devil:<br> ",
+					"popupContent":"<b>Encountered in numerous locations in the USA, the Jersey Devil is described as a flying biped with hooves -- however, more specific descriptions note that is kangaroo-like biped, with a goat-like head, leathery bat-like wings, and claws, hooves, and a forked tail. It is known to emit a high-pitched scream and move very quickly.</b>",
+					"link": "<b> <a href='https://www.southjersey.com/article/9962/History--The-Jersey-Devil'> For more information.</a>",
+					"img":"<img src= https://www.nj.com/resizer/j_y-UvUhDTpH7Zs1K97hECBTM2s=/450x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.nj.com/home/njo-media/width2048/img/entertainment_impact/photo/jd-sketch-coverjpg-27dad0db1d917a33.jpg>>"},
+					"geometry":{
+						"type":"Point",
+						"coordinates":[-74.4374, 39.3583]}}]};
+						
+			{"type":"Feature",
+				"properties":{
+					"name":"Jersey Devil:<br> ",
+					"popupContent":"<b>Encountered in numerous locations in the USA, the Jersey Devil is described as a flying biped with hooves -- however, more specific descriptions note that is kangaroo-like biped, with a goat-like head, leathery bat-like wings, and claws, hooves, and a forked tail. It is known to emit a high-pitched scream and move very quickly.</b>",
+					"link": "<b> <a href='https://www.southjersey.com/article/9962/History--The-Jersey-Devil'> For more information.</a>",
+					"img":"<img src= https://www.nj.com/resizer/j_y-UvUhDTpH7Zs1K97hECBTM2s=/450x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.nj.com/home/njo-media/width2048/img/entertainment_impact/photo/jd-sketch-coverjpg-27dad0db1d917a33.jpg>>"},
+					"geometry":{
+						"type":"Point",
+						"coordinates":[-76.4374, 39.0458]}}]};
+						
+			{"type":"Feature",
+				"properties":{
+					"name":"Jersey Devil:<br> ",
+					"popupContent":"<b>Encountered in numerous locations in the USA, the Jersey Devil is described as a flying biped with hooves -- however, more specific descriptions note that is kangaroo-like biped, with a goat-like head, leathery bat-like wings, and claws, hooves, and a forked tail. It is known to emit a high-pitched scream and move very quickly.</b>",
+					"link": "<b> <a href='https://www.southjersey.com/article/9962/History--The-Jersey-Devil'> For more information.</a>",
+					"img":"<img src= https://www.nj.com/resizer/j_y-UvUhDTpH7Zs1K97hECBTM2s=/450x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.nj.com/home/njo-media/width2048/img/entertainment_impact/photo/jd-sketch-coverjpg-27dad0db1d917a33.jpg>>"},
+					"geometry":{
+						"type":"Point",
+						"coordinates":[-75.5277, 38.9108]}}]};
+						
+			{"type":"Feature",
+				"properties":{
+					"name":"Jersey Devil:<br> ",
+					"popupContent":"<b>Encountered in numerous locations in the USA, the Jersey Devil is described as a flying biped with hooves -- however, more specific descriptions note that is kangaroo-like biped, with a goat-like head, leathery bat-like wings, and claws, hooves, and a forked tail. It is known to emit a high-pitched scream and move very quickly.</b>",
+					"link": "<b> <a href='https://www.southjersey.com/article/9962/History--The-Jersey-Devil'> For more information.</a>",
+					"img":"<img src= https://www.nj.com/resizer/j_y-UvUhDTpH7Zs1K97hECBTM2s=/450x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.nj.com/home/njo-media/width2048/img/entertainment_impact/photo/jd-sketch-coverjpg-27dad0db1d917a33.jpg>>"},
+					"geometry":{
+						"type":"Point",
+						"coordinates":[-77.1945, 41.2033]}}]};
+						
+			{"type":"Feature",
+				"properties":{
+					"name":"Jersey Devil:<br> ",
+					"popupContent":"<b>Encountered in numerous locations in the USA, the Jersey Devil is described as a flying biped with hooves -- however, more specific descriptions note that is kangaroo-like biped, with a goat-like head, leathery bat-like wings, and claws, hooves, and a forked tail. It is known to emit a high-pitched scream and move very quickly.</b>",
+					"link": "<b> <a href='https://www.southjersey.com/article/9962/History--The-Jersey-Devil'> For more information.</a>",
+					"img":"<img src= https://www.nj.com/resizer/j_y-UvUhDTpH7Zs1K97hECBTM2s=/450x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.nj.com/home/njo-media/width2048/img/entertainment_impact/photo/jd-sketch-coverjpg-27dad0db1d917a33.jpg>>"},
+					"geometry":{
+						"type":"Point",
+						"coordinates":[-79.7990, 43.3255]}}]};					
+
+// var Wendingo = {
+		// "type" : "FeatureCollection",
+        // "features" : [
+            // {"type":"Feature", 
+            // "properties":{
+                // "name":"<b>Wendingo:<br> ",
+                // "popupContent":"Is often dipictaed in popular culture. Is used today in many hollywood movies and TV shows, and is written about in many books",
+				// "img": "<img src= https://www.ctvnews.ca/polopoly_fs/1.4453667.1559775021!/httpImage/image.jpeg_gen/derivatives/landscape_1020/image.jpeg>",
+				// "link": "</b><a href='https://www.youtube.com/watch?v=xVo6Vj0_Xbo&ab_channel=OPB'>Modern depictation of the Wendigo in popular culture </a>"},
+					// "geometry": {
+                    // "type":"Point",
+                    // "coordinates":[-118.2984, 34.9004]}},
+            
+           
+			// {"type": "Feature",
+            // "properties": {
+                // "name": "The Wendigo (novella):<br>",
+                // "popupContent":"<b>A novel by Algernon Blackwood ",
+				// "link": "<b> <a href='https://www.youtube.com/watch?v=xb9YcIlkl_c&ab_channel=JoshHighcliff'>Video of sighting</a>",
+				// "img": "<img src= https://cdn.the-scientist.com/assets/articleNo/40145/aImg/23552/suspect-sasquatch-sequencing-m.jpg>"},
+                // "geometry": {
+                    // "type": "Point",
+                    // "coordinates": [-, ]}}]};
 
 
             
