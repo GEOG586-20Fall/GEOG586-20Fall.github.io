@@ -5,25 +5,27 @@
 	<style>
 		#MyMap { height: 500px;
 				 width: 850px;
+				  border-color: black;
+				  border-style: solid;
 		}
 		body{
-			 background-image: url("https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2016/10/cerberus.jpg");
+			 background-image: url("https://i.pinimg.com/originals/a0/c2/b4/a0c2b4a50a25d95ec332d2fcacbeb3a9.jpg");
 			 }
 
 		body{font-family: cooper black;}
-		.pinkText{color:Gray;
+		.pinkText{color:DarkSlateGrey;
 				  max-width :850px; 
 				  margin: auto;
-				  background-color : white;
+				  background-color : DarkGray;
 				  text-align: center;
 				  font-size: 25px;
 				  border-color: black;
 				  border-style: solid;
 		}
-		p {color: gray;
+		p {color: DarkSlateGrey ;
 					 max-width:850px;
 					 margin: auto; 
-					 background-color: white;
+					 background-color: DarkGray;
 					 text-align: left; 
 					 font-size: 20px;
 					 padding-bottom: 10px; 
@@ -112,7 +114,7 @@
 
 <script type= "application/javascript">
 
-	var map = L.map('MyMap').setView([56.1304, -106.3468], 3);
+	var map = L.map('MyMap').setView([50.1304, -105.3468], 3);
 
 
 	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
@@ -158,11 +160,11 @@
 	
 	 var styleBigfoot = {
             radius: 15,
-            fillColor: "pink",
-            color: "#000",
+            fillColor: "Sienna",
+            color: "Sienna",
             weight: 1,
             opacity: 2,
-            fillOpacity: 0.5
+            fillOpacity: 0.75
             };
             
          L.geoJSON(Bigfoot, {
@@ -172,11 +174,11 @@
             
         var styleOgopogo = {
             radius: 15,
-            fillColor: "purple",
-            color: "#000",
+            fillColor: "Aquamarine",
+            color: "Aquamarine",
             weight: 1,
             opacity: 1,
-            fillOpacity: 0.5
+            fillOpacity: 0.75
             };
             
          L.geoJSON(Ogopopgo, {
@@ -186,11 +188,11 @@
             
 		var styleNavajoSkinwalker = {
             radius: 15,
-            fillColor: "blue",
-            color: "blue",
+            fillColor: "DeepPink",
+            color: "DeepPink",
             weight: 1,
             opacity: 2,
-            fillOpacity: 0.5
+            fillOpacity: 0.75
             };
             
          L.geoJSON(NavajoSkinwalker, {
@@ -200,11 +202,11 @@
 			
 		var styleMothman = {
             radius: 15,
-            fillColor: "Green",
-            color: "Green",
+            fillColor: "Yellow",
+            color: "Yellow",
             weight: 1,
             opacity: 2,
-            fillOpacity: 0.5
+            fillOpacity: 0.75
             };
             
          L.geoJSON(Mothman, {
@@ -218,7 +220,7 @@
             color: "Red",
             weight: 1,
             opacity: 2,
-            fillOpacity: 0.5
+            fillOpacity: 0.75
             };
             
          L.geoJSON(Thunderbird, {
@@ -228,11 +230,11 @@
         
 		var styleSeelkee = {
             radius: 15,
-            fillColor: "Orange",
-            color: "Orange",
+            fillColor: "Navy",
+            color: "Navy",
             weight: 1,
             opacity: 2,
-            fillOpacity: 0.5
+            fillOpacity: 0.75
             };
             
          L.geoJSON(Seelkee, {
@@ -242,11 +244,11 @@
         
 		var styleJerseyDevil = {
             radius: 15,
-            fillColor: "Yellow",
-            color: "Yellow",
+            fillColor: "Lime",
+            color: "Lime",
             weight: 1,
             opacity: 2,
-            fillOpacity: 0.5
+            fillOpacity: 0.75
             };
             
          L.geoJSON(JerseyDevil, {
@@ -256,11 +258,11 @@
 		
 		var styleWendigo = {
             radius: 15,
-            fillColor: "BurlyWood",
-            color: "BurlyWood",
+            fillColor: "DarkViolet",
+            color: "DarkViolet",
             weight: 1,
             opacity: 2,
-            fillOpacity: 0.5
+            fillOpacity: 0.75
             };
             
          L.geoJSON(Wendigo, {
@@ -270,11 +272,11 @@
 		
 		var styleChupacabra = {
             radius: 15,
-            fillColor: "MediumVioletRed",
-            color: "MediumVioletRed",
+            fillColor: "DarkOrange",
+            color: "DarkOrange",
             weight: 1,
             opacity: 2,
-            fillOpacity: 0.5
+            fillOpacity: 0.75
             };
             
          L.geoJSON(Chupacabra, {
@@ -286,23 +288,23 @@
 
 <br>
 
-<div id= "legend" class= "coded">  
-	<p> Pink = Bigfoot/Sasquatch </p> 
-	<p> Purple = Ogopopgo</p> 
-	<p> Blue= Navajo Skinwalker </p>
-	<p> Green = Mothman</p>
+<div id= "legend" class= "coded"> 
+<p> The cyriptids are arranged by colour:</p> 
+	<p> Brown = Bigfoot/Sasquatch </p> 
+	<p> Turqoise = Ogopopgo</p> 
+	<p> Hot Pink = Navajo Skinwalker </p>
+	<p> Yellow = Mothman</p>
 	<p> Red = Thunderbird</p> 
-	<p> Orange = Seelkee</P> 
-	<p> Yellow = Jersey Devil</p>
-	<p> Brown = Wendigo</P> 
-	<p> Magenta = Chupacbra </p> 
-<br>
+	<p> Navy Blue = Seelkee</P> 
+	<p> Lime Green = Jersey Devil</p>
+	<p> Purple = Wendigo</P> 
+	<p> Orange = Chupacbra </p> 
 </div> 
 
 <br> 
 
 <div id="author" class="nicole"> 
-	<p>By Nicole Morrison, Zach wang, and Ethan Jerome </p> 
+	<p>By Nicole Morrison, Zach Wang, and Ethan Jerome </p> 
 </div> 
 
 </body> 
