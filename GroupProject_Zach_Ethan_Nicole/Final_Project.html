@@ -148,6 +148,14 @@
 		onEachFeature:Popups
 	}).addTo(map); 
 	
+	L.geoJSON(Wendigo, { 
+		onEachFeature:Popups
+	}).addTo(map); 
+	
+	L.geoJSON(Chupacabra, { 
+		onEachFeature:Popups
+	}).addTo(map); 
+	
 	 var styleBigfoot = {
             radius: 15,
             fillColor: "pink",
@@ -234,8 +242,8 @@
         
 		var styleJerseyDevil = {
             radius: 15,
-            fillColor: "lavender",
-            color: "lavender",
+            fillColor: "Yellow",
+            color: "Yellow",
             weight: 1,
             opacity: 2,
             fillOpacity: 0.5
@@ -245,26 +253,56 @@
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, styleJerseyDevil);
             }}).addTo(map);
+		
+		var styleWendigo = {
+            radius: 15,
+            fillColor: "BurlyWood",
+            color: "BurlyWood",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+            };
+            
+         L.geoJSON(Wendigo, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleWendigo);
+            }}).addTo(map);
+		
+		var styleChupacabra = {
+            radius: 15,
+            fillColor: "MediumVioletRed",
+            color: "MediumVioletRed",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+            };
+            
+         L.geoJSON(Chupacabra, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleChupacabra);
+            }}).addTo(map);
+			
 </script> 	
 
 <br>
 
 <div id= "legend" class= "coded">  
-	<p> The markers are color coded based on price range:</P> 
 	<p> Pink = Bigfoot/Sasquatch </p> 
 	<p> Purple = Ogopopgo</p> 
 	<p> Blue= Navajo Skinwalker </p>
 	<p> Green = Mothman</p>
 	<p> Red = Thunderbird</p> 
 	<p> Orange = Seelkee</P> 
-	<p> Lavender = Jersey Devil</p> 
+	<p> Yellow = Jersey Devil</p>
+	<p> Brown = Wendigo</P> 
+	<p> Magenta = Chupacbra </p> 
 <br>
 </div> 
 
 <br> 
 
 <div id="author" class="nicole"> 
-	<p>By Nicole Morrison, Zach wang, and Ethan Jermome </p> 
+	<p>By Nicole Morrison, Zach wang, and Ethan Jerome </p> 
 </div> 
 
 </body> 
