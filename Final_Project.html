@@ -1,0 +1,265 @@
+
+<html>
+<head>
+
+	<style>
+		#MyMap { height: 500px;
+				 width: 850px;
+		}
+		body{
+			 background-image: url("https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2016/10/cerberus.jpg");
+			 }
+
+		body{font-family: cooper black;}
+		.pinkText{color:Gray;
+				  max-width :850px;
+				  margin: auto;
+				  background-color : white;
+				  text-align: center;
+				  font-size: 25px;
+				  border-color: black;
+				  border-style: solid;
+		}
+		p {color: gray;
+					 max-width:850px;
+					 margin: auto;
+					 background-color: white;
+					 text-align: left;
+					 font-size: 20px;
+					 padding-bottom: 10px;
+					 padding-top: 10px;
+		}
+		.center{max-width: 850px;
+				margin: auto;
+				}
+
+		.coded {color: Gray;
+					 max-width:850px;
+					 margin: auto;
+					 background-color: white;
+					 text-align: left;
+					 font-size: 20px;
+					 border-color: black;
+					 border-style: solid;
+				}
+
+
+		.nicole {color: gray;
+					 max-width:850px;
+					 margin: auto;
+					 background-color: white;
+					 text-align: left;
+					 font-size: 20px;
+					 border-color: black;
+					 border-style: solid;
+				}
+
+	</style>
+	<style>
+	img {
+	width :300px;
+	height:300px;
+	object-fit: scale-down;
+	}
+	</style>
+
+
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+   <!-- <script>
+		alert("Hello, click OK to view my web map")
+   </script> -->
+
+<script src="GeoJsonDictionary.js"></script>
+
+<script>
+
+
+        function Popups(feature, layer) {
+            if (feature.properties && feature.properties.popupContent && feature.properties.img && feature.properties.link && feature.properties.name) {
+				layer.bindPopup( feature.properties.name + feature.properties.popupContent+feature.properties.img + feature.properties.link );
+            };
+			};
+
+
+</script>
+
+
+</head>
+<body>
+
+	<div id="Header" class="pinkText">
+	<h1> Colonial <br> methological cryptids</h1>
+	<h2> "spooky monsters"</h2>
+	</div>
+	<br>
+	<div class="pinkText">
+	<p>North American Cryptids </p>
+	<p>This map will show you ...</P>
+	<p> Click on a marker to explore the cryptids</p>
+	</div>
+	<br>
+
+
+<div id="MyMap" class="center"></div>
+<div id="ColMap" class="center"></div>
+
+<script type= "application/javascript">
+
+	var map = L.map('MyMap').setView([56.1304, -106.3468], 3);
+
+
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+			}).addTo(map);
+
+
+	L.geoJSON(Bigfoot, {
+		onEachFeature: Popups
+	}).addTo(map);
+
+	L.geoJSON(Ogopopgo, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(NavajoSkinwalker, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(Mothman, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(Thunderbird, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+
+	 var styleBigfoot = {
+            radius: 15,
+            fillColor: "pink",
+            color: "#000",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+            };
+
+         L.geoJSON(Bigfoot, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleBigfoot);
+            }}).addTo(map);
+
+        var styleOgopogo = {
+            radius: 15,
+            fillColor: "purple",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.5
+            };
+
+         L.geoJSON(Ogopopgo, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleOgopogo);
+            }}).addTo(map);
+
+		var styleNavajoSkinwalker = {
+            radius: 15,
+            fillColor: "blue",
+            color: "blue",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+            };
+
+         L.geoJSON(NavajoSkinwalker, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleNavajoSkinwalker);
+            }}).addTo(map);
+
+		var styleMothman = {
+            radius: 15,
+            fillColor: "Green",
+            color: "Green",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+            };
+
+         L.geoJSON(Mothman, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleMothman);
+            }}).addTo(map);
+
+		var styleThunderbird = {
+            radius: 15,
+            fillColor: "Red",
+            color: "Red",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.5
+            };
+
+         L.geoJSON(Thunderbird, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleThunderbird);
+            }}).addTo(map);
+
+
+		 var map2 = L.map("ColMap")
+												 .setView([56.1304, -106.3468], 3);
+
+			 var basemap = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}', {
+		 attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+			subdomains: 'abcd',
+			minZoom: 0,
+			maxZoom: 20,
+			ext: 'png'
+										}).addTo(map2);
+
+</script>
+
+<br>
+
+<div id= "legend" class= "coded">
+	<p> The markers are color coded based on price range:</P>
+	<p> Pink = Bigfoot/Sasquatch </p>
+	<p> Purple = Ogopopgo</p>
+	<p> Blue= Navajo Skinwalker </p>
+	<p> Green = Mothman</p>
+	<p> Red = Thunderbird</p>
+
+<br>
+</div>
+
+<div class="center" id="about">
+	<h3>Colonial map</h3>
+</div>
+
+
+<script>
+
+
+
+
+
+</script>
+</div>
+
+
+<br>
+
+<div id="author" class="nicole">
+	<p>By Nicole Morrison, Zach wang, and Ethan Jermome </p>
+</div>
+
+</body>
+
+</html>
