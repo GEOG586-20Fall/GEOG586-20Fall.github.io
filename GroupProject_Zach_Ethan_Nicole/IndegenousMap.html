@@ -1,0 +1,114 @@
+<html> 
+<head> 
+
+	<style>
+		#MyMap { height: 500px;
+				 width: 850px;
+				 border-color: black;
+				 border-style: solid;
+		}
+		body{
+			 background-image: url("https://images.pexels.com/photos/313782/pexels-photo-313782.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+			 }
+
+		body{font-family: Cooper Black;}
+		.Text{color:DarkSalmon;
+				  max-width :850px; 
+				  margin: auto;
+				  background-color : Lavender;
+				  text-align: center;
+				  font-size: 25px;
+				  border-color: black;
+				  border-style: solid;
+		
+		body{font-family: Cooper Black;}
+		.Format{color:DarkSalmon;
+				  max-width :850px; 
+				  margin: auto;
+				  background-color : Lavender;
+				  text-align: center;
+				  font-size: 18px;
+				  border-color: black;
+				  border-style: solid;
+		}
+	
+	
+		.center{max-width: 850px; 
+				margin: auto; 
+				}
+		
+				
+	</style>
+		
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+	   
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   
+    <script>
+		alert("Hello, click OK to view a web map of Pennsylvania's Cities!")
+   </script>
+
+</head> 
+<body>
+<div id="Header" class="Text">
+	<h1> Cities of Pennsylvania</h1> 
+<div id ="description" class = "format">
+	<p> Click on a popup to learn more about Pennsylvania's Cites! <br> Each popup provides infomation about the name and population of each city, as well as the County in which the city is located within. </p>
+	</div>
+	<br>
+
+<div id="MyMap" class="center"></div>
+
+
+<script type= "application/javascript">
+		
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+		
+		}
+};
+	
+	xhr.open("GET", "http://burnsr77.github.io/GH_demo/PACities.geojson", "synch");
+	
+	xhr.send();
+
+	
+
+	
+	 function myFunction(newlayer){	
+		var map = L.map('MyMap').setView([40.8214981079102, -77.5], 7);
+
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+				attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
+				}).addTo(map);
+				
+	function onEachFeature(feature, layer) {
+				if (feature.properties &&  feature.properties.NAME && feature.properties.COUNTY && feature.properties.POP_2000) {
+					layer.bindPopup("<b> Name: </b>" + feature.properties.NAME + "<br>" + "<b>County: </b>" + feature.properties.COUNTY + "<br>" + "<b>Population: </b>"+ feature.properties.POP_2000);
+				};
+				};	
+
+	var geoJSONlayer = L.geoJSON(newlayer, {
+		onEachFeature: onEachFeature}).addTo(map);			
+	};
+		
+  </script>
+</body>
+</script> 	
+
+
+<div id="author" class="Text"> 
+	<p>By Nicole Morrison </p> 
+</div> 
+
+
+</body> 
+
+</html>
