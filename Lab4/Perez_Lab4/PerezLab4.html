@@ -5,11 +5,19 @@
        crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
         
-        <link rel="stylesheet" type="text/css" href="L4main.css" media="screen"/> 
+        <link rel="stylesheet" type="text/css" href="L4main.css" media="screen"/>
+        <title>Calgary's Historic Resource Locations</title>
      </head>
     
     <body>
-    <div id="mapid" class="centermap outline" style="height: 700px; width: 80%;">
+        
+    <h1>Calgary's Historic Resource Locations</h1>
+        <h4 class="sign">Webmap by Valery</h4>
+        
+    <h3>Historic resources are those evaluated by the CHA (Calgary Heritage Authority) as having significant heritage value around Calgary. They are marked to determine what locations may be elligible for conservation incentives. They include buildings, structures, archeological sites, cultural landscapes and parks - click on the icons for historic resource name, year of construction, and the intial master plan purpose.<br><br> Locations are found throughout all parts of Calgary. Scroll around and zoom in and out to view different locations and their density. <br><a class="button button1"href="https://www.heritagecalgary.ca/inventory" target="_blank">Learn about CHA criteria </a></h3>
+        
+        
+    <div id="mapid" class="centermap" style="height: 60%; width: 80%;">
         
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
                integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -33,7 +41,7 @@
         //var APIresponse = xhr.responseText;
 
         function myFunction(newlayer){	
-        var mymap = L.map('mapid').setView([51.0427866,-114.0729713], 15);  
+        var mymap = L.map('mapid').setView([51.0427866,-114.0729713], 14);  
         var Stadia_OSMBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
               maxZoom: 20,
               attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -42,15 +50,14 @@
 
         var JsonDic = JSON.parse(xhr.responseText);
 
-
         function onEachFeature(feature, layer) {
-            layer.bindPopup("<h2>"+"Historic Resource Name: "+"<br>"+feature.properties.name+"<br>"+"Construction Year: " +feature.properties.construction_yr +"<br>"+"Architecture Style: "+feature.properties.architecture_style);}
+            layer.bindPopup("<h2>"+"Historic Resource Name: "+"<br>"+ feature.properties.name+"<br>"+"Construction Year: " +feature.properties.construction_yr +"<br>"+ "Purpose: "+feature.properties.master_plan_theme);}
         L.geoJSON(newlayer, {onEachFeature:onEachFeature}).addTo(mymap); 
         };
 
 
-    </script>
-        
+    </script>   
+    
     </body>
 
 </html>
