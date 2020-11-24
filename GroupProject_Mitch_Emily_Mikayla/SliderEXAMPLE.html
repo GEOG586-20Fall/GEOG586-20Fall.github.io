@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Display a map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <script src="https://geobuffer.com/dragonfly.js"></script>
+    <link href="https://geobuffer.com/dragonfly.css" rel="stylesheet"/>
+    <style>
+         body { margin: 0; padding: 0; }
+         #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+         .options {
+             background-color: #fff;
+             border-radius: 3px;
+             bottom: 5px;
+             box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+             font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+             padding: 5px;
+             position: absolute;
+             left: 10px;
+             z-index: 1;
+         }
+         .popup {
+             background-color: #fff;
+             width: 180px;
+             border-radius: 3px;
+             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.20);
+             font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+             padding: 5px;
+             position: absolute;
+             z-index: 1;
+             display:none;
+
+         }
+         .alignright{ float: right}
+
+         .alignleft{ float: left}
+
+         .popup h4 {
+             margin: 0 0 5px;
+         }
+
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+<div id='options' class='options'>
+    <div id='year'>Total population for year: 1960</div>
+     <input type="range" id="year-modifier"
+            min="1960" max="2010" value="0" step="10"
+            onchange="changeYear(this.value)" oninput="changeYear(this.value)">
+</div>
+<div id="popup" class="popup"></div>
+
+<script>
+     var year = 1960;
+     var map = new dragonfly.Map({
+         container: 'map', // container id
+         style: {
+             center: [-98, 39], // starting position [lng, lat]
+             zoom: 3.2, // starting zoom
+             version: 8,
+             glyphs: 'https://geobuffer.com/font/Arial-Regular/0-255.pbf',
+             sources: {
+                 'source-1': { // geobuffer source definition
+                     type: 'vector',
+                     tiles: ['https://tiles3.socialexplorer.com/gettile/?x={x}&y={y}&z={z}&layers={layers}&projection=EPSG-3857&columns={columns}'], // geobuffer tile delivery url signature
+                     layers: [ // define layers that will be used
+                         {
+                             layerId: "35611",
+                             datasets: [
+                                 {
+                                     datasetId: "0",
+                                     columns: [
+                                         "Geo_NAME",
+                                         "TotalPopulation_1960",
+                                         "TotalPopulation_1970",
+                                         "TotalPopulation_1980",
+                                         "TotalPopulation_1990",
+                                         "TotalPopulation_2000",
+                                         "TotalPopulation_2010",
+                                     ]
+                                 }
+                             ]
+                         },
+                         {
+                             layerId: "35611p",
+                             datasets: [
+                                 {
+                                     datasetId: "0",
+                                     columns: [
+                                         "Geo_NAME",
+                                         "TotalPopulation_1960",
+                                         "TotalPopulation_1970",
+                                         "TotalPopulation_1980",
+                                         "TotalPopulation_1990",
+                                         "TotalPopulation_2000",
+                                         "TotalPopulation_2010",
+                                     ]
+                                 }
+                             ]
+                         },
+
+                     ]
+                 }
+             },
+             layers: [
+                 {
+                     id: 'background',
+                     type: 'background',
+                     paint: {
+                         'background-color': '#7acad0'
+                     }
+                 },
+                 {
+                     id: 'us-fill',
+                     source: 'source-1',
+                     'source-layer': '35611',
+                     type: 'fill',
+                     paint: {
+                         'fill-color': 'rgb(240,240,240)'
+                     }
+                 },
+                 {
+                     'id': 'state-bubble',
+                     'source': 'source-1',
+                     'source-layer': '35611p',
+                     'type': 'bubble',
+                     'layout': {
+                         'bubble-radius': 'sqrt(abs({TotalPopulation_1960}))' // changing this is slow (gl.attribute)
+                     },
+                     'paint': {
+                         'bubble-color': 'rgba(255,0,255,0.3)',
+                         'bubble-max-radius': 100,
+                         'bubble-outline-color' : 'rgba(255,255,255,0.5)',
+                         'bubble-outline-width': 1,
+                         'bubble-radius-multiplier': 0.015,
+                     }
+                 },
+
+                 {
+                     id: 'boundaries',
+                     type: 'line',
+                     source: 'source-1',
+                     'source-layer': '35611',
+                     paint: {
+                         'line-color': 'rgba(255, 255, 255, 0.8)',
+                         'line-width': 1,
+                         'line-blur': 1,
+                         'line-opacity': 1
+                     }
+                 }
+             ]
+         }
+     });
+
+     function changeYear(yearValue){
+         year = yearValue;
+         map.setLayoutProperty('state-bubble','bubble-radius','sqrt(abs({TotalPopulation_' + year +'}))');
+         var yearDiv = document.getElementById('year');
+         yearDiv.innerHTML ='Total population for year: ' + year;
+     }
+
+     var featuresHoverHandler;
+     var lastMousePosition;
+
+     map.on('mousemove', 'boundaries', function (e) {
+         lastMousePosition = e.point;
+         if (featuresHoverHandler) return;
+
+         featuresHoverHandler = setTimeout(function () {
+             var features = map.queryRenderedFeatures(lastMousePosition, {layers: ['boundaries']});
+
+             highlightFeatures(map, features, lastMousePosition);
+
+             featuresHoverHandler = undefined;
+         }, 10);
+     });
+
+     map.on('mouseleave', 'boundaries', function () {
+         var popupDiv = document.getElementById('popup');
+         popupDiv.style.display = 'none';
+     });
+
+
+     function highlightFeatures(map, features, lastMousePosition) {
+
+         var styles = [];
+         {
+             features.forEach(function (feature) {
+                         styles.push({
+                             'line-color': 'rgba(0,0,0,0.5)',
+                             'line-width': 2,
+                         });
+                         var popupDiv = document.getElementById('popup');
+                         popupDiv.style.left = lastMousePosition.x + 'px';
+                         popupDiv.style.top = lastMousePosition.y + 20 + 'px';
+
+                         var popupHTML = '<h4>' + feature.properties.Geo_NAME + ' </h4>' +
+                             '<span class="alignleft">Total Population </span> ' +
+                             '<span class="alignright">' + feature.properties['TotalPopulation_' + year ].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + '</span>';
+
+                         popupDiv.innerHTML = popupHTML;
+                         popupDiv.style.display = 'block';
+                 }
+             );
+         }
+
+         if (features.length > 0) map.painter.setFeaturesStyles(features, styles);
+         else map.painter.clearFeaturesStyles();
+     }
+</script>
+
+</body>
+</html>

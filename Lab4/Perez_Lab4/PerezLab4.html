@@ -5,11 +5,19 @@
        crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
         
-        <link rel="stylesheet" type="text/css" href="L2main.css" media="screen"/> <!-- style sheet, might not need for this one-->
+        <link rel="stylesheet" type="text/css" href="L4main.css" media="screen"/>
+        <title>Calgary's Historic Resource Locations</title>
      </head>
     
     <body>
-    <div id="mapid" class="centermap outline" style="height: 900px; width: 60%;">
+        
+    <h1>Calgary's Historic Resource Locations</h1>
+        <h4 class="sign">Webmap by Valery</h4>
+        
+    <h3>Historic resources are those evaluated by the CHA (Calgary Heritage Authority) as having significant heritage value around Calgary. They are marked to determine what locations may be elligible for conservation incentives. They include buildings, structures, archeological sites, cultural landscapes and parks - click on the icons for historic resource name, year of construction, and the intial master plan purpose.<br><br> Locations are found throughout all parts of Calgary. Scroll around and zoom in and out to view different locations and their density. <br><a class="button button1"href="https://www.heritagecalgary.ca/inventory" target="_blank">Learn about CHA criteria </a></h3>
+        
+        
+    <div id="mapid" class="centermap" style="height: 60%; width: 80%;">
         
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
                integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -21,45 +29,42 @@
         var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-            myFunction(myArr);
+        var sites = JSON.parse(this.responseText);
+            myFunction(sites);
         //document.getElementById("xhr_request").innerHTML = this.responseText;
         }};
 
-        xhr.open("GET", "https://data.calgary.ca/resource/99yf-6c5u.geojson","asynchronously");
+        xhr.open("GET", "https://data.calgary.ca/resource/99yf-6c5u.geojson", "synch");
 
         xhr.send();
 
         //var APIresponse = xhr.responseText;
 
         function myFunction(newlayer){	
-        var mymap = L.map('mapid').setView([51.0378,-114.1159], 13);  
-        var Stadia_OSMBright = L.tileLayer('https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png', {
-              maxZoom: 20,
-              attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-              accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A',
-            }).addTo(mymap);
-            
-          function onEachFeature(Feature, layer) {
-        layer.bindPopup("<h>"+'Historic Resource: '+"<p1 style= font-size:12 >"+Feature.properties.NAME);}
-        L.geoJSON(newlayer, {onEachFeature:onEachFeature}).addTo(mymap); 
-
-        var myJsonDictionary = JSON.parse(xhr.responseText);
-
-        var geoJSONlayer = L.geoJSON(newlayer).addTo(mymap);
-                };
-
-
-    </script>
+        var mymap = L.map('mapid').setView([51.0427866,-114.0729713], 14);  
+        var Stamen_Terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            subdomains: 'abcd',
+            minZoom: 0,
+            maxZoom: 18,
+            ext: 'png',
+            accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A'
+          }).addTo(mymap); 
         
+
+        var JsonDic = JSON.parse(xhr.responseText);
+
+        function onEachFeature(feature, layer) {
+            layer.bindPopup("<h2>"+"Historic Resource Name: "+"<br>"+ feature.properties.name+"<br>"+"Construction Year: " +feature.properties.construction_yr +"<br>"+ "Purpose: "+feature.properties.master_plan_theme);}
+        L.geoJSON(newlayer, {onEachFeature:onEachFeature}).addTo(mymap); 
+        };
+
+
+    </script>   
+    
     </body>
 
 </html>
-    
-    "<h2>"+feature.properties.NAME+"<p>"+"County: "+feature.properties.COUNTY+"<br>Pop. range: "+feature.properties.POP_RANGE+"<br>Rank: "+feature.properties.RANK);
-};
-    
-    
     
  
         
