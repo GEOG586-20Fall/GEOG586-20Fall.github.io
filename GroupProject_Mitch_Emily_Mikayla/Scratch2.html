@@ -28,6 +28,11 @@
 						width: 1050px;}
 						
 	</style>
+	
+	<style>
+		#secondaryMap {	height: 540px;
+						width: 1050px;}
+	</style>
 		
  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -38,13 +43,17 @@
    crossorigin=""></script>
    
  </head>
+ 
+ <body>
+ <h1> Webmap One: 2000-2009 </h1>
+ <p> This is the first map for our project. </p>
 
 <div id="primaryMap" class="pagecenter"></div>
 <div id="xhr_callup"></div>
 
 <script type= "application/javascript">
 	function onEachFeature(feature, layer) {
-				layer.bindPopup("<h2>"+feature.properties.NAME+"</h2>");
+				layer.bindPopup("<h2>"+feature.properties.ALIAS+"</h2>");
 				};
 
 	var xhr = new XMLHttpRequest();
@@ -56,7 +65,7 @@
     }
 };
 	
-	xhr.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/Parks_Protected_Areas_Alberta.geojson", "synch");
+	xhr.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2000to2009_Simplif.geojson", "synch");
 	
 	xhr.send();
 	
@@ -74,3 +83,41 @@ var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map
 		};
 		
 </script> 
+
+<h2> Webmap Two: 2010-2019 </h2>
+<p> This is the second map of our project. </p>
+
+<div id="secondaryMap" class="pagecenter"></div>
+<div id="xhr_callup2"></div>
+
+<script type= "application/javascript">
+	function onEachFeature(feature, layer) {
+				layer.bindPopup("<h2>"+feature.properties.ALIAS+"</h2>");
+				};
+
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+		//document.getElementById("xhr_request").innerHTML = this.responseText;
+    }
+};
+	
+	xhr.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2010to2019_Simplif.geojson", "synch");
+	
+	xhr.send();
+	
+	//var APIresponse = xhr.responseText;
+
+ function myFunction(newlayer){	
+	var map = L.map('secondaryMap').setView([54.76783103448121, -114.74082432881103], 5);
+
+
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+			}).addTo(map);
+			
+var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
+		};
+
