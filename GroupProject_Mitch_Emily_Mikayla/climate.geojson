@@ -4,7 +4,7 @@
     {
       "type": "Feature",
       "properties": {
-      "maxTemp": "hi"
+      "MAXTEMP": "hi"
       },
       "geometry": {
         "type": "Point",
