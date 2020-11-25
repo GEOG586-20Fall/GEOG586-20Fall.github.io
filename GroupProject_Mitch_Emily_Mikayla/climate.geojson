@@ -3,15 +3,14 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {
-      "maxTemp": "test"},
       "geometry": {
         "type": "Point",
-        "coordinates": [
+        "coordinates": [[[
           -113.90830993652342,
           49.05901990327289
-        ]
-      }
-    }
-  ]
-}
+        ]]]
+      }, 
+         "properties": {
+      "maxTemp": "test"}
+    }]}
+  
