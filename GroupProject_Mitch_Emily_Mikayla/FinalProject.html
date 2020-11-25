@@ -1,0 +1,223 @@
+<html>
+ <head>
+     
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<style>
+    body{
+    
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/beanstalk-dark.png");
+    position: relative;
+    }
+    
+	h1 {margin-top: 50;
+        text-align: center;
+        color: aliceblue;
+        font-family: Roboto;
+        font-weight: 900;
+    
+    }
+	h2 {text-align: center;
+    color: aliceblue;}
+	h3 {text-align: center;
+    color: aliceblue;}
+	h4 {text-align: center;
+    color: aliceblue;}
+	p  {text-align: center;
+    color: aliceblue;}
+	
+	
+	.mapcontainer{ 
+              
+				}
+				
+	.centerbutton {
+		display: flex;
+		justify-content: center;
+        align-items: center;}
+    
+    
+				
+	
+      #map {
+            display: block;
+            position: absolute; 
+            top: 240; 
+            bottom: 150; 
+            left: auto; 
+            right: 100;
+            border-radius: 12px;
+          max-width: 1000px;
+          min-width: 850px;
+         
+    }
+
+		#secondaryMap {	
+            display: block;
+            position: absolute; 
+            top: 240; 
+            bottom: 150; 
+            left: 100; 
+            right: auto;
+            border-radius: 12px;
+            max-width: 1000px;
+            min-width: 850px;
+           
+    }
+        
+</style>		
+</head>
+ 
+ <body>
+ <h1> Webmap One: 2000-2009 </h1>
+ <p> This is the first map for our project. </p>
+
+<div id="map" class="mapcontainer"></div>
+
+
+<script>
+    
+    ////////////////////////////this is the function popup for the climate properties//////////////////////
+    function climatePopup(feature, layer) {
+        if (feature.properties && feature.properties.MAXTEMP) {
+            layer.bindPopup("<b> Name: </b>" + feature.properties.MAXTEMP);
+        };
+    }; //end function for climate popup//
+
+    //popup icon//
+    function climateIcon (feature, latlng) {
+
+                return L.circleMarker(latlng, Marker);
+         }
+          var Marker = {
+          radius: 6,
+          fillColor: "#ff992b",
+          color: "#ffdf2b",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.3,
+        }; //end popup icon//
+    
+    /////////////////////this is the function popup for fires//////////////////////////////
+    function firePopup(feature, layer) {
+        if (feature.properties && feature.properties.ALIAS) {
+            layer.bindPopup("<b> Fire Name: </b>" + feature.properties.ALIAS);
+        };}; ///end function//
+        
+    
+    
+ /*   //polygon API call//
+	function onEachFeature(feature, layer) {
+				layer.bindPopup("<h2>"+feature.properties.ALIAS+"</h2>");
+				};
+
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+		//document.getElementById("xhr_request").innerHTML = this.responseText;
+    }
+};
+    
+	xhr.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2000to2009_Simplif.geojson", "synch");
+	
+	xhr.send();
+	//
+	//var APIresponse = xhr.responseText;
+    
+    */
+    
+////////////////////////////////////MAP #1////////////////////////////////////////////////////////////////
+//function myFunction(newlayer){	
+	var map = L.map('map').setView([54.76783103448121, -114.74082432881103], 5);
+
+
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+			}).addTo(map);
+			
+//var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
+  
+// };
+		
+
+     
+    //climate API response//
+    function climateInfo () {
+        var climateAPI=
+            JSON.parse(this.responseText);
+            climateLayer = L.geoJSON(climateAPI, {pointToLayer: climateIcon, onEachFeature: climatePopup}).addTo(map);
+        climateLayer.bringToFront();
+    } //end API response
+     
+     //climate API call//
+    var climatePoints = new XMLHttpRequest();
+    climatePoints.addEventListener("load", climateInfo);
+    climatePoints.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/Climate/climate.geojson");
+    climatePoints.send();
+    //done climate API call//
+     
+    ////////////////////////////////fire API response//////////////////////////////////
+    function fire () {
+           var style = {
+           "color": "#cf001c",
+            "weight": "1",
+            fillOpacity: 0,
+            fill: "none",
+            };
+        var fireAPI=
+            JSON.parse(this.responseText);
+            fireLayer = L.geoJSON(fireAPI, {onEachFeature: firePopup, style: style}).addTo(map);
+        fireLayer.bringToBack();
+    }//end API resposne//
+    
+    ///////////////////////////////fire API call//////////////////////////////////////
+    var firePoly = new XMLHttpRequest();
+    firePoly.addEventListener("load", fire);
+    firePoly.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2000to2009_Simplif.geojson");
+    firePoly.send();
+    //end API call////
+    
+ </script> 
+     
+
+     
+<h2> Webmap Two: 2010-2019 </h2>
+<p> This is the second map of our project. </p>
+
+<div id="secondaryMap" class="mapcontainer"></div>
+<div id="xhr_callup2"></div>
+
+<script type= "application/javascript">
+	function onEachFeature(feature, layer) {
+				layer.bindPopup("<h2>"+feature.properties.ALIAS+"</h2>");
+				};
+
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myArr = JSON.parse(this.responseText);
+        myFunction(myArr);
+		//document.getElementById("xhr_request").innerHTML = this.responseText;
+    }
+};
+	
+	xhr.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2010to2019_Simplif.geojson", "synch");
+	
+	xhr.send();
+	
+	//var APIresponse = xhr.responseText;
+
+ function myFunction(newlayer){	
+	var map = L.map('secondaryMap').setView([54.76783103448121, -114.74082432881103], 5);
+
+
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+			}).addTo(map);
+			
+var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
+		};
+     </script>
