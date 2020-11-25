@@ -1,1 +1,33 @@
-
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+      "MAS": "SK",
+      "MAXTEMP": "d"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.82910156249999,
+          51.984880139916626
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+      "FDF": "D",
+      "D": "E"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.0380859375,
+          51.04139389812637
+        ]
+      }
+    }
+  ]
+}
