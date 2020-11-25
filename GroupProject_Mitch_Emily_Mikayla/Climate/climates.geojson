@@ -4,9 +4,9 @@
     {
       "type": "Feature",
       "properties": {
-        "MAXTEMP (C)": 3.9,
-        "MINTEMP (C)": -8.9, 
-        "TOTALPRECIP (mm)": 519.8
+        "MAXTEMP": 3.9,
+        "MINTEMP": -8.9, 
+        "TOTALPRECIP": 519.8
       },
       "geometry": {
         "type": "Point",
