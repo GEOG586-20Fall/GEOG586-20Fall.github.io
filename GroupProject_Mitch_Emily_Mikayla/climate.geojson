@@ -1,16 +1,15 @@
-
-var weather = {"type": "FeatureCollection","features":[
+{"type": "FeatureCollection","features":[
  
        { "type": "Feature",
         
         "geometry": {
             "type": "Point", 
-            "coordinates": [-124,65]},
+            "coordinates": [-113.9086,49.0510]},
         
         "properties":{
             "maxTemp": "fire",
             "amenity:" "fires", 
-            "popupContent:" "<b> hello </b>",}
+            }
        
     
 ]};
