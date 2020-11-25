@@ -1,42 +1,37 @@
 {
-  "type" : "FeatureCollection",
-  "features" : [
+  "type": "FeatureCollection",
+  "features": [
     {
-      "type" : "Feature",
-      "id" : 1,
-      "geometry" : {
-        "type" : "Point",
-        "coordinates" : [
+      "type": "Feature",
+      "properties": {
+      "NAME": "Hi",
+        "MAXTEMP": "J"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
           [
-            [
-              -118.89234908952677,
-              58.776113307411656
-            ]
+            -118.45458984375,
+            55.59076338488528
+          ],
+          [
+            -114.345703125,
+            50.47149085139956
+          ],
+          [
+            -110.85205078124999,
+            50.597186230587035
+          ],
+          [
+            -110.50048828124999,
+            58.309488840677645
+          ],
+          [
+            -118.36669921875,
+            55.677584411089526
           ]
         ]
-      },
-      "properties" : {
-        "OBJECTID_1" : 1,
-        "OBJECTID" : 5938,
-        "MAXTEMP" : "HWF-020-2001",
-        "FIRE_NUMBE" : "HWF020",
-        "FIRE_CLASS" : "E",
-        "BURNCODE" : "B",
-        "BURN_CLASS" : 5,
-        "HECTARES_U" : 7644.8000000000002,
-        "YEAR" : 2001,
-        "ALIAS" : " ",
-        "CAPTURE_DA" : "2001-05-27",
-        "TIME" : "1900",
-        "SOURCE" : "0 - hand sketch of any type",
-        "SHAPE_Leng" : 121035.49606999999,
-        "Shape_Length" : 87781.095266004253,
-        "Shape_Area" : 78849339.773156792,
-        "InPoly_FID" : 5937,
-        "SimPgnFlag" : 1,
-        "MaxSimpTol" : 2000,
-        "MinSimpTol" : 2000
       }
     }
-    ]
+  ]
 }
