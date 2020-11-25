@@ -138,7 +138,7 @@
       "properties" : {
         "OBJECTID_1" : 1,
         "OBJECTID" : 5938,
-        "FIRENUMBER" : "HWF-020-2001",
+        "MAXTEMP" : "HWF-020-2001",
         "FIRE_NUMBE" : "HWF020",
         "FIRE_CLASS" : "E",
         "BURNCODE" : "B",
