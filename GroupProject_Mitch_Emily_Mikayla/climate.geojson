@@ -1,15 +1,28 @@
-{"type": "FeatureCollection","features":[
- 
-       { "type": "Feature",
-        
-        "geometry": {
-            "type": "Point", 
-            "coordinates": [-113.9086,49.0510]},
-        
-        "properties":{
-            "maxTemp": "fire",
-            "amenity:" "fires", 
-            }
-       
-    
-]};
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "maxTemp": "hi",
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -113.89062881469727,
+            49.06621851685394
+          ],
+          [
+            -113.88307571411133,
+            49.06486885623368
+          ],
+          [
+            -113.88341903686523,
+            49.069255119219996
+          ]
+        ]
+      }
+    }
+  ]
+}
