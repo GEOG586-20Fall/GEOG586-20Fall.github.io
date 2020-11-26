@@ -81,7 +81,7 @@
     ////////////////////////////this is the function popup for the climate properties//////////////////////
     function climatePopup(feature, layer) {
         if (feature.properties && feature.properties.MAXTEMP) {
-            layer.bindPopup("<b> Name: </b>" + feature.properties.MAXTEMP);
+            layer.bindPopup("<b> Max Temp (C): </b>" + feature.properties.MAXTEMP + "<br></br>" + "<b> Min Temp: (C) </b>" + feature.properties.MINTEMP + "<br></br>" + "<b> Total Precipitation: (mm) </b>" + feature.properties.TOTALPRECIP);
         };
     }; //end function for climate popup//
 
@@ -99,6 +99,7 @@
           fillOpacity: 0.3,
         }; //end popup icon//
     
+      
     /////////////////////this is the function popup for fires//////////////////////////////
     function firePopup(feature, layer) {
         if (feature.properties && feature.properties.ALIAS) {
@@ -143,7 +144,7 @@
 // };
 		
 
-     
+       
     //climate API response//
     function climateInfo () {
         var climateAPI=
