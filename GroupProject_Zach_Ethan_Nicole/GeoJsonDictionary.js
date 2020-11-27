@@ -62,7 +62,7 @@ var NavajoSkinwalker = {
             {"type":"Feature", 
             "properties":{
                 "name":"<b>Skinwalker Ranch:</b><br>",
-                "popupContent":"Skinwalker Ranch, also known as Sherman Ranch, is a property in Utah that is known for its paranormal and UFO-related activities. It is thought that the Navajo Skin Walker is active in the area. This ranch has been the subject of numerous documentaries, such as ‘The Secrets of Skinwalker Ranch",
+                "popupContent":"Skinwalker Ranch, also known as Sherman Ranch, is a property in Utah that is known for its paranormal and UFO-related activities. It is thought that the Navajo Skin Walker is active in the area. This ranch has been the subject of numerous documentaries, such as -- The Secrets of Skinwalker Ranch",
 				"link": "<b> <a href='https://www.history.com/news/skinwalker-ranch-paranormal-ufos-mutilation'>For further information</a>",
 				"img": "<img src=https://www.history.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTY5ODEwMTYzNTg5NDU3MDk2/skinwalker-ranch-map.jpg >"},
                 "geometry":{
@@ -88,7 +88,7 @@ var Thunderbird = {
             {"type":"Feature", 
             "properties":{
                 "name":"<b>Thunderbird:</b><br> ",
-                "popupContent":"A bird the size of a small airplane was said to have been seen flying over SW Alaska in 2002; described as ‘something out of the movie Jurassic Park, with a wingspan over 14 feet!  ",
+                "popupContent":"A bird the size of a small airplane was said to have been seen flying over SW Alaska in 2002; described as quote: something out of the movie Jurassic Park, with a wingspan over 14 feet!  ",
 				"img": "<img src=https://static.wikia.nocookie.net/cryptidz/images/6/62/Giant-thunderbird-56c0d4de5f9b5829f86738ca.png/revision/latest/scale-to-width-down/350?cb=20200710194116 >",
 				"link": "</b><a href='http://www.cnn.com/2002/US/West/10/18/offbeat.alaska.bird.reut/'>For further information</a>"},
 					"geometry": {
@@ -98,7 +98,7 @@ var Thunderbird = {
             {"type": "Feature",
             "properties": {
                 "name": "<b>Thunderbird:</b><br>",
-                "popupContent":"A bird the size of a small airplane was said to have been seen flying over SW Alaska in 2002; described as ‘something out of the movie Jurassic Park, with a wingspan over 14 feet! ",
+                "popupContent":"A bird the size of a small airplane was said to have been seen flying over SW Alaska in 2002; described as quote: something out of the movie Jurassic Park, with a wingspan over 14 feet! ",
 				"link": "<b> <a href='http://www.cnn.com/2002/US/West/10/18/offbeat.alaska.bird.reut/'>For further information</a>",
 				"img": "<img src= https://static.wikia.nocookie.net/cryptidz/images/6/62/Giant-thunderbird-56c0d4de5f9b5829f86738ca.png/revision/latest/scale-to-width-down/350?cb=20200710194116>"},
                     "geometry": {
@@ -173,7 +173,7 @@ var JerseyDevil = {
 						
 			{"type":"Feature",
 				"properties":{
-					"name":"Jersey Devil:<br> ",
+					"name":"<b>Jersey Devil:</b><br> ",
 					"popupContent":"Encountered in numerous locations in the USA, the Jersey Devil is described as a flying biped with hooves -- however, more specific descriptions note that is kangaroo-like biped, with a goat-like head, leathery bat-like wings, and claws, hooves, and a forked tail. It is known to emit a high-pitched scream and move very quickly.</b>",
 					"link": "<b> <a href='https://www.southjersey.com/article/9962/History--The-Jersey-Devil'> For more information.</a>",
 					"img":"<img src= https://www.nj.com/resizer/j_y-UvUhDTpH7Zs1K97hECBTM2s=/450x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.nj.com/home/njo-media/width2048/img/entertainment_impact/photo/jd-sketch-coverjpg-27dad0db1d917a33.jpg>>"},
