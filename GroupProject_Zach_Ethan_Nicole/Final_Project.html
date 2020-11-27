@@ -12,20 +12,20 @@
 			 background-image: url("https://i.pinimg.com/originals/a0/c2/b4/a0c2b4a50a25d95ec332d2fcacbeb3a9.jpg");
 			 }
 
-		body{font-family: cooper black;}
-		.pinkText{color:DarkSlateGrey;
+		body{font-family: TimesNewRoman;}
+		.pinkText{color:Gray;
 				  max-width :850px; 
 				  margin: auto;
-				  background-color : DarkGray;
+				  background-color : Black;
 				  text-align: center;
 				  font-size: 25px;
-				  border-color: black;
+				  border-color: Gray;
 				  border-style: solid;
 		}
-		p {color: DarkSlateGrey ;
+		p {color: Gray ;
 					 max-width:850px;
 					 margin: auto; 
-					 background-color: DarkGray;
+					 background-color: Black;
 					 text-align: left; 
 					 font-size: 20px;
 					 padding-bottom: 10px; 
@@ -41,7 +41,7 @@
 					 background-color: white;
 					 text-align: left; 
 					 font-size: 20px;
-					 border-color: black;
+					 border-color: Gray;
 					 border-style: solid;
 				}
 		
@@ -52,9 +52,15 @@
 					 background-color: white;
 					 text-align: left; 
 					 font-size: 20px;
-					 border-color: black;
+					 border-color: Gray;
 					 border-style: solid;
 				}
+				
+		.button { 
+			text-align: center; 
+			font-size:20px; 
+			font-family: TimesNewRoman; 
+		
 				
 	</style>
 	<style>
@@ -76,7 +82,7 @@
    crossorigin=""></script>
    
    <script>
-		alert("Hello, click OK to view my web map")
+		alert("Hello, click OK to view the web map")
    </script>
    
 <script src="GeoJsonDictionary.js"></script>
@@ -98,28 +104,41 @@
 <body>
 
 	<div id="Header" class="pinkText">
-	<h1> Colonial <br> methological cryptids</h1> 
-	<h2> "spooky monsters"</h2>
+	<h1> Cryptids of North America <br></h1> 
+	<h2> "Spooky Monsters" </h2> 
 	</div>
 	<br>
 	<div class="pinkText">
-	<p>North American Cryptids </p>
-	<p>This map will show you ...</P>
-	<p> Click on a marker to explore the cryptids</p>
+	<p>This is a map of North American Cryptids. </p>
+	<p>This map will show you the location of cyriptid sightings.</P> 
+	<p>Click on the the popups to learn more about each cyriptid and the sightings. </p>  
 	</div> 
 	<br>
 
+<div id ="button" class = "button"> 
 
+	<form>
+<input class="MyButton" type="button" value="Click here to view a web map about the indegenous origins of cryptids" onclick="window.location.href='http://www.hyperlinkcode.com/button-links.php'" />
+</form>
+	</div>
+
+
+</div>
+<br>
 <div id="MyMap" class="center"></div>
 
 <script type= "application/javascript">
 
 	var map = L.map('MyMap').setView([50.1304, -105.3468], 3);
 
+	
 
-	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-			attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
-			}).addTo(map);
+	
+	L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 19
+}).addTo(map); 
 
 	
 	L.geoJSON(Bigfoot, {
