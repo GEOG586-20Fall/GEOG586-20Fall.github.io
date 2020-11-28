@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+       <style>
+		body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+height: 100%;
+color: #777;
+line-height: 1.8;
+text-align:center;
+}
+
+.center {
+			 width: 800px;
+			 height: 220px;
+			 /* width: 80%;
+			 height: 10%; */
+			 margin-left:auto;
+			 margin-right:auto;
+}
+				.mapid {
+				         /* width: 800px;
+				         height: 500px; */
+				         width: 80%;
+				         height: 60%;
+				         margin-left:auto;
+				         margin-right:auto;
+				}
+		</style>
+
+    <script>
+      /**********Popup Functions****/
+      //Algonquin popup
+        function algonquinContent(feature, layer) {
+          //layer.bindPopup("<p>"+feature.properties.Name+"</p>");
+          layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+          +"<h4><br>"+"It's area is "+ feature.properties.AREA_SQ_MI+ " algonquin"+ "</h4></p>" );
+        };
+      //Menomini popup
+        function menominiContent(feature, layer) {
+          layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+          +"<h4><br>"+"It's area is "+ feature.properties.AREA_SQ_MI+ " menomini"+ "</h4></p>" );
+        };
+    //Ojibwa Popup
+        function ojibwaContent(feature, layer) {
+          layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+          +"<h4><br>"+"It's area is "+ feature.properties.AREA_SQ_MI+ " ojibwa"+ "</h4></p>" );
+        };
+    //Ojibwa Popup
+        function ojibwaContent(feature, layer) {
+          layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+          +"<h4><br>"+"It's area is "+ feature.properties.AREA_SQ_MI+ " ojibwa"+ "</h4></p>" );
+        };
+/**********************Plains Tribes (many different tribes under this classification)******/
+    //Oklahoma Popup
+    function oklahomaContent(feature, layer) {
+      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+      +"<h4><br>"+"This area is "+ feature.properties.AREA_SQ_MI+ " kiowa-comanche-apache-oklahoma(oklahoma), part of Plains Tribes"+ "</h4></p>" );
+    };
+    //Crow Popup
+    function crowContent(feature, layer) {
+      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+      +"<h4><br>"+"This area is "+ feature.properties.AREA_SQ_MI+ " crow, part of Plains Tribes "+ "</h4></p>" );
+    };
+    //Blackfoot Popup
+    function blackfootContent(feature, layer) {
+      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+      +"<h4><br>"+"This area is "+ feature.properties.AREA_SQ_MI+ " blackfoot, part of Plains Tribes "+ "</h4></p>" );
+    };
+    //Arapaho Popup
+    function arapahoContent(feature, layer) {
+      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+      +"<h4><br>"+"This area is "+ feature.properties.AREA_SQ_MI+ " arapaho, part of Plains Tribes "+ "</h4></p>" );
+    };
+/**************************************************/
+    //Navajo Popup
+    function navajoContent(feature, layer) {
+      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+      +"<h4><br>"+"Yee naaldlooshii "+ "</h4></p>"  );
+    };
+    //Stó:lō Popup
+    function stoloContent(feature, layer) {
+      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+      +"<h4><br>"+"Seelkee "+ "</h4></p>" );
+    };
+    //Okanagan Popup
+    function okanaganContent(feature, layer) {
+      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+      +"<b>"+"Ogopogo (N'ha-a-itk) "
+      + "</b><a href='https://static1.squarespace.com/static/58671319b3db2ba5365c4b8d/t/5edfcd016215d626449d6499/1591725330352/The+Lake+program.pdf'>Download here</a></p>"  );
+    };
+    //Puget-sound-salish Popup
+    function pugetsoundsalishContent(feature, layer) {
+      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+      +"<b>"+"The word Sasquatch is believed to be an Anglicization of the Salish word Sasq’ets, meaning “wild man” or “hairy man.” (The Canadian Encyclopedia, n.d.)  "
+      + "</b><a href='https://www.thecanadianencyclopedia.ca/en/article/sasquatch'>Check out The Canadian Encyclopedia</a></p>"
+    + "<br>"+ "<b>The Sts'Ailes, who live at Chehalis, British Columbia, have extensive traditions concerning the Sasquatch, whom they regard as another tribe and whom they continue to encounter into modern times.</b><a href='http://www.sasquatchcrossing.ca/our-lodge/history/story-of-the-sasquatch'>Check out sasquatchcrossing.ca</a>");
+    };
+
+//"<b>It's Wendys store, drive through available.</b><a href='https://www.thecanadianencyclopedia.ca/en/article/sasquatch'>Check out The Canadian Encyclopedia</a>"
+
+
+
+				</script>
+</head>
+
+<body>
+  <!-- Add Heading 1 -->
+    <div class="center" id="about">
+      <h1>Using API for dynamic web mapping</h1>
+    <p>
+      <br> This web map contains Point and Polygons in Pennsylvania, US.</br>
+      <br> Also a Line if you zoom out to  Calgary, CA . </br>
+    </p>
+    </div>
+<!-- Add Heading 2 -->
+    <div class = "mapid" id="map"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <!-- MAP SCRIPT -->
+    <script>
+  /********** DATA REQUESTS *****************/
+  // PACities.geoJSON
+    var algonquin = $.ajax({
+        url:"https://native-land.ca/api/index.php?maps=languages&name=algonquin",
+        dataType: "json",
+        success: console.log("PACities data successfully loaded."),
+        error: function (xhr) {
+        alert(`Cities: ${xhr.statusText}`)
+          }
+        })
+  //PACo.geoJSON
+  var menomini = $.ajax({
+    url:"https://native-land.ca/api/index.php?maps=languages&name=menomini",
+    dataType: "json",
+    success: console.log("PACo data successfully loaded."),
+    error: function (xhr) {
+      alert(`PACO: ${xhr.statusText}`)
+    }
+  })
+  //Spring_Trio_15_Km.geoJSON
+  var ojibwa = $.ajax({
+    url:"https://native-land.ca/api/index.php?maps=languages&name=ojibwa",
+    dataType: "json",
+    success: console.log("Spring_Trio_15_Km data successfully loaded."),
+    error: function (xhr) {
+      alert(`Spring_Trio_15_Km: ${xhr.statusText}`)
+    }
+  })
+  /**********************Plains Tribes (many different tribes under this classification)******/
+  //Oklahoma
+  var oklahoma = $.ajax({
+    url:"https://native-land.ca/api/index.php?maps=territories&name=kiowa-comanche-apache-oklahoma",
+    dataType: "json",
+    success: console.log("PA_Co_T json data successfully loaded."),
+    error: function (xhr) {
+      alert(`PA_Co_T: ${xhr.statusText}`)
+    }
+  })
+//Crow
+var crow = $.ajax({
+  url:"https://native-land.ca/api/index.php?maps=languages&name=crow",
+  dataType: "json",
+  success: console.log("PA_Co_T json data successfully loaded."),
+  error: function (xhr) {
+    alert(`PA_Co_T: ${xhr.statusText}`)
+  }
+})
+//Blackfoot Popup
+var blackfoot = $.ajax({
+  url:"https://native-land.ca/api/index.php?maps=languages&name=blackfoot",
+  dataType: "json",
+  success: console.log("PA_Co_T json data successfully loaded."),
+  error: function (xhr) {
+    alert(`PA_Co_T: ${xhr.statusText}`)
+  }
+})
+//Arapaho Popup
+var arapaho = $.ajax({
+  url:"https://native-land.ca/api/index.php?maps=languages&name=arapaho",
+  dataType: "json",
+  success: console.log("PA_Co_T json data successfully loaded."),
+  error: function (xhr) {
+    alert(`PA_Co_T: ${xhr.statusText}`)
+  }
+})
+/**************************************************/
+//Navajo Popup
+var navajo = $.ajax({
+  url:"https://native-land.ca/api/index.php?maps=languages&name=navajo",
+  dataType: "json",
+  success: console.log("PA_Co_T json data successfully loaded."),
+  error: function (xhr) {
+    alert(`PA_Co_T: ${xhr.statusText}`)
+  }
+})
+//Stó:lō Popup
+var stolo = $.ajax({
+  url:"https://native-land.ca/api/index.php?maps=territories&name=sto-lo-treaty-association",
+  dataType: "json",
+  success: console.log("PA_Co_T json data successfully loaded."),
+  error: function (xhr) {
+    alert(`PA_Co_T: ${xhr.statusText}`)
+  }
+})
+//Okanagan Popup
+var okanagan = $.ajax({
+  url:"https://native-land.ca/api/index.php?maps=territories&name=okanagan",
+  dataType: "json",
+  success: console.log("PA_Co_T json data successfully loaded."),
+  error: function (xhr) {
+    alert(`PA_Co_T: ${xhr.statusText}`)
+  }
+})
+//Puget-sound-salish Popup
+var pugetsoundsalish = $.ajax({
+  url:"https://native-land.ca/api/index.php?maps=territories&name=puget-sound-salish",
+  dataType: "json",
+  success: console.log("PA_Co_T json data successfully loaded."),
+  error: function (xhr) {
+    alert(`PA_Co_T: ${xhr.statusText}`)
+  }
+})
+
+
+
+
+
+
+
+        /* Specify that this code should run once all data request is complete*/
+        //  navajo, stolo, okanagan,pugetsoundsalish).done(function() {
+        $.when(algonquin, menomini,ojibwa,oklahoma, crow, blackfoot,
+          arapaho, navajo, stolo, okanagan, pugetsoundsalish).done(function() {
+          var map = L.map('map')
+                    .setView([40.966791, -78.840849], 3);
+
+          var basemap = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}', {
+				attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+				 subdomains: 'abcd',
+				 minZoom: 0,
+				 maxZoom: 20,
+				 ext: 'png'
+                }).addTo(map);
+
+
+  /*Add requested external GeoJSON to map*/
+//PACo.geoJSON. Polygons
+ // var jsPaco = L.geoJSON(paco.responseJSON, {
+ //          color: "#000",
+ //          opacity: 1,
+ //          weight: 1,
+ //          fillColor: '#35495d',
+ //          fillOpacity: 0.8,
+ //          onEachFeature: paCOContent
+ //   }).addTo(map);
+
+   //PACities.geoJSON. Points
+  //  var jslgonquin = L.geoJSON(algonquin.responseJSON, {
+  //   pointToLayer: function(feature, latlng) {
+  //     return L.circleMarker(latlng, {
+  //       radius: 4,
+  //       fillOpacity: 0.8,
+  //       fillColor: "#ff7800",
+  //       color: '#000',
+  //       weight: 0.75
+  //     })
+  //   },
+  //   onEachFeature: algonquinContent
+  // }).addTo(map);
+
+  //Algonquin. Polygons
+  var jsAlgonquin = L.geoJSON(algonquin.responseJSON, {
+           color: "#000",
+           opacity: 1,
+           weight: 1,
+           fillColor: '#35495d',
+           fillOpacity: 0.8,
+           onEachFeature: algonquinContent
+    }).addTo(map)
+
+
+    //Menomini. Polygons
+    var jsMenomini = L.geoJSON(menomini.responseJSON, {
+             color: "#000",
+             opacity: 1,
+             weight: 1,
+             fillColor: '#ff7800',
+             fillOpacity: 0.8,
+             onEachFeature: menominiContent
+      }).addTo(map)
+
+      //Ojibwa. Polygons
+      var jsOjibwa = L.geoJSON(ojibwa.responseJSON, {
+               color: "#000",
+               opacity: 1,
+               weight: 1,
+               fillColor: '#98FB98',
+               fillOpacity: 0.8,
+               onEachFeature: ojibwaContent
+        }).addTo(map)
+    /**********************Plains Tribes (many different tribes under this classification)******/
+    // Oklahoma. Polygons
+    var jsOklahoma = L.geoJSON(oklahoma.responseJSON, {
+             color: "#000",
+             opacity: 1,
+             weight: 1,
+             fillColor: '#F0E68C',
+             fillOpacity: 0.8,
+             onEachFeature: oklahomaContent
+      }).addTo(map)
+      // Crow. Polygons
+      var jsCrow = L.geoJSON(crow.responseJSON, {
+               color: "#000",
+               opacity: 1,
+               weight: 1,
+               fillColor: '#F0E68C',
+               fillOpacity: 0.8,
+               onEachFeature: crowContent
+        }).addTo(map)
+    //Blackfoot Popup
+    var jsBlackfoot = L.geoJSON(blackfoot.responseJSON, {
+             color: "#000",
+             opacity: 1,
+             weight: 1,
+             fillColor: '#F0E68C',
+             fillOpacity: 0.8,
+             onEachFeature: blackfootContent
+      }).addTo(map)
+    //Arapaho Popup
+    var jsArapaho = L.geoJSON(arapaho.responseJSON, {
+             color: "#000",
+             opacity: 1,
+             weight: 1,
+             fillColor: '#F0E68C',
+             fillOpacity: 0.8,
+             onEachFeature: arapahoContent
+      }).addTo(map)
+    /**************************************************/
+    //Navajo Popup
+    var jsNavajo = L.geoJSON(navajo.responseJSON, {
+             color: "#000",
+             opacity: 1,
+             weight: 1,
+             fillColor: '#800000',
+             fillOpacity: 0.8,
+             onEachFeature: navajoContent
+      }).addTo(map)
+    //Stó:lō Popup
+    var jsStolo = L.geoJSON(stolo.responseJSON, {
+             color: "#000",
+             opacity: 1,
+             weight: 1,
+             fillColor: '#00FFFF',
+             fillOpacity: 0.8,
+             onEachFeature: stoloContent
+      }).addTo(map)
+    //Okanagan Popup
+    var jsOkanagan = L.geoJSON(okanagan.responseJSON, {
+             color: "#000",
+             opacity: 1,
+             weight: 1,
+             fillColor: '#663399',
+             fillOpacity: 0.8,
+             onEachFeature: okanaganContent
+      }).addTo(map)
+    //Puget-sound-salish Popup
+    var jsPugetsoundsalish = L.geoJSON(pugetsoundsalish.responseJSON, {
+             color: "#000",
+             opacity: 1,
+             weight: 1,
+             fillColor: '#FFE4E1',
+             fillOpacity: 0.4,
+             onEachFeature: pugetsoundsalishContent
+      }).addTo(map)
+
+
+
+
+
+// //Spring_Trio_15_Km.geoJSON. Lines
+//  var jsSt = L.geoJSON(st.responseJSON, {
+//    pointToLayer: function(feature, latlng) {
+//      return L.circleMarker(latlng, {
+//        radius: 4,
+//        fillOpacity: 0.8,
+//        fillColor: "#ff0000",
+//        color: '#000',
+//        weight: 0.75
+//      })
+//    },
+//    onEachFeature: springContent,
+//      color: 'red',
+//      weight: 1
+//    }).addTo(map);
+// Add scale on map
+     L.control.scale().addTo(map);
+ });
+
+ // // //PA_Co_T.json. Topology.Polygons
+ // // var jsPacot = L.geoJSON(pacot.responseJSON, {
+ // //     fillOpacity: 0,
+ // //     color: '#ff0000',
+ // //     weight: 0.75
+ // //   }).addTo(map);
+
+
+
+    </script>
+
+
+<p>Author: Zach Wang, Ethan Jermome and Nicole Morrison. November 2020</p>
+</body>
+</html>
