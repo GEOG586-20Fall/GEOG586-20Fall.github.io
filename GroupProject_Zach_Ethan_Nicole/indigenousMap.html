@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
        <style>
-		body,h1,h2,h3,h4,h5,h6 {font-family: "TimesNewRoman", sans-serif;}
+		body,h1,h2,h3,h4,h5,h6 {font-family: TimesNewRoman;}
 body, html {
 height: 100%;
 color: #777;
@@ -25,12 +25,9 @@ background-image: url("https://www.sshrc-crsh.gc.ca/_Images/stories/2020/roberts
 			font-family:TimesNewRoman;
 			border-color: Red;
 			border-style: solid;
-			 width: 1500px;
-			 height: 320px;
-			 /* width: 80%;
-			 height: 10%; */
-			 margin-left:auto;
-			 margin-right:auto;
+			 width: 1000px;
+			 margin:auto;
+			 
 			 
 }
 				.mapid {
@@ -135,21 +132,31 @@ background-image: url("https://www.sshrc-crsh.gc.ca/_Images/stories/2020/roberts
 
   <!-- Add Heading 1 -->
   
+  	<div id="title" class="center">
+	<h1> Indigenous cryptids </h1>
+	<h2>Click on a Polygon for information on the cryptid(s) which that tribe is related to!</b></h2>
+	</div>
+	<br>
+	<div class="center">
+	<p>This map will show you the location of cryptid sightings.</P> 
+	<p>This map delineates the territorial boundaries of the Indigenous Tribes that are related to the cryptids mapped in our Colonial Map which can be accessed here: </p>  
+	</div> 
+	<br>
  
-    <div class="center" id="about">
-	<h1><b>Indigenous cryptids</b> </h1> 
-      <p>Click on a Polygon for information on the cryptid(s) which that tribe is related to!
-      <br> This map delineates the territorial boundaries of the Indigenous Tribes that are related to the cryptids mapped in our Colonial Map which can be accessed here:</br></p>
+    <!-- <div class="center" id="about"> -->
+	<!-- <h1><b>Indigenous cryptids</b> </h1>  -->
+      <!-- <p>Click on a Polygon for information on the cryptid(s) which that tribe is related to! -->
+      <!-- <br> This map delineates the territorial boundaries of the Indigenous Tribes that are related to the cryptids mapped in our Colonial Map which can be accessed here:</br></p> -->
       <div id="Header" >
 		<form>
 <input class="MyButton" type="button" value="Click here to view Colonial Map" onclick="window.location.href='https://geog586-20fall.github.io/GroupProject_Zach_Ethan_Nicole/Final_Project.html'" />
 </form>
 	</div>
-<br>
-      <br> ...</br>
+
+    
     </p>
     </div>
-	<br>
+	
 <!-- Add Heading 2 -->
 <br>
     <div class = "mapid" id="map"></div>
