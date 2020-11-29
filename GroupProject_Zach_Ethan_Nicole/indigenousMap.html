@@ -9,20 +9,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
        <style>
-		body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+		body,h1,h2,h3,h4,h5,h6 {font-family: "TimesNewRoman", sans-serif;}
 body, html {
 height: 100%;
 color: #777;
 line-height: 1.8;
 text-align:center;
-background-image: url("https://canadianfirstnation.weebly.com/uploads/5/7/2/5/57254239/220754_orig.jpg");
+background-image: url("https://www.sshrc-crsh.gc.ca/_Images/stories/2020/robertson_artist_art_md.jpg");
 }
 
 .center {color:Black;
 			background-color : White;
 			text-align: center;
 			font-size: 25px;
-			border-color: black;
+			font-family: TimesNewRoman;
+			border-color: Red;
 			border-style: solid;
 			 width: 1500px;
 			 height: 320px;
@@ -41,6 +42,17 @@ background-image: url("https://canadianfirstnation.weebly.com/uploads/5/7/2/5/57
 				         margin-right:auto;
 						  border-color: red;
 						border-style: solid;
+				}
+				
+				.nicole {color: Black;
+					 max-width:850px;
+					 margin: auto; 
+					 background-color: white;
+					 text-align: Center; 
+					 font-size: 20px;
+					 border-color: Red;
+					 border-style: solid;
+					 font-family:TimesNewRoman;
 				}
 		</style>
 
@@ -118,15 +130,17 @@ background-image: url("https://canadianfirstnation.weebly.com/uploads/5/7/2/5/57
 </head>
 
 <body>
+
+
   <!-- Add Heading 1 -->
+ 
     <div class="center" id="about">
-      <h1>Indigenous Cryptids</h1>
-    <p>
+     <h1>Indigenous Cryptids</h1><p>
       <b> Click on a Polygon for information on the cryptid(s) which that tribe is related to!</b>
-      <br> This map delineates the territorial boundaries of the Indigenous Tribes that are related to the cryptids mapped in our Colonial Map which can be accessed here:</br>
-      <div id="Header" class="pinkText1">
+      <br> This map delineates the territorial boundaries of the Indigenous Tribes that are related to the cryptids mapped in our Colonial Map which can be accessed here:</br></p>
+      <div id="Header" >
 		<form>
-<input class="MyButton" type="button" value="Click here to view a Colonial Map" onclick="window.location.href='https://geog586-20fall.github.io/GroupProject_Zach_Ethan_Nicole/Final_Project.html'" />
+<input class="MyButton" type="button" value="Click here to view Colonial Map" onclick="window.location.href='https://geog586-20fall.github.io/GroupProject_Zach_Ethan_Nicole/Final_Project.html'" />
 </form>
 	</div>
 <br>
@@ -370,6 +384,8 @@ var pugetsoundsalish = $.ajax({
     </script>
 
 <br />
+<div id="author" class="nicole"> 
 <p>Author: Zach Wang, Ethan Jerome and Nicole Morrison. November 2020</p>
+</div>
 </body>
 </html>
