@@ -600,6 +600,156 @@
           56.79749440245202
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "MAXTEMP": 5.5,
+        "MINTEMP": -4.51,
+        "TOTALPRECIP": 463.96
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.77377319335936,
+          59.22374497169974
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "MAXTEMP": 6.1,
+        "MINTEMP": -4.2,
+        "TOTALPRECIP": 245.98
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.11734008789062,
+          59.64623423421001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "MAXTEMP": 5.38,
+        "MINTEMP": -5.7,
+        "TOTALPRECIP": 285.62
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.39337158203125,
+          59.67952853098329
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "MAXTEMP": 6.11,
+        "MINTEMP": -4.2,
+        "TOTALPRECIP": 252.25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.39199829101561,
+          59.94331935475679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "MAXTEMP": 8.66,
+        "MINTEMP": -3.2,
+        "TOTALPRECIP": 329.05
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.43937683105467,
+          54.86554362100959
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "MAXTEMP": 6.52,
+        "MINTEMP": -2.84,
+        "TOTALPRECIP": 887.95
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.00316619873047,
+          55.27481297023092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "MAXTEMP": 7.65,
+        "MINTEMP": -3.53,
+        "TOTALPRECIP": 460.41
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.25344848632811,
+          56.01834293384084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "MAXTEMP": 6.17,
+        "MINTEMP": -3.8,
+        "TOTALPRECIP": 446.81
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.47891235351562,
+          55.87454041761713
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "MAXTEMP": 6.38,
+        "MINTEMP": -3.81,
+        "TOTALPRECIP": 458.93
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.2629623413086,
+          56.36753205227851
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "MAXTEMP": 7.79,
+        "MINTEMP": -4.72,
+        "TOTALPRECIP": 414.95
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.49240112304688,
+          56.663774185801515
+        ]
+      }
     }
   ]
 }
