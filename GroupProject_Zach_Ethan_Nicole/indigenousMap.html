@@ -8,157 +8,113 @@
     <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-       <style>
-		body,h1,h2,h3,h4,h5,h6 {font-family: TimesNewRoman;}
-body, html {
-height: 100%;
-color: #777;
-line-height: 1.8;
-text-align:center;
-background-image: url("https://www.sshrc-crsh.gc.ca/_Images/stories/2020/robertson_artist_art_md.jpg");
-}
-
-.center {color:Black;
-			background-color : White;
-			text-align: center;
-			font-size: 15px;
-			font-family:TimesNewRoman;
-			border-color: Red;
-			border-style: solid;
-			 width: 850px;
-			 margin:auto;
-			 
-			 
-}
-				.mapid {
-				         /* width: 800px;
-				         height: 500px; */
-				         width: 80%;
-				         height: 80%;
-				         margin-left:auto;
-				         margin-right:auto;
-						  border-color: red;
-						border-style: solid;
-				}
-				
-				.nicole {color: Black;
-					 max-width:850px;
-					 margin: auto; 
-					 background-color: white;
-					 text-align: Center; 
-					 font-size: 20px;
-					 border-color: Red;
-					 border-style: solid;
-					 font-family:TimesNewRoman;
-				}
-			
-		</style>
+    <link rel="stylesheet" href="css/indigenous.css">
 
     <script>
-      /**********Popup Functions****/
-      //Algonquin popup
-        function algonquinContent(feature, layer) {
-          //layer.bindPopup("<p>"+feature.properties.Name+"</p>");
-          layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
-          + "<b>Wiindigoo: This cryptid goes by many different names, however the most common transliteration of its name is ‘Wendigo’, with its source being the Ojibwe word ‘Wiindigoo’."+" This cryptid is a part of the traditional beliefs of numerous different Algonquin-speaking indigenous tribes, including the Ojibwe, Cree, and Naskapi. These beasts are cannibalistic, and said to grow in size after every meal, so that they can never be full -- this beast is simultaneously gluttonous and starving. In some traditions, it is said that humans overpowered by greed, or those who resort to cannibalism, may transform into a wendigo. Basil H. Johnston, an indigenous story teller, gives the following description of the cryptid:  ‘The Wendigo was gaunt to the point of emaciation, its desiccated skin pulled tightly over its bones. With its bones pushing out against its skin, its complexion the ash-gray of death, and its eyes pushed back deep into their sockets, the Wendigo looked like a gaunt skeleton recently disinterred from the grave. What lips it had were tattered and bloody ... Unclean and suffering from suppuration of the flesh, the Wendigo gave off a strange and eerie odor of decay and decomposition, of death and corruption.’</b><a href='https://www.aroundchilliwack.ca/blog//chilliwack-museum-moment-slhqey'> More information of Wiindigoo</a>"
-          +"<br>" + "<br>"
-          + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>"
-          );
-        };
-      //Menomini popup
-        function menominiContent(feature, layer) {
-          layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
-          + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>"
-           );
-        };
-    //Ojibwa Popup
-        function ojibwaContent(feature, layer) {
-          layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
-          +"<b>Wiindigoo: This cryptid goes by many different names, however the most common transliteration of its name is ‘Wendigo’, with its source being the Ojibwe word ‘Wiindigoo’."+" This cryptid is a part of the traditional beliefs of numerous different Algonquin-speaking indigenous tribes, including the Ojibwe, Cree, and Naskapi. These beasts are cannibalistic, and said to grow in size after every meal, so that they can never be full -- this beast is simultaneously gluttonous and starving. In some traditions, it is said that humans overpowered by greed, or those who resort to cannibalism, may transform into a wendigo. Basil H. Johnston, an indigenous story teller, gives the following description of the cryptid:  ‘The Wendigo was gaunt to the point of emaciation, its desiccated skin pulled tightly over its bones. With its bones pushing out against its skin, its complexion the ash-gray of death, and its eyes pushed back deep into their sockets, the Wendigo looked like a gaunt skeleton recently disinterred from the grave. What lips it had were tattered and bloody ... Unclean and suffering from suppuration of the flesh, the Wendigo gave off a strange and eerie odor of decay and decomposition, of death and corruption.’</b><a href='https://www.aroundchilliwack.ca/blog//chilliwack-museum-moment-slhqey'> More information of Wiindigoo</a></p>"
+    /**********Popup Functions****/
+    //Algonquin popup
+      function algonquinContent(feature, layer) {
+        //layer.bindPopup("<p>"+feature.properties.Name+"</p>");
+        layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+        + "<b>Wiindigoo: This cryptid goes by many different names, however the most common transliteration of its name is ‘Wendigo’, with its source being the Ojibwe word ‘Wiindigoo’."+" This cryptid is a part of the traditional beliefs of numerous different Algonquin-speaking indigenous tribes, including the Ojibwe, Cree, and Naskapi. These beasts are cannibalistic, and said to grow in size after every meal, so that they can never be full -- this beast is simultaneously gluttonous and starving. In some traditions, it is said that humans overpowered by greed, or those who resort to cannibalism, may transform into a wendigo. Basil H. Johnston, an indigenous story teller, gives the following description of the cryptid:  ‘The Wendigo was gaunt to the point of emaciation, its desiccated skin pulled tightly over its bones. With its bones pushing out against its skin, its complexion the ash-gray of death, and its eyes pushed back deep into their sockets, the Wendigo looked like a gaunt skeleton recently disinterred from the grave. What lips it had were tattered and bloody ... Unclean and suffering from suppuration of the flesh, the Wendigo gave off a strange and eerie odor of decay and decomposition, of death and corruption.’</b><a href='https://www.aroundchilliwack.ca/blog//chilliwack-museum-moment-slhqey'> More information of Wiindigoo</a>"
+        +"<br>" + "<br>"
+        + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>"
+        );
+      };
+    //Menomini popup
+      function menominiContent(feature, layer) {
+        layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+        + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>"
          );
-        };
+      };
+  //Ojibwa Popup
+      function ojibwaContent(feature, layer) {
+        layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+        +"<b>Wiindigoo: This cryptid goes by many different names, however the most common transliteration of its name is ‘Wendigo’, with its source being the Ojibwe word ‘Wiindigoo’."+" This cryptid is a part of the traditional beliefs of numerous different Algonquin-speaking indigenous tribes, including the Ojibwe, Cree, and Naskapi. These beasts are cannibalistic, and said to grow in size after every meal, so that they can never be full -- this beast is simultaneously gluttonous and starving. In some traditions, it is said that humans overpowered by greed, or those who resort to cannibalism, may transform into a wendigo. Basil H. Johnston, an indigenous story teller, gives the following description of the cryptid:  ‘The Wendigo was gaunt to the point of emaciation, its desiccated skin pulled tightly over its bones. With its bones pushing out against its skin, its complexion the ash-gray of death, and its eyes pushed back deep into their sockets, the Wendigo looked like a gaunt skeleton recently disinterred from the grave. What lips it had were tattered and bloody ... Unclean and suffering from suppuration of the flesh, the Wendigo gave off a strange and eerie odor of decay and decomposition, of death and corruption.’</b><a href='https://www.aroundchilliwack.ca/blog//chilliwack-museum-moment-slhqey'> More information of Wiindigoo</a></p>"
+       );
+      };
 /**********************Plains Tribes (many different tribes under this classification)******/
-    //Oklahoma Popup
-    function oklahomaContent(feature, layer) {
-      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
-      + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>" );
-    };
-    //Crow Popup
-    function crowContent(feature, layer) {
-      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
-      + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>"
-       );
-    };
-    //Blackfoot Popup
-    function blackfootContent(feature, layer) {
-      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
-      + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>"
-       );
-    };
-    //Arapaho Popup
-    function arapahoContent(feature, layer) {
-      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
-      + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>"
-       );
-    };
+  //Oklahoma Popup
+  function oklahomaContent(feature, layer) {
+    layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+    + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>" );
+  };
+  //Crow Popup
+  function crowContent(feature, layer) {
+    layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+    + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>"
+     );
+  };
+  //Blackfoot Popup
+  function blackfootContent(feature, layer) {
+    layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+    + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>"
+     );
+  };
+  //Arapaho Popup
+  function arapahoContent(feature, layer) {
+    layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+    + "<b>Thunderbird: The Thunderbird is almost ubiquitous to North American Indigenous culture. Numerous tribes, including the Algonquian, Menominee, and Plains Tribes, such as the Arapaho have different oral traditions related to this cryptid -- for example, Algonquian lore proposes that the Thunderbird helped create the universe and were the ancestors of humans; whereas, Menominee lore proposes the Thunderbird is a messenger for the Great Sun, which delighted in deeds of greatness! It is said that this creature brought rain and storms, sometimes for good, to stop droughts, and sometimes for bad, causing destructive floods. The Thunderbird is said to be so large, that several legends describe it as picking up a whale in its talons.</b><a href='https://www.legendsofamerica.com/thunderbird-native-american/'> More information of Thunderbird</a></p>"
+     );
+  };
 /**************************************************/
-    //Navajo Popup
-    function navajoContent(feature, layer) {
-      layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
-      + "<b>This cryptid is part of Navajo culture, and is considered the most volatile and dangerous of the Navajo witches that can transform into, disguise themselves as, or possess animals. The term ‘yee naaldlooshii’ translates to ‘with it, he goes on all fours’. Generally, animals associated with this cryptid are trickster animals, such as coyotes -- however, other animals, typically those associated with bad omens, are associated with the Yee Naaldlooshii.  </b><a href='https://www.legendsofamerica.com/navajo-skinwalkers/'>For more information</a></p>"  );
-    };
-    //Stó:lō Popup
-    function stoloContent(feature, layer) {
-      layer.bindPopup("<p><h3>"+feature.properties.Name+ ": S’í:lhqey" +"</h3>"
-        + "<b>This cryptid is a lesser-known ‘cousin’ of the Ogopogo. The S’í:lhqey is a part of Stó:lō culture, with alleged sightings going back centuries. In fact, one of the first Caucasian settlers in the region, Issac Kipp, reportedly saw the creature, and was told by the local peoples to not turn his back to the creature, or he will get sick -- as the creature is said to have the power to cause a person’s body to twist and become sick, until death, if they run upon witnessing the creature.  </b><a href='https://www.aroundchilliwack.ca/blog//chilliwack-museum-moment-slhqey'>For more information</a></p>"
-       );
-    };
-    //Okanagan Popup
-    function okanaganContent(feature, layer) {
-      layer.bindPopup("<p><h3>"+feature.properties.Name+ ": Syilx"+ "</h3>"
-      +"<b>Commonly referred to as the Ogopogo, the N'ha-a-itk owes its origins to the Syilx peoples of the Okanagan area. The name of this cryptid translates to ‘the sacred spirit of the lake’ and is said to be an embodiment of the lake that is to be respected and revered; in fact, the name of this creature actually refers to more than one creature -- it is the creature(s), the lake itself, the rivers and waters that feed the lake, and the flora and fauna surrounding the lake. Encounters with this creature predate the contact with Europeans. It is said to be a kind creature, so long as those who encounter it respect and honour the lake and its surroundings.  </b><a href='https://static1.squarespace.com/static/58671319b3db2ba5365c4b8d/t/5edfcd016215d626449d6499/1591725330352/The+Lake+program.pdf'>For more information</a></p>" );
-    };
-    //Puget-sound-salish Popup
-    function pugetsoundsalishContent(feature, layer) {
-      layer.bindPopup("<p><h3>"+feature.properties.Name+ ": Coast Salish"+"</h3>"
-      + "<b>This cryptid is a pop culture phenomena at this point, with sightings not only all over North America, but the entire world. The indigenous origins of this cryptid, however, are much more humble. The Sasquatch has a very long, rich history in the Sts’Ailes Territory -- in fact, the name ‘Sasquatch’ is an anglicised pronunciation of Sa:sq’ets, a Sts’Ailes word which describes the cryptid as the primary caretaker of the land. To the Sts’Ailes people, Sasquatch is integral to their culture.  </b><a href='http://www.sasquatchcrossing.ca/our-lodge/history/story-of-the-sasquatch'>For more information</a></p>"
-      );
-    };
+  //Navajo Popup
+  function navajoContent(feature, layer) {
+    layer.bindPopup("<p><h3>"+feature.properties.Name+ "</h3>"
+    + "<b>This cryptid is part of Navajo culture, and is considered the most volatile and dangerous of the Navajo witches that can transform into, disguise themselves as, or possess animals. The term ‘yee naaldlooshii’ translates to ‘with it, he goes on all fours’. Generally, animals associated with this cryptid are trickster animals, such as coyotes -- however, other animals, typically those associated with bad omens, are associated with the Yee Naaldlooshii.  </b><a href='https://www.legendsofamerica.com/navajo-skinwalkers/'>For more information</a></p>"  );
+  };
+  //Stó:lō Popup
+  function stoloContent(feature, layer) {
+    layer.bindPopup("<p><h3>"+feature.properties.Name+ ": S’í:lhqey" +"</h3>"
+      + "<b>This cryptid is a lesser-known ‘cousin’ of the Ogopogo. The S’í:lhqey is a part of Stó:lō culture, with alleged sightings going back centuries. In fact, one of the first Caucasian settlers in the region, Issac Kipp, reportedly saw the creature, and was told by the local peoples to not turn his back to the creature, or he will get sick -- as the creature is said to have the power to cause a person’s body to twist and become sick, until death, if they run upon witnessing the creature.  </b><a href='https://www.aroundchilliwack.ca/blog//chilliwack-museum-moment-slhqey'>For more information</a></p>"
+     );
+  };
+  //Okanagan Popup
+  function okanaganContent(feature, layer) {
+    layer.bindPopup("<p><h3>"+feature.properties.Name+ ": Syilx"+ "</h3>"
+    +"<b>Commonly referred to as the Ogopogo, the N'ha-a-itk owes its origins to the Syilx peoples of the Okanagan area. The name of this cryptid translates to ‘the sacred spirit of the lake’ and is said to be an embodiment of the lake that is to be respected and revered; in fact, the name of this creature actually refers to more than one creature -- it is the creature(s), the lake itself, the rivers and waters that feed the lake, and the flora and fauna surrounding the lake. Encounters with this creature predate the contact with Europeans. It is said to be a kind creature, so long as those who encounter it respect and honour the lake and its surroundings.  </b><a href='https://static1.squarespace.com/static/58671319b3db2ba5365c4b8d/t/5edfcd016215d626449d6499/1591725330352/The+Lake+program.pdf'>For more information</a></p>" );
+  };
+  //Puget-sound-salish Popup
+  function pugetsoundsalishContent(feature, layer) {
+    layer.bindPopup("<p><h3>"+feature.properties.Name+ ": Coast Salish"+"</h3>"
+    + "<b>This cryptid is a pop culture phenomena at this point, with sightings not only all over North America, but the entire world. The indigenous origins of this cryptid, however, are much more humble. The Sasquatch has a very long, rich history in the Sts’Ailes Territory -- in fact, the name ‘Sasquatch’ is an anglicised pronunciation of Sa:sq’ets, a Sts’Ailes word which describes the cryptid as the primary caretaker of the land. To the Sts’Ailes people, Sasquatch is integral to their culture.  </b><a href='http://www.sasquatchcrossing.ca/our-lodge/history/story-of-the-sasquatch'>For more information</a></p>"
+    );
+  };
 				</script>
 </head>
+<!--        MIT License        -->
+<nav role="navigation">
+  <div id="menuToggle">
+    <input type="checkbox" />
+
+    <!--  Some spans to act as a hamburger.-->
+    <span></span>
+    <span></span>
+    <span></span>
+<!-- Link maps together -->
+    <ul id="menu">
+      <div id = "hamburger">
+        <li><a href="https://geog586-20fall.github.io/GroupProject_Zach_Ethan_Nicole/Final_Project.html">Colonial Map</a></li>
+        <li><a href="https://GEOG586-20Fall.github.io/GroupProject_Zach_Ethan_Nicole/indigenousMap.html">Indigenous Map</a></li>
+      </div>
+    </ul>
+  </div>
+</nav>
 
 <body>
-
-
   <!-- Add Heading 1 -->
-  
-  	<div id="title" class="center">
-	<h1> Indigenous cryptids </h1>
-	<h2>Click on a Polygon for information on the cryptid(s) which that tribe is related to!</b></h2>
-	</div>
-	<br>
-	<div class="center">
-	<p>This map will show you the location of cryptid sightings.</P> 
-	<p>This map delineates the territorial boundaries of the Indigenous Tribes that are related to the cryptids mapped in our Colonial Map which can be accessed here: </p>  
-	</div> 
-	<br>
- 
-    <!-- <div class="center" id="about"> -->
-	<!-- <h1><b>Indigenous cryptids</b> </h1>  -->
-      <!-- <p>Click on a Polygon for information on the cryptid(s) which that tribe is related to! -->
-      <!-- <br> This map delineates the territorial boundaries of the Indigenous Tribes that are related to the cryptids mapped in our Colonial Map which can be accessed here:</br></p> -->
-      <div id="Header" >
-		<form>
-<input class="MyButton" type="button" value="Click here to view Colonial Map" onclick="window.location.href='https://geog586-20fall.github.io/GroupProject_Zach_Ethan_Nicole/Final_Project.html'" />
-</form>
-	</div>
-
-    
-    </p>
-    </div>
-	
-<!-- Add Heading 2 -->
+  <div id="title" class="center">
+<h1> Indigenous cryptids </h1>
+<h2>Click on a Polygon for information on the cryptid(s) which that tribe is related to!</b></h2>
+</div>
 <br>
+<div class="center">
+<p>This map will show you the location of cryptid sightings.</P>
+<p>This map delineates the territorial boundaries of the Indigenous Tribes that are related to the cryptids mapped in our Colonial Map</p>
+</div>
+</p>
+</div>
+<!-- Add Heading 2 -->
     <div class = "mapid" id="map"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
@@ -268,7 +224,6 @@ var pugetsoundsalish = $.ajax({
 })
 
         /* Specify that this code should run once all data request is complete*/
-        //  navajo, stolo, okanagan,pugetsoundsalish).done(function() {
         $.when(algonquin, menomini,ojibwa,oklahoma, crow, blackfoot,
           arapaho, navajo, stolo, okanagan, pugetsoundsalish).done(function() {
           var map = L.map('map')
@@ -377,6 +332,7 @@ var pugetsoundsalish = $.ajax({
              fillOpacity: 0.8,
              onEachFeature: okanaganContent
       }).addTo(map)
+
     //Puget-sound-salish Popup
     var jsPugetsoundsalish = L.geoJSON(pugetsoundsalish.responseJSON, {
              color: "#000",
@@ -386,15 +342,33 @@ var pugetsoundsalish = $.ajax({
              fillOpacity: 0.4,
              onEachFeature: pugetsoundsalishContent
       }).addTo(map)
+      //Add scale
+      L.control.scale().addTo(map);
+            /*Legend specific*/
+            var legend = L.control({ position: "bottomleft" });
+            legend.onAdd = function(map) {
+              var div = L.DomUtil.create("div", "legend");
+              div.innerHTML += "<h4>Legend</h4>";
+              div.innerHTML += '<i style="background: #35495d"></i><span>Algonquin</span><br>';
+              div.innerHTML += '<i style="background: #ff7800"></i><span>Menomini</span><br>';
+              div.innerHTML += '<i style="background: #98FB98"></i><span>Anishinaabe</span><br>';
+              div.innerHTML += '<i style="background: #F0E68C"></i><span>Plains Tribes</span><br>';
+              div.innerHTML += '<i style="background: #800000"></i><span>Navajo</span><br>';
+              div.innerHTML += '<i style="background: #00FFFF"></i><span>Stolo</span><br>';
+              div.innerHTML += '<i style="background: #663399"></i><span>Okanagan</span><br>';
+              div.innerHTML += '<i style="background: #FFE4E1"></i><span>Puget-sound-salish</span><br>';
 
+              return div;
+            };
 
-     L.control.scale().addTo(map);
+            legend.addTo(map);
+
  });
+
     </script>
 
 <br />
-<div id="author" class="nicole"> 
+<div id="author" class="nicole">
 <p>Author: Zach Wang, Ethan Jerome and Nicole Morrison. November 2020</p>
-</div>
 </body>
 </html>
