@@ -1,0 +1,205 @@
+bbody,h1,h2,h3,h4,h5,h6 {font-family: TimesNewRoman;}
+body, html {
+height: 100%;
+color: #777;
+line-height: 1.8;
+text-align:center;
+background-image: url("https://www.sshrc-crsh.gc.ca/_Images/stories/2020/robertson_artist_art_md.jpg");
+}
+
+.center {color:Black;
+  background-color : White;
+  text-align: center;
+  font-size: 15px;
+  font-family:TimesNewRoman;
+  border-color: Red;
+  border-style: solid;
+   width: 850px;
+   margin:auto;
+
+
+}
+    .mapid {
+             /* width: 800px;
+             height: 500px; */
+             width: 80%;
+             height: 80%;
+             margin-left:auto;
+             margin-right:auto;
+          border-color: red;
+        border-style: solid;
+    }
+
+    .nicole {color: Black;
+       max-width:850px;
+       margin: auto;
+       background-color: white;
+       text-align: Center;
+       font-size: 20px;
+       border-color: Red;
+       border-style: solid;
+       font-family:TimesNewRoman;
+    }
+
+#menuToggle a
+{
+text-decoration: none;
+color: #232323;
+
+transition: color 0.3s ease;
+}
+
+#menuToggle a:hover
+{
+color: tomato;
+}
+
+#menuToggle input
+{
+display: block;
+width: 40px;
+height: 32px;
+position: absolute;
+top: -7px;
+left: -5px;
+
+cursor: pointer;
+
+opacity: 0; /* hide this */
+z-index: 2; /* and place it over the hamburger */
+
+-webkit-touch-callout: none;
+}
+
+/*
+* Just a quick hamburger
+*/
+#menuToggle span
+{
+display: block;
+width: 33px;
+height: 4px;
+margin-bottom: 5px;
+position: relative;
+
+background: #cdcdcd;
+border-radius: 3px;
+
+z-index: 1;
+
+transform-origin: 4px 0px;
+
+transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+          background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+          opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+transform-origin: 0% 100%;
+}
+
+/*
+* Transform all the slices of hamburger
+* into a crossmark.
+*/
+#menuToggle input:checked ~ span
+{
+opacity: 1;
+transform: rotate(45deg) translate(-2px, -1px);
+background: #232323;
+}
+
+/*
+* But let's hide the middle one.
+*/
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+opacity: 0;
+transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+* the last one should go the other direction
+*/
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+* Make this absolute positioned at the top left of the screen
+*/
+#menu
+{
+position: absolute;
+width: 250px;
+margin: -100px 0 0 -50px;
+padding: 30px;
+padding-top: 125px;
+
+background: #ededed;
+list-style-type: none;
+-webkit-font-smoothing: antialiased;
+/* to stop flickering of text in safari */
+
+transform-origin: 0% 0%;
+transform: translate(-100%, 0);
+
+transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+padding: 10px 0;
+font-size: 22px;
+}
+
+/*
+* And let's slide it in from the left
+*/
+#menuToggle input:checked ~ ul
+{
+transform: none;
+}
+
+/* Legend specific  */
+.legend {
+padding: 6px 8px;
+font: 14px Arial, Helvetica, sans-serif;
+background: white;
+background: rgba(255, 255, 255, 0.8);
+/*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+/*border-radius: 5px;*/
+line-height: 24px;
+color: #555;
+}
+.legend h4 {
+text-align: center;
+font-size: 16px;
+margin: 2px 12px 8px;
+color: #777;
+}
+
+.legend span {
+position: relative;
+bottom: 3px;
+}
+
+.legend i {
+width: 18px;
+height: 18px;
+float: left;
+margin: 0 8px 0 0;
+opacity: 0.7;
+}
+
+.legend i.icon {
+background-size: 18px;
+background-color: rgba(255, 255, 255, 1);
+}
