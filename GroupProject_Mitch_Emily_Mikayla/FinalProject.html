@@ -7,25 +7,27 @@
 <style>
     body{
     
-    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/pink dust.png");
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/repeated-square.png");
     position: relative;
     }
     
-	h1 {margin-top: 50;
+	h1 {margin-top: 25px;
         ;
-        color: aliceblue;
+        color: white;
         font-family: Roboto;
         font-weight: 900;
     
     }
 	h2 {
-        color: aliceblue;
+        color: #E5E5E5;
         font-family: Roboto;
         font-weight: 700;
+        text-decoration-line: underline;
+        
     }
     
 	h3 {text-align: center;
-        color: aliceblue;
+        color: white;
         font-family: Roboto;}
     
 	h4 {text-align: center;
@@ -33,116 +35,169 @@
         font-family: Roboto;}
     
 	p  {text-align: center;
-        color: aliceblue;
+        color: #E5E5E5;
         font-family: Roboto;}
     
-    .header{
-        background-color: black;
-        height: 10%;
-        width: 100%;
-        background-blend-mode:soft-light;
-        
-        
-    }
     
-    .titles {
-        display: block;
-        position: absolute; 
+    
+    
+    
+.header {
+            background-color: #2a2a2a;
+            height: 110px;
+            width: 100%;    
         
     }
     
-    .bighead{
-        display: block;
-        position: absolute; 
-        top: 10px;
-        left: 2%;
-        
-        
-    }
-	
-    #title1 {
-            text-align: center;
-            top: 125; 
-            left: 100; 
-            right: 52%; 
-    }
-    
-     #title2 {
-            text-align: center;
-            top: 125; 
-            left: 52%; 
-            right: 100;
-    }
-    
-    #subhead1 {
-        top: 160; 
-        left: 100; 
-        right: 52%;
-        
-    }
-    
-    #subhead2 {
-         top: 160; 
-         left: 52%; 
-         right: 100;
-        
-    }
-    
-    
-	.mapcontainer{ 
-              
-				}
-				
-	.centerbutton {
-		display: flex;
-		justify-content: center;
-        align-items: center;}
-    
-    
-				
-	
-      #map {
+.tophead {
             display: block;
             position: absolute; 
-            top: 240; 
-            bottom: 150; 
+            padding-left: 20px;
+        
+        
+    }
+    
+.titles {
+            display: block;
+            position: absolute; 
+            text-align: center;
+        
+    }
+	
+#title1 {
+            background-color: #2a2a2a;
+            border-radius: 7px;
+            top: 125; 
+            left: 11%; 
+            right: 52%; 
+            padding-bottom: 110px;
+            padding-top: 10px;
+           
+        
+        
+    }
+    
+#title2 {
+            background-color: #2a2a2a;
+            border-radius: 7px;
+            top: 125; 
             left: 52%; 
-            right: 100;
+            right: 11%;
+            padding-bottom: 110px;
+            padding-top: 10px;
+    }
+    
+#title3 {
+            background-color: #2a2a2a;
+            text-align: left;
+            top: 80%;
+            width: 100%;
+            padding-top: 15px;
+            padding-bottom: 110px;
+            padding-left: 12%;
+    
+            
+        
+    }
+   
+    
+    
+#subhead {
+            margin-top: 65px;
+            color: #E5E5E5;
+    }
+    
+    
+    
+        
+.main {
+            display: block;
+            position: absolute;
+            text-align: center;
+    }
+    
+    
+
+#par1 {
+            top: 175;
+            left: 12%; 
+            right: 53%;
+            
+        }
+    
+#par2 {
+            top: 175;
+            left: 53%; 
+            right: 12%;
+
+        }
+
+
+#par3 {
+            top: 85%;
+            left: 12%;
+            right: 12%;
+            
+            text-align: left;
+
+        }
+		
+#box {
+            position:static;
+            width: 80%;
+            margin:auto;
+            margin-top: 25;
+            height: 67%;
+/*            margin-bottom: 0.5%;*/
             border-radius: 12px;
-/*
-          max-width: 1000px;
-          min-width: 850px;
-*/
+            background-color: #E5E5E5;
+    
+        
+    }
+    
+	
+#map {
+            display: block;
+            position: absolute; 
+            top: 300; 
+            bottom: 250; 
+            left: 11%; 
+            right: 52%;
+            border-radius: 12px;
+
          
     }
 
-		#secondaryMap {	
+#map2 {	
             display: block;
             position: absolute; 
-            top: 240; 
-            bottom: 150; 
-            left: 100; 
-            right: 52%;
+            top: 300; 
+            bottom: 250; 
+            left: 52%; 
+            right: 11%;
             border-radius: 12px;
-/*
-            max-width: 1000px;
-            min-width: 850px;
-*/
+
            
     }
 </style>
-     ////end of CSS//////
+<!--     ////end of CSS//////-->
 </head>
  
  <body>
-     <h1 class="bighead" >GEOG 586 Group Project - By Emily, Mikayla and Mitchell</h1>
-     <h2 class="bighead">Analyzing Wildfire Data in Alberta, 2000-2019</h2>
+     
+     <h1 class="tophead">Analyzing Wildfire Data in Alberta, 2000-2019</h1>
+     
+     <h3 id="subhead"class="tophead" >GEOG 586 Group Project - By Emily, Mikayla and Mitchell</h3>
+     
      
 <div class="header">  </div>    
 
    
      <h2 id="title1" class="titles"> Webmap One: 2000-2009 </h2>
- <p id= "subhead1" class= "titles"> This is the first map for our project. In this map, we are looking at major wildfire datas during this decade and also looking at the relevant climate data during this period. </p>
+     
+ <p id= "par1" class= "main"> This is the first map for our project. In this map, we are looking at major wildfire datas during this decade and also looking at the relevant climate data during this period. </p>
+     
+<div id="box"></div>
 
 <div id="map" class="mapcontainer"></div>
 
@@ -162,7 +217,7 @@
                 return L.circleMarker(latlng, Marker);
          }
           var Marker = {
-          radius: 6,
+          radius: 4,
           fillColor: "#ff992b",
           color: "#ffdf2b",
           weight: 1,
@@ -209,9 +264,9 @@
     ////////////////////////////////fire API response//////////////////////////////////
     function fire () {
            var style = {
-           "color": "#cf001c",
-            "weight": "1",
-            fillOpacity: 0,
+           "color": "#E12FE6",
+            "weight": "2",
+            fillOpacity: 0.2,
             fill: "none",
             };
         var fireAPI=
@@ -229,46 +284,75 @@
     
  </script> 
      
-//////////////////////////////MA#2//////////////////////////////////////////
+<!--     //////////////////////////////MA#2//////////////////////////////////////////-->
      
 <h2 id= "title2" class="titles"> Webmap Two: 2010-2019 </h2>
-<p id= "subhead2" class= "titles"> This is the second map of our project. In this map, we are looking at major wildfire datas during this decade and also looking at the relevant climate data during this period. </p>
+<p id= "par2" class= "main"> This is the second map of our project. In this map, we are looking at major wildfire datas during this decade and also looking at the relevant climate data during this period. </p>
 
-<div id="secondaryMap" class="mapcontainer"></div>
+<div id="map2" class="mapcontainer"></div>
 <div id="xhr_callup2"></div>
+     
+<script>
 
-<script type= "application/javascript">
-	function onEachFeature(feature, layer) {
-				layer.bindPopup("<h2>"+feature.properties.ALIAS+"</h2>");
-				};
+////////////////////////////MAP#2.1////////////////////////////////////////////////////
 
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var myArr = JSON.parse(this.responseText);
-        myFunction(myArr);
-		//document.getElementById("xhr_request").innerHTML = this.responseText;
-    }
-};
-	
-	xhr.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2010to2019_Simplif.geojson", "synch");
-	
-	xhr.send();
-	
-	//var APIresponse = xhr.responseText;
-
- function myFunction(newlayer){	
-	var map = L.map('secondaryMap').setView([54.76783103448121, -114.74082432881103], 5);
-
+	var map2 = L.map('map2').setView([54.76783103448121, -114.74082432881103], 5);
 
 	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-			}).addTo(map);
+			}).addTo(map2);
 			
-var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
-		};
-     </script>
+
+
+       
+    //climate API response//
+    function climateInfo () {
+        var climateAPI=
+            JSON.parse(this.responseText);
+            climateLayer = L.geoJSON(climateAPI, {pointToLayer: climateIcon, onEachFeature: climatePopup}).addTo(map2);
+        climateLayer.bringToFront();
+    } //end API response
+     
+     //climate API call//
+    var climatePoints2 = new XMLHttpRequest();
+    climatePoints2.addEventListener("load", climateInfo);
+    climatePoints2.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/Climate/ClimateData_10-19.geojson");
+    
+    
+    
+    
+    climatePoints2.send();
+    //done climate API call//
+     
+    ////////////////////////////////fire API response//////////////////////////////////
+    function fire () {
+           var style = {
+           "color": "blue",
+            "weight": "2",
+            fillOpacity: 0.2,
+            fill: "none",
+            };
+        var fireAPI=
+            JSON.parse(this.responseText);
+            fireLayer = L.geoJSON(fireAPI, {onEachFeature: firePopup, style: style}).addTo(map2);
+        fireLayer.bringToBack();
+    }//end API resposne//
+    
+    ///////////////////////////////fire API call//////////////////////////////////////
+    var firePoly = new XMLHttpRequest();
+    firePoly.addEventListener("load", fire);
+    firePoly.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2010to2019_Simplif.geojson", "synch");
+    firePoly.send();
+    //end API call////
+    
+ </script> 
+   
+    
+
+     
+     
+     
 	 
-<h3> Why is this important? <h3>
-<p> Alberta is full of park life, and much of Alberta's tourism takes place in large provincial and national parks, making it an important resource to the province.<br>
+<h3 id="title3" class="titles"> Why is this important? </h3>
+<p id="par3" class="main"> Alberta is full of park life, and much of Alberta's tourism takes place in large provincial and national parks, making it an important resource to the province.<br>
 However, throughout history Alberta has been devestated by various forest fires that have destroyed many acres of trees and destroyed the homes of wildlife. <p>
