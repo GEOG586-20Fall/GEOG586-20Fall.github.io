@@ -60,7 +60,7 @@
 /**************************************************/
   //Navajo Popup
   function navajoContent(feature, layer) {
-    layer.bindPopup("<p><h3>"+feature.properties.Name+ ": Navajo"+"</h3>"
+    layer.bindPopup("<p><h3>"+feature.properties.Name+ ": Yee Naaldlooshii"+"</h3>"
     + "<b>This cryptid is part of Navajo culture, and is considered the most volatile and dangerous of the Navajo witches that can transform into, disguise themselves as, or possess animals. The term ‘yee naaldlooshii’ translates to ‘with it, he goes on all fours’. Generally, animals associated with this cryptid are trickster animals, such as coyotes -- however, other animals, typically those associated with bad omens, are associated with the Yee Naaldlooshii.  </b><a href='https://www.legendsofamerica.com/navajo-skinwalkers/'>For more information</a></p>"  );
   };
   //Stó:lō Popup
@@ -344,24 +344,24 @@ var pugetsoundsalish = $.ajax({
       }).addTo(map)
       //Add scale
       L.control.scale().addTo(map);
-            /*Legend specific*/
-            var legend = L.control({ position: "bottomleft" });
-            legend.onAdd = function(map) {
-              var div = L.DomUtil.create("div", "legend");
-              div.innerHTML += "<h4>Legend</h4>";
-              div.innerHTML += '<i style="background: #35495d"></i><span>Algonquin</span><br>';
-              div.innerHTML += '<i style="background: #ff7800"></i><span>Menomini</span><br>';
-              div.innerHTML += '<i style="background: #98FB98"></i><span>Anishinaabe</span><br>';
-              div.innerHTML += '<i style="background: #F0E68C"></i><span>Plains Tribes</span><br>';
-              div.innerHTML += '<i style="background: #800000"></i><span>Navajo</span><br>';
-              div.innerHTML += '<i style="background: #00FFFF"></i><span>Stolo</span><br>';
-              div.innerHTML += '<i style="background: #663399"></i><span>Syilx</span><br>';
-              div.innerHTML += '<i style="background: #FFE4E1"></i><span>Coastal Salish</span><br>';
+    /****************************Legend specific*************************************/
+    var legend = L.control({ position: "bottomleft" });
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create("div", "legend");
+      div.innerHTML += "<h4>Legend</h4>";
+      div.innerHTML += '<i style="background: #35495d"></i><span>Algonquin</span><br>';
+      div.innerHTML += '<i style="background: #ff7800"></i><span>Menomini</span><br>';
+      div.innerHTML += '<i style="background: #98FB98"></i><span>Anishinaabe</span><br>';
+      div.innerHTML += '<i style="background: #F0E68C"></i><span>Plains Tribes</span><br>';
+      div.innerHTML += '<i style="background: #800000"></i><span>Yee Naaldlooshii</span><br>';
+      div.innerHTML += '<i style="background: #00FFFF"></i><span>Stolo</span><br>';
+      div.innerHTML += '<i style="background: #663399"></i><span>Syilx</span><br>';
+      div.innerHTML += '<i style="background: #FFE4E1"></i><span>Coastal Salish</span><br>';
 
-              return div;
-            };
+      return div;
+    };
 
-            legend.addTo(map);
+    legend.addTo(map);
 
  });
 
