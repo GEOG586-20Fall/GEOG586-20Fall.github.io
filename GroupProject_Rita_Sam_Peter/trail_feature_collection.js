@@ -1,6 +1,6 @@
 {
 	"type": "FeatureCollection",
-	"features": [
+	"features": 
 		{
 			"type": "Feature",
 			"geometry": {
@@ -38,4 +38,4 @@
 			}
 		},
 	
-]};
+};
