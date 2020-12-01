@@ -73,17 +73,6 @@
 			"type": "Feature",
 			"geometry": {
 				"type": "Point",
-				"coordinates": [-115.82401, 51.27828]
-			},
-			"properties": {
-				"name": "Ink pots",
-				"ele": "1640.0"
-			}
-		},
-		{
-			"type": "Feature",
-			"geometry": {
-				"type": "Point",
 				"coordinates": [-115.83987, 51.24565]
 			},
 			"properties": {
