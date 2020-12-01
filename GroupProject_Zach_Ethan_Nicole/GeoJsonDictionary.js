@@ -89,7 +89,7 @@ var Thunderbird = {
             "properties":{
                 "name":"<b>Thunderbird:</b><br> ",
                 "popupContent":"A bird the size of a small airplane was said to have been seen flying over SW Alaska in 2002; described as quote: something out of the movie Jurassic Park, with a wingspan over 14 feet!  ",
-				"img": "<img src=https://static.wikia.nocookie.net/cryptidz/images/6/62/Giant-thunderbird-56c0d4de5f9b5829f86738ca.png/revision/latest/scale-to-width-down/350?cb=20200710194116 >",
+				"img": "<img src=https://i.pinimg.com/originals/be/a2/47/bea24714390b34ff342518bffe2d4dd8.png >",
 				"link": "</b><a href='http://www.cnn.com/2002/US/West/10/18/offbeat.alaska.bird.reut/'>For further information</a>"},
 					"geometry": {
                     "type":"Point",
@@ -100,7 +100,7 @@ var Thunderbird = {
                 "name": "<b>Thunderbird:</b><br>",
                 "popupContent":"A bird the size of a small airplane was said to have been seen flying over SW Alaska in 2002; described as quote: something out of the movie Jurassic Park, with a wingspan over 14 feet! ",
 				"link": "<b> <a href='http://www.cnn.com/2002/US/West/10/18/offbeat.alaska.bird.reut/'>For further information</a>",
-				"img": "<img src= https://static.wikia.nocookie.net/cryptidz/images/6/62/Giant-thunderbird-56c0d4de5f9b5829f86738ca.png/revision/latest/scale-to-width-down/350?cb=20200710194116>"},
+				"img": "<img src= https://i.pinimg.com/originals/be/a2/47/bea24714390b34ff342518bffe2d4dd8.png>"},
                     "geometry": {
 					"type": "Point",
 					"coordinates": [-159.057060, 58.976897]}}]};
