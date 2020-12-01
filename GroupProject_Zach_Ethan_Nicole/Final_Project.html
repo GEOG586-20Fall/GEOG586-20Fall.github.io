@@ -1,0 +1,279 @@
+
+<html>
+<head>
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+<link rel="stylesheet" href="css/colonial.css">
+<script src="GeoJsonDictionary.js"></script>
+<script>
+
+        function Popups(feature, layer) {
+            if (feature.properties && feature.properties.popupContent && feature.properties.img && feature.properties.link && feature.properties.name) {
+				layer.bindPopup( feature.properties.name + feature.properties.popupContent+feature.properties.img + feature.properties.link );
+            };
+			};
+
+</script>
+
+
+</head>
+
+<!--        MIT License        -->
+<nav role="navigation">
+  <div id="menuToggle">
+    <input type="checkbox" />
+
+    <!--  Some spans to act as a hamburger.-->
+    <span></span>
+    <span></span>
+    <span></span>
+<!-- Link maps together -->
+    <ul id="menu">
+      <div id = "hamburger">
+        <li><a href="https://geog586-20fall.github.io/GroupProject_Zach_Ethan_Nicole/Final_Project.html">Colonial Map</a></li>
+        <li><a href="https://GEOG586-20Fall.github.io/GroupProject_Zach_Ethan_Nicole/indigenousMap.html">Indigenous Map</a></li>
+      </div>
+    </ul>
+  </div>
+</nav>
+<body>
+
+	<div id="Header" class="pinkText">
+	<h1> Cryptids of North America <br></h1>
+	<h2> "Spooky Monsters" </h2>
+	</div>
+	<br>
+	<div class="pinkText">
+	<p>This is a map of North American Cryptids. </p>
+	<p>This map will show you the location of cryptid sightings.</P>
+	<p>Click on the the popups to learn more about each cryptid and the sightings. </p>
+	</div>
+	<br>
+
+<br>
+<div id="MyMap" class="center"></div>
+
+<script type= "application/javascript">
+
+	var map = L.map('MyMap').setView([50.1304, -105.3468], 3);
+
+	L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 19
+}).addTo(map);
+//Add scale
+      L.control.scale().addTo(map);
+/****************************Legend specific*************************************/
+	var legend = L.control({ position: "bottomleft" });
+	legend.onAdd = function(map) {
+		var div = L.DomUtil.create("div", "legend");
+		div.innerHTML += "<h4>Legend</h4>";
+		div.innerHTML += '<i style="background: Sienna"></i><span>Bigfoot/Sasquatch</span><br>';
+		div.innerHTML += '<i style="background: Aquamarine"></i><span>Ogopopgo</span><br>';
+		div.innerHTML += '<i style="background: DeepPink"></i><span>Navajo Skinwalker</span><br>';
+		div.innerHTML += '<i style="background: Yellow"></i><span>Mothman</span><br>';
+		div.innerHTML += '<i style="background: Red"></i><span>Thunderbird</span><br>';
+		div.innerHTML += '<i style="background: Navy"></i><span>Seelkee</span><br>';
+		div.innerHTML += '<i style="background: Lime"></i><span>Jersey Devil</span><br>';
+		div.innerHTML += '<i style="background: DarkViolet"></i><span>Wendigo</span><br>';
+		div.innerHTML += '<i style="background: DarkOrange"></i><span>Chupacbra</span><br>';
+
+		return div;
+	};
+
+	legend.addTo(map);
+
+	L.geoJSON(Bigfoot, {
+		onEachFeature: Popups
+	}).addTo(map);
+
+	L.geoJSON(Ogopopgo, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(NavajoSkinwalker, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(Mothman, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(Thunderbird, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(Seelkee, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(JerseyDevil, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(Wendigo, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	L.geoJSON(Chupacabra, {
+		onEachFeature:Popups
+	}).addTo(map);
+
+	 var styleBigfoot = {
+            radius: 15,
+            fillColor: "Sienna",
+            color: "Sienna",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.75
+            };
+
+         L.geoJSON(Bigfoot, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleBigfoot);
+            }}).addTo(map);
+
+        var styleOgopogo = {
+            radius: 15,
+            fillColor: "Aquamarine",
+            color: "Aquamarine",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.75
+            };
+
+         L.geoJSON(Ogopopgo, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleOgopogo);
+            }}).addTo(map);
+
+		var styleNavajoSkinwalker = {
+            radius: 15,
+            fillColor: "DeepPink",
+            color: "DeepPink",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.75
+            };
+
+         L.geoJSON(NavajoSkinwalker, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleNavajoSkinwalker);
+            }}).addTo(map);
+
+		var styleMothman = {
+            radius: 15,
+            fillColor: "Yellow",
+            color: "Yellow",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.75
+            };
+
+         L.geoJSON(Mothman, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleMothman);
+            }}).addTo(map);
+
+		var styleThunderbird = {
+            radius: 15,
+            fillColor: "Red",
+            color: "Red",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.75
+            };
+
+         L.geoJSON(Thunderbird, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleThunderbird);
+            }}).addTo(map);
+
+		var styleSeelkee = {
+            radius: 15,
+            fillColor: "Navy",
+            color: "Navy",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.75
+            };
+
+         L.geoJSON(Seelkee, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleSeelkee);
+            }}).addTo(map);
+
+		var styleJerseyDevil = {
+            radius: 15,
+            fillColor: "Lime",
+            color: "Lime",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.75
+            };
+
+         L.geoJSON(JerseyDevil, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleJerseyDevil);
+            }}).addTo(map);
+
+		var styleWendigo = {
+            radius: 15,
+            fillColor: "DarkViolet",
+            color: "DarkViolet",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.75
+            };
+
+         L.geoJSON(Wendigo, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleWendigo);
+            }}).addTo(map);
+
+		var styleChupacabra = {
+            radius: 15,
+            fillColor: "DarkOrange",
+            color: "DarkOrange",
+            weight: 1,
+            opacity: 2,
+            fillOpacity: 0.75
+            };
+
+         L.geoJSON(Chupacabra, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, styleChupacabra);
+            }}).addTo(map);
+
+</script>
+
+<br>
+
+<!-- <div id= "legend" class= "coded">
+<p> The cryptids are arranged by colour:</p>
+	<p> Brown = Bigfoot/Sasquatch </p>
+	<p> Turqoise = Ogopopgo</p>
+	<p> Hot Pink = Navajo Skinwalker </p>
+	<p> Yellow = Mothman</p>
+	<p> Red = Thunderbird</p>
+	<p> Navy Blue = Seelkee</P>
+	<p> Lime Green = Jersey Devil</p>
+	<p> Purple = Wendigo</P>
+	<p> Orange = Chupacbra </p>
+</div> -->
+
+<br>
+
+<div id="author" class="nicole">
+	<p>By Nicole Morrison, Zach Wang, and Ethan Jerome </p>
+</div>
+
+</body>
+
+</html>
