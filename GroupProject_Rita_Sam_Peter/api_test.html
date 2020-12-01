@@ -19,7 +19,21 @@
 	<h3>Map 1 Lets test this API</h3>
 	<div id= "map1"></div>
 		<script type="application/javascript">
-		var map = L.map('map1').setView([50.986103, -114.099397], 14);
+		
+		var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var myArr = JSON.parse(this.responseText);
+				myFunction(myArr);
+				//document.getElementById("xhr_request").innerHTML = this.responseText;
+			}
+		};
+			
+			xhr.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Johnston%20Canyon%20Trail%20to%20Upper%20Falls.js", "synch");
+			
+			xhr.send();
+		
+		var map = L.map('map1').setView([51.244441, -115.838996], 14);
 
 		L.tileLayer(
 			'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
