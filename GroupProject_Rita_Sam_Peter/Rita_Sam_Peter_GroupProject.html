@@ -5,9 +5,15 @@
 			#map1 { 
 				height: 425px;
 			}
+			
 			#map2 {
 				height: 425px;
 			}
+			
+			.center	{
+				max-width: 80%;
+				margin: auto; 
+				}
 		</style>
 		
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -24,7 +30,7 @@
         <a href="https://geog586-20fall.github.io/Lab4/PeterLab4/PeterLab4.html" class="w3-bar-item w3-button">Navi Example</a>
 	</div> -->
 	<h3>Map 1: Summer</h3>
-	<div id= "map1"></div>
+	<div id= "map1" class="center"></div>
 		<script type="application/javascript">
 		
 		function onEachFeature(feature, layer) {
@@ -35,7 +41,7 @@
 			xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var myArr = JSON.parse(this.responseText);
-				myFunction(myArr);
+				Map1Function(myArr);
 				//document.getElementById("xhr_request").innerHTML = this.responseText;
 			}
 		};
@@ -46,25 +52,47 @@
 		
 			//var APIresponse = xhr.responseText;
 		
-		function myFunction(newlayer){	
+		function Map1Function(newlayer){	
 			var map = L.map('map1').setView([51.144441, -115.528996], 10);
 
 			L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 			}).addTo(map);
 			
-				var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);			
+				var natural = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);			
 		};
 		</script>
 	<h3> Map 2: Winter</h3>
-	<div id = "map2"></div>
+	<div id = "map2" class="center"></div>
 		<script type = "application/javascript">
-			var map = L.map('map2').setView([50.986103, -114.099397], 14);
+			function onEachFeature(feature, layer) {
+					layer.bindPopup("<h3>"+feature.properties.name+"</h3>");
+				};
+		
+		var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var myArr = JSON.parse(this.responseText);
+				Map2Function(myArr);
+				//document.getElementById("xhr_request").innerHTML = this.responseText;
+			}
+		};
+			
+			xhr.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Winter%20Natural%20Trails/Winter_natural_Trails.js", "synch");
+			
+			xhr.send();
+		
+			//var APIresponse = xhr.responseText;
+		
+		function Map2Function(newlayer){	
+			var map2 = L.map('map2').setView([51.144441, -115.528996], 10);
 
-			L.tileLayer(
-				'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-				}).addTo(map);
+			L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+			}).addTo(map2);
+			
+				var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map2);			
+		};
 				
 		</script>
 	</body>
