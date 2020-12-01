@@ -68,7 +68,7 @@
             background-color: #2a2a2a;
             border-radius: 7px;
             top: 125; 
-            left: 11%; 
+            left: 1%; 
             right: 52%; 
             padding-bottom: 110px;
             padding-top: 10px;
@@ -160,8 +160,8 @@
             display: block;
             position: absolute; 
             top: 300; 
-            bottom: 250; 
-            left: 11%; 
+            bottom: 1; 
+            left: 1%; 
             right: 52%;
             border-radius: 12px;
 
@@ -172,7 +172,7 @@
             display: block;
             position: absolute; 
             top: 300; 
-            bottom: 250; 
+/*            bottom: 250; */
             left: 52%; 
             right: 11%;
             border-radius: 12px;
@@ -239,8 +239,17 @@
 
 	var map = L.map('map').setView([54.76783103448121, -114.74082432881103], 5);
 
-	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+	L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', 
+
+		{
+			 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: 'mapbox/streets-v11',
+              tileSize: 512,
+              zoomOffset: -1,
+			
+   			accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+
 			}).addTo(map);
 			
 
