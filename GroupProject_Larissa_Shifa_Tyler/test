@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+      <!-- Leaflet script for map 1-->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""/>
+  
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""></script>
+    
+    </head>
+  
+  
+  <script>
+      <div id="mapid"></div>
+
+      #mapid { height: 200px; }
+
+      var map1 = L.map('mapid').setView([0.00, 0.00], 4);
+  
+
+      var marker = L.marker([42.361145, -71.057083]).addTo(map1);
+      marker.bindPopup("<b>Boston Marathon</b><br>Started in 1897, takes place on every third Monday of April.").openPopup();
+
+      var marker = L.marker([51.509865, -0.118092]).addTo(map1);
+      marker.bindPopup("<b>London Marathon</b><br>Started in 1981, takes place in the spring of each year.").openPopup();
+
+      var marker = L.marker([40.730610, -73.935242]).addTo(map1);
+      marker.bindPopup("<b>New York City Marathon</b><br>Started in 1970, takes place on the first Sunday of November.").openPopup();
+
+      var marker = L.marker([52.520008, 13.404954]).addTo(map1);
+      marker.bindPopup("<b>Berlin Marathon</b><br>Started in 1974, takes place on the last weekend of September.").openPopup();
+
+      var marker = L.marker([41.881832, -87.623177]).addTo(map1);
+      marker.bindPopup("<b>Chicago Marathon</b><br>Started in 1977, takes place in October of each year.").openPopup();
+
+      var marker = L.marker([35.652832, 139.839478]).addTo(map1);
+      marker.bindPopup("<b>Tokyo Marathon</b><br>Started in 2007, takes place usually in February of each year.").openPopup();
+    
+    </script>
+
+  </html>
