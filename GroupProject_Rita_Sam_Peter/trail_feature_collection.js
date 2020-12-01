@@ -1,5 +1,3 @@
-//trails for file js file
-
 {
 	"type": "FeatureCollection",
 	"features": [
