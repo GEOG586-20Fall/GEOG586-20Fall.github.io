@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <!-- Leaflet script for map 1-->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
 integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="crossorigin=""/>
@@ -37,3 +39,5 @@ marker.bindPopup("<b>Chicago Marathon</b><br>Started in 1977, takes place in Oct
 
 var marker = L.marker([35.652832, 139.839478]).addTo(mymap);
 marker.bindPopup("<b>Tokyo Marathon</b><br>Started in 2007, takes place usually in February of each year.").openPopup();
+
+</html>
