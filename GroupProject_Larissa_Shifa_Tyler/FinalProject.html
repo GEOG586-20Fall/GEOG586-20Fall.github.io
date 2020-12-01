@@ -1,0 +1,344 @@
+<!-- GEOG 586 Final Project - "Mapping Marathons"
+Larissa Shevchenko, Shifa Hayat, Tyler Gough-->
+ 
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+	
+	<!-- Stylesheets for fonts, leaflet, etc.-->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+	<link rel="stylesheet" href="css/style.css">
+	
+	<!-- Leaflet script and import of data from Javascript files-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+	<script src="js/BostonMarathonCourseDev.js"></script>
+	<script src="js/Images.js"></script>
+	<script src="js/src/AnimatedMarker.js"></script>
+  </head>
+  
+  <body>
+  
+  <!-- Title Section-->
+  <div><div id = "title">
+	<h1>Mapping Marathons</h1>
+	<h3>A Project By Larissa Shevchenko, Shifa Hayat, and Tyler Gough<h3><br>
+  </div>
+  
+  <!-- Introduction-->
+   <div><div id = "intro">
+   <h2>Project Introduction</h2>
+   <!-- Text from project proposal -->
+   <p>More than half a million Americans completed a full marathon (42.2 km) in 2016. Of course, this means that there were approximately 322.5 million Americans who didn’t complete a marathon that year. Our project targets both these marathoning and non-marathoning audiences by asking the simple question: How can mapping marathons change perception of them? A marathon is a ‘spatiotemporal event’ but is often thought about only in non-spatial contexts in terms of distance (i.e., how long is it?) or time (i.e., how much time did it take?). Our aim with this project is to explore how mapping can provide novel understanding of marathons and the people who run them.</p>
+   </div>
+  
+	<!-- Map Introduction-->
+  <div><div id = "map_intro">
+  <h2> The Maps </h2>
+	<!-- Description of first map-->
+	<p>In this project we present two maps. The first map presents the locations of the six world marathon majors: Boston, Chicago, New York, London, Berlin, and Tokyo. These are the most prestigious marathons in the world, with prize pools of more than a million dollars for each race. Each race has 30000 - 50000 participants. Because demand for participation is so high, runners who wish to enter the race have two options: enter the lottery (typically a 10% success rate) or meet the rigorous qualifying standards. The Boston Marathon is notorious for being a qualifying-only race - male runners must have a qualifying time under 3 hours, women under 3.5 hours. Click on the icons below to learn more about each of these races.</p>
+	<div id="mapone"><br></div>
+	<br><br>
+	<p>The second map presents a 'virtual race' where icons representing eight runners (professionals and celebrities) move along the route of the Boston Marathon. You can read more about the runners being depicted below. The icons are programmed to move along the race course at 100x the speed at which the person represented actually ran. This provides perspective on the incredible paces at which elite runners move. Simply press the 'Start the race!' to make the icons move. Press 'Pause the race!' to pause the icons. Press 'Reset the race!' to bring the icons back to the start line. Click on the icons to discover how fast they are moving. You can switch map view or select which icons you would like to appear on the map by clicking the layers button on the top right of the map.</p>
+    <br>
+	<!-- Buttons (functions in script below)-->
+	<button class="button" onclick="raceStart()">Start the race!</button>
+	<button class="button" onclick="racePause()">Pause the race!</button>
+	<button class="button" onclick="raceReset()">Reset the race!</button>
+  </div>
+	
+ 
+	<div id="maptwo"><br></div>
+	
+	<div><div id = "racers">
+
+	<h2>The Runners</h2>
+	<h3>Eliud Kipchoge</h3>
+	<p>Eliud Kipchoge is the best marathoner of all time. He holds the current official world record of 2:01:39 and has run the only marathon under 2 hours in a controlled time trial. He is a farmer and trains in the highlands of Kenya near the town of Eldoret. A friend gifted him a cow to congratulate him for winning the London Marathon.</p>
+	<img src="https://static01.nyt.com/images/2019/04/28/world/28london-marathon1/28london-marathon1-superJumbo.jpg?quality=90&auto=webp" alt="Eliud Kipchoge winning the London Marathon." style="width:360px;height:240px;">
+	
+	<h3>Scott Fauble</h3>
+	<p> Scott Fauble is an elite runner for the Hoka Northern Arizona Elite running team in Flagstaff, Arizona. He has run a personal best marathon of 2:09:09 at the 2019 Boston Marathon. He shares all his training on <a href="https://www.strava.com/pros/7780234">Strava</a> and is known for his love of burritos.</p>
+	<img src="https://pbs.twimg.com/media/EGi38n7UYAAcZYI?format=jpg&name=small" alt="Scott Fauble holding a burrito." style="width:300px;height:300px;">
+	
+	<h3>Aliphine Tuliamuk</h3>
+	<p> Aliphine Tuliamuk is an elite runner on the same team as Scott Fauble. She placed first at the United States Marathon Olympic Team Trials and has run a personal best of 2:26:50. She is one of 32 kids and sells crocheted beanies on Etsy; her shop has been out of stock since she won the Trials.</p>
+	<img src="https://d275froxpp5hf7.cloudfront.net/wp-content/uploads/2020/03/Screen-Shot-2020-03-05-at-8.10.14-PM.png" alt="Aliphine Tuliamuk and her Olympic Trials bib." style="width:300px;height:300px;">
+	
+	<h3>Ed Whitlock</h3>
+	<p>Ed Whitlock was a Canadian runner and the first person over the age of 70 to run a marathon in under 3 hours. At 73, he ran 2:54:49 at the Toronto Waterfront Marathon. He ran his last marathon at age 85 in 3:56:38 (a world record). A street in Milton, Ontario is now named in his honour.</p>
+	<img src="https://i.cbc.ca/1.4023108.1489434614!/fileImage/httpImage/image.jpeg_gen/derivatives/16x9_780/ed-whitlock.jpeg" alt="Ed Whitlock finishing the Toronto Waterfront marathon." style="width:360px;height:240px;">
+
+	<h3>Caroline Wozniacki</h3>
+	<p>Caroline Wozniacki is a former world #1 ranked tennis player who ran the New York City Marathon in 2014, while she was still playing competitively. Her time of 3:26:33 is a rare example of a marathon time run by a non-runner, world-class athlete during their career.</p>
+	<img src="https://s.wsj.net/public/resources/images/BN-FI727_hof110_G_20141103155601.jpg" alt="Caroline Wozniacki" style="width:360px;height:240px;">
+
+
+	<h3>Will Ferrell</h3>
+	<p>Will Ferrell is, well, Will Ferrell. He ran the Boston Marathon in 2003 with a time of 3:56:12. When asked if he is ever bothered by people who recognize him while running, he said "People are terribly underwhelmed when they recognize me in a race. There’s nothing funny going on. It’s just a lot of silence and pain."</p>
+	<img src="https://www2.pictures.zimbio.com/pc/Will+Ferrell+seen+running+while+filming+scenes+VmifSpzIiPCx.jpg" alt="Will Ferrell" style="width:200px;height:310px;">
+
+	<h3>Oprah Winfrey</h3>
+	<p>Oprah Winfrey ran the Marine Corps Marathon in 1994. Her time of 4:29:15 is known as 'The Oprah Line', and is a common goal time for some amateur runners taking on the marathon.</p>
+	<img src="https://media.nbcchicago.com/2019/09/oprah-marathoner-celebrity.jpg?fit=1396%2C2021" alt="Oprah Winfrey" style="width:200px;height:310px;">
+
+	<h3>Tedy Bruschi</h3>
+	<p>Tedy Bruschi is a former NFL linebacker who had a long career with the New England Patriots. He has run the Boston Marathon three times, running it for the first time in 2012 in 4:47:44. He runs to raise money for stroke awareness.</p>
+	<img src="https://chowderandchampions.com/wp-content/uploads/getty-images/2017/11/79137007-afc-championship-san-diego-chargers-v-new-england-patriots.jpg.jpg" alt="Tedy Bruschi" style="width:360px;height:240px;">
+
+	</div>
+
+    
+    <script>
+	//Load basemaps and create map frame
+	  var satImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+        crossOrigin: true
+		});
+	
+	  var streets = L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=GbTgUaI7708nBO7eCLe3',{
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
+        crossOrigin: true
+        });
+		
+	  var satImagery2 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+        crossOrigin: true
+		});
+	
+	  var streets2 = L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=GbTgUaI7708nBO7eCLe3',{
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
+        crossOrigin: true
+        });
+	
+	  var map1 = L.map('mapone', {
+		center: [0, 0],
+        zoom: 2,
+		layers: [streets2,satImagery2]
+		});
+	  
+      var map = L.map('maptwo', {
+		center: [42.289751, -71.308],
+        zoom: 10,
+		layers: [streets,satImagery]
+		});
+	
+	
+	  
+
+	//Draw features 
+	var boston =  L.polyline(BostonRoute);
+		map.addLayer(boston);
+		
+	var scottFauble = L.animatedMarker(boston.getLatLngs(), {
+		distance: 1000,
+		interval: 1836.26,
+		autoStart: false,
+		icon: Fauble,
+		clickable: true
+		});
+		map.addLayer(scottFauble);
+		scottFauble.bindPopup("<b>Scott Fauble</b><br><b>Marathon Time:</b> 2:09:09<br><b>Real-World Pace:</b> 3:04/km<br><b>Simulated pace:</b> 1.836 seconds/km")
+	
+	var eliudKipchoge = L.animatedMarker(boston.getLatLngs(), {
+		distance: 1000,
+		interval: 1729.62,
+		autoStart: false,
+		icon: Kipchoge,
+		clickable: true
+		});
+		map.addLayer(eliudKipchoge);
+		eliudKipchoge.bindPopup("<b>Eliud Kipchoge</b><br><b>Marathon Time:</b> 2:01:39<br><b>Real-World Pace:</b> 2:53/km<br><b>Simulated pace:</b> 1.730 seconds/km")
+	
+	var aliphineTuliamuk = L.animatedMarker(boston.getLatLngs(), {
+		distance: 1000,
+		interval: 2087.77,
+		autoStart: false,
+		icon: Tuliamuk,
+		clickable: true
+		});
+		map.addLayer(aliphineTuliamuk);
+		aliphineTuliamuk.bindPopup("<b>Aliphine Tuliamuk</b><br><b>Marathon Time:</b> 2:26:50<br><b>Real-World Pace:</b> 3:29/km<br><b>Simulated pace:</b> 2.088 seconds/km")
+		
+	var willFerrell = L.animatedMarker(boston.getLatLngs(), {
+		distance: 1000,
+		interval: 3358.30,
+		autoStart: false,
+		icon: Ferrell,
+		clickable: true
+		});
+		map.addLayer(willFerrell);
+		willFerrell.bindPopup("<b>Will Ferrell</b><br><b>Marathon Time:</b> 3:56:12<br><b>Real-World Pace:</b> 5:36/km<br><b>Simulated pace:</b> 3.358 seconds/km")
+		
+	var oprahWinfrey = L.animatedMarker(boston.getLatLngs(), {
+		distance: 1000,
+		interval: 3828.20,
+		autoStart: false,
+		icon: Oprah,
+		clickable: true
+		});
+		map.addLayer(oprahWinfrey);
+		oprahWinfrey.bindPopup("<b>Oprah Winfrey</b><br><b>Marathon Time:</b> 4:29:15<br><b>Real-World Pace:</b> 6:23/km<br><b>Simulated pace:</b> 3.828 seconds/km")
+	
+	var edWhitlock = L.animatedMarker(boston.getLatLngs(), {
+		distance: 1000,
+		interval: 2485.55,
+		autoStart: false,
+		icon: Whitlock,
+		clickable: true
+		});
+		map.addLayer(edWhitlock);
+		edWhitlock.bindPopup("<b>Ed Whitlock</b><br><b>Marathon Time:</b> 2:54:49<br><b>Real-World Pace:</b> 4:09/km<br><b>Simulated pace:</b> 2.486 seconds/km")
+	
+	var carolineWozniacki = L.animatedMarker(boston.getLatLngs(), {
+		distance: 1000,
+		interval: 2936.73,
+		autoStart: false,
+		icon: Wozniacki,
+		clickable: true
+		});
+		map.addLayer(carolineWozniacki);
+		carolineWozniacki.bindPopup("<b>Caroline Wozniacki</b><br><b>Marathon Time:</b> 3:26:33<br><b>Real-World Pace:</b> 4:54/km<br><b>Simulated pace:</b> 2.937 seconds/km")
+	
+	var teddyBruschi = L.animatedMarker(boston.getLatLngs(), {
+		distance: 1000,
+		interval: 4090.99,
+		autoStart: false,
+		icon: Bruschi,
+		clickable: true
+		});
+		map.addLayer(teddyBruschi);
+		teddyBruschi.bindPopup("<b>Tedy Bruschi</b><br><b>Marathon Time:</b> 4:47:44<br><b>Real-World Pace:</b> 6:49/km<br><b>Simulated pace:</b> 4.099 seconds/km")
+
+	//First map and labels
+	var bostonicon = L.icon({
+		iconUrl: 'https://raceraves.com/wp-content/uploads/2014/08/4697_Hopkinton-1.jpg',
+		iconSize: [70,70]
+		});
+
+    var marker = L.marker([42.361145, -71.057083], {icon: bostonicon}).addTo(map1);
+      marker.bindPopup("<b>Boston Marathon</b><br><b>First Run:</b> 1897<br><b>Date:</b> Third Monday of April <br><b>Number of Participants:</b> 30 000");
+	
+	var londonicon = L.icon({
+		iconUrl: 'https://upload.wikimedia.org/wikipedia/en/3/3c/Virgin_Money_London_Marathon.png',
+		iconSize: [75,39]
+		});
+
+    var marker = L.marker([51.509865, -0.118092], {icon: londonicon}).addTo(map1);
+      marker.bindPopup("<b>London Marathon</b><br><b>First Run:</b> 1981<br><b>Date:</b> Mid-April<br><b>Number of Participants:</b> 50 000");
+
+	var newyorkicon = L.icon({
+		iconUrl: 'https://raceraves.com/wp-content/uploads/2015/12/NYC-Marathon-logo.jpg',
+		iconSize: [70,70]
+		});
+		
+    var marker = L.marker([40.730610, -73.935242], {icon: newyorkicon}).addTo(map1);
+      marker.bindPopup("<b>New York City Marathon</b><br><b>First Run:</b> 1970<br><b>Date:</b> First Sunday in November<br><b>Number of Participants:</b> 53 000 (largest marathon in the world)");
+
+	var berlinicon = L.icon({
+		iconUrl: 'https://image.winudf.com/v2/image1/ZGUuY29ydXNzb2Z0LmJlcmxpbm1hcmF0aG9uX2ljb25fMTU1MDIwMzc4N18wMTA/icon.png?w=170&fakeurl=1',
+		iconSize: [70,70]
+		});
+		
+    var marker = L.marker([52.520008, 13.404954], {icon: berlinicon}).addTo(map1);
+      marker.bindPopup("<b>Berlin Marathon</b><br><b>First Run:</b> 1974<br><b>Date:</b> Last weekend in September<br><b>Number of Participants:</b> 50 000");
+
+	var chicagoicon = L.icon({
+		iconUrl: 'https://www.projectpurple.org/wp-content/uploads/2015/04/BoA_ChiMar_h_rgb.jpg',
+		iconSize: [75,39]
+		});
+    var marker = L.marker([41.881832, -87.623177], {icon: chicagoicon}).addTo(map1);
+      marker.bindPopup("<b>Chicago Marathon</b><br><b>First Run:</b> 1977<br><b>Date:</b>First or Second Sunday of October<br><b>Number of Participants:</b> 45 000");
+	  
+	var tokyoicon = L.icon({
+		iconUrl: 'https://metalbadgeandbutton.com/wp-content/uploads/2016/06/Tokyo-marathon-logo.png',
+		iconSize: [50,75]
+		});
+    var marker = L.marker([35.652832, 139.839478], {icon: tokyoicon}).addTo(map1);
+      marker.bindPopup("<b>Tokyo Marathon</b><br><b>First Run:</b> 2007<br><b>Date:</b>Late February or early March<br><b>Number of Participants:</b> 35 000");
+    
+	//Functions
+	function raceStart() {
+		scottFauble.start();
+		eliudKipchoge.start();
+		aliphineTuliamuk.start();
+		teddyBruschi.start()
+		willFerrell.start();
+		oprahWinfrey.start();
+		edWhitlock.start();
+		carolineWozniacki.start();
+		};
+		
+	function racePause() {
+		scottFauble.stop();
+		eliudKipchoge.stop();
+		aliphineTuliamuk.stop();
+		willFerrell.stop();
+		oprahWinfrey.stop();
+		edWhitlock.stop();
+		carolineWozniacki.stop();
+		teddyBruschi.stop()
+		};
+	
+	//bug - when items reset they start automatically?
+	function raceReset() {
+		scottFauble.reStart(boston.getLatLngs());
+		eliudKipchoge.reStart(boston.getLatLngs());
+		aliphineTuliamuk.reStart(boston.getLatLngs());
+		willFerrell.reStart(boston.getLatLngs());
+		oprahWinfrey.reStart(boston.getLatLngs());
+		edWhitlock.reStart(boston.getLatLngs());
+		carolineWozniacki.reStart(boston.getLatLngs());
+		teddyBruschi.reStart(boston.getLatLngs());
+		scottFauble.stop();
+		eliudKipchoge.stop();
+		aliphineTuliamuk.stop();
+		willFerrell.stop();
+		oprahWinfrey.stop();
+		edWhitlock.stop();
+		carolineWozniacki.stop();
+		teddyBruschi.stop()
+		eliudKipchoge.stop();
+		aliphineTuliamuk.stop();
+		willFerrell.stop();
+		oprahWinfrey.stop();
+		edWhitlock.stop();
+		carolineWozniacki.stop();
+		teddyBruschi.stop()
+		};
+	
+	
+	//OverlayOptions
+	var Racers = {
+		"Eliud Kipchoge": eliudKipchoge,
+		"Scott Fauble": scottFauble,
+		"Aliphine Tuliamuk": aliphineTuliamuk,
+		"Ed Whitlock": edWhitlock,
+		"Caroline Wozniacki": carolineWozniacki,
+		"Will Ferrell": willFerrell,
+		"Oprah Winfrey": oprahWinfrey,
+		"Tedy Bruschi": teddyBruschi
+		};
+	
+	var Basemaps = {
+		"Street Map": streets,
+		"Satellite Imagery": satImagery
+		};
+	
+	var Basemaps2 = {
+		"Street Map": streets2,
+		"Satellite Imagery": satImagery2
+		};
+	
+	//Layer control options
+	L.control.layers(Basemaps, Racers).addTo(map);
+	L.control.layers(Basemaps2).addTo(map1);
+		
+	//Add scale bar
+	L.control.scale().addTo(map);
+	L.control.scale().addTo(map1);
+    </script>
+  </body>
+</html>
