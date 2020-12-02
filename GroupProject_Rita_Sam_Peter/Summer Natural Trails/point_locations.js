@@ -2,6 +2,7 @@
 	"type": "FeatureCollection",
 	"features": [
 		{
+			{
 			"type": "Feature",
 			"geometry": {
 				"type": "Point",
@@ -10,7 +11,7 @@
 			"properties": {
 				"name": "Athabasca River Rafting",
 				"desc": "From Google Maps"
-				
+			}	
 		},
 		{
 			"type": "Feature",
