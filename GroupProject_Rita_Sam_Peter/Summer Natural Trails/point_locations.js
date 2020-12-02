@@ -10,7 +10,7 @@
 			},
 			"properties": {
 				"name": "Athabasca River Rafting",
-			}
+				}
 		},
 		{
 			"type": "Feature",
