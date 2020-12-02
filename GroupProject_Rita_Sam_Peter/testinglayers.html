@@ -11,6 +11,11 @@
 				height: 425px;
 			}
 			
+			.center {
+				max-width: 80%;
+				margin: auto;
+			}
+			
 		</style>
 		
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -52,8 +57,8 @@
 		var naturalPointsAPIRequest = new XMLHttpRequest();
 			naturalPointsAPIRequest.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
-				var myArr2 = JSON.parse(this.responseText);
-				naturalpointsLayer(myArr2);
+				var myArr = JSON.parse(this.responseText);
+				naturalpointsLayer(myArr);
 				//document.getElementById("xhr_request").innerHTML = this.responseText;
 			}
 		};
@@ -64,20 +69,20 @@
 		
 			//var APIresponse = xhr.responseText;
 		
-		<!-- var manMadePointsAPIRequest = new XMLHttpRequest(); -->
-			<!-- manMadePointsAPIRequest.onreadystatechange = function() { -->
-			<!-- if (this.readyState == 4 && this.status == 200) { -->
-				<!-- var myArr = JSON.parse(this.responseText); -->
-				<!-- manMadelayer(myArr); -->
-				<!-- //document.getElementById("xhr_request").innerHTML = this.responseText; -->
-			<!-- } -->
-		<!-- }; -->
+		var manMadePointsAPIRequest = new XMLHttpRequest();
+			manMadePointsAPIRequest.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var myArr = JSON.parse(this.responseText);
+				manMadelayer(myArr);
+				//document.getElementById("xhr_request").innerHTML = this.responseText;
+			}
+		};
 			
-			<!-- manMadePointsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Winter%20Natural%20Trails/Winter_natural_Trails.js", "synch"); -->
+			manMadePointsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Winter%20Natural%20Trails/Winter_natural_Trails.js", "synch");
 			
-			<!-- manMadePointsAPIRequest.send(); -->
+			manMadePointsAPIRequest.send();
 		
-			<!-- //var APIresponse = xhr.responseText; -->
+			//var APIresponse = xhr.responseText;
 		
 		var map = L.map('map1').setView([51.144441, -115.528996], 10);
 
@@ -95,14 +100,11 @@
 		
 		};
 		
-		<!-- function manMadelayer(newlayer) { -->
-			<!-- var manmadePoints = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map); -->
+		function manMadelayer(newlayer) {
+			var manmadePoints = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
 		
-		<!-- }; -->
-		
-		
-		
-		
+		};
+	
 	</script>
 	<h3> Map 2: Winter</h3>
 	<div id = "map2" class="center"></div>
@@ -111,29 +113,49 @@
 					layer.bindPopup("<h3>"+feature.properties.name+"</h3>");
 				};
 		
-		var xhr = new XMLHttpRequest();
-			xhr.onreadystatechange = function() {
+		var winternaturalTrialsAPIRequest = new XMLHttpRequest();
+			winternaturalTrialsAPIRequest.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var myArr = JSON.parse(this.responseText);
-				Map2Function(myArr);
+				WinterNaturalTrailsLayer(myArr);
 				//document.getElementById("xhr_request").innerHTML = this.responseText;
 			}
 		};
 			
-			xhr.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Winter%20Natural%20Trails/Winter_natural_Trails.js", "synch");
+			winternaturalTrialsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Winter%20Natural%20Trails/Winter_natural_Trails.js", "synch");
 			
-			xhr.send();
+			winternaturalTrialsAPIRequest.send();
 		
 			//var APIresponse = xhr.responseText;
+			
+		var wintermanmadepointsAPIRequest = new XMLHttpRequest();
+			wintermanmadepointsAPIRequest.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var myArr = JSON.parse(this.responseText);
+				WinterManMadePointsLayer(myArr);
+				//document.getElementById("xhr_request").innerHTML = this.responseText;
+			}
+		};
+			
+			wintermanmadepointsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Winter%20Natural%20Trails/Winter_natural_Trails.js", "synch");
+			
+			wintermanmadepointsAPIRequest.send();
 		
-		function Map2Function(newlayer){	
-			var map2 = L.map('map2').setView([51.144441, -115.528996], 10);
+			//var APIresponse = xhr.responseText;
+			
+		var map2 = L.map('map2').setView([51.144441, -115.528996], 10);
 
 			L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 			}).addTo(map2);
 			
-				var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map2);			
+		function WinterNaturalTrailsLayer(newlayer){	
+			var winterNaturalTrails = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map2);			
+		};
+		
+		function WinterManMadePointsLayer(newlayer) {
+			var winterManMadePoints = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map2);
+		
 		};
 				
 		</script>
