@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="index.css">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+         crossorigin=""/>
+      <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+         crossorigin=""></script>
+      <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+      <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+      
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<!-- CSS STYLES FOR LABELS AND TEXT CONTENT 
+ ------------------------------------------------------------------------------------------------------ --> 
+
+      <style>
+         body {font-family: 'Roboto Condensed';font-size: 22px; color: black;}
+         body {background-color: #0000;}
+         h1 {text-align: left;}
+         p {text-align: left;}
+
+        .button{
+            text-align: center;
+            font-family: 'Roboto Condensed';
+            font-size: 15px;
+            color: white;
+            background-color: #1f2428;
+            border: none;
+            opacity: 1;
+            position: relative;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            font-weight: 100;
+            display: inline-block;
+            margin: 2px;
+            text-decoration: none;
+
+
+        }
+        .button:hover {
+            text-align: center;
+            font-size: 15px;
+            background-color: whitesmoke;
+            color: black;
+            border: none;
+            opacity: 1;
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        
+ 		</style>
+   
+   </head>
+   
+  <body>
+      
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<!-- THE TITLE AND TEXT 
+ ------------------------------------------------------------------------------------------------------ --> 
+
+      <div class="center" >
+           <a id="brad" class="button button1" style="float: right;" href="https://www.pc.gc.ca/en/pn-np" target="_blank">Canada National Parks Website</a>
+      </div>
+      
+
+      <h1> title </h1>
+      <p> subtitle </p>
+
+      <div id="mapid" style="height: 800px; width: auto; display: block;"></div>
+
+	  <script type="text/javascript">
+
+
+
+
+         
+
+
+
+// <!-- ------------------------------------------------------------------------------------------------------ -->
+// <!-- THE MAP
+// <!-- ------------------------------------------------------------------------------------------------------ --> 
+
+           var mymap = L.map('mapid').setView([55.33, -112.01], 4.6); 
+          L.tileLayer(
+         'https://api.mapbox.com/styles/v1/macmulline/ck86mp8id0c5h1ilj09b1xp3e/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
+           
+          {
+              attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: 'mapbox/streets-v11',
+              tileSize: 512,
+              zoomOffset: -1,
+              accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+          }).addTo(mymap);
+         
+// <!-- ------------------------------------------------------------------------------------------------------ -->
+// <!-- API LISTENER / RESPONSE FOR POLYGONS & ADD TO MAP WITH "ON EACH FEATURE FUNCTION"
+// <!-- ------------------------------------------------------------------------------------------------------ --> 
+           function reqListenerecozones () {
+            var myStyle = {
+                        "color": "#5399df",
+                        "weight": "1"
+                        // "fillColor": "#7da19d"
+                    };
+                     var apiResponseecozones = JSON.parse(this.responseText);
+                     L.geoJSON(apiResponseecozones,  {onEachFeature: onEachFeature, style: myStyle}).addTo(mymap)
+                     //
+
+                    }
+// <!-- ------------------------------------------------------------------------------------------------------ -->
+// <!-- THE API CALL / REPONSE 
+// <!-- ------------------------------------------------------------------------------------------------------ --> 
+           var ecozones = new XMLHttpRequest();
+           ecozones.addEventListener("load", reqListenerecozones);
+           ecozones.open("GET", "https://raw.githubusercontent.com/emacmullin/emacmullin.github.io/master/GC-NP/national_parks_boundaries_Fe.geojson");
+           ecozones.send();
+                         s
+         
+         
+         
+         
+         
+      </script>
+   </body>
+</html>
