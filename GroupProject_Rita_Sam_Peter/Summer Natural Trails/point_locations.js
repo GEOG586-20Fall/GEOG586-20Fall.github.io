@@ -10,7 +10,7 @@
 			"properties": {
 				"name": "Athabasca River Rafting",
 				"desc": "From Google Maps"
-				}
+				
 		},
 		{
 			"type": "Feature",
