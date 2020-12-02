@@ -13,7 +13,7 @@
 					"desc": "From Google Maps"
 				}	
 			},
-			{
+			
 				"type": "Feature",
 				"geometry": {
 					"type": "Point",
