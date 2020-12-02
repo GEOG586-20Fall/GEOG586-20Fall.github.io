@@ -46,7 +46,7 @@
 			"type": "Feature",
 			"geometry": {
 				"type": "Point",
-				"coordinates": [-117.224522, 52.220999,]
+				"coordinates": [-117.224522, 52.220999]
 			},
 			"properties": {
 				"name": "Columbia Icefield",
