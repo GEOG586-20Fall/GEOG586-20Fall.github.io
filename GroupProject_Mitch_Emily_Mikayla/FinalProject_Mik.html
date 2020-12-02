@@ -22,7 +22,7 @@
         color: #E5E5E5;
         font-family: Roboto;
         font-weight: 700;
-        text-decoration-line: underline;
+        
         
     }
     
@@ -45,23 +45,38 @@
 .header {
             position: static;
             background-color: #2a2a2a;
-            height: 15%;
+            height: 175px;
             width: 100%;    
         
     }
     
 .tophead {
             display: block;
-            position: absolute; 
+            position: relative; 
             padding-left: 5%;
             height: 15%;
-        
+            top:5%;
+            
+
         
     }
     
+    #toptitle {
+        background-color: #f57b68;
+        width: 63%;
+        padding-left: 4%;
+        padding-top: 0.5%;
+        margin-top: 2%;
+        margin-left: 3%;
+        height: 50px;
+        color: black;
+        border-radius: 5px;
+        box-shadow: 4px 4px 3px black;
+    }
+    
 .titles {
-            display: block;
-            position: absolute; 
+            display: inline-block;
+            position: relative; 
             text-align: center;
         
     }
@@ -69,11 +84,13 @@
 #title1 {
             background-color: #2a2a2a;
             border-radius: 7px;
-            top: 15%; 
-            left: 11%; 
-            right: 52%; 
+            top: 0.1%; 
+            left: 6.5%; 
+            width: 41.25%; 
             padding-bottom: 10px;
             padding-top: 10px;
+            color: white;
+        
            
         
         
@@ -82,11 +99,13 @@
 #title2 {
             background-color: #2a2a2a;
             border-radius: 7px;
-            top: 15%; 
-            left: 52%; 
-            right: 11%;
+            top: 0.1%; 
+            right:  1%;
+            left: 10.5%;
+            width: 41.25%;
             padding-bottom: 10px;
             padding-top: 10px;
+            color: white;
     }
     
 #title3 {
@@ -94,6 +113,15 @@
             text-align: left;
             top: 2%;
             left: 5%;
+            background-color: #f57b68;
+            border-radius: 7px;
+            padding-left: 2%;
+            padding-right: 2%;
+            padding-bottom: 0.5%;
+            padding-top: 0.5%;
+            color: black;
+            box-shadow: 4px 4px 3px black;
+            
     
             
         
@@ -102,7 +130,8 @@
     
     
 #subhead {
-            margin-top: 5%;
+            position: relative;
+            margin-top: 1%;
             text-align: left;
             color: #E5E5E5;
     }
@@ -111,10 +140,10 @@
             display: block;
             position: static;
             background-color: #2a2a2a;
-            height: 15%;
+            height: 250px;
             width: 100%;
             top: 75%;
-            margin-top: 0.5%;
+            margin-top: 1%;
             
         
         
@@ -147,16 +176,17 @@
 #par3 {
             position: relative;
             padding-left: 5%;
+            padding-right: 5%;
             text-align: left;
 
         }
 		
 #box {
             position:static;
-            width: 80%;
+            width: 90%;
             margin:auto;
-            margin-top: 0.5%;
-            height: 80%;
+            margin-top: 1%;
+            height: 75%;
             top: 30%;
             border-radius: 12px;
             background-color: #555555;
@@ -169,23 +199,24 @@
 #map {
             display:block;
             position: absolute; 
-            top:21.5%; 
-            bottom: 20%; 
+            top:275px; 
             left: 11%; 
             right: 52%;
+            bottom: 30%;
             border-radius: 12px;
-
+            box-shadow: 4px 4px 3px #2a2a2a;
          
     }
 
 #map2 {	
             display: block;
             position: absolute; 
-            top:21.5%; 
-            bottom: 20%; 
+            top:275px; 
             left: 52%; 
             right: 11%;
+            bottom: 30%;
             border-radius: 12px;
+            box-shadow: 4px 4px 3px #2a2a2a;
 
            
     }
@@ -235,8 +266,8 @@
 </head>
  
  <body>
-     
-     <h1 class="tophead">Analyzing Wildfire Data in Alberta, 2000-2019</h1>
+     <div class="header">
+     <h1 id="toptitle" class="tophead">Analyzing Wildfire Data in Alberta, 2000-2019</h1>
      
      <h3 id="subhead"class="tophead" > These maps show the 10 largest fires in 2 decades and the average maximum temperature, average minimum temperature, and total precipitation for that area.
      <br> The largest fires are indicated by the strongest colors and the color decreases as the size of the fire decreases. 
@@ -245,17 +276,28 @@
 	 
      
      
-<div class="header">  </div>    
+  </div>    
 
 <div>  
-<h2 id="title1" class="titles"> 2000-2009 </h2>
+
 </div>     
  
      
-<div id="box"></div>
+<div id="box">
 
-<div id="map" class="mapcontainer"></div>
 
+
+    <h2 id="title1" class="titles"> 2000 - 2009 </h2> 
+    <h2 id= "title2" class="titles"> 2010 - 2019 </h2>
+</div> 
+     
+     
+        <div id="map" class="mapcontainer"></div>
+        <div id="map2" class="mapcontainer"></div>
+   
+    
+    
+<div id="xhr_callup2"></div>
 
 <script>
     
@@ -273,11 +315,11 @@
          }
           var Marker = {
           radius: 4,
-          fillColor: "#1c9fff",
-          color: "#1cffee",
+          fillColor: "#fdff00",
+          color: "#fdff00",
           weight: 1,
           opacity: 1,
-          fillOpacity: 0.5,
+          fillOpacity: 0.7,
         }; //end popup icon//
     
       
@@ -296,9 +338,16 @@
 
 	var grey = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', {id: 'grey',attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', maxZoom: 18,tileSize: 512, zoomOffset: -1, accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
 }),
-sat = L.tileLayer("https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey=696ccb108c7d4fe0ad7a6c8a553c2196",{
-                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-});
+sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',{id: 'sat', 
+                attribution: 'https://api.mapbox.com/styles/v1/macmulline/cki6vtltt7jkc19qk2xvt7eei/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
+              maxZoom: 18,
+              tileSize: 512,
+              zoomOffset: -1,
+              accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+          });
+    
+
+    
     
     var map = L.map('map', {center: [54.76783103448121, -114.74082432881103], zoom: 5, layers: [grey, sat]});
    
@@ -374,11 +423,11 @@ sat = L.tileLayer("https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?
      
 <!--     //////////////////////////////MA#2//////////////////////////////////////////-->
      
-<h2 id= "title2" class="titles"> 2010-2019 </h2>
+<!--<h2 id= "title2" class="titles"> 2010-2019 </h2>
 
 
 <div id="map2" class="mapcontainer"></div>
-<div id="xhr_callup2"></div>
+<div id="xhr_callup2"></div>-->
      
 <script>
 
@@ -386,7 +435,7 @@ sat = L.tileLayer("https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?
 
 	var map2 = L.map('map2').setView([54.76783103448121, -114.74082432881103], 5);
 
-	L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', 
+	var grey2 = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', 
 
 
 	{attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -397,7 +446,24 @@ sat = L.tileLayer("https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?
 			
    			accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
 			}).addTo(map2);
+    
+    sat2 = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',{id: 'sat', 
+                attribution: 'https://api.mapbox.com/styles/v1/macmulline/cki6vtltt7jkc19qk2xvt7eei/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
+              maxZoom: 18,
+              tileSize: 512,
+              zoomOffset: -1,
+              accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+          });
 			
+    
+     var baseMaps2 ={
+        "Grey": grey2,
+        "Sat": sat2
+    };
+    
+
+    
+    L.control.layers(baseMaps2).addTo(map2);
        
     //climate API response//
     function climateInfo () {
@@ -435,14 +501,14 @@ sat = L.tileLayer("https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?
     
        ////chloro////
     function getColor2(b) {
-        return  b >100000 ? '#0011ff' :
-                b > 60000 ? '#3240ff' :
-                b > 40000 ? '#6670ff' :
-                b > 20000 ? '#7f88ff' :
-                b > 8000 ? '#999fff' :
-                b > 5000 ? '#b2b7ff' :
-                b > 2500 ? '#cccfff' :
-         '#e5e7ff';
+        return  b >100000 ? '#1301D6' :
+                b > 60000 ? '#0038D6' :
+                b > 40000 ? '#005CD6' :
+                b > 20000 ? '#0081D6' :
+                b > 8000 ? '#00A6D6' :
+                b > 5000 ? '#00CAD6' :
+                b > 2500 ? '#00D6BD' :
+         '#00D6B9';
     }
     
     function style2(feature) {
