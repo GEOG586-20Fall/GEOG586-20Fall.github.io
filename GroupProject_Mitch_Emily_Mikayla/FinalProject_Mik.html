@@ -1,0 +1,408 @@
+<html>
+ <head>
+     
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<style>
+    body{
+    
+    background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/repeated-square.png");
+    position: relative;
+    }
+    
+	h1 {margin-top: 25px;
+        ;
+        color: white;
+        font-family: Roboto;
+        font-weight: 900;
+    
+    }
+	h2 {
+        color: #E5E5E5;
+        font-family: Roboto;
+        font-weight: 700;
+        text-decoration-line: underline;
+        
+    }
+    
+	h3 {text-align: center;
+        color: white;
+        font-family: Roboto;}
+    
+	h4 {text-align: center;
+        color: aliceblue;
+        font-family: Roboto;}
+    
+	p  {text-align: center;
+        color: #E5E5E5;
+        font-family: Roboto;}
+    
+    
+    
+    
+    
+.header {
+            background-color: #2a2a2a;
+            height: 110px;
+            width: 100%;    
+        
+    }
+    
+.tophead {
+            display: block;
+            position: absolute; 
+            padding-left: 20px;
+        
+        
+    }
+    
+.titles {
+            display: block;
+            position: absolute; 
+            text-align: center;
+        
+    }
+	
+#title1 {
+            background-color: #2a2a2a;
+            border-radius: 7px;
+            top: 125; 
+            left: 11%; 
+            right: 52%; 
+            padding-bottom: 110px;
+            padding-top: 10px;
+           
+        
+        
+    }
+    
+#title2 {
+            background-color: #2a2a2a;
+            border-radius: 7px;
+            top: 125; 
+            left: 52%; 
+            right: 11%;
+            padding-bottom: 110px;
+            padding-top: 10px;
+    }
+    
+#title3 {
+            background-color: #2a2a2a;
+            text-align: left;
+            top: 80%;
+            width: 100%;
+            padding-top: 15px;
+            padding-bottom: 150px;
+            padding-left: 12%;
+    
+            
+        
+    }
+   
+    
+    
+#subhead {
+            margin-top: 65px;
+            color: #E5E5E5;
+    }
+    
+    
+    
+        
+.main {
+            display: block;
+            position: absolute;
+            text-align: center;
+    }
+    
+    
+
+#par1 {
+            top: 175;
+            left: 12%; 
+            right: 53%;
+            
+        }
+    
+#par2 {
+            top: 175;
+            left: 53%; 
+            right: 12%;
+
+        }
+
+
+#par3 {
+            top: 85%;
+            left: 12%;
+            right: 12%;
+            
+            text-align: left;
+
+        }
+		
+#box {
+            position:static;
+            width: 80%;
+            margin:auto;
+            margin-top: 25;
+            height: 67%;
+/*            margin-bottom: 0.5%;*/
+            border-radius: 12px;
+            background-color: #E5E5E5;
+    
+        
+    }
+    
+	
+#map {
+            display: block;
+            position: absolute; 
+            top: 300; 
+            bottom: 250; 
+            left: 11%; 
+            right: 52%;
+            border-radius: 12px;
+
+         
+    }
+
+#map2 {	
+            display: block;
+            position: absolute; 
+            top: 300; 
+            bottom: 250; 
+            left: 52%; 
+            right: 11%;
+            border-radius: 12px;
+
+           
+    }
+	
+.centerbutton {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+	}
+</style>
+<!--     ////end of CSS//////-->
+</head>
+ 
+ <body>
+     
+     <h1 class="tophead">Analyzing Wildfire Data in Alberta, 2000-2019</h1>
+     
+     <h3 id="subhead"class="tophead" >GEOG 586 Group Project - By Emily, Mikayla and Mitchell</h3>
+	 
+	 
+     
+     
+<div class="header">  </div>    
+
+   
+     <h2 id="title1" class="titles"> Webmap One: 2000-2009 </h2>
+     
+ <p id= "par1" class= "main"> This is the first map for our project. In this map, we are looking at major wildfire datas during this decade and also looking at the relevant climate data during this period. </p>
+     
+<div id="box"></div>
+
+<div id="map" class="mapcontainer"></div>
+
+
+<script>
+    
+    ////////////////////////////this is the function popup for the climate properties//////////////////////
+    function climatePopup(feature, layer) {
+        if (feature.properties && feature.properties.MAXTEMP) {
+            layer.bindPopup("<b> Max Temp (C): </b>" + feature.properties.MAXTEMP + "<br></br>" + "<b> Min Temp: (C) </b>" + feature.properties.MINTEMP + "<br></br>" + "<b> Total Precipitation: (mm) </b>" + feature.properties.TOTALPRECIP);
+        };
+    }; //end function for climate popup//
+
+    //popup icon//
+    function climateIcon (feature, latlng) {
+
+                return L.circleMarker(latlng, Marker);
+         }
+          var Marker = {
+          radius: 4,
+          fillColor: "#ff992b",
+          color: "#ffdf2b",
+          weight: 1,
+          opacity: 1,
+          fillOpacity: 0.3,
+        }; //end popup icon//
+    
+      
+    /////////////////////this is the function popup for fires//////////////////////////////
+    function firePopup(feature, layer) {
+        if (feature.properties && feature.properties.ALIAS) {
+            layer.bindPopup("<b> Fire Name: </b>" + feature.properties.ALIAS);
+        };}; ///end function//
+        
+    
+
+    
+////////////////////////////MAP#1////////////////////////////////////////////////////
+
+	
+
+	var grey = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', {id: 'grey',attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', maxZoom: 18,tileSize: 512, zoomOffset: -1, accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+}),
+sat = L.tileLayer("https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey=696ccb108c7d4fe0ad7a6c8a553c2196",{
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+});
+    
+    var map = L.map('map', {center: [54.76783103448121, -114.74082432881103], zoom: 5, layers: [grey, sat]});
+   
+      var baseMaps={
+        "Grey": grey,
+        "Sat": sat
+    };
+    
+   
+    
+    L.control.layers(baseMaps).addTo(map);
+       
+    //climate API response//
+    function climateInfo () {
+        var climateAPI=
+            JSON.parse(this.responseText);
+            climateLayer = L.geoJSON(climateAPI, {pointToLayer: climateIcon, onEachFeature: climatePopup}).addTo(map);
+        climateLayer.bringToFront();
+    } //end API response
+     
+     //climate API call//
+    var climatePoints = new XMLHttpRequest();
+    climatePoints.addEventListener("load", climateInfo);
+    climatePoints.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/Climate/climate.geojson");
+    climatePoints.send();
+    //done climate API call//
+     
+    ////////////////////////////////fire API response//////////////////////////////////
+    function fire () {
+           var style = {
+           "color": "#E12FE6",
+            "weight": "2",
+            fillOpacity: 0.2,
+            fill: "none",
+            };
+        var fireAPI=
+            JSON.parse(this.responseText);
+            fireLayer = L.geoJSON(fireAPI, {onEachFeature: firePopup, style: style}).addTo(map);
+        fireLayer.bringToBack();
+    }//end API resposne//
+    
+    ///////////////////////////////fire API call//////////////////////////////////////
+    var firePoly = new XMLHttpRequest();
+    firePoly.addEventListener("load", fire);
+    firePoly.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2000to2009_Simplif.geojson");
+    firePoly.send();
+    //end API call////
+    
+ </script> 
+     
+<!--     //////////////////////////////MA#2//////////////////////////////////////////-->
+     
+<h2 id= "title2" class="titles"> Webmap Two: 2010-2019 </h2>
+<p id= "par2" class= "main"> This is the second map of our project. In this map, we are looking at major wildfire datas during this decade and also looking at the relevant climate data during this period. </p>
+
+<div id="map2" class="mapcontainer"></div>
+<div id="xhr_callup2"></div>
+     
+<script>
+
+////////////////////////////MAP#2.1////////////////////////////////////////////////////
+
+	var map2 = L.map('map2').setView([54.76783103448121, -114.74082432881103], 5);
+
+	L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', 
+
+
+	{attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: 'mapbox/streets-v11',
+              tileSize: 512,
+              zoomOffset: -1,
+			
+   			accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+			}).addTo(map2);
+			
+       
+    //climate API response//
+    function climateInfo () {
+        var climateAPI=
+            JSON.parse(this.responseText);
+            climateLayer = L.geoJSON(climateAPI, {pointToLayer: climateIcon, onEachFeature: climatePopup}).addTo(map2);
+        climateLayer.bringToFront();
+    } //end API response
+     
+     //climate API call//
+    var climatePoints2 = new XMLHttpRequest();
+    climatePoints2.addEventListener("load", climateInfo);
+    climatePoints2.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/Climate/ClimateData_10-19.geojson");
+    
+    
+    
+    
+    climatePoints2.send();
+    //done climate API call//
+     
+    ////////////////////////////////fire API response//////////////////////////////////
+    function fire () {
+           var style = {
+           "color": "blue",
+            "weight": "2",
+            fillOpacity: 0.2,
+            fill: "none",
+            };
+        var fireAPI=
+            JSON.parse(this.responseText);
+            fireLayer = L.geoJSON(fireAPI, {onEachFeature: firePopup, style: style}).addTo(map2);
+        fireLayer.bringToBack();
+    }//end API resposne//
+    
+    ///////////////////////////////fire API call//////////////////////////////////////
+    var firePoly = new XMLHttpRequest();
+    firePoly.addEventListener("load", fire);
+    firePoly.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2010to2019_Simplif.geojson", "synch");
+    firePoly.send();
+    //end API call////
+    
+ </script> 
+   
+    
+
+     
+     
+     
+	 
+<h3 id="title3" class="titles"> Why is this important? </h3>
+<p id="par3" class="main"> Alberta is full of park life, and much of Alberta's tourism takes place in large provincial and national parks, making it an important resource to the province.<br>
+However, throughout history Alberta has been devestated by various forest fires that have destroyed many acres of trees and destroyed the homes of wildlife.
+<br><br>
+Many forest fires are caused due to changing weather conditions. For example, dryer weather makes it more likely for fires to spread. The maps look at various climate data factors and compares them to the relative size of the forest fires.
+
+<style> 
+.button {
+  font: bold 15px Roboto;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+</style>
+
+<br><br>
+
+<a href="https://wildfire.alberta.ca/wildfire-status/status-map.aspx" class="button">Click here to learn more about the current status of forest fires in Alberta</a>
+
+</p>
+
+</body>
+</html>
