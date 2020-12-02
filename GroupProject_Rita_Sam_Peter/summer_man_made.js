@@ -1,4 +1,4 @@
-var manmadeattraction = {
+{
     "type": "FeatureCollection",
     "features": [
         {"type": "Feature",
@@ -90,5 +90,3 @@ var manmadeattraction = {
                              [-115.26743588615986, 51.17951377503523],
                               ]]}},
 ]};
-
-var geoJSONlayer = L.geoJSON(manmadeattraction, {onEachFeature: onEachFeature}).addTo(map);

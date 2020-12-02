@@ -43,7 +43,7 @@
 			naturalTrailsAPIRequest.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var myArr = JSON.parse(this.responseText);
-				naturaltrailsLayers(myArr);
+				var naturaltrails = naturaltrailsLayers(myArr);
 				//document.getElementById("xhr_request").innerHTML = this.responseText;
 			}
 		};
@@ -58,7 +58,7 @@
 			naturalPointsAPIRequest.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var myArr = JSON.parse(this.responseText);
-				naturalpointsLayer(myArr);
+				var naturalpoints = naturalpointsLayer(myArr);
 				//document.getElementById("xhr_request").innerHTML = this.responseText;
 			}
 		};
@@ -73,22 +73,35 @@
 			manMadePointsAPIRequest.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var myArr = JSON.parse(this.responseText);
-				manMadelayer(myArr);
+				var artificial = manMadelayer(myArr);
 				//document.getElementById("xhr_request").innerHTML = this.responseText;
 			}
 		};
 			
-			manMadePointsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Winter%20Natural%20Trails/Winter_natural_Trails.js", "synch");
+			manMadePointsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/summer_man_made.js", "synch");
 			
 			manMadePointsAPIRequest.send();
 		
 			//var APIresponse = xhr.responseText;
+			
 		
-		var map = L.map('map1').setView([51.144441, -115.528996], 10);
+		var naturalattractions = L.layerGroup([naturalpoints, naturaltrails]);
+		
+		var manmadeattractions = L.layerGroup([artificial]);
+		
+		var overlayMaps = {
+			"Natural": naturalattractions,
+			"Artificial": manmadeattractions
+			};
+		
+		
+		var map = L.map('map1', {layers: [naturalattractions, manmadeattractions]}).setView([51.144441, -115.528996], 10);
 
 		L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 		}).addTo(map);
+		
+		L.control.layers(overlayMaps).addTo(map);
 			
 		function naturaltrailsLayers(newlayer) {
 			var naturalTrails = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
@@ -104,6 +117,7 @@
 			var manmadePoints = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
 		
 		};
+	
 	
 	</script>
 	<h3> Map 2: Winter</h3>
