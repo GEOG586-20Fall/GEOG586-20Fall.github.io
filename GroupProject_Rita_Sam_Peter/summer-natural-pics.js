@@ -243,7 +243,7 @@ var summer_natural_point = {
 			}
 		},
 		
-		}
+		
 	]
 }
 
