@@ -1,56 +1,12 @@
 {
-    "type": "FeatureCollection",
-    "features": [
-        {"type": "Feature",
-        "properties": {
-            "name": "Lake Agnes Tea House",
-            "caption": "To be added",
-            "img": ""},
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-116.244200, 51.4165]}},
-
-        {"type": "Feature",
-        "properties": {
-            "name": "Kicking Horse Mountain Resort",
-            "caption": "To be added",
-            "img": ""},
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-117.046835, 51.2970]}},
-
-        {"type": "Feature",
-        "properties": {
-            "name": "Banff Park Museum National Historic Site",
-            "caption": "To be added",
-            "img": ""},
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-115.57164521509581, 51.173732046783385]}},
-
-        {"type": "Feature",
-        "properties": {
-            "name": "Banff Upper Hot Springs Cafe Inc",
-            "caption": "To be added",
-            "img": ""},
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-115.57068648368079, 51.16885610076221]}},
-
-        {"type": "Feature",
-        "properties": {
-            "name": "Yamnuska Wolfdog sanctuary",
-            "caption": "To be added",
-            "img": ""},
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-114.62800040160332, 51.23603294465403]}},
-
-        {"type": "Feature",
+	"type": "FeatureCollection",
+	"features": [
+		{"type": "Feature",
         "properties": {
             "name": "Banff National Park",
-            "caption": "To be added",
-            "img": ""},
+            "caption": "World-famous national park with extradinary scenaries of Canadian natural
+		        beauty and excellent attractions that are engaging and breathtaking.",
+            "img": "<img src= 'https://static.toiimg.com/photo/55704503.cms'/>"},
         "geometry": {
             "type": "Polygon",
             "coordinates": [[[-115.43168596380265, 51.10638357340508],
@@ -88,5 +44,5 @@
                              [-115.0025164060908, 51.28236430323021],
                              [-115.25683910695709, 51.239261423609754],
                              [-115.26743588615986, 51.17951377503523],
-                              ]]}},
-]};
+                             ]]}},
+]}
