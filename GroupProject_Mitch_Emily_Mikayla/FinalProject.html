@@ -249,9 +249,20 @@
             display: inline-block;
             text-decoration: none;
             left: 5%;
-      
+	}
 
-}
+	.button1 {
+            text-align: center;
+            font-family: 'Roboto';
+            font-weight: bold;
+            color:  #f57b68;
+            opacity: 1;
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+
+	}
+    
     
      .button:hover {
             text-align: center;
@@ -300,7 +311,9 @@
      
      <h3 id="subhead"class="tophead" > These maps show the 10 largest fires in 2 decades and the average maximum temperature, average minimum temperature, and total precipitation for that area.
      <br> The largest fires are indicated by the strongest colors and the color decreases as the size of the fire decreases. 
-     </h3>
+     <br> The grey map shows the ecozone boundaries within the province which also contributes to the spatial distribution of wildfires. Click 
+     <a href="http://ecozones.ca/english/zone/index.html" class="button1"> here </a> 
+     to learn about the ecozones! </h3>
 	 
 	 
      
@@ -365,7 +378,7 @@
 
 
 
-	var grey = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', {id: 'grey',attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', maxZoom: 18,tileSize: 512, zoomOffset: -1, accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+	var grey = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki917br80x8g18phennox4kw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', {id: 'grey',attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', maxZoom: 18,tileSize: 512, zoomOffset: -1, accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
 	}),
 		sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn7mx98sz9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',{id: 'sat', 
 		                attribution: 'https://api.mapbox.com/styles/v1/macmulline/cki6vtltt7jkc19qk2xvt7eei/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
@@ -416,7 +429,29 @@
     };
         
     }
-        
+    
+
+        var legend2 = L.control({position: 'bottomright'});
+
+			legend2.onAdd = function (map) {
+
+			    var div = L.DomUtil.create('div', 'info legend2'),
+			        scale = [2500, 5000, 8000, 20000, 40000, 60000, 100000],
+			        labels = [];
+
+				div.innerHTML =  '<h4>Area (ha)</h4>'
+			    for (var i = 0; i < scale.length; i++) { 
+			        div.innerHTML +=  
+			            '<i style="background:' + getColor(scale[i] + 1) + '"></i> ' +
+            			scale[i] + (scale[i + 1] ? '&ndash;' + scale[i + 1] + '<br>' : '+');
+    		}
+
+			    return div;
+			};
+
+			legend2.addTo(map);      
+
+
 	////END chloro////
 
 
@@ -449,9 +484,8 @@
 
 ////////////////////////////MAP#2.1////////////////////////////////////////////////////
 
-	// var map2 = L.map('map2').setView([54.76783103448121, -114.74082432881103], 5);
 
-	var grey2 = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', 
+	var grey2 = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki917br80x8g18phennox4kw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', 
 
 
 	{attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
