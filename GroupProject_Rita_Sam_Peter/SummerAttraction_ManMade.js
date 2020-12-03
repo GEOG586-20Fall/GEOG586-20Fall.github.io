@@ -35,7 +35,7 @@
         {"type": "Feature",
         "properties": {
             "name": "Banff Upper Hot Springs Cafe Inc",
-            "caption": "With water heated naturally by the mountain beneath,
+            "caption": "With water heated naturally by the mountain beneath all year long,
 			this commercially built hotspring provides a soothing experience to
 			people of all ages with the pool sitting at an altitude of 1,585 meters
 			overlooking Mount Rundle.",
