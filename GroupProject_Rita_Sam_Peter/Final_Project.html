@@ -66,6 +66,11 @@
 					layer.bindPopup("<h3>"+feature.properties.name+"</h3>"+"<p>"+feature.properties.caption+"</p>"+feature.properties.img);
 				};
 				
+				function onEachFeature2(feature, layer) {
+					layer.bindPopup("<h3>"+feature.properties.name+"</h3>");
+				};
+				
+				
 				var map = L.map('map1').setView([51.444441, -115.528996], 7);
 
 				L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -488,7 +493,7 @@
 					
 					var mygeoJSONlayer2 = L.geoJSON(MyGeoJSON2, {onEachFeature:onEachFeature}).addTo(map);
 					
-					var mygeoJSONlayer3 = L.geoJSON(MyGeoJSON3, {onEachFeature: onEachFeature}).addTo(map);
+					var mygeoJSONlayer3 = L.geoJSON(MyGeoJSON3, {onEachFeature: onEachFeature2}).addTo(map);
 			</script>
         <div class="bbg"></div>
 		<div class="blueText">
@@ -498,11 +503,12 @@
 			
 			<script type="application/javascript">
 				function onEachFeature(feature, layer) {
-					// does this feature have a property named popupContent?
-					if (feature.properties && feature.properties.caption) {
-						layer.bindPopup("<h3>"+feature.properties.name+"</h3>"+"<p>"+feature.properties.caption+"</p>"+feature.properties.img);
-					}
-				}
+					layer.bindPopup("<h3>"+feature.properties.name+"</h3>"+"<p>"+feature.properties.caption+"</p>"+feature.properties.img);
+				};
+				
+				function onEachFeature2(feature, layer) {
+					layer.bindPopup("<h3>"+feature.properties.name+"</h3>");
+				};
 							
 				var map2 = L.map('map2').setView([51.444441, -115.528996], 7)
 					
@@ -1124,7 +1130,7 @@
 				
 				var summer_mygeoJSONlayer = L.geoJSON(summer_MyGeoJSON1, {onEachFeature:onEachFeature}).addTo(map2);
 					
-				var summer_mygeoJSONlayer2 = L.geoJSON(summer_MyGeoJSON2, {onEachFeature:onEachFeature}).addTo(map2);
+				var summer_mygeoJSONlayer2 = L.geoJSON(summer_MyGeoJSON2, {onEachFeature:onEachFeature2}).addTo(map2);
 					
 				var summer_mygeoJSONlayer3 = L.geoJSON(summer_MyGeoJSON3, {onEachFeature: onEachFeature}).addTo(map2);
 				
