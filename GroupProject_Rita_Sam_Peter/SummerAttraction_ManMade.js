@@ -67,7 +67,7 @@
 	{"type": "Feature",
         "properties": {
             "name": "Hoodoos Red Chair",
-            "caption": "Famous aross Canada, these hidden resting spots provide excellent views to anyone who can locate them.",
+		"caption": "Famous aross Canada, these hidden resting spots provide excellent views to anyone who can locate them."},
         "geometry": {
             "type": "Point",
             "coordinates": [-115.51821626814909, 51.1879618321586]}},
@@ -75,7 +75,7 @@
 	{"type": "Feature",
         "properties": {
             "name": "Tunnel Mountain Summit Red Chair",
-            "caption": "Famous across Canada, these hidden resting spots provide excellent views to anyone who can locate them",
+		"caption": "Famous across Canada, these hidden resting spots provide excellent views to anyone who can locate them"},
         "geometry": {
             "type": "Point",
             "coordinates": [-115.55449857833177, 51.17759770909053]}},
@@ -83,8 +83,8 @@
 	{"type": "Feature",
         "properties": {
             "name": "Sulphur Mountain Summit Red Chair",
-            "caption": "Famous aross Canada, these hidden resting spots provide excellent views to anyone who can locate them",
+		"caption": "Famous aross Canada, these hidden resting spots provide excellent views to anyone who can locate them"},
         "geometry": {
             "type": "Point",
             "coordinates": [-115.57690964900785, 51.14772576846385]}},
-]};
+	]}};
