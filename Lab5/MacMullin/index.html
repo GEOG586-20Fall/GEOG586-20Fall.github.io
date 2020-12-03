@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-
+      <link rel="stylesheet" href="index.css">
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
          crossorigin=""/>
@@ -11,7 +11,7 @@
          crossorigin=""></script>
       <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
       <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
-
+      
 <!-- ------------------------------------------------------------------------------------------------------ -->
 <!-- CSS STYLES FOR LABELS AND TEXT CONTENT 
  ------------------------------------------------------------------------------------------------------ --> 
@@ -52,30 +52,6 @@
             border-radius: 15px;
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         
-		} 		
-		.info {
-		    padding: 6px 8px;
-		    font: 14px/16px Arial, Helvetica, sans-serif;
-		    background: white;
-		    background: rgba(255,255,255,0.8);
-		    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-		    border-radius: 5px;
-		}
-		.info h4 {
-		    margin: 0 0 5px;
-		    color: #777;
-		}
-		.legend {
-		    line-height: 18px;
-		    color: #555;
-		}
-		.legend i {
-		    width: 18px;
-		    height: 18px;
-		    float: left;
-		    margin-right: 8px;
-		    opacity: 0.7;
-		}
  		</style>
    
    </head>
@@ -94,12 +70,15 @@
       <h1> title </h1>
       <p> subtitle </p>
 
-      <div id= "info"></div>
-      
-
       <div id="mapid" style="height: 800px; width: auto; display: block;"></div>
-      <script type="text/javascript" src="AB_ecozones.js"></script>
+
 	  <script type="text/javascript">
+
+
+
+
+         
+
 
 
 // <!-- ------------------------------------------------------------------------------------------------------ -->
@@ -119,120 +98,32 @@
               accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
           }).addTo(mymap);
          
-
 // <!-- ------------------------------------------------------------------------------------------------------ -->
-// <!-- color by class 
+// <!-- API LISTENER / RESPONSE FOR POLYGONS & ADD TO MAP WITH "ON EACH FEATURE FUNCTION"
 // <!-- ------------------------------------------------------------------------------------------------------ --> 
+           function reqListenerecozones () {
+            var myStyle = {
+                        "color": "#5399df",
+                        "weight": "1"
+                        // "fillColor": "#7da19d"
+                    };
+                     var apiResponseecozones = JSON.parse(this.responseText);
+                     L.geoJSON(apiResponseecozones,  {onEachFeature: onEachFeature, style: myStyle}).addTo(mymap)
+                     //
 
-			function getColor(d) {
-			    return d === "Prairie"  ? 'ORANGE' :
-			           d === "Boreal Plain" ? '#E31A1C' :
-			           d === "Boreal Sheild" ? '#FC4E2A' :
-			           d === "Taiga Plain"   ? '#FD8D3C' :
-			           d === "Taiga Shield" ? '#FEB24C' :
-			           d === "Montane Cordillera" ? '#FED976' :
-
-	  							     '#FFEDc0';
-			}
-
-
-			function style(feature) {
-			    return {
-			        fillColor: getColor(feature.properties.ZONE_NAME),
-			        weight: 2,
-			        opacity: 1,
-			        color: 'white',
-			        dashArray: '3',
-			        fillOpacity: 0.7
-			    };
-			}
-
-			function highlightFeature(e) {
-				    var layer = e.target;
-
-				    layer.setStyle({
-				        weight: 5,
-				        color: '#666',
-				        dashArray: '',
-				        fillOpacity: 0.7
-				    });
-
-				    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-				        layer.bringToFront();
-				    }
-				 
-				 	info.update(layer.feature.properties);
-				}
-   
-
-
-			function resetHighlight(e) {
-				    geojson.resetStyle(e.target);
-					info.update();
-				}
-
-			var geojson;
-
-			function zoomToFeature(e) {
-				    map.fitBounds(e.target.getBounds());
-				}
-
-			function onEachFeature(feature, layer) {
-				    layer.on({
-				        mouseover: highlightFeature,
-				        mouseout: resetHighlight,
-				        click: zoomToFeature
-				    });
-				}
-
-				geojson = L.geoJson(ecozones, {
-				    style: style,
-				    onEachFeature: onEachFeature
-				}).addTo(mymap);
-															
+                    }
 // <!-- ------------------------------------------------------------------------------------------------------ -->
-// <!-- HOVER & POPUPS
+// <!-- THE API CALL / REPONSE 
 // <!-- ------------------------------------------------------------------------------------------------------ --> 
-			var info = L.control();
-
-			info.onAdd = function (map) {
-			    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-			    this.update();
-			    return this._div;
-			};
-
-
-			info.update = function (props) {
-			    this._div.innerHTML = '<h4> Ecozone Area </h4>' +  (props ?
-			        '<b>' + props.ZONE_NAME + '</b><br />' + props.SHAPE_Area + ' m<sup>2</sup>'
-			        : 'Hover over a zone');
-			};
-
-			info.addTo(mymap);
-
-
-			var legend = L.control({position: 'bottomright'});
-
-			legend.onAdd = function (map) {
-
-			    var div = L.DomUtil.create('div', 'info legend'),
-			        zones = ["Prairie", "Boreal Plain","Boreal Sheild","Taiga Plain", "Taiga Shield", "Montane Cordillera"],
-			        labels = [];
-
-
-			    for (var i = 0; i < zones.length; i++) {
-			        div.innerHTML +=
-			            '<i style="background:' + getColor(zones[i]) + '"></i> ' +
-			            zones[i] + '<br>';
-			    }
-
-			    return div;
-			};
-
-			legend.addTo(mymap);
-
-
-           
+           var ecozones = new XMLHttpRequest();
+           ecozones.addEventListener("load", reqListenerecozones);
+           ecozones.open("GET", "https://raw.githubusercontent.com/emacmullin/emacmullin.github.io/master/GC-NP/national_parks_boundaries_Fe.geojson");
+           ecozones.send();
+                         s
+         
+         
+         
+         
          
       </script>
    </body>
