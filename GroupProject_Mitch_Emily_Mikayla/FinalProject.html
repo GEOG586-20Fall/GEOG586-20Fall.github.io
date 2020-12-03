@@ -406,7 +406,9 @@
         };
 
 	L.control.layers(baseMaps, overlayMaps).addTo(map);
-          
+        
+	L.control.scale().addTo(map);
+	
     ////chloro////
     function getColor(a) {
         return  a >100000 ? '#800026' :
