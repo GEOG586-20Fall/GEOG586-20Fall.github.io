@@ -1,23 +1,33 @@
 {
     "type": "FeatureCollection",
     "features": [
-        {"type": "Feature",
-        "properties": {
-            "name": "Lake Agnes Tea House",
-            "caption": "Named after the First Lady of Canada, Lady Agnes MacDonald,this delicate tea house sits at an altitude of 2,135 meters overlooking Lake Agnes. It began its service of tea beverages since 1905.",
-            "img": "<img src='https://www.banfflakelouise.com/sites/default/files/styles/l_1600_12x6/public/lead/page/hiking_lake_louise_lake_agnes_tea_house_parkway_paul_zizka_2_horizontal_web_0.jpg?itok=uVE1fbaX'/>"},
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-116.244200, 51.4165]}},
+        {
+			"type": "Feature",
+				"properties": {
+					"name": "Lake Agnes Tea House",
+					"caption": "Named after the First Lady of Canada, Lady Agnes MacDonald,this delicate tea house sits at an altitude of 2,135 meters overlooking Lake Agnes. It began its service of tea beverages since 1905.",
+					"img": "<img src='https://www.banfflakelouise.com/sites/default/files/styles/l_1600_12x6/public/lead/page/hiking_lake_louise_lake_agnes_tea_house_parkway_paul_zizka_2_horizontal_web_0.jpg?itok=uVE1fbaX'/>"
+					},
+					
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-116.244200, 51.4165]
+			}
+		},
 
-        {"type": "Feature",
-        "properties": {
-            "name": "Kicking Horse Mountain Resort",
-            "caption": "A wonderful resort with many summer activities such as hiking and mountain biking.",
-            "img": "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS88F15urERVH02b1VAoTXpJQ9JnY4Vzzfu4w&usqp=CAU'/>"},
-        "geometry": {
-            "type": "Point",
-            "coordinates": [-117.046835, 51.2970]}},
+        {
+			"type": "Feature",
+				"properties": {
+					"name": "Kicking Horse Mountain Resort",
+					"caption": "A wonderful resort with many summer activities such as hiking and mountain biking.",
+					"img": "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS88F15urERVH02b1VAoTXpJQ9JnY4Vzzfu4w&usqp=CAU'/>"
+					},
+					
+			"geometry": {
+				"type": "Point",
+				"coordinates": [-117.046835, 51.2970]
+			}
+		},
 
         {"type": "Feature",
         "properties": {
