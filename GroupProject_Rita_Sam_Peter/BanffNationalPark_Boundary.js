@@ -4,8 +4,7 @@
 		{"type": "Feature",
         "properties": {
             "name": "Banff National Park",
-            "caption": "World-famous national park with extradinary scenaries of Canadian natural
-		        beauty and excellent attractions that are engaging and breathtaking.",
+            "caption": "World-famous national park with extradinary scenaries of Canadian natural beauty and excellent attractions that are engaging and breathtaking.",
             "img": "<img src= 'https://static.toiimg.com/photo/55704503.cms'/>"},
         "geometry": {
             "type": "Polygon",
