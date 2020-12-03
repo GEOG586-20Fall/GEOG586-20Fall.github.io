@@ -3,8 +3,12 @@
      
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<style>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+	<script type="text/javascript" src="Wildfires_2000to2009.js"></script>
+	<script type="text/javascript" src="Wildfires_2010to2019.js"></script>
+	
+	<style>
     body{
     
     background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/repeated-square.png");
@@ -335,61 +339,37 @@
     
 ////////////////////////////MAP#1////////////////////////////////////////////////////
 
-	
+
 
 	var grey = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', {id: 'grey',attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', maxZoom: 18,tileSize: 512, zoomOffset: -1, accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
-}),
-sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn7mx98sz9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',{id: 'sat', 
-                attribution: 'https://api.mapbox.com/styles/v1/macmulline/cki6vtltt7jkc19qk2xvt7eei/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
-              maxZoom: 18,
-              tileSize: 512,
-              zoomOffset: -1,
-              accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
-          });
+	}),
+		sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn7mx98sz9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',{id: 'sat', 
+		                attribution: 'https://api.mapbox.com/styles/v1/macmulline/cki6vtltt7jkc19qk2xvt7eei/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
+		              maxZoom: 18,
+		              tileSize: 512,
+		              zoomOffset: -1,
+		              accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+		          });
     
 
+     fireOverlay = L.geoJSON(FireA, {onEachFeature: firePopup, style: style});
+        fireOverlay.bringToBack();
     
     
-    var map = L.map('map', {center: [54.76783103448121, -114.74082432881103], zoom: 5, layers: [grey, sat]});
+    var map = L.map('map', {center: [54.76783103448121, -114.74082432881103], zoom: 5, layers: [grey, sat, fireOverlay]});
    
-      var baseMaps={
+    var baseMaps={
         "Grey": grey,
         "Sat": sat
-    };
-    
+    	};
+      
 
-    
-    L.control.layers(baseMaps).addTo(map);
-       
-    //climate API response//
-    function climateInfo () {
-        var climateAPI=
-            JSON.parse(this.responseText);
-            climateLayer = L.geoJSON(climateAPI, {pointToLayer: climateIcon, onEachFeature: climatePopup}).addTo(map);
-        climateLayer.bringToFront();
-    } //end API response
-     
-     //climate API call//
-    var climatePoints = new XMLHttpRequest();
-    climatePoints.addEventListener("load", climateInfo);
-    climatePoints.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/Climate/climate.geojson");
-    climatePoints.send();
-    //done climate API call//
-     
-    ////////////////////////////////fire API response//////////////////////////////////
-    function fire () {
-           /*var style = {
-           "color": "#E12FE6",
-            "weight": "2",
-            fillOpacity: 0.2,
-            fill: "none",
-            };*/
-        var fireAPI=
-            JSON.parse(this.responseText);
-            fireLayer = L.geoJSON(fireAPI, {onEachFeature: firePopup, style: style}).addTo(map);
-        fireLayer.bringToBack();
-    }//end API resposne//
-    
+    var overlayMaps = {
+        "Wildfire Data\n2000-2009": fireOverlay
+        };
+
+	L.control.layers(baseMaps, overlayMaps).addTo(map);
+          
     ////chloro////
     function getColor(a) {
         return  a >100000 ? '#800026' :
@@ -412,14 +392,27 @@ sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn
     };
         
     }
-    
-    ///////////////////////////////fire API call//////////////////////////////////////
-    var firePoly = new XMLHttpRequest();
-    firePoly.addEventListener("load", fire);
-    firePoly.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2000to2009_Simplif.geojson");
-    firePoly.send();
-    //end API call////
-    
+        
+	////END chloro////
+
+
+//climate API response//
+    function climateInfo () {
+        var climateAPI=
+            JSON.parse(this.responseText);
+            climateLayer = L.geoJSON(climateAPI, {pointToLayer: climateIcon, onEachFeature: climatePopup}).addTo(map);
+        climateLayer.bringToFront();
+    } //end API response
+     
+     //climate API call//
+    var climatePoints = new XMLHttpRequest();
+    climatePoints.addEventListener("load", climateInfo);
+    climatePoints.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/Climate/climate.geojson");
+    climatePoints.send();
+    //done climate API call//
+
+
+
  </script> 
      
 <!--     //////////////////////////////MA#2//////////////////////////////////////////-->
@@ -432,7 +425,7 @@ sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn
 
 ////////////////////////////MAP#2.1////////////////////////////////////////////////////
 
-	var map2 = L.map('map2').setView([54.76783103448121, -114.74082432881103], 5);
+	// var map2 = L.map('map2').setView([54.76783103448121, -114.74082432881103], 5);
 
 	var grey2 = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki6bveaz98mt19qjvm4t2asi/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', 
 
@@ -444,7 +437,7 @@ sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn
               zoomOffset: -1,
 			
    			accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
-			}).addTo(map2);
+			}),
     
     sat2 = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn7mx98sz9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',{id: 'sat', 
                 attribution: 'https://api.mapbox.com/styles/v1/macmulline/cki6vtltt7jkc19qk2xvt7eei/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
@@ -454,51 +447,28 @@ sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn
               accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
           });
 			
+       fireOverlay2 = L.geoJSON(FireB, {onEachFeature: firePopup, style: style});
+       fireOverlay2.bringToBack();
     
-     var baseMaps2 ={
+    
+    var map2 = L.map('map2', {center: [54.76783103448121, -114.74082432881103], zoom: 5, layers: [grey2, sat2, fireOverlay2]});
+    
+    var baseMaps2 ={
         "Grey": grey2,
         "Sat": sat2
     };
     
 
-    
-    L.control.layers(baseMaps2).addTo(map2);
-       
-    //climate API response//
-    function climateInfo () {
-        var climateAPI=
-            JSON.parse(this.responseText);
-            climateLayer = L.geoJSON(climateAPI, {pointToLayer: climateIcon, onEachFeature: climatePopup}).addTo(map2);
-        climateLayer.bringToFront();
-    } //end API response
-     
-     //climate API call//
-    var climatePoints2 = new XMLHttpRequest();
-    climatePoints2.addEventListener("load", climateInfo);
-    climatePoints2.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/Climate/ClimateData_10-19.geojson");
+
+    var overlayMaps2 = {
+        "Wildfire Data\n2010-2019": fireOverlay2
+        };
+
+	L.control.layers(baseMaps2, overlayMaps2).addTo(map2);   
+
     
     
-    
-    
-    climatePoints2.send();
-    //done climate API call//
-     
-    ////////////////////////////////fire API response//////////////////////////////////
-    function fire () {
-           /*var style = {
-           "color": "blue",
-            "weight": "2",
-            fillOpacity: 0.2,
-            fill: "none",
-            };*/
-        var fireAPI=
-            JSON.parse(this.responseText);
-            fireLayer = L.geoJSON(fireAPI, {onEachFeature: firePopup, style: style2}).addTo(map2);
-        fireLayer.bringToBack();
-    }//end API resposne//
-    
-    
-       ////chloro////
+      ////chloro////
     function getColor2(b) {
         return  b >100000 ? '#1301D6' :
                 b > 60000 ? '#0038D6' :
@@ -521,13 +491,25 @@ sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn
         
     }
     
-    ///////////////////////////////fire API call//////////////////////////////////////
-    var firePoly = new XMLHttpRequest();
-    firePoly.addEventListener("load", fire);
-    firePoly.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2010to2019_Simplif.geojson", "synch");
-    firePoly.send();
-    //end API call////
+ //climate API response//
+    function climateInfo () {
+        var climateAPI=
+            JSON.parse(this.responseText);
+            climateLayer = L.geoJSON(climateAPI, {pointToLayer: climateIcon, onEachFeature: climatePopup}).addTo(map2);
+        climateLayer.bringToFront();
+    } //end API response
+     
+     //climate API call//
+    var climatePoints2 = new XMLHttpRequest();
+    climatePoints2.addEventListener("load", climateInfo);
+    climatePoints2.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/Climate/ClimateData_10-19.geojson");
     
+    
+    
+    
+    climatePoints2.send();
+    //done climate API call//
+     
  </script> 
    
     
