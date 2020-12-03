@@ -18,157 +18,36 @@
 			
 		</style>
 		
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-		crossorigin=""/>
-		
-		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-		crossorigin=""></script>
-		<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+<script src="summer-natural-pics.js"></script>
+<script>
+
+        function Popups(feature, layer) {
+            if (feature.properties.name && feature.properties.caption && feature.properties.img) {
+				layer.bindPopup( feature.properties.name + feature.properties.caption+feature.properties.img );
+            };
+			};
+
+</script>
 	</head>
 	<body>
 	<h1>Summer and Winter Attractions in the Canadian Rocky Mountains</h1>
-	<!-- <div class="w3-bar w3-light-green">
-        <a href="https://geog586-20fall.github.io/Lab4/PeterLab4/PeterLab4.html" class="w3-bar-item w3-button">Navi Example</a>
-	</div> -->
+
 	<h3>Map 1: Summer</h3>
 	<div id= "map1"></div>
 		<script type="application/javascript">
-		
-		function onEachFeature(feature, layer) {
-					layer.bindPopup("<h3>"+feature.properties.name+"</h3>");
-				};
-		
-		var naturalTrailsAPIRequest = new XMLHttpRequest();
-			naturalTrailsAPIRequest.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				var myArr = JSON.parse(this.responseText);
-				naturaltrailsLayers(myArr);
-				//document.getElementById("xhr_request").innerHTML = this.responseText;
-			}
-		};
-			
-			naturalTrailsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Summer%20Natural%20Trails/Trails.js", "synch");
-			
-			naturalTrailsAPIRequest.send();
-		
-			//var APIresponse = xhr.responseText;
-			
-		<!-- var naturalPointsAPIRequest = new XMLHttpRequest(); -->
-			<!-- naturalPointsAPIRequest.onreadystatechange = function() { -->
-			<!-- if (this.readyState == 4 && this.status == 200) { -->
-				<!-- var myArr = JSON.parse(this.responseText); -->
-				<!-- naturalpointsLayer(myArr); -->
-				<!-- //document.getElementById("xhr_request").innerHTML = this.responseText; -->
-			<!-- } -->
-		<!-- }; -->
-			
-			<!-- naturalPointsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Summer%20Natural%20Trails/point_locations.js", "synch"); -->
-			
-			<!-- naturalPointsAPIRequest.send(); -->
-		
-			<!-- //var APIresponse = xhr.responseText; -->
-		
-		<!-- var manMadePointsAPIRequest = new XMLHttpRequest(); -->
-			<!-- manMadePointsAPIRequest.onreadystatechange = function() { -->
-			<!-- if (this.readyState == 4 && this.status == 200) { -->
-				<!-- var myArr = JSON.parse(this.responseText); -->
-				<!-- manMadelayer(myArr); -->
-				<!-- //document.getElementById("xhr_request").innerHTML = this.responseText; -->
-			<!-- } -->
-		<!-- }; -->
-			
-			<!-- manMadePointsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/summer_man_made.js", "synch"); -->
-			
-			<!-- manMadePointsAPIRequest.send(); -->
-		
-			<!-- //var APIresponse = xhr.responseText; -->
-			
-		
-		var naturalattractions = L.layerGroup([naturalTrails]);
-		
-		var overlayMaps = {
-			"Natural": naturalattractions,
-			};
-		
-		
-		var map = L.map('map1', {layers: [naturalattractions]}).setView([51.144441, -115.528996], 10);
-
+		var map = L.map('map1').setView([51.144441, -115.528996], 10);
 		L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 		}).addTo(map);
 		
-		L.control.layers(overlayMaps).addTo(map);
-			
-		function naturaltrailsLayers(newlayer) {
-			var naturalTrails = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
+		L.geoJSON(summer-natural-pics, {onEachFeature: Popups}).addTo(map);
 		
-		};
-		
-		function naturalpointsLayer(newlayer) {
-			var naturalPoints = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
-		
-		};
-		
-		function manMadelayer(newlayer) {
-			var manmadePoints = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);
-		
-		};
-	
-	
-	</script>
-	<h3> Map 2: Winter</h3>
-	<div id = "map2" class="center"></div>
-		<script type = "application/javascript">
-			function onEachFeature(feature, layer) {
-					layer.bindPopup("<h3>"+feature.properties.name+"</h3>");
-				};
-		
-		var winternaturalTrialsAPIRequest = new XMLHttpRequest();
-			winternaturalTrialsAPIRequest.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				var myArr = JSON.parse(this.responseText);
-				WinterNaturalTrailsLayer(myArr);
-				//document.getElementById("xhr_request").innerHTML = this.responseText;
-			}
-		};
-			
-			winternaturalTrialsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Winter%20Natural%20Trails/Winter_natural_Trails.js", "synch");
-			
-			winternaturalTrialsAPIRequest.send();
-		
-			//var APIresponse = xhr.responseText;
-			
-		var wintermanmadepointsAPIRequest = new XMLHttpRequest();
-			wintermanmadepointsAPIRequest.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				var myArr = JSON.parse(this.responseText);
-				WinterManMadePointsLayer(myArr);
-				//document.getElementById("xhr_request").innerHTML = this.responseText;
-			}
-		};
-			
-			wintermanmadepointsAPIRequest.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Winter%20Natural%20Trails/Winter_natural_Trails.js", "synch");
-			
-			wintermanmadepointsAPIRequest.send();
-		
-			//var APIresponse = xhr.responseText;
-			
-		var map2 = L.map('map2').setView([51.144441, -115.528996], 10);
-
-			L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-			}).addTo(map2);
-			
-		function WinterNaturalTrailsLayer(newlayer){	
-			var winterNaturalTrails = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map2);			
-		};
-		
-		function WinterManMadePointsLayer(newlayer) {
-			var winterManMadePoints = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map2);
-		
-		};
-				
-		</script>
 	</body>
 </html>
