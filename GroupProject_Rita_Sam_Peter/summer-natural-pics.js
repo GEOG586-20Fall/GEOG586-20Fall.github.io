@@ -102,7 +102,7 @@ var summer_natural_point = {
 			"type": "Feature",
 			"geometry": {
 				"type": "Point",
-				"coordinates": [-116.262891 50.468564]
+				"coordinates": [-116.262891, 50.468564]
 			},
 			"properties": {
 				"name": "Paradise Mine",
