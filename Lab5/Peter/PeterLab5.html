@@ -189,7 +189,7 @@
       }
 
       function zoomToFeature(e) {
-         map.fitBounds(e.target.getBounds());
+         mymap.fitBounds(e.target.getBounds());
       }
 
       function onEachFeature(feature, layer) {
@@ -205,7 +205,7 @@
          onEachFeature: onEachFeature
       }).addTo(mymap);
       
-      map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
+      mymap.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
       
       var legend = L.control({position: 'bottomright'});
       
