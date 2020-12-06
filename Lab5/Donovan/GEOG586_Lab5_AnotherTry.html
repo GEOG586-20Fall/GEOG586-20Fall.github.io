@@ -5,7 +5,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
          <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script type="text/javascript" ></script>
-            <script src="MyData5.js"></script>
+            <script src="js.js"></script>
     
             <script> 
 
@@ -188,7 +188,6 @@
             L.control.scale().addTo(map);
 
             L.geoJSON(unemployment, {
-                          style: myStyle,
                         onEachFeature: popup,
                 } ).addTo(map)             
          
