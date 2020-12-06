@@ -1,0 +1,175 @@
+<html>
+	<head>
+		<style>
+			#MainMap {
+				height: 450px;
+			}
+			
+			h1 {
+				text-align: center;
+				font-family: verdana, sans-serif;
+				margin: auto;
+			}
+			p {
+				text-align: center;
+				font-family: verdana, sans-serif;
+				margin: auto
+			}
+			
+			.center {
+			max-width: 75%; 
+			margin: auto; 
+			}
+			
+			.info {
+				padding: 6px 8px;
+				font: 14px/16px Arial, Helvetica, sans-serif;
+				background: white;
+				background: rgba(255,255,255,0.8);
+				box-shadow: 0 0 15px rgba(0,0,0,0.2);
+				border-radius: 5px;
+			}
+			.info h4 {
+				margin: 0 0 5px;
+				color: #777;
+			}
+			
+			.legend {
+				line-height: 18px;
+				color: #555;
+			}
+			.legend i {
+				width: 18px;
+				height: 18px;
+				float: left;
+				margin-right: 8px;
+				opacity: 0.7;
+			}
+			
+		</style>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+		integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+		crossorigin=""/>
+		
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+		
+	</head>
+	
+	<body>
+		<h1>Resident Count in each Calgary Community</h1>
+		<p>Data is taken from the 2016 City of Calgary Census By Community Dataset from the City of Calgary Open Data Portal</p>
+		
+		<div id="MainMap" class="center"></div>
+			<script type="text/javascript" src="Census_by_Community_2016.js"></script>
+			<script type="application/javascript">
+				
+				var map = L.map("MainMap").setView([51.035925, -114.059032], 10)
+				
+				L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+					subdomains: 'abcd',
+					maxZoom: 19,
+				}).addTo(map);
+				
+				var geoJSONlayer = L.geoJSON(calgaryCensus, {
+					style: style,
+					onEachFeature: onEachFeature
+					}).addTo(map);
+				
+				function getColor(d) {
+					return d > 25729  ? '#006d2c' :
+						   d > 15708  ? '#2ca25f' :
+						   d > 9430   ? '#66c2a4' :
+						   d > 4988   ? '#99d8c9' :
+						   d > 1573   ? '#ccece6' :
+									  '#edf8fb';
+				}
+				
+				function style(feature) {
+					return {
+						fillColor: getColor(feature.properties.res_cnt),
+						weight: 2,
+						opacity: 1,
+						color: 'white',
+						dashArray: '3',
+						fillOpacity: 0.5
+					};
+				}
+				
+				function highlightFeature(e) {
+					var layer = e.target;
+
+					layer.setStyle({
+						weight: 5,
+						color: '#666',
+						dashArray: '',
+						fillOpacity: 0.7
+					});
+
+					if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+						layer.bringToFront();
+					}
+					info.update(layer.feature.properties);
+				}
+				
+				function resetHighlight(e) {
+					geoJSONlayer.resetStyle(e.target);
+					info.update();
+				}
+				
+				function zoomToFeature(e) {
+					map.fitBounds(e.target.getBounds());
+				}
+				
+				function onEachFeature(feature, layer) {
+					layer.on({
+						mouseover: highlightFeature,
+						mouseout: resetHighlight,
+						click: zoomToFeature
+					});
+				}
+				
+				var info = L.control();
+				
+				info.onAdd = function (map) {
+					this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+					this.update();
+					return this._div;
+				};
+
+				// method that we will use to update the control based on feature properties passed
+				info.update = function (props) {
+					this._div.innerHTML = '<h4>Calgary Census Resident Count</h4>' +  (props ?
+						'<b>' + props.name + '</b><br />' + props.res_cnt + ' people'
+						: 'Hover over a community');
+				};
+
+				info.addTo(map);
+				
+				var legend = L.control({position: 'bottomright'});
+
+				legend.onAdd = function (map) {
+
+					var div = L.DomUtil.create('div', 'info legend'),
+						grades = [0, 1573, 4988, 9430, 15708, 25729],
+						labels = [];
+
+					// loop through our density intervals and generate a label with a colored square for each interval
+					for (var i = 0; i < grades.length; i++) {
+						div.innerHTML +=
+							'<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+							grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+					}
+
+					return div;
+				};
+
+				legend.addTo(map);
+				
+				
+			</script>
+	</body>
+	
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+   <style>
+      body{font-family:Times New Roman
+      }
+      
+      .blueText{color:DarkSlateBlue;
+         max-width: 700px;
+         margin: auto;
+         text-align: center;
+      }
+      
+      .bg{height: 80px;
+         width: 100%;
+         border: 5px outset LightBlue;
+         background-color: DarkSlateBlue;
+         text-align: center;
+         color: GhostWhite;
+      }
+      
+      .wbg{height: 30px;
+         width: 100%;
+         background-color: White;
+         text-align: center;
+         color: Black
+      }
+      
+      .wbg2{height: 10px;
+         width: 60%;
+         background-color: White;
+         text-align: center;
+         color: Black
+      }
+      
+      p{color:Black;
+         max-width: 700px;
+         margin: auto;
+         text-align: left;
+      }
+      
+      .center{max-width: 700px;
+         margin: auto;
+         width: 60%;
+         border: 6px solid #483D8B;
+         padding: 10px;
+      }
+      
+      .info{
+	 padding: 6px 8px;
+	 font: 14px/16px Arial, Helvetica, sans-serif;
+	 background: white;
+	 background: rgba(255,255,255,0.8);
+	 box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	 border-radius: 5px;
+      }
+	   
+      .info h4{
+         margin: 0 0 5px;
+	 color: #777;
+      }
+		
+      .legend{
+	 text-align: left;
+	 line-height: 18px;
+	 color: #555; 
+      }
+	   
+      .legend i{
+         width: 18px;
+	 height: 18px;
+	 float: left;
+	 margin-right: 8px;
+	 opacity: 0.7;
+      }
+   </style>
+   
+   <style>
+      #mapCalgary {height: 500px; width: 700px}
+   </style>
+
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+</head>
+
+
+<body>
+   <div class="bg">
+   <h1>
+      Calgary Household Language Statistics
+   </h1>
+   </div>
+   
+   <div class="blueText">
+   <h3>
+      By Yihuan Jiang
+   </h3>
+
+   <hr>   
+      
+   <p>
+     
+   </p>
+   </div>
+   
+   <div class="wbg2"></div>
+   
+   <div id="mapCalgary" class="center"></div>
+
+   <div class="wbg"></div>
+   
+   <div class="bg"></div>
+   
+   <script type="text/javascript" src="2016 Census of Calgary_Language.js"></script>
+	
+   <script type="application/javascript">
+      var mymap=L.map("mapCalgary").setView([51.02500, -114.06928], 10);
+      
+      L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
+      }).addTo(mymap);
+      
+      var info = L.control();
+
+      info.onAdd = function (mymap) {
+         this._div = L.DomUtil.create('div', 'info');
+         this.update();
+         return this._div;
+      };
+      
+      info.update = function (props) {
+         this._div.innerHTML = "<h4>Calgary Linguistic Statistics</h4>" +  (props ?
+            "<b> Community: </b>" + props.name + "<br>" + "<b> English at Home: </b>" + props.english + "<br>" + "<b> French at Home: </b>" + props.french + "<br>" + "<b> Non-Official Languages at Home: </b>"+ props.non_official_languages: "Hover over a region");
+      };
+      
+      info.addTo(mymap);
+      
+      function getColor(d) {
+         return d > 8000  ? '#13272e' :
+				d > 4000  ? '#20424d' :
+				d > 2000  ? '#316170' :
+				d > 1000  ? '#438194' :
+				d > 400   ? '#53a0b8' :
+				d > 200   ? '#64bed9' :
+				d > 100   ? '#75dcfa' :
+							'#9ae6fc';
+      }
+      
+      function style(feature) {
+         return {
+            weight: 2,
+			opacity: 1,
+			color: 'white',
+			dashArray: '3',
+			fillOpacity: 0.7,
+			fillColor: getColor(feature.properties.non_official_languages)
+         };
+      }
+      
+      function highlightFeature(e) {
+         var layer = e.target;
+
+         layer.setStyle({
+			weight: 5,
+			color: '#666',
+			dashArray: '',
+			fillOpacity: 0.7
+         });
+
+         if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+         }
+
+         info.update(layer.feature.properties);
+      }
+      
+      var geojson;
+
+      function resetHighlight(e) {
+         geojson.resetStyle(e.target);
+         info.update();
+      }
+
+      function zoomToFeature(e) {
+         mymap.fitBounds(e.target.getBounds());
+      }
+
+      function onEachFeature(feature, layer) {
+         layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+         });
+      }
+      
+      geojson = L.geoJson(CalLang, {
+         style: style,
+         onEachFeature: onEachFeature
+      }).addTo(mymap);
+      
+      mymap.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
+      
+      var legend = L.control({position: 'bottomright'});
+      
+      legend.onAdd = function (mymap) {
+
+         var div = L.DomUtil.create('div', 'info legend'),
+			grades = [0, 100, 200, 400, 1000, 2000, 4000, 8000],
+			labels = [],
+			from, to;
+
+         for (var i = 0; i < grades.length; i++) {
+			from = grades[i];
+			to = grades[i + 1];
+
+			labels.push(
+				'<i style="background:' + getColor(from + 1) + '"></i> ' +
+				from + (to ? '&ndash;' + to : '+'));
+         }
+
+         div.innerHTML = labels.join('<br>');
+         return div;
+      };
+      legend.addTo(mymap);
+   </script>
+
+   <script>
+      alert("Welcome to my website!");
+   </script>
+</body>
+
+
+</html>

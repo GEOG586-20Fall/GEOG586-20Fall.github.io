@@ -5,9 +5,15 @@
 			#map1 { 
 				height: 425px;
 			}
+			
 			#map2 {
 				height: 425px;
 			}
+			
+			.center	{
+				max-width: 80%;
+				margin: auto; 
+				}
 		</style>
 		
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -16,55 +22,90 @@
 		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 		crossorigin=""></script>
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 	</head>
 	<body>
 	<h1>Summer and Winter Attractions in the Canadian Rocky Mountains</h1>
-	<div class="w3-bar w3-light-green">
-        <a href="https://geog586-20fall.github.io/Lab4/PeterLab4/PeterLab4.html" class="w3-bar-item w3-button">Navi Example</a>
-	</div>
 	<h3>Map 1: Summer</h3>
-	<div id= "map1"></div>
+	<div id= "map1" class="center"></div>
 		<script type="application/javascript">
-		
+		<!-- OnEachFeature Function -->
 		function onEachFeature(feature, layer) {
 					layer.bindPopup("<h3>"+feature.properties.name+"</h3>");
 				};
 		
-		var xhr = new XMLHttpRequest();
-			xhr.onreadystatechange = function() {
+		var man_made_summer_api = new XMLHttpRequest();
+			man_made_summer_api.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var myArr = JSON.parse(this.responseText);
+					ManMadeSummer(myArr);
+				}
+			};
+			
+			man_made_summer_api.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/SummerAttraction_ManMade.js", "synch");
+			
+			man_made_summer_api.send();
+		
+		<!-- get natural trails api request -->
+		var natural_trails_api = new XMLHttpRequest();
+			natural_trails_api.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var myArr = JSON.parse(this.responseText);
-				myFunction(myArr);
+				NaturalTrailsLayer(myArr);
 				//document.getElementById("xhr_request").innerHTML = this.responseText;
 			}
 		};
 			
-			xhr.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Trails/Trails.js", "synch");
+			natural_trails_api.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/hello.js", "synch");
 			
-			xhr.send();
+			natural_trails_api.send();
 		
 			//var APIresponse = xhr.responseText;
+			
+		var map = L.map('map1').setView([51.144441, -115.528996], 10);
+
+		L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+		}).addTo(map);
+			
+		function NaturalTrailsLayer(newlayer){
+			var natural_trails = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);			
+		};
 		
-		function myFunction(newlayer){	
-			var map = L.map('map1').setView([51.144441, -115.528996], 10);
+		function ManMadeSummer(newlayer) {
+			var man_made_summer = L.geoJSON(newlayer, {onEachFeature:onEachFeature}).addTo(map);
+		};
+		
+		</script>
+	<h3> Map 2: Winter</h3>
+	<div id = "map2" class="center"></div>
+		<script type = "application/javascript">
+			function onEachFeature(feature, layer) {
+					layer.bindPopup("<h3>"+feature.properties.name+"</h3>");
+				};
+		
+		var winter_trails_api_request = new XMLHttpRequest();
+			winter_trails_api_request.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				var myArr = JSON.parse(this.responseText);
+				WinterTrailsLayer(myArr);
+				//document.getElementById("xhr_request").innerHTML = this.responseText;
+			}
+		};
+			
+			winter_trails_api_request.open("GET", "https://geog586-20fall.github.io/GroupProject_Rita_Sam_Peter/Winter%20Natural%20Trails/Winter_natural_Trails.js", "synch");
+			
+			winter_trails_api_request.send();
+		
+			//var APIresponse = winter_trails_api_request.responseText;
+		var map2 = L.map('map2').setView([51.144441, -115.528996], 10);
 
 			L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-			}).addTo(map);
-			
-				var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map);			
+			}).addTo(map2);
+		function WinterTrailsLayer(newlayer){	
+			var winter_trails = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(map2);			
 		};
-		</script>
-	<h3> Map 2: Winter</h3>
-	<div id = "map2"></div>
-		<script type = "application/javascript">
-			var map = L.map('map2').setView([50.986103, -114.099397], 14);
-
-			L.tileLayer(
-				'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-				}).addTo(map);
 				
 		</script>
 	</body>

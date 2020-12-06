@@ -94,6 +94,7 @@ function makeMap(newLayer){
 	minZoom: 0,
 	maxZoom: 18,
 	ext: 'png'}).addTo(map);
+	ext: 'png'}).addTo(map);
 			
 	L.geoJSON(newLayer, {onEachFeature: bindPopups}).addTo(map);
 };

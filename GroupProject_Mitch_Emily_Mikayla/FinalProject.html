@@ -3,8 +3,12 @@
      
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<style>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+	<script type="text/javascript" src="Wildfires_2000to2009.js"></script>
+	<script type="text/javascript" src="Wildfires_2010to2019.js"></script>
+	
+	<style>
     body{
     
     background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/repeated-square.png");
@@ -22,7 +26,7 @@
         color: #E5E5E5;
         font-family: Roboto;
         font-weight: 700;
-        text-decoration-line: underline;
+        
         
     }
     
@@ -43,23 +47,40 @@
     
     
 .header {
+            position: static;
             background-color: #2a2a2a;
-            height: 110px;
+            height: 175px;
             width: 100%;    
         
     }
     
 .tophead {
             display: block;
-            position: absolute; 
-            padding-left: 20px;
-        
+            position: relative; 
+            padding-left: 5%;
+            height: 15%;
+            top:5%;
+            
+
         
     }
     
+    #toptitle {
+        background-color: #f57b68;
+        width: 63%;
+        padding-left: 4%;
+        padding-top: 0.5%;
+        margin-top: 2%;
+        margin-left: 3%;
+        height: 50px;
+        color: black;
+        border-radius: 5px;
+        box-shadow: 4px 4px 3px black;
+    }
+    
 .titles {
-            display: block;
-            position: absolute; 
+            display: inline-block;
+            position: relative; 
             text-align: center;
         
     }
@@ -67,11 +88,13 @@
 #title1 {
             background-color: #2a2a2a;
             border-radius: 7px;
-            top: 125; 
-            left: 11%; 
-            right: 52%; 
-            padding-bottom: 110px;
+            top: 0.1%; 
+            left: 6.5%; 
+            width: 41.25%; 
+            padding-bottom: 10px;
             padding-top: 10px;
+            color: white;
+        box-shadow: 4px 4px 3px #1F1F1F;	
            
         
         
@@ -80,21 +103,30 @@
 #title2 {
             background-color: #2a2a2a;
             border-radius: 7px;
-            top: 125; 
-            left: 52%; 
-            right: 11%;
-            padding-bottom: 110px;
+            top: 0.1%; 
+            right:  1%;
+            left: 10.5%;
+            width: 41.25%;
+            padding-bottom: 10px;
             padding-top: 10px;
+            color: white;
+	box-shadow: 4px 4px 3px #1F1F1F;
     }
     
 #title3 {
-            background-color: #2a2a2a;
+            position: relative;
             text-align: left;
-            top: 80%;
-            width: 100%;
-            padding-top: 15px;
-            padding-bottom: 110px;
-            padding-left: 12%;
+            top: 2%;
+            left: 5%;
+            background-color: #f57b68;
+            border-radius: 7px;
+            padding-left: 2%;
+            padding-right: 2%;
+            padding-bottom: 0.5%;
+            padding-top: 0.5%;
+            color: black;
+            box-shadow: 4px 4px 3px black;
+            
     
             
         
@@ -103,11 +135,24 @@
     
     
 #subhead {
-            margin-top: 65px;
+            position: relative;
+            margin-top: 1%;
+            text-align: left;
             color: #E5E5E5;
     }
     
-    
+.lowerpar {
+            display: block;
+            position: static;
+            background-color: #2a2a2a;
+            height: 250px;
+            width: 100%;
+            top: 75%;
+            margin-top: 1%;
+            
+        
+        
+    }
     
         
 .main {
@@ -134,73 +179,167 @@
 
 
 #par3 {
-            top: 85%;
-            left: 12%;
-            right: 12%;
-            
+            position: relative;
+            padding-left: 5%;
+            padding-right: 5%;
             text-align: left;
 
         }
 		
 #box {
             position:static;
-            width: 80%;
+            width: 90%;
             margin:auto;
-            margin-top: 25;
-            height: 67%;
-/*            margin-bottom: 0.5%;*/
+            margin-top: 1%;
+            height: 75%;
+            top: 30%;
             border-radius: 12px;
-            background-color: #E5E5E5;
+            background-color: #555555;
+            box-shadow: 8px 8px 8px #888888;
     
         
     }
     
 	
 #map {
-            display: block;
+            display:block;
             position: absolute; 
-            top: 300; 
-            bottom: 250; 
+            top:275px; 
             left: 11%; 
             right: 52%;
+            bottom: 26%;
             border-radius: 12px;
-
+            box-shadow: 4px 4px 3px #2a2a2a;
          
     }
 
 #map2 {	
             display: block;
             position: absolute; 
-            top: 300; 
-            bottom: 250; 
+            top:275px; 
             left: 52%; 
             right: 11%;
+            bottom: 26%;
             border-radius: 12px;
+            box-shadow: 4px 4px 3px #2a2a2a;
 
            
     }
+	
+.centerbutton {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+	}
+    
+    .button {
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+            color: white;
+            background-color: grey;
+            border: none;
+            opacity: 1;
+            position: relative;
+            padding: 5px 15px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            font-weight: 100;
+            display: inline-block;
+            text-decoration: none;
+            left: 5%;
+	}
+
+	.button1 {
+            text-align: center;
+            font-family: 'Roboto';
+            font-weight: bold;
+            color:  #f57b68;
+            opacity: 1;
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+
+	}
+    
+    
+     .button:hover {
+            text-align: center;
+            font-size: 15px;
+            background-color: whitesmoke;
+            color: black;
+            border: none;
+            opacity: 1;
+            padding: 5px 15px;
+            border-radius: 8px;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+
+        }
+
+    .info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+	}
+	.info h4 {
+	    margin: 0 0 5px;
+	    color: #777;
+	}    
+
+	.legend2 {
+	    line-height: 18px;
+	    color: #555;
+	}
+	.legend2 i {
+	    width: 18px;
+	    height: 18px;
+	    float: left;
+	    margin-right: 8px;
+	    opacity: 0.7;
+	}
 </style>
 <!--     ////end of CSS//////-->
 </head>
  
  <body>
+     <div class="header">
+     <h1 id="toptitle" class="tophead">Analyzing Wildfire Data in Alberta, 2000-2019</h1>
      
-     <h1 class="tophead">Analyzing Wildfire Data in Alberta, 2000-2019</h1>
+     <h3 id="subhead"class="tophead" > These maps show the 50 largest fires in 2 decades and the average maximum temperature, average minimum temperature, and total precipitation for that area.
+     <br> The largest fires are indicated by the strongest colors and the color decreases as the size of the fire decreases. 
+     <br> The grey map shows the ecozone boundaries within the province which also contributes to the spatial distribution of wildfires. Click 
+     <a href="http://ecozones.ca/english/zone/index.html" class="button1"> here </a> 
+     to learn about the ecozones! </h3>
+	 
+	 
      
-     <h3 id="subhead"class="tophead" >GEOG 586 Group Project - By Emily, Mikayla and Mitchell</h3>
      
-     
-<div class="header">  </div>    
+  </div>    
 
+<div>  
+
+</div>     
+ 
+     
+<div id="box">
+
+
+
+    <h2 id="title1" class="titles"> 2000 - 2009 </h2> 
+    <h2 id= "title2" class="titles"> 2010 - 2019 </h2>
+</div> 
+     
+     
+        <div id="map" class="mapcontainer"></div>
+        <div id="map2" class="mapcontainer"></div>
    
-     <h2 id="title1" class="titles"> Webmap One: 2000-2009 </h2>
-     
- <p id= "par1" class= "main"> This is the first map for our project. In this map, we are looking at major wildfire datas during this decade and also looking at the relevant climate data during this period. </p>
-     
-<div id="box"></div>
-
-<div id="map" class="mapcontainer"></div>
-
+    
+    
+<div id="xhr_callup2"></div>
 
 <script>
     
@@ -218,18 +357,18 @@
          }
           var Marker = {
           radius: 4,
-          fillColor: "#ff992b",
-          color: "#ffdf2b",
+          fillColor: "#fdff00",
+          color: "#8A0808",
           weight: 1,
           opacity: 1,
-          fillOpacity: 0.3,
+          fillOpacity: 0.7,
         }; //end popup icon//
     
       
     /////////////////////this is the function popup for fires//////////////////////////////
     function firePopup(feature, layer) {
         if (feature.properties && feature.properties.ALIAS) {
-            layer.bindPopup("<b> Fire Name: </b>" + feature.properties.ALIAS);
+            layer.bindPopup("<b> Fire Name: </b>" + feature.properties.ALIAS+ "<br></br>" + "<b> Year: </b>" + feature.properties.YEAR + "<br></br>" + "<b> Total area burned: (hectares) </b>" + feature.properties.HECTARES_U);
         };}; ///end function//
         
     
@@ -237,16 +376,88 @@
     
 ////////////////////////////MAP#1////////////////////////////////////////////////////
 
-	var map = L.map('map').setView([54.76783103448121, -114.74082432881103], 5);
-
-	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-			}).addTo(map);
-			
 
 
-       
-    //climate API response//
+	var grey = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki917br80x8g18phennox4kw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', {id: 'grey',attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>', maxZoom: 18,tileSize: 512, zoomOffset: -1, accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+	}),
+		sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn7mx98sz9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',{id: 'sat', 
+		                attribution: 'https://api.mapbox.com/styles/v1/macmulline/cki6vtltt7jkc19qk2xvt7eei/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
+		              maxZoom: 18,
+		              tileSize: 512,
+		              zoomOffset: -1,
+		              accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+		          });
+    
+
+     fireOverlay = L.geoJSON(FireA, {onEachFeature: firePopup, style: style});
+        fireOverlay.bringToBack();
+    
+    
+    var map = L.map('map', {center: [54.76783103448121, -114.74082432881103], zoom: 5, layers: [grey, sat, fireOverlay]});
+   
+    var baseMaps={
+        "Grey Scale": grey,
+        "Satellite": sat
+    	};
+  
+
+    var overlayMaps = {
+        "Wildfire Data\n2000-2009": fireOverlay
+        };
+
+	L.control.layers(baseMaps, overlayMaps).addTo(map);
+        
+	L.control.scale().addTo(map);
+	
+    ////chloro////
+    function getColor(a) {
+        return  a >100000 ? '#800026' :
+                a > 60000 ? '#BD0026' :
+                a > 40000 ? '#E31A1C' :
+                a > 20000 ? '#FC4E2A' :
+                a > 8000 ? '#FD8D3C' :
+                a > 5000 ? '#FEB24C' :
+                a > 2500 ? '#FED976' :
+         '#FFEDA0';
+    }
+    
+    function style(feature) {
+        return {
+            fillColor: getColor(feature.properties.HECTARES_U), 
+              weight: 2,
+        opacity: 1,
+        color: 'ffdf2b',
+        fillOpacity: 1,
+    };
+        
+    }
+    
+
+        var legend2 = L.control({position: 'bottomright'});
+
+			legend2.onAdd = function (map) {
+
+			    var div = L.DomUtil.create('div', 'info legend2'),
+			        scale = [2500, 5000, 8000, 20000, 40000, 60000, 100000],
+			        labels = [];
+
+				div.innerHTML =  '<h4>Area (ha)</h4>'
+			    for (var i = 0; i < scale.length; i++) { 
+			        div.innerHTML +=  
+			            '<i style="background:' + getColor(scale[i] + 1) + '"></i> ' +
+            			scale[i] + (scale[i + 1] ? '&ndash;' + scale[i + 1] + '<br>' : '+');
+    		}
+
+			    return div;
+			};
+
+			legend2.addTo(map);      
+
+
+	////END chloro////
+
+
+//climate API response//
     function climateInfo () {
         var climateAPI=
             JSON.parse(this.responseText);
@@ -260,52 +471,109 @@
     climatePoints.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/Climate/climate.geojson");
     climatePoints.send();
     //done climate API call//
-     
-    ////////////////////////////////fire API response//////////////////////////////////
-    function fire () {
-           var style = {
-           "color": "#E12FE6",
-            "weight": "2",
-            fillOpacity: 0.2,
-            fill: "none",
-            };
-        var fireAPI=
-            JSON.parse(this.responseText);
-            fireLayer = L.geoJSON(fireAPI, {onEachFeature: firePopup, style: style}).addTo(map);
-        fireLayer.bringToBack();
-    }//end API resposne//
-    
-    ///////////////////////////////fire API call//////////////////////////////////////
-    var firePoly = new XMLHttpRequest();
-    firePoly.addEventListener("load", fire);
-    firePoly.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2000to2009_Simplif.geojson");
-    firePoly.send();
-    //end API call////
-    
+
+
+
  </script> 
      
 <!--     //////////////////////////////MA#2//////////////////////////////////////////-->
      
-<h2 id= "title2" class="titles"> Webmap Two: 2010-2019 </h2>
-<p id= "par2" class= "main"> This is the second map of our project. In this map, we are looking at major wildfire datas during this decade and also looking at the relevant climate data during this period. </p>
-
+<!--<h2 id= "title2" class="titles"> 2010-2019 </h2>
 <div id="map2" class="mapcontainer"></div>
-<div id="xhr_callup2"></div>
+<div id="xhr_callup2"></div>-->
      
 <script>
 
 ////////////////////////////MAP#2.1////////////////////////////////////////////////////
 
-	var map2 = L.map('map2').setView([54.76783103448121, -114.74082432881103], 5);
 
-	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-			}).addTo(map2);
+	var grey2 = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki917br80x8g18phennox4kw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A', 
+
+
+	{attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: 'mapbox/streets-v11',
+              tileSize: 512,
+              zoomOffset: -1,
 			
+   			accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+			}),
+    
+    sat2 = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn7mx98sz9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',{id: 'sat', 
+                attribution: 'https://api.mapbox.com/styles/v1/macmulline/cki6vtltt7jkc19qk2xvt7eei/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
+              maxZoom: 18,
+              tileSize: 512,
+              zoomOffset: -1,
+              accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+          });
+			
+       fireOverlay2 = L.geoJSON(FireB, {onEachFeature: firePopup, style: style});
+       fireOverlay2.bringToBack();
+    
+    
+    var map2 = L.map('map2', {center: [54.76783103448121, -114.74082432881103], zoom: 5, layers: [grey2, sat2, fireOverlay2]});
+    
+    var baseMaps2 ={
+        "Grey Scale": grey2,
+        "Satellite": sat2
+    };
+    
 
 
-       
-    //climate API response//
+    var overlayMaps2 = {
+        "Wildfire Data\n2010-2019": fireOverlay2
+        };
+
+	L.control.layers(baseMaps2, overlayMaps2).addTo(map2);   
+	L.control.scale().addTo(map2);
+    
+    
+      ////chloro////
+    function getColor2(b) {
+        return  b >100000 ? '#1301D6' :
+                b > 60000 ? '#0038D6' :
+                b > 40000 ? '#005CD6' :
+                b > 20000 ? '#0081D6' :
+                b > 8000 ? '#00A6D6' :
+                b > 5000 ? '#00CAD6' :
+                b > 2500 ? '#00D6BD' :
+         '#00D6B9';
+    }
+    
+    function style2(feature) {
+        return {
+            fillColor: getColor2(feature.properties.HECTARES_U), 
+              weight: 2,
+        opacity: 1,
+        color: 'ffdf2b',
+        fillOpacity: 1,
+    };
+        
+    }
+
+    var legend2 = L.control({position: 'bottomright'});
+
+			legend2.onAdd = function (map) {
+
+			    var div = L.DomUtil.create('div', 'info legend2'),
+			        scale = [2500, 5000, 8000, 20000, 40000, 60000, 100000],
+			        labels = [];
+
+				div.innerHTML =  '<h4>Area (ha)</h4>'
+			    for (var i = 0; i < scale.length; i++) { 
+			        div.innerHTML +=  
+			            '<i style="background:' + getColor(scale[i] + 1) + '"></i> ' +
+            			scale[i] + (scale[i + 1] ? '&ndash;' + scale[i + 1] + '<br>' : '+');
+    		}
+
+			    return div;
+			};
+
+			legend2.addTo(map2);  
+ 
+
+
+ //climate API response//
     function climateInfo () {
         var climateAPI=
             JSON.parse(this.responseText);
@@ -324,35 +592,23 @@
     climatePoints2.send();
     //done climate API call//
      
-    ////////////////////////////////fire API response//////////////////////////////////
-    function fire () {
-           var style = {
-           "color": "blue",
-            "weight": "2",
-            fillOpacity: 0.2,
-            fill: "none",
-            };
-        var fireAPI=
-            JSON.parse(this.responseText);
-            fireLayer = L.geoJSON(fireAPI, {onEachFeature: firePopup, style: style}).addTo(map2);
-        fireLayer.bringToBack();
-    }//end API resposne//
-    
-    ///////////////////////////////fire API call//////////////////////////////////////
-    var firePoly = new XMLHttpRequest();
-    firePoly.addEventListener("load", fire);
-    firePoly.open("GET", "https://GEOG586-20Fall.github.io/GroupProject_Mitch_Emily_Mikayla/WildFires/Wildfires_2010to2019_Simplif.geojson", "synch");
-    firePoly.send();
-    //end API call////
-    
  </script> 
    
     
 
      
      
-     
+<div class="lowerpar">    
 	 
 <h3 id="title3" class="titles"> Why is this important? </h3>
-<p id="par3" class="main"> Alberta is full of park life, and much of Alberta's tourism takes place in large provincial and national parks, making it an important resource to the province.<br>
-However, throughout history Alberta has been devestated by various forest fires that have destroyed many acres of trees and destroyed the homes of wildlife. <p>
+    
+<p id="par3" class="main"> Forest fires can happen naturally, although the occurence and severtity of the fire can increase with climate change. It is useful to compare fire patterns over time to determine if changes are occuring. 
+<br>
+Many forest fires are caused due to changing weather conditions. For example, dryer weather makes it more likely for fires to spread. The maps look at various climate data factors and compares them to the relative size of the forest fires.
+</p>
+ 
+<a href="https://wildfire.alberta.ca/wildfire-status/status-map.aspx" class="button">Click here to learn more about the current status of forest fires in Alberta</a>
+
+</div>
+</body>
+</html>

@@ -37,18 +37,20 @@ Larissa Shevchenko, Shifa Hayat, Tyler Gough-->
 	<!-- Map Introduction-->
   <div><div id = "map_intro">
   <h2> The Maps </h2>
-	<p>In this project we present two maps.</p>
 	<!-- Description of first map-->
-	<p>The first map...</p>
-	<p>The second map presents a 'virtual race' where icons representing eight runners (professionals and celebrities) move along the route of the Boston Marathon. The icons are programmed to move along the race course at 100x the speed at which the person represented actually ran. Simply press the 'Start the race!' to make the icons move. Press 'Pause the race!' to pause the icons. Press 'Reset the race!' to bring the icons back to the start line. Click on the icons to discover how fast they are moving. You can switch map view or select which icons you would like to appear on the map by clicking the layers button on the top right of the map.</p>
+	<p>In this project we present two maps. The first map presents the locations of the six world marathon majors: Boston, Chicago, New York, London, Berlin, and Tokyo. These are the most prestigious marathons in the world, with prize pools of more than a million dollars for each race. Each race has 30000 - 50000 participants. Because demand for participation is so high, runners who wish to enter the race have two options: enter the lottery (typically a 10% success rate) or meet the rigorous qualifying standards. The Boston Marathon is notorious for being a qualifying-only race - male runners must have a qualifying time under 3 hours, women under 3.5 hours. Click on the icons below to learn more about each of these races.</p>
+	<div id="mapone"><br></div>
+	<br><br>
+	<p>The second map presents a 'virtual race' where icons representing eight runners (professionals and celebrities) move along the route of the Boston Marathon. You can read more about the runners being depicted below. The icons are programmed to move along the race course at 100x the speed at which the person represented actually ran. This provides perspective on the incredible paces at which elite runners move. Simply press the 'Start the race!' to make the icons move. Press 'Pause the race!' to pause the icons. Press 'Reset the race!' to bring the icons back to the start line. Click on the icons to discover how fast they are moving. You can switch map view or select which icons you would like to appear on the map by clicking the layers button on the top right of the map.</p>
     <br>
 	<!-- Buttons (functions in script below)-->
 	<button class="button" onclick="raceStart()">Start the race!</button>
 	<button class="button" onclick="racePause()">Pause the race!</button>
 	<button class="button" onclick="raceReset()">Reset the race!</button>
   </div>
+	
  
-	<div id="map"><br></div>
+	<div id="maptwo"><br></div>
 	
 	<div><div id = "racers">
 
@@ -100,12 +102,30 @@ Larissa Shevchenko, Shifa Hayat, Tyler Gough-->
         attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
         crossOrigin: true
         });
+		
+	  var satImagery2 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+        crossOrigin: true
+		});
+	
+	  var streets2 = L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=GbTgUaI7708nBO7eCLe3',{
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
+        crossOrigin: true
+        });
+	
+	  var map1 = L.map('mapone', {
+		center: [0, 0],
+        zoom: 2,
+		layers: [streets2,satImagery2]
+		});
 	  
-      var map = L.map('map', {
+      var map = L.map('maptwo', {
 		center: [42.289751, -71.308],
-        zoom: 11,
+        zoom: 10,
 		layers: [streets,satImagery]
 		});
+	
+	
 	  
 
 	//Draw features 
@@ -192,6 +212,54 @@ Larissa Shevchenko, Shifa Hayat, Tyler Gough-->
 		map.addLayer(teddyBruschi);
 		teddyBruschi.bindPopup("<b>Tedy Bruschi</b><br><b>Marathon Time:</b> 4:47:44<br><b>Real-World Pace:</b> 6:49/km<br><b>Simulated pace:</b> 4.099 seconds/km")
 
+	//First map and labels
+	var bostonicon = L.icon({
+		iconUrl: 'https://raceraves.com/wp-content/uploads/2014/08/4697_Hopkinton-1.jpg',
+		iconSize: [70,70]
+		});
+
+    var marker = L.marker([42.361145, -71.057083], {icon: bostonicon}).addTo(map1);
+      marker.bindPopup("<b>Boston Marathon</b><br><b>First Run:</b> 1897<br><b>Date:</b> Third Monday of April <br><b>Number of Participants:</b> 30 000");
+	
+	var londonicon = L.icon({
+		iconUrl: 'https://upload.wikimedia.org/wikipedia/en/3/3c/Virgin_Money_London_Marathon.png',
+		iconSize: [75,39]
+		});
+
+    var marker = L.marker([51.509865, -0.118092], {icon: londonicon}).addTo(map1);
+      marker.bindPopup("<b>London Marathon</b><br><b>First Run:</b> 1981<br><b>Date:</b> Mid-April<br><b>Number of Participants:</b> 50 000");
+
+	var newyorkicon = L.icon({
+		iconUrl: 'https://raceraves.com/wp-content/uploads/2015/12/NYC-Marathon-logo.jpg',
+		iconSize: [70,70]
+		});
+		
+    var marker = L.marker([40.730610, -73.935242], {icon: newyorkicon}).addTo(map1);
+      marker.bindPopup("<b>New York City Marathon</b><br><b>First Run:</b> 1970<br><b>Date:</b> First Sunday in November<br><b>Number of Participants:</b> 53 000 (largest marathon in the world)");
+
+	var berlinicon = L.icon({
+		iconUrl: 'https://image.winudf.com/v2/image1/ZGUuY29ydXNzb2Z0LmJlcmxpbm1hcmF0aG9uX2ljb25fMTU1MDIwMzc4N18wMTA/icon.png?w=170&fakeurl=1',
+		iconSize: [70,70]
+		});
+		
+    var marker = L.marker([52.520008, 13.404954], {icon: berlinicon}).addTo(map1);
+      marker.bindPopup("<b>Berlin Marathon</b><br><b>First Run:</b> 1974<br><b>Date:</b> Last weekend in September<br><b>Number of Participants:</b> 50 000");
+
+	var chicagoicon = L.icon({
+		iconUrl: 'https://www.projectpurple.org/wp-content/uploads/2015/04/BoA_ChiMar_h_rgb.jpg',
+		iconSize: [75,39]
+		});
+    var marker = L.marker([41.881832, -87.623177], {icon: chicagoicon}).addTo(map1);
+      marker.bindPopup("<b>Chicago Marathon</b><br><b>First Run:</b> 1977<br><b>Date:</b>First or Second Sunday of October<br><b>Number of Participants:</b> 45 000");
+	  
+	var tokyoicon = L.icon({
+		iconUrl: 'https://metalbadgeandbutton.com/wp-content/uploads/2016/06/Tokyo-marathon-logo.png',
+		iconSize: [50,75]
+		});
+    var marker = L.marker([35.652832, 139.839478], {icon: tokyoicon}).addTo(map1);
+      marker.bindPopup("<b>Tokyo Marathon</b><br><b>First Run:</b> 2007<br><b>Date:</b>Late February or early March<br><b>Number of Participants:</b> 35 000");
+    
+	//Functions
 	function raceStart() {
 		scottFauble.start();
 		eliudKipchoge.start();
@@ -259,11 +327,18 @@ Larissa Shevchenko, Shifa Hayat, Tyler Gough-->
 		"Satellite Imagery": satImagery
 		};
 	
+	var Basemaps2 = {
+		"Street Map": streets2,
+		"Satellite Imagery": satImagery2
+		};
+	
 	//Layer control options
 	L.control.layers(Basemaps, Racers).addTo(map);
+	L.control.layers(Basemaps2).addTo(map1);
 		
 	//Add scale bar
 	L.control.scale().addTo(map);
+	L.control.scale().addTo(map1);
     </script>
   </body>
 </html>
