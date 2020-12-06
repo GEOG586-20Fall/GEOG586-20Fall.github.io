@@ -9,8 +9,6 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
    
-
-   
    <style>
 		#MyMap{
 			height: 700px;
@@ -107,7 +105,17 @@ var map = L.map('MyMap', {
     zoom: 8,
     //layers: [grayscale, cities]
 });
+/*
+var baseMaps = {
+      "<span style='color: gray'>Grayscale</span>": grayscale,
+    "Streets": streets
+},
+overlayMaps = {
+    "Cities": cities
+};
 
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+*/
 
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
