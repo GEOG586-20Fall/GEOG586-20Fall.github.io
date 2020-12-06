@@ -10,9 +10,15 @@
         <link rel="stylesheet" type="text/css" href="L5styling.css" media="screen"/>
         <script src="AB_CSD2016_Immigrants.js"></script>
      
+	  <title>Alberta's Immigration Count'</title>
 </head>
 <body>
     
+    <h1>Calgary's Historic Resource Locations</h1>
+        <h4 class="sign">Webmap by Valery</h4>
+        
+    <h3>Historic resources are those evaluated by the CHA (Calgary Heritage Authority) as having significant heritage value around Calgary. They are marked to determine what locations may be elligible for conservation incentives. They include buildings, structures, archeological sites, cultural landscapes and parks - click on the icons for historic resource name, year of construction, and the intial master plan purpose.<br><br> Locations are found throughout all parts of Calgary. Scroll around and zoom in and out to view different locations and their density. <br><a class="button button1"href="https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/conflict_syria-syrie.aspx?lang=eng" target="_blank">Syrian Crisis</a></h3>
+	
      <h4 class="sign">Webmap by Valery</h4>
     
      <div id="mapid" class="centermap outline" style="height: 80%; width: 60%;">
@@ -32,17 +38,23 @@
 
     L.geoJson(IMMS).addTo(mymap);    
 	
-	//Adding colours - ***NEED TO CHANGE SCALE ****
+	//Adding colours 
 	function getColor(d) {
-	    return d > 1000 ? '#800026' :
-	           d > 500  ? '#BD0026' :
-	           d > 200  ? '#E31A1C' :
-	           d > 100  ? '#FC4E2A' :
-	           d > 50   ? '#FD8D3C' :
-	           d > 20   ? '#FEB24C' :
-	           d > 10   ? '#FED976' :
-	                      '#FFEDA0';
-	}
+	    return d > 50000 ? '#4A235A ' :
+	           d > 20000  ? '#5B2C6F' :
+	           d > 10000  ? '#1B4F72' :
+		  	   d > 7000  ? '#21618C' :
+		       d > 5000  ? '#6C3483' :
+		       d > 4000  ? '#7D3C98' :
+		       d > 3000  ? '#2874A6' :
+		       d > 2000  ? '#2E86C1 ' :
+		 	   d > 700  ? '#8E44AD' :
+			   d > 500  ? '#A569BD' :
+	           d > 300  ? '#3498DB' :
+	           d > 100   ? '#5DADE2' :
+	           d > 30   ? '#BB8FCE' :
+	           d > 0  ? '#5DADE2' :
+	                      '#F4ECF7';}
 	
 	function style(feature) {
 	    return {
@@ -120,14 +132,13 @@ var legend = L.control({position: 'bottomright'});
   legend.onAdd = function (mymap) {
 
       var div = L.DomUtil.create('div', 'info legend'),
-          grades = [0, 20, 40, 60, 80, 100, 400],
-          labels = [];
-
+          grades = [0, 30, 100, 300, 500, 700, 2000, 3000, 4000, 5000, 7000, 10000, 20000],
+          labels = [ ];  
+		  
       for (var i = 0; i < grades.length; i++) {
           div.innerHTML +=
               '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
               grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-       
       }
 
       return div;
@@ -135,7 +146,6 @@ var legend = L.control({position: 'bottomright'});
 
   legend.addTo(mymap);
 
-      
              
     
          </script>
