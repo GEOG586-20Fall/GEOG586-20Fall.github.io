@@ -1,0 +1,147 @@
+<html>
+<head>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+    
+        <link rel="stylesheet" type="text/css" href="L5styling.css" media="screen"/>
+        <script src="AB_CSD2016_Immigrants.js"></script>
+     
+</head>
+<body>
+    
+     <h4 class="sign">Webmap by Valery</h4>
+    
+     <div id="mapid" class="centermap outline" style="height: 80%; width: 60%;">
+             
+        <script> 
+    var mymap = L.map('mapid').setView([55.2764183,-114.8065366], 5);  
+            
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A' 
+        }).addTo(mymap);
+            
+
+    L.geoJson(IMMS).addTo(mymap);    
+	
+	//Adding colours - ***NEED TO CHANGE SCALE ****
+	function getColor(d) {
+	    return d > 1000 ? '#800026' :
+	           d > 500  ? '#BD0026' :
+	           d > 200  ? '#E31A1C' :
+	           d > 100  ? '#FC4E2A' :
+	           d > 50   ? '#FD8D3C' :
+	           d > 20   ? '#FEB24C' :
+	           d > 10   ? '#FED976' :
+	                      '#FFEDA0';
+	}
+	
+	function style(feature) {
+	    return {
+	        fillColor: getColor(feature.properties.Immigrants),
+	        weight: 2,
+	        opacity: 1,
+	        color: 'white',
+	        dashArray: '3',
+	        fillOpacity: 0.7
+	    };
+	}
+
+	L.geoJson(IMMS, {style: style}).addTo(mymap);
+	
+	//Interaction
+	
+    function highlightFeature(e) {
+     var layer = e.target;
+
+     layer.setStyle({
+         weight: 5,
+         color: '#666',
+         dashArray: '',
+         fillOpacity: 0.7
+        
+    
+     });
+
+     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+         layer.bringToFront();
+     }
+           info.update(layer.feature.properties);
+ }
+      
+       function resetHighlight(e) {
+     geojson.resetStyle(e.target);
+            info.update();
+ }
+      
+       function onEachFeature(feature, layer) {
+     layer.on({
+         mouseover: highlightFeature,
+         mouseout: resetHighlight
+     });
+ }
+
+ geojson = L.geoJson(IMMS, {
+     style: style,
+     onEachFeature: onEachFeature
+ }).addTo(mymap);
+ 
+ //Custom info control
+ 
+  var info = L.control();
+
+info.onAdd = function (mymap) {
+    this._div = L.DomUtil.create('div', 'info'); 
+    this.update();
+    return this._div;
+};
+
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Immigrant Count</h4>' +  (props ?
+        '<b>' + props.CSDNAME + '</b><br/>' + 'Immigrants: ' + props.Immigrants + '</b><br/>' + 'Immigrants from 2006-2010: ' + props.IImm06_10 + '</b><br/>' + 'Immigrants from 2011-2016: ' + props.Imm11_16 + '</b><br/>' + 'Non-permanent residents: '+props.nonperm_res + '</b><br/>'+'Non-immigrants: '+ props.non_immigrants
+        : 'Hover over a census subdivision ');
+};
+      
+
+info.addTo(mymap);
+
+//Legend 
+
+var legend = L.control({position: 'bottomright'});
+
+  legend.onAdd = function (mymap) {
+
+      var div = L.DomUtil.create('div', 'info legend'),
+          grades = [0, 20, 40, 60, 80, 100, 400],
+          labels = [];
+
+      for (var i = 0; i < grades.length; i++) {
+          div.innerHTML +=
+              '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+              grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+       
+      }
+
+      return div;
+  };
+
+  legend.addTo(mymap);
+
+      
+             
+    
+         </script>
+
+    
+    
+</body>
+    
+</html>
