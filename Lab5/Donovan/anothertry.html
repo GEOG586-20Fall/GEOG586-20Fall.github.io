@@ -3,10 +3,9 @@
   
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
-        <script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>
          <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script type="text/javascript" ></script>
-      
+            <script src="simple.js"></script>
     
 
     <style> 
@@ -201,9 +200,6 @@
              }
             
             L.geojson(unemployed, {style: style}).addTo(map);
-            
-            var geojsonLayer = new L.GeoJSON.AJAX("simple (2).geojson");       
-geojsonLayer.addTo(map);
             
         </script>
     
