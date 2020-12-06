@@ -143,14 +143,14 @@
       info.addTo(mymap);
       
       function getColor(d) {
-         return d > 8000 ? '#800026' :
-				d > 4000  ? '#BD0026' :
-				d > 2000  ? '#E31A1C' :
-				d > 1000  ? '#FC4E2A' :
-				d > 400   ? '#FD8D3C' :
-				d > 200   ? '#FEB24C' :
-				d > 100   ? '#FED976' :
-							'#FFEDA0';
+         return d > 8000  ? '#13272e' :
+				d > 4000  ? '#20424d' :
+				d > 2000  ? '#316170' :
+				d > 1000  ? '#438194' :
+				d > 400   ? '#53a0b8' :
+				d > 200   ? '#64bed9' :
+				d > 100   ? '#75dcfa' :
+							'#9ae6fc';
       }
       
       function style(feature) {
@@ -228,7 +228,6 @@
          div.innerHTML = labels.join('<br>');
          return div;
       };
-      
       legend.addTo(mymap);
    </script>
 
