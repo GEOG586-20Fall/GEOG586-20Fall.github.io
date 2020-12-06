@@ -1,0 +1,65 @@
+#MyMap {
+		height: 700px;
+		width: 1100px;
+		border-style: solid;
+		border-width: medium;
+	}
+	.center {
+		max-width: 1100px; 
+		margin: auto; 
+	}
+	h1 {
+		text-align: center;
+		font-family: 'Nerko One', cursive;
+		font-size: 64;
+		font-weight: bold;
+		background-color: #E6A2C5;
+		border-style: solid;
+		border-width: 0px 0px 5px 0px;
+	}
+	h2 {
+		text-align: center;
+		font-family: 'Nerko One', cursive;
+		font-size: 17;
+	}
+	p {
+		text-align: left;
+		font-family: 'Nerko One', cursive;
+		font-size: 13.5;
+	}
+	body {
+		background-color: #7496D2;
+	}
+	#bText {
+		background-color: #C7CEF6;
+		text-align: center;
+		font-family: 'Nerko One', cursive;
+		font-size: 17;
+		border-style: solid;
+		border-width: medium;
+	}
+	.info {
+		padding: 6px 8px;
+		font: 14px/16px Arial, Helvetica, sans-serif;
+		background: white;
+		background: rgba(255,255,255,0.8);
+		box-shadow: 0 0 15px rgba(0,0,0,0.2);
+		border-radius: 5px;
+	}
+	.info h4 {
+		margin: 0 0 5px;
+		color: #777;
+	}
+	.legend {
+		line-height: 18px;
+		color: #555;
+	}
+	.legend i {
+		width: 18px;
+		height: 18px;
+		float: left;
+		margin-right: 8px;
+		opacity: 0.7;
+	}
+					
+</style>
