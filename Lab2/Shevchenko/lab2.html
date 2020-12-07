@@ -1,0 +1,110 @@
+<html>
+
+<head>
+
+	<style>
+		
+		h1 {
+			font-family: arial;
+			color: FireBrick;
+			text-align: center;
+			}
+				
+		h2 {
+			font-family: arial;
+			color: PaleVioletRed;
+			text-align: center;
+			}
+				
+		h3 {
+			font-family: arial;
+			color: MediumOrchid;
+			text-align: center;
+			}
+				
+		p {
+			font-family: arial;
+			text-align: center;
+			}
+			
+		body {
+			background-color: FloralWhite;
+			}
+		
+		#mapid { height: 600px;
+				 width: 900px;
+		}
+        
+         .center {
+         margin: auto;
+         width: 60%;
+         border: 5px solid; color: FireBrick;
+         padding: 10px;
+         }
+		
+	</style>
+	
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+		
+	<script>
+		alert("Welcome to Larissa's Webmap. Press OK to enter!")
+   	</script>
+
+</head>
+
+<body>
+
+	<h1>Tokyo Trip with my Mom and Sister</h1>
+	<h2>GEOG 586/695 Lab 1</h2>
+	<h3>Larissa Shevchenko</h3>
+	<p style="cplor:red;">In July 2018, my mom, sister, and I went to Japan for a week to celebrate my birthday. Poor dad had to stay home. Whomp whomp. We ate lots of good food, did lots of fun things, and overall had a blast! Below, linked on the map, are some places we visited on the trip:</p>
+
+
+<div id="mapid" class="center"></div>
+
+<script src="locations.js"></script>
+
+<script>	
+        function Popups(feature, layer) {
+            if (feature.properties && feature.properties.popupContent && feature.properties.img) {
+				layer.bindPopup(feature.properties.popupContent+feature.properties.img);
+            };
+			};		
+</script>
+	
+<script type= "application/javascript">
+	var mymap = L.map('mapid').setView([35.48452106000071, 139.84813], 10);
+		
+	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+	}).addTo(mymap);
+			
+	L.geoJSON(location, {
+		onEachFeature: Popups
+	}).addTo(mymap);
+	
+	 L.geoJSON(location, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, locationStyle);
+            }}).addTo(map);
+	    
+	 var locationStyle = {
+            radius: 10,
+            fillColor: "FloralWhite",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.5
+            };
+					
+</script>	
+		
+</body>
+
+</html>
