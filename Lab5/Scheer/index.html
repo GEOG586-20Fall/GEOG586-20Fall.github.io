@@ -45,7 +45,7 @@
 	});
 	
 	var baseMaps = {
-		  "<span style='color: gray'>Grayscale</span>": Stadia_AlidadeSmooth
+		  "Grayscale": Stadia_AlidadeSmooth
 	};
 	var overlayMaps = {
 		"Housing Needs": geojson
@@ -119,7 +119,7 @@
 
 	// method to update the control based on feature properties passed
 	info.update = function (props) {
-		if (props) {
+		if (props) { // compute percentages and round the numbers
 			var percentRepairsNeeded = props.majorRepairsNeeded/props.conditionTotal*100;
 			var rprn = percentRepairsNeeded.toFixed(2);
 			var percentUnsuitability = props.notSuitable/props.suitabilityTotal*100;
