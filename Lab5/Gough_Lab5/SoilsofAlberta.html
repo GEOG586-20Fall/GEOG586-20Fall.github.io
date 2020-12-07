@@ -1,0 +1,170 @@
+<!-- GEOG 586 Lab 5 - Tyler Gough
+Soils of Alberta Web Map
+ -->
+ 
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+	
+	<!-- Stylesheets and Fonts-->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+	<link rel="stylesheet" href="css/style.css">
+	
+	<!-- Leaflet script and import of data from the Javascript files with the GeoJSON-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+	<script src="js/SimplifiedSoils.js"></script>
+	<script src="js/Parks.js"></script>
+	<script src="js/cii.js"></script>
+	
+	<!-- Style for Legend-->
+	<style>
+	
+	.legend {
+    display: block;
+	padding: 6px 8px;
+	line-height: 35px;
+	background-color: rgba(0, 0, 0, 0.7);
+    }
+	
+	.legend i {
+    width: 25px;
+    height: 25px;
+	background-color: rgba(0, 0, 0, 0.7);
+    float: left;
+    margin-right: 0 8px 0 0;
+    opacity: 1;
+    }
+	</style>
+	<script>
+	
+	//FUNCTION DEFINITIONS
+	
+	//Generate those popups!
+	function ParksPopUp(feature, layer) {
+    if (feature.properties && feature.properties.OC_NAME) {
+        layer.bindPopup(feature.properties.OC_NAME);
+    }};
+	
+	function SoilsPopUp(feature, layer) {
+	if (feature.properties && feature.properties.SOIL_NAME) {
+		layer.bindPopup(feature.properties.SOIL_NAME)
+	}};
+	
+	function ciiPopUp(feature, layer) {
+	if (feature.properties && feature.properties.Raw_aii_fr) {
+		layer.bindPopup("The agricultural intensity index of this area is: " + feature.properties.Raw_aii_fr)
+	}};
+	
+	//Style those lines and polygons!
+	function Styler(feature) {
+		return {color: feature.properties.color,
+				weight: feature.properties.weight,
+				opacity: feature.properties.opacity
+				};
+				}
+	
+	//Generate colour ramp for agricultural intensity
+	function getColour(intensity) {
+		return intensity > 0.8 ? '#a63603' :
+			   intensity > 0.6 ? '#e6550d' :
+			   intensity > 0.4 ? '#fd8d3c' :
+			   intensity > 0.2 ? '#fdbe85' :
+							     '#feedde';
+		}
+		
+	//Function to assign colour to intensity
+	function assignColour(feature) {
+		return {
+		 fillColor: getColour(feature.properties.Raw_aii_fr),
+		 weight: 0.5,
+		 opacity: 0.6,
+		 color: 'black',
+		 dashArray: '3',
+		 fillOpacity: 0.4
+		 };
+	}
+	</script>
+  </head>
+  
+  <body>
+  
+  <div><div id = "title">
+	<h1>Agriculture, Soils, and Protected Areas of Alberta</h1>
+	<h3>A Web Map By Tyler Gough<h3><br>
+  </div>
+  
+  <div><div id = "info">
+	<h2>Soils of Alberta</h2>
+		<p>Alberta is known for two industries: Oil and Agriculture. The two large agricultural areas of Alberta are the 'Palliser Triangle' region, where most of Alberta's population lives, and the Peace River region of northwestern Alberta. These two regions have an important characteristic in common: Chernozemic soils. These dark, organic soils are ideal for agriculture. Alberta has three other dominant soil orders. These are luvisols (which can be used for agriculture but are often too clay-rich in Alberta), brunisols (developing/immature soils that cannot be used for agriculture), and cryosols (soils that have large amounts of permafrost and cannot be cultivated).</p>
+		<p>Because Chernozemic soil is the only viable soil for agriculture in Alberta, farms are confined to regions with these soils. The 'agricultural intensity index' is a measure of how much farmland there is a given area. An intensity index of 1 means that the area is entirely farmland, and 0 means there is no farmland whatsoever. The map below shows the agricultural intensity index for the province of Alberta. Note that areas with no colour have an index of 0 (no farms). Use the layer toggle on the top right to add the soil regions or protected areas of Alberta to the map, or to change between satellite imagery and street maps. The overlap between chernozemic soil and agricultural areas is remarkable! To learn the names of the protected areas, the soil areas, or the agricultural intensity of an area, simply click on the polygon and a pop-up will appear. </p>
+	</div>
+	
+	<div id="map"><br></div>
+	</div>
+    
+    <script>
+	
+		//Load basemaps and create map frame
+	  var satImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+        crossOrigin: true
+		});
+	
+	  var streets = L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=GbTgUaI7708nBO7eCLe3',{
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>',
+        crossOrigin: true
+        });
+		
+	  var map = L.map('map', {
+		center: [54.532592, -114.214152],
+        zoom: 5,
+		layers: [streets,satImagery]
+		});
+
+	//Draw features from GeoJSON (calling functions defined above)
+	  simplifiedSoilsLayer = L.geoJSON(simplifiedSoils , {style: Styler, onEachFeature: SoilsPopUp}).addTo(map);
+	  parksLayer = L.geoJSON(parks, {color:"#50C878", weight:1, onEachFeature: ParksPopUp});
+	  ciiLayer = L.geoJSON(cii, {style: assignColour, onEachFeature: ciiPopUp}).addTo(map);
+	  
+	  var overlays = {
+	    "Soils of Alberta":simplifiedSoilsLayer,
+	    "Cultivation Intensity Index":ciiLayer,
+		"Parks and Protected Areas": parksLayer
+	  };
+	  
+	  var basemaps = {
+		"Street Map": streets,
+		"Satellite Imagery": satImagery
+		};
+		
+	 // Layer Control
+	  L.control.layers(basemaps, overlays).addTo(map);
+	  
+	  // Legend
+	var legend = L.control({position: 'bottomright'});
+
+	legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 0.2, 0.4, 0.6, 0.8],
+        labels = [];
+
+    // loop through intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            "<br>" + '<i style="background:' + getColour(grades[i] + 0.01) + '"></i>' +
+            grades[i] + (grades[i + 0.01] ? '<br>' + grades[i + 0.01] + '<br>' : ' +');
+    }
+
+    return div;
+	};
+
+	legend.addTo(map);
+	 //Add scale bar
+	  L.control.scale().addTo(map);
+    </script>
+  </body>
+</html>

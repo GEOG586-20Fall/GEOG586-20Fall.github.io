@@ -1,0 +1,47 @@
+	body {
+		color: #FFFDD0;
+		background-image: url("https://glenviewmaterial.com/wp-content/uploads/2018/01/glenview_material_premium_mulch_t.jpg");
+	}
+
+	#map {  height: 600px; 
+	border: 3px solid black;
+	max-width: 60%;
+    margin: auto;
+	border-radius: 25px;
+    text-align: center;
+	margin-top: 8px
+	}
+	
+ 
+	h1 {
+	color: #FFFDD0;
+	}
+	
+	h2 {
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	color: #FFFDD0
+	}
+	
+	h3 {
+	color: #FFFDD0;
+	}
+	
+	#title {
+	font-family: 'Montserrat', sans-serif;
+	max-width: 60%;
+    margin: auto;
+    text-align: center;
+	border-radius: 5px;
+	}
+	
+	#info {
+	font: Times New Roman;
+	max-width: 60%;
+    margin: auto;
+    text-align: center;
+	border-radius: 5px;
+	margin-top: 2px;
+	background-color: rgba(0, 0, 0, 0.7);
+	
+	}
