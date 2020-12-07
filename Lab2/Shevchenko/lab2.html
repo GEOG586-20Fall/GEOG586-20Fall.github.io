@@ -85,15 +85,15 @@
 	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 	}).addTo(mymap);
 			
-	L.geoJSON(locationInTokyo, {
+	L.geoJSON(locationsInTokyo, {
 		onEachFeature: Popups
 	}).addTo(mymap);
 	
-	L.geoJSON(locationNotInTokyo, {
+	L.geoJSON(locationsNotInTokyo, {
 		onEachFeature: Popups
 	}).addTo(mymap);
 	
-	 var locationStyleInTokyo = {
+	 var locationsStyleInTokyo = {
             radius: 10,
             fillColor: "FloralWhite",
             color: "#000",
@@ -102,7 +102,7 @@
             fillOpacity: 0.5
             };
 	    
-	 var locationStyleInTokyo = {
+	 var locationsStyleInTokyo = {
             radius: 10,
             fillColor: "FireBrick",
             color: "#000",
