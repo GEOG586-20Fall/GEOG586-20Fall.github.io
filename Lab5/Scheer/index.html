@@ -26,37 +26,32 @@
 <div id="bText">By Alex Scheer</div>
 
 <script type="application/javascript">
+
+
+	var map = L.map('MyMap', {
+		center: [55.506059, -114.483853],
+		zoom: 8,
+		layers: [Stadia_AlidadeSmooth, geojson]
+	});
 	
-	/*
-	var grayscale = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
-    streets   = L.tileLayer(mapboxUrl, {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
-	*/
-
-var map = L.map('MyMap', {
-    center: [55.506059, -114.483853],
-    zoom: 8,
-    //layers: [grayscale, cities]
-});
-/*
-var baseMaps = {
-      "<span style='color: gray'>Grayscale</span>": grayscale,
-    "Streets": streets
-},
-overlayMaps = {
-    "Cities": cities
-};
-
-L.control.layers(baseMaps, overlayMaps).addTo(map);
-*/
-
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-	}).addTo(map);
-			
+	var Stadia_AlidadeSmooth = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+		maxZoom: 20,
+		attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+	});
+	
 	var geojson = L.geoJSON(chn, {
 		style: style,
 		onEachFeature: onEachFeature
-	}).addTo(map);
+	});
+	
+	var baseMaps = {
+		  "<span style='color: gray'>Grayscale</span>": Stadia_AlidadeSmooth
+	};
+	var overlayMaps = {
+		"Housing Needs": geojson
+	};
+
+	L.control.layers(baseMaps, overlayMaps).addTo(map);
 	
 	function onEachFeature(feature, layer) {
 		layer.on({
