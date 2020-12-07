@@ -5,9 +5,10 @@
 	<style>
 		
 		h1 {
-			font-family: arial;
+			font-family: Garamond;
 			color: FireBrick;
 			text-align: center;
+			border:2px solid FireBrick;
 			}
 				
 		h2 {
@@ -17,6 +18,12 @@
 			}
 				
 		h3 {
+			font-family: arial;
+			color: MediumOrchid;
+			text-align: center;
+			}
+		
+		h4 {
 			font-family: arial;
 			color: MediumOrchid;
 			text-align: center;
@@ -73,7 +80,7 @@
 	<h1>Tokyo Trip with my Mom and Sister</h1>
 	<h2>GEOG 586/695 Lab 2</h2>
 	<h3>Larissa Shevchenko</h3>
-	<p style="cplor:red;">In July 2018, my mom, sister, and I went to Japan for a week to celebrate my birthday. Poor dad had to stay home. Whomp whomp. We ate lots of good food, did lots of fun things, and overall had a blast! Below, linked on the map, are some places we visited on the trip:</p>
+	<p>In July 2018, my mom, sister, and I went to Japan for a week to celebrate my birthday. Poor dad had to stay home. Whomp whomp. We ate lots of good food, did lots of fun things, and overall had a blast! Below, linked on the map, are some places we visited on the trip:</p>
 
 
 <div id="mapid" class="center"></div>
@@ -102,7 +109,7 @@
             fillOpacity: 0.5
             };
 	    
-	 var locationsStyleInTokyo = {
+	 var locationsStyleNotInTokyo = {
             radius: 10,
             fillColor: "FireBrick",
             color: "#000",
@@ -123,7 +130,11 @@
 	    
 					
 </script>	
-		
+	
+<h3>Additional Information:</h3>
+<p>The circles in white represent points of interest in the Tokyo city area.</p>
+<p>The circles in red represent points of interest not in the Tokyo city area.</p>
+
 </body>
 
 </html>
