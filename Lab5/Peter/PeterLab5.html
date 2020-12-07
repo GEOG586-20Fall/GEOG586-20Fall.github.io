@@ -147,16 +147,16 @@
          layers: [streets, geojson]
       });
 
-      var baseLayers = {
+      var basemaps = {
          "Topography": topography,
          "Streets": streets
       };
 
-      var overlays = {
+      var attributes = {
          "Household Language Stats": geojson,
       };
 
-      L.control.layers(baseLayers, overlays).addTo(mymap);
+      L.control.layers(basemaps, attributes).addTo(mymap);
       
       var info = L.control();
 
@@ -168,7 +168,7 @@
       
       info.update = function (props) {
          this._div.innerHTML = "<h4>Calgary Linguistic Statistics</h4>" +  (props ?
-            "<b> Community: </b>" + props.name + "<br>" + "<b> English at Home: </b>" + props.english + "<br>" + "<b> French at Home: </b>" + props.french + "<br>" + "<b> Non-Official Languages at Home: </b>"+ props.non_official_languages: "Hover over a region");
+            "<b> Community: </b>" + props.name + "<br>" + "<b> Non-Official Languages at Home: </b>" + props.non_official_languages + "<br>" + "<b> English at Home: </b>" + props.english + "<br>" + "<b> French at Home: </b>" + props.french: "Hover over a region");
       };
       
       info.addTo(mymap);
