@@ -1,6 +1,6 @@
 #MyMap {
-		height: 700px;
-		width: 1100px;
+		height: 640px;
+		width: 420px;
 		border-style: solid;
 		border-width: medium;
 	}
@@ -10,30 +10,30 @@
 	}
 	h1 {
 		text-align: center;
-		font-family: 'Nerko One', cursive;
+		font-family: Arial, sans-serif;
 		font-size: 64;
 		font-weight: bold;
-		background-color: #E6A2C5;
+		background-color: #85C1E9;
 		border-style: solid;
 		border-width: 0px 0px 5px 0px;
 	}
 	h2 {
 		text-align: center;
-		font-family: 'Nerko One', cursive;
+		font-family: Arial, sans-serif;
 		font-size: 17;
 	}
 	p {
 		text-align: left;
-		font-family: 'Nerko One', cursive;
+		font-family: Arial, sans-serif;
 		font-size: 13.5;
 	}
 	body {
-		background-color: #7496D2;
+		background-color: #F4D03F;
 	}
 	#bText {
-		background-color: #C7CEF6;
+		background-color: #2E86C1;
 		text-align: center;
-		font-family: 'Nerko One', cursive;
+		font-family: Arial, sans-serif;
 		font-size: 17;
 		border-style: solid;
 		border-width: medium;

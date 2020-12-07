@@ -26,9 +26,9 @@
 
 <script type="application/javascript">
 	
-	var grayscale = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
-		maxZoom: 20,
-		attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+	var grayscale = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
 	});
 	
 	var geojson = L.geoJSON(chn, {
@@ -45,7 +45,7 @@
 
 	var map = L.map('MyMap', {
 		center: [55.506059, -114.483853],
-		zoom: 8,
+		zoom: 5,
 		layers: [grayscale, geojson]
 	});
 
