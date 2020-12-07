@@ -101,7 +101,7 @@
 	}).addTo(mymap);
 	
 	 var locationsStyleInTokyo = {
-            radius: 1000,
+            radius: 10,
             fillColor: "FloralWhite",
             color: "#000",
             weight: 1,
@@ -110,7 +110,7 @@
             };
 	    
 	 var locationsStyleNotInTokyo = {
-            radius: 1000,
+            radius: 10,
             fillColor: "FireBrick",
             color: "#000",
             weight: 1,
@@ -121,13 +121,11 @@
 	 L.geoJSON(locationsinTokyo, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, locationsStyleInTokyo);
-		}
             }}).addTo(map);
 	    
 	 L.geoJSON(locationsNotInTokyo, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, locationsStyleNotInTokyo);
-		}
             }}).addTo(map);
 	    
 					
