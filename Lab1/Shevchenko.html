@@ -1,0 +1,130 @@
+<html>
+
+<head>
+
+	<style>
+		
+		h1 {
+			font-family: arial;
+			color: FireBrick;
+			text-align: center;
+			}
+				
+		h2 {
+			font-family: arial;
+			color: PaleVioletRed;
+			text-align: center;
+			}
+				
+		h3 {
+			font-family: arial;
+			color: MediumOrchid;
+			text-align: center;
+			}
+				
+		p {
+			font-family: arial;
+			text-align: center;
+			}
+			
+		body {
+			background-color: FloralWhite;
+			}
+		
+		#mapid { height: 600px;
+				 width: 900px;
+		}
+        
+         .center {
+         margin: auto;
+         width: 60%;
+         border: 5px solid; color: FireBrick;
+         padding: 10px;
+         }
+		
+	</style>
+	
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+		
+	<script>
+		alert("Welcome to Larissa's Webmap. Press OK to enter!")
+   	</script>
+
+</head>
+
+<body>
+
+	<h1>Tokyo Trip with my Mom and Sister</h1>
+	<h2>GEOG 586/695 Lab 1</h2>
+	<h3>Larissa Shevchenko</h3>
+	<p style="cplor:red;">In July 2018, my mom, sister, and I went to Japan for a week to celebrate my birthday. Poor dad had to stay home. Whomp whomp. We ate lots of good food, did lots of fun things, and overall had a blast! Below, linked on the map, are some places we visited on the trip:</p>
+
+
+<div id="mapid" class="center"></div>
+	
+<script type= "application/javascript">
+	var mymap = L.map('mapid').setView([35.68452106000071, 139.84813], 10);
+		
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	}).addTo(mymap);
+			
+	L.marker([35.66036651018742, 139.69940115950655]).addTo(mymap)
+		.bindPopup("Genki Sushi - a cheap and good conveyor belt sushi resturant.")
+		.openPopup();
+				
+	L.marker([35.66121543467788, 139.69821374382948]).addTo(mymap)
+		.bindPopup("Adores Shibuya - video acrade with fun photobooths for pictures.")
+		.openPopup();
+		
+	L.marker([35.66105455076822, 139.6973820170712]).addTo(mymap)
+		.bindPopup("Cat Cafe Mocha - cat cafe for furry snuggles.")
+		.openPopup();
+				
+	L.marker([35.66239697807741, 139.86133579435545]).addTo(mymap)
+		.bindPopup("Hotel Lumiere - a cute hotel with three beds (which was hard to find!) for my mom, sister, and I.")
+		.openPopup();
+				
+	L.marker([35.66377824212148, 139.86149918469388]).addTo(mymap)
+		.bindPopup("Mos Burger - a tasty Japanese burger chain.")
+		.openPopup();
+				
+	L.marker([35.62465762208486, 139.42953915767993]).addTo(mymap)
+		.bindPopup("Sanrio Puroland - a Sanrio theme park. Everything is ~so kawaii~.")
+		.openPopup();
+			
+	L.marker([35.671440953956015, 139.704023548999]).addTo(mymap)
+		.bindPopup("Beard Papa Harajuku - a creme puff shop in Harajuku, good snack for after lots of shopping.")
+		.openPopup();
+    
+    L.marker([35.709990035416496, 139.81073641017545]).addTo(mymap)
+		.bindPopup("Tokyo Skytree - a radio broadcast tower with a shopping mall underneath.")
+		.openPopup();
+        
+    L.marker([35.714758562738545, 139.796806493158]).addTo(mymap)
+		.bindPopup("Senso Temple - a very aesthetically pleasing Buddhist temple.")
+		.openPopup();
+        
+    L.marker([35.669586360396146, 139.76401155307568]).addTo(mymap)
+		.bindPopup("Ginza Six - a high-end shopping mall with a delicious world-famous green tea ice cream stall and nice rooftop garden to stare at the city lights from.")
+		.openPopup();
+        
+    L.marker([35.77357778215192, 140.38743840470647]).addTo(mymap)
+		.bindPopup("Narita Airport - The airport we flew in and out of.")
+		.openPopup();
+    
+    L.marker([35.71254424544651, 139.7905458223567]).addTo(mymap)
+		.bindPopup("Men Mitsui - A really good bib gourmand ramen place.")
+		.openPopup();
+					
+</script>	
+		
+</body>
+
+</html>

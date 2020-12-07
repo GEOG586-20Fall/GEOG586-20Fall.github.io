@@ -1,0 +1,162 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+	   
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   
+	<script type="text/javascript" src="AB_CSD2016_Core_Housing_Need.js"></script>
+   
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+
+</head>
+
+<body>
+
+<h1>web</h1>
+<div id="bText">site<br><br><br><br>maps</div><br><br>
+
+<div id="MyMap" class="center"></div>
+<br>
+<div id="bText">By Alex Scheer</div>
+
+<script type="application/javascript">
+	
+	var grayscale = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+		maxZoom: 20,
+		attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+	});
+	
+	var geojson = L.geoJSON(chn, {
+		style: style,
+		onEachFeature: onEachFeature
+	});
+	
+	var baseMaps = {
+		  "Grayscale": grayscale
+	};
+	var overlayMaps = {
+		"Housing Needs": geojson
+	};
+
+	var map = L.map('MyMap', {
+		center: [55.506059, -114.483853],
+		zoom: 8,
+		layers: [grayscale, geojson]
+	});
+
+	L.control.layers(baseMaps, overlayMaps).addTo(map);
+	
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+
+	function getColor(d) {
+		return d > 50 ? '#993404' :
+			   d > 25 ? '#d95f0e' :
+			   d > 10 ? '#fe9929' :
+			   d > 5  ? '#fec44f' :
+			   d > 1  ? '#fee391' :
+						'#ffffd4';
+	}
+	
+	function style(feature) {
+		var percentRepairsNeeded = feature.properties.majorRepairsNeeded/feature.properties.conditionTotal*100;
+		return {
+			fillColor: getColor(percentRepairsNeeded),
+			weight: 2,
+			opacity: 1,
+			color: 'white',
+			dashArray: '3',
+			fillOpacity: 0.7
+		};
+	}
+	
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 5,
+			color: '#666',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
+		info.update(layer.feature.properties);
+	}
+	
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
+	
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+	
+	// Info control
+	
+	var info = L.control();
+
+	info.onAdd = function (map) {
+		this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+		this.update();
+		return this._div;
+	};
+
+	// method to update the control based on feature properties passed
+	info.update = function (props) {
+		if (props) { // compute percentages and round the numbers
+			var percentRepairsNeeded = props.majorRepairsNeeded/props.conditionTotal*100;
+			var rprn = percentRepairsNeeded.toFixed(2);
+			var percentUnsuitability = props.notSuitable/props.suitabilityTotal*100;
+			var rpu = percentUnsuitability.toFixed(2);
+			var percentHouseholdsSpending30OrMore = props.moreThan30/props.incomeTotal*100;
+			var rph30 = percentHouseholdsSpending30OrMore.toFixed(2);
+		}
+		
+		this._div.innerHTML = '<h4>Housing Conditions by Census Subdivision</h4>' +  (props ?
+        '<b>' + props.name + '</b><br>Percent of households in need of major repairs: ' + rprn + '%<br>Percent of households with housing considered unsuitable: ' + rpu + '%<br>Percent of households spending 30% or more of their income on shelter costs: ' + rph30 + '%'
+        : 'Hover over a CSD');
+	};
+
+	info.addTo(map);
+	
+	// Legend
+	
+	var legend = L.control({position: 'bottomright'});
+
+	legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 1, 5, 10, 25, 50],
+        labels = [];
+
+	div.innerHTML = '<h4><b>%</b> by CSD</h4>';
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(map);
+		
+</script> 	
+
+</body>
+</html>
