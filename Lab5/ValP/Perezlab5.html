@@ -17,7 +17,9 @@
 	    <h1>Alberta's Immigration Count</h1>
 	        <h4 class="sign">Webmap by Valery</h4>
         
-	    <h3>Background info - define what a city is <br><br>Background info - include another button to send to AB immigration website<br><a class="button button1"href="https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/conflict_syria-syrie.aspx?lang=eng" target="_blank">Syrian Crisis</a></h3>
+	    <h3>An immigrant is defined as someone who moves to live permanently in a foreign country. <br>A city is created when a community, with at least 10,000 people, has a majority of their buildings on an area of land smaller than  1,850 m². Communities in Alberta can apply to be identified as a city through the Alberta Municipal Affairs.	
+			<br><br>Highlighted below are all of Alberta's cities and census subdivisions. Interact with the map below to learn more about the quantiy of immigrants Alberta has previously seen + any other related facts. Numbers in the 2016 Census year were influenced by the Canadian Government's resettlement of 25,000 Syrian refugees between 2015-2016. <br> Choose between "Terrain" base layer, to get to know the Alberta landscape and how this affects where communities can settle, and "Simplified" base layer to focus purely on the statistics.<br>
+			<a class="button button1"href="https://www.alberta.ca/live-permanently-in-alberta.aspx" target="_blank">Immigrate to Alberta</a> <a class="button button1"href="https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/conflict_syria-syrie.aspx?lang=eng" target="_blank">Syrian Crisis</a> </h3>
 	
 	<div id="mapid" class="centermap" style="height: 80%; width: 60%;"></div>
 
@@ -26,25 +28,25 @@
 
 		var cities = L.layerGroup();
 
-		L.marker([51.2927, -114.0134]).bindPopup('Alberta, AB.').addTo(cities),
-		L.marker([51.0478, -114.0593]).bindPopup('Calgary, AB.').addTo(cities),
-		L.marker([51.0382, -113.8425]).bindPopup('Chestermere, AB.').addTo(cities),
-		L.marker([53.3525, -113.4155]).bindPopup('Beaumont, AB.').addTo(cities),
-		L.marker([53.5461, -113.4938]).bindPopup('Edmonton, AB.').addTo(cities),
-		L.marker([53.6963, -113.2164]).bindPopup('Fort Saskatchewan, AB.').addTo(cities),
-		L.marker([53.2647, -113.5527]).bindPopup('Leduc, AB.').addTo(cities),
-		L.marker([53.6539, -113.6294]).bindPopup('St. Albert, AB.').addTo(cities),
-		L.marker([53.5411, -113.9101]).bindPopup('Spruce Grove, AB.').addTo(cities),
-		L.marker([50.5657, -111.8978]).bindPopup('Brooks, AB.').addTo(cities),
-		L.marker([49.6956, -112.8451]).bindPopup('Lethbridge, AB.').addTo(cities),
-		L.marker([50.0292, -110.7034]).bindPopup('Medicine Hat, AB.').addTo(cities),
-		L.marker([53.0179, -112.8260]).bindPopup('Camrose, AB.').addTo(cities),
-		L.marker([54.4643, -110.1733]).bindPopup('Cold Lake, AB.').addTo(cities),
-		L.marker([52.4685, -113.7707]).bindPopup('Lancome, AB.').addTo(cities),
-		L.marker([53.2780, -110.0061]).bindPopup('Lloydminster, AB.').addTo(cities),
-		L.marker([52.2690, -113.8116]).bindPopup('Red Deer, AB.').addTo(cities),
-		L.marker([52.9688, -113.3661]).bindPopup('Wetaskiwin, AB.').addTo(cities),
-		L.marker([55.1707, -118.7884]).bindPopup('Grande Prairie, AB.').addTo(cities);
+		L.marker([51.2927, -114.0134]).bindPopup('<h2>Airdrie, AB.</h2>').addTo(cities),
+		L.marker([51.0478, -114.0593]).bindPopup('<h2>Calgary, AB.</h2>').addTo(cities),
+		L.marker([51.0382, -113.8425]).bindPopup('<h2>Chestermere, AB.</h2>').addTo(cities),
+		L.marker([53.3525, -113.4155]).bindPopup('<h2>Beaumont, AB.</h2>').addTo(cities),
+		L.marker([53.5461, -113.4938]).bindPopup('<h2>Edmonton, AB.</h2>').addTo(cities),
+		L.marker([53.6963, -113.2164]).bindPopup('<h2>Fort Saskatchewan, AB.</h2>').addTo(cities),
+		L.marker([53.2647, -113.5527]).bindPopup('<h2>Leduc, AB.</h2>').addTo(cities),
+		L.marker([53.6539, -113.6294]).bindPopup('<h2>St. Albert, AB.</h2>').addTo(cities),
+		L.marker([53.5411, -113.9101]).bindPopup('<h2>Spruce Grove, AB.</h2>').addTo(cities),
+		L.marker([50.5657, -111.8978]).bindPopup('<h2>Brooks, AB.</h2>').addTo(cities),
+		L.marker([49.6956, -112.8451]).bindPopup('<h2>Lethbridge, AB.</h2>').addTo(cities),
+		L.marker([50.0292, -110.7034]).bindPopup('<h2>Medicine Hat, AB.</h2>').addTo(cities),
+		L.marker([53.0179, -112.8260]).bindPopup('<h2>Camrose, AB.</h2>').addTo(cities),
+		L.marker([54.4643, -110.1733]).bindPopup('<h2>Cold Lake, AB.</h2>').addTo(cities),
+		L.marker([52.4685, -113.7707]).bindPopup('<h2>Lancome, AB.</h2>').addTo(cities),
+		L.marker([53.2780, -110.0061]).bindPopup('<h2>Lloydminster, AB.</h2>').addTo(cities),
+		L.marker([52.2690, -113.8116]).bindPopup('<h2>Red Deer, AB.</h2>').addTo(cities),
+		L.marker([52.9688, -113.3661]).bindPopup('<h2>Wetaskiwin, AB.</h2>').addTo(cities),
+		L.marker([55.1707, -118.7884]).bindPopup('<h2>Grande Prairie, AB.</h2>').addTo(cities);
 
 		var geojson;             
 
