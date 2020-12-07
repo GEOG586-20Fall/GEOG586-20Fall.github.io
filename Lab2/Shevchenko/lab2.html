@@ -12,7 +12,7 @@
 			}
 				
 		h2 {
-			font-family: arial;
+			font-family: georgia;
 			color: PaleVioletRed;
 			text-align: center;
 			}
@@ -30,7 +30,7 @@
 			}
 				
 		p {
-			font-family: arial;
+			font-family: garamond;
 			text-align: center;
 			}
 			
@@ -100,16 +100,22 @@
 		onEachFeature: Popups
 	}).addTo(mymap);
 	
-	 var locationsStyleInTokyo = {
+	
+	var locationsStyleInTokyo = {
             radius: 10,
             fillColor: "FloralWhite",
             color: "#000",
             weight: 1,
             opacity: 1,
             fillOpacity: 0.5
-            };
+            }; 
+	 	
+	L.geoJSON(locationsinTokyo, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, locationsStyleInTokyo);
+            }}).addTo(map);
 	    
-	 var locationsStyleNotInTokyo = {
+	var locationsStyleNotInTokyo = {
             radius: 10,
             fillColor: "FireBrick",
             color: "#000",
@@ -117,13 +123,8 @@
             opacity: 1,
             fillOpacity: 0.5
             };
-	
-	 L.geoJSON(locationsinTokyo, {
-            pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, locationsStyleInTokyo);
-            }}).addTo(map);
 	    
-	 L.geoJSON(locationsNotInTokyo, {
+	L.geoJSON(locationsNotInTokyo, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, locationsStyleNotInTokyo);
             }}).addTo(map);
