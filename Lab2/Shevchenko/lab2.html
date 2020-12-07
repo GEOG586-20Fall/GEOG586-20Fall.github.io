@@ -121,11 +121,13 @@
 	 L.geoJSON(locationsinTokyo, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, locationsStyleInTokyo);
+		}
             }}).addTo(map);
 	    
 	 L.geoJSON(locationsNotInTokyo, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, locationsStyleNotInTokyo);
+		}
             }}).addTo(map);
 	    
 					
