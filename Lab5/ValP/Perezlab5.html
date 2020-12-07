@@ -1,0 +1,182 @@
+<html>
+	<head>
+	     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+	   			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+	 		   crossorigin=""/>
+	   
+	     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 					integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" 
+		 			crossorigin=""></script>
+    
+	        <link rel="stylesheet" type="text/css" href="L5styling.css" media="screen"/>
+	        <script src="AB_CSD2016_Immigrants.js"></script>
+     
+		  <title>Alberta's Immigration Count'</title>
+	</head>
+	<body>
+	
+	<div id="mapid" class="centermap" style="height: 80%; width: 60%;"></div>
+
+	<script type= "application/javascript">
+//Layers - Chloropleth + Cities 
+
+	var cities = L.layerGroup();
+
+	L.marker([51.2927, -114.0134]).bindPopup('Alberta, AB.').addTo(cities),
+	L.marker([51.0478, -114.0593]).bindPopup('Calgary, AB.').addTo(cities),
+	L.marker([51.0382, -113.8425]).bindPopup('Chestermere, AB.').addTo(cities),
+	L.marker([53.3525, -113.4155]).bindPopup('Beaumont, AB.').addTo(cities),
+	L.marker([53.5461, -113.4938]).bindPopup('Edmonton, AB.').addTo(cities),
+	L.marker([53.6963, -113.2164]).bindPopup('Fort Saskatchewan, AB.').addTo(cities),
+	L.marker([53.2647, -113.5527]).bindPopup('Leduc, AB.').addTo(cities),
+	L.marker([53.6539, -113.6294]).bindPopup('St. Albert, AB.').addTo(cities),
+	L.marker([53.5411, -113.9101]).bindPopup('Spruce Grove, AB.').addTo(cities),
+	L.marker([50.5657, -111.8978]).bindPopup('Brooks, AB.').addTo(cities),
+	L.marker([49.6956, -112.8451]).bindPopup('Lethbridge, AB.').addTo(cities),
+	L.marker([50.0292, -110.7034]).bindPopup('Medicine Hat, AB.').addTo(cities),
+	L.marker([53.0179, -112.8260]).bindPopup('Camrose, AB.').addTo(cities),
+	L.marker([54.4643, -110.1733]).bindPopup('Cold Lake, AB.').addTo(cities),
+	L.marker([52.4685, -113.7707]).bindPopup('Lancome, AB.').addTo(cities),
+	L.marker([53.2780, -110.0061]).bindPopup('Lloydminster, AB.').addTo(cities),
+	L.marker([52.2690, -113.8116]).bindPopup('Red Deer, AB.').addTo(cities),
+	L.marker([52.9688, -113.3661]).bindPopup('Wetaskiwin, AB.').addTo(cities),
+	L.marker([55.1707, -118.7884]).bindPopup('Grande Prairie, AB.').addTo(cities);
+
+	var geojson;             
+
+	function resetHighlight(e) {
+			geojson.resetStyle(e.target);
+			info.update();
+		}
+
+		function zoomToFeature(e) {
+			map.fitBounds(e.target.getBounds());
+		}
+
+		function onEachFeature(feature, layer) {
+			layer.on({
+				mouseover: highlightFeature,
+				mouseout: resetHighlight,
+				click: zoomToFeature
+			});
+		}
+
+		geojson = L.geoJson(IMMS, {
+			style: style,
+			onEachFeature: onEachFeature
+		});
+
+	//Map control
+
+		var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,'+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>' + 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+			mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A}';
+
+		var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
+			streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+
+		var mymap = L.map('mapid', {
+			center: [55.2764183,-114.8065366],
+			zoom: 5,
+			layers: [grayscale, geojson, cities]
+		});
+
+		var baseLayers = {
+			"Grayscale": grayscale,
+			"Streets": streets
+		};
+
+		var overlays = {
+			"Immigration Statistics": geojson,
+			"Cities": cities
+		};
+
+		L.control.layers(baseLayers, overlays).addTo(mymap);
+
+
+// Immigrant stats
+
+	    var info = L.control();
+
+	  info.onAdd = function (mymap) {
+	      this._div = L.DomUtil.create('div', 'info'); 
+	      this.update();
+	      return this._div;
+	  };
+
+	  info.update = function (props) {
+	      this._div.innerHTML = '<h4>Immigrant Count</h4>' +  (props ?
+	          '<b>' + props.CSDNAME + '</b><br/>' + 'Immigrants: ' + props.Immigrants + '</b><br/>' + 'Immigrants from 2006-2010: ' + props.IImm06_10 + '</b><br/>' + 'Immigrants from 2011-2016: ' + props.Imm11_16 + '</b><br/>' + 'Non-permanent residents: '+props.nonperm_res + '</b><br/>'+'Non-immigrants: '+ props.non_immigrants
+	          : 'Hover over a census subdivision ');
+	  };
+      
+		info.addTo(mymap);
+
+
+// Adding colours
+		function getColor(d) {
+		    return d > 50000 ? '#662506' :
+		           d > 10000  ? '#993404' :
+			       d > 5000  ? '#cc4c02' :
+			       d > 3000  ? '#ec7014' :
+				   d > 1000  ? '#fe9929':
+				   d > 500  ? '#fec44f' :
+		           d > 100   ? '#fee391' :
+		           d > 30   ? '#fff7bc' :
+		           d > 0  ? '#ffffe5' :
+		                      '#EDBB99';}
+	  
+	
+		function style(feature) {
+		    return {
+		        fillColor: getColor(feature.properties.Immigrants),
+		        weight: 2,
+		        opacity: 1,
+		        color: 'white',
+		        dashArray: '3',
+		        fillOpacity: 0.7
+		    };
+		}
+	
+
+		function highlightFeature(e) {
+			var layer = e.target;
+
+			layer.setStyle({
+				weight: 5,
+				color: '#666',
+				dashArray: '',
+				fillOpacity: 0.7
+			});
+
+			if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+				layer.bringToFront();
+			}
+
+			info.update(layer.feature.properties);
+		}
+
+//Legends
+
+		var legend = L.control({position: 'bottomright'});
+
+		  legend.onAdd = function (mymap) {
+
+		      var div = L.DomUtil.create('div', 'info legend'),
+		          grades = [0, 30, 100, 500, 1000, 3000, 5000, 10000, 50000],
+		          labels = [ ];  
+		  
+		      for (var i = 0; i < grades.length; i++) {
+		          div.innerHTML +=
+		              '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+		              grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+		      }
+
+		      return div;
+		  };
+
+		  legend.addTo(mymap);
+		  
+		  </script>
+		
+		</body>
+	
+</html>
