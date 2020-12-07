@@ -4,88 +4,109 @@
 	   			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
 	 		   crossorigin=""/>
 	   
-	     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 					integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" 
+	     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 				 				integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" 
 		 			crossorigin=""></script>
     
 	        <link rel="stylesheet" type="text/css" href="L5styling.css" media="screen"/>
 	        <script src="AB_CSD2016_Immigrants.js"></script>
      
-		  <title>Alberta's Immigration Count'</title>
+		  <title>Alberta's Immigration Count</title>
 	</head>
 	<body>
+		
+	    <h1>Alberta's Immigration Count</h1>
+	        <h4 class="sign">Webmap by Valery</h4>
+        
+	    <h3>Background info - define what a city is <br><br>Background info - include another button to send to AB immigration website<br><a class="button button1"href="https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/conflict_syria-syrie.aspx?lang=eng" target="_blank">Syrian Crisis</a></h3>
 	
 	<div id="mapid" class="centermap" style="height: 80%; width: 60%;"></div>
 
 	<script type= "application/javascript">
 //Layers - Chloropleth + Cities 
 
-	var cities = L.layerGroup();
+		var cities = L.layerGroup();
 
-	L.marker([51.2927, -114.0134]).bindPopup('Alberta, AB.').addTo(cities),
-	L.marker([51.0478, -114.0593]).bindPopup('Calgary, AB.').addTo(cities),
-	L.marker([51.0382, -113.8425]).bindPopup('Chestermere, AB.').addTo(cities),
-	L.marker([53.3525, -113.4155]).bindPopup('Beaumont, AB.').addTo(cities),
-	L.marker([53.5461, -113.4938]).bindPopup('Edmonton, AB.').addTo(cities),
-	L.marker([53.6963, -113.2164]).bindPopup('Fort Saskatchewan, AB.').addTo(cities),
-	L.marker([53.2647, -113.5527]).bindPopup('Leduc, AB.').addTo(cities),
-	L.marker([53.6539, -113.6294]).bindPopup('St. Albert, AB.').addTo(cities),
-	L.marker([53.5411, -113.9101]).bindPopup('Spruce Grove, AB.').addTo(cities),
-	L.marker([50.5657, -111.8978]).bindPopup('Brooks, AB.').addTo(cities),
-	L.marker([49.6956, -112.8451]).bindPopup('Lethbridge, AB.').addTo(cities),
-	L.marker([50.0292, -110.7034]).bindPopup('Medicine Hat, AB.').addTo(cities),
-	L.marker([53.0179, -112.8260]).bindPopup('Camrose, AB.').addTo(cities),
-	L.marker([54.4643, -110.1733]).bindPopup('Cold Lake, AB.').addTo(cities),
-	L.marker([52.4685, -113.7707]).bindPopup('Lancome, AB.').addTo(cities),
-	L.marker([53.2780, -110.0061]).bindPopup('Lloydminster, AB.').addTo(cities),
-	L.marker([52.2690, -113.8116]).bindPopup('Red Deer, AB.').addTo(cities),
-	L.marker([52.9688, -113.3661]).bindPopup('Wetaskiwin, AB.').addTo(cities),
-	L.marker([55.1707, -118.7884]).bindPopup('Grande Prairie, AB.').addTo(cities);
+		L.marker([51.2927, -114.0134]).bindPopup('Alberta, AB.').addTo(cities),
+		L.marker([51.0478, -114.0593]).bindPopup('Calgary, AB.').addTo(cities),
+		L.marker([51.0382, -113.8425]).bindPopup('Chestermere, AB.').addTo(cities),
+		L.marker([53.3525, -113.4155]).bindPopup('Beaumont, AB.').addTo(cities),
+		L.marker([53.5461, -113.4938]).bindPopup('Edmonton, AB.').addTo(cities),
+		L.marker([53.6963, -113.2164]).bindPopup('Fort Saskatchewan, AB.').addTo(cities),
+		L.marker([53.2647, -113.5527]).bindPopup('Leduc, AB.').addTo(cities),
+		L.marker([53.6539, -113.6294]).bindPopup('St. Albert, AB.').addTo(cities),
+		L.marker([53.5411, -113.9101]).bindPopup('Spruce Grove, AB.').addTo(cities),
+		L.marker([50.5657, -111.8978]).bindPopup('Brooks, AB.').addTo(cities),
+		L.marker([49.6956, -112.8451]).bindPopup('Lethbridge, AB.').addTo(cities),
+		L.marker([50.0292, -110.7034]).bindPopup('Medicine Hat, AB.').addTo(cities),
+		L.marker([53.0179, -112.8260]).bindPopup('Camrose, AB.').addTo(cities),
+		L.marker([54.4643, -110.1733]).bindPopup('Cold Lake, AB.').addTo(cities),
+		L.marker([52.4685, -113.7707]).bindPopup('Lancome, AB.').addTo(cities),
+		L.marker([53.2780, -110.0061]).bindPopup('Lloydminster, AB.').addTo(cities),
+		L.marker([52.2690, -113.8116]).bindPopup('Red Deer, AB.').addTo(cities),
+		L.marker([52.9688, -113.3661]).bindPopup('Wetaskiwin, AB.').addTo(cities),
+		L.marker([55.1707, -118.7884]).bindPopup('Grande Prairie, AB.').addTo(cities);
 
-	var geojson;             
+		var geojson;             
 
-	function resetHighlight(e) {
-			geojson.resetStyle(e.target);
-			info.update();
+		function highlightFeature(e) {
+			var layer = e.target;
+
+			layer.setStyle({
+				weight: 5,
+				color: '#666',
+				dashArray: '',
+				fillOpacity: 0.7
+			});
+
+			if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+				layer.bringToFront();
+			}
+
+			info.update(layer.feature.properties);
 		}
+
+		function resetHighlight(e) {
+				geojson.resetStyle(e.target);
+				info.update();
+			}
 
 		function zoomToFeature(e) {
-			map.fitBounds(e.target.getBounds());
-		}
+				mymap.fitBounds(e.target.getBounds());
+			}
 
-		function onEachFeature(feature, layer) {
-			layer.on({
-				mouseover: highlightFeature,
-				mouseout: resetHighlight,
-				click: zoomToFeature
+			function onEachFeature(feature, layer) {
+				layer.on({
+					mouseover: highlightFeature,
+					mouseout: resetHighlight,
+					click: zoomToFeature
+				});
+			}
+
+			geojson = L.geoJson(IMMS, {
+			    style: style,
+			    onEachFeature: onEachFeature
 			});
-		}
-
-		geojson = L.geoJson(IMMS, {
-			style: style,
-			onEachFeature: onEachFeature
-		});
+		
 
 	//Map control
 
-		var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors,'+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>' + 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-			mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A}';
-
-		var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
-			streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+			var grayscale = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+					maxZoom: 20,
+					attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+				});
 
 		var mymap = L.map('mapid', {
-			center: [55.2764183,-114.8065366],
+			center: [55.2764,-114.8065],
 			zoom: 5,
 			layers: [grayscale, geojson, cities]
 		});
 
 		var baseLayers = {
 			"Grayscale": grayscale,
-			"Streets": streets
 		};
 
 		var overlays = {
-			"Immigration Statistics": geojson,
+			"Immigration Statistics": geojson, 
 			"Cities": cities
 		};
 
@@ -137,23 +158,7 @@
 		}
 	
 
-		function highlightFeature(e) {
-			var layer = e.target;
-
-			layer.setStyle({
-				weight: 5,
-				color: '#666',
-				dashArray: '',
-				fillOpacity: 0.7
-			});
-
-			if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-				layer.bringToFront();
-			}
-
-			info.update(layer.feature.properties);
-		}
-
+	
 //Legends
 
 		var legend = L.control({position: 'bottomright'});
