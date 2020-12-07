@@ -110,7 +110,7 @@
             fillOpacity: 0.5
             }; 
 	 	
-	L.geoJSON(locationsinTokyo, {
+	L.geoJSON(locationsInTokyo, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, locationsStyleInTokyo);
             }}).addTo(map);
@@ -133,8 +133,8 @@
 </script>	
 	
 <h3>Additional Information:</h3>
-<p>The circles in white represent points of interest in the Tokyo city area.</p>
-<p>The circles in red represent points of interest not in the Tokyo city area.</p>
+<p>The circles in white represent points of interest <b>in</b> the Tokyo city area.</p>
+<p>The circles in red represent points of interest <b>not in</b> the Tokyo city area.</p>
 
 </body>
 
