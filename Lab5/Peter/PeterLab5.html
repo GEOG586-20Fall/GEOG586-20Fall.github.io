@@ -106,7 +106,15 @@
    <hr>   
       
    <p>
-     
+      This map displays the population count of Calgary residents that speak
+	  non-official languages at home.
+   </p>
+   
+   <div class="wbg2"></div>
+   
+   <p>
+      Hover your mouse individual polygon to see information and statistics regarding
+      that region.
    </p>
    </div>
    
@@ -121,11 +129,34 @@
    <script type="text/javascript" src="2016 Census of Calgary_Language.js"></script>
 	
    <script type="application/javascript">
-      var mymap=L.map("mapCalgary").setView([51.02500, -114.06928], 10);
-      
-      L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      var topography  = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+         attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+      }),
+         streets = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
-      }).addTo(mymap);
+      });
+	  
+	  var geojson = L.geoJson(CalLang, {
+         style: style,
+         onEachFeature: onEachFeature
+      });
+
+      var mymap = L.map('mapCalgary', {
+         center: [51.02500, -114.06928],
+         zoom: 10,
+         layers: [streets, geojson]
+      });
+
+      var baseLayers = {
+         "Topography": topography,
+         "Streets": streets
+      };
+
+      var overlays = {
+         "Household Language Stats": geojson,
+      };
+
+      L.control.layers(baseLayers, overlays).addTo(mymap);
       
       var info = L.control();
 
@@ -180,8 +211,6 @@
 
          info.update(layer.feature.properties);
       }
-      
-      var geojson;
 
       function resetHighlight(e) {
          geojson.resetStyle(e.target);
@@ -199,11 +228,6 @@
 			click: zoomToFeature
          });
       }
-      
-      geojson = L.geoJson(CalLang, {
-         style: style,
-         onEachFeature: onEachFeature
-      }).addTo(mymap);
       
       mymap.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
       
