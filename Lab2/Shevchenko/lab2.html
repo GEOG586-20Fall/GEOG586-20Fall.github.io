@@ -55,29 +55,28 @@
 	<script>
 		alert("Welcome to Larissa's Webmap. Press OK to enter!")
    	</script>
+	
+<script src="locations.js"></script>
+
+<script>	
+        function Popups(feature, layer) {
+            if (feature.properties && feature.properties.popupContent && feature.properties.img) {
+				layer.bindPopup(feature.properties.popupContent+feature.properties.img);
+            };
+			};		
+</script>
 
 </head>
 
 <body>
 
 	<h1>Tokyo Trip with my Mom and Sister</h1>
-	<h2>GEOG 586/695 Lab 2</h2>
+	<h2>GEOG 586/695 Lab 1</h2>
 	<h3>Larissa Shevchenko</h3>
-	<p style="cplor:red;">In July 2018, my mom, sister, and I went to Japan for a week to celebrate my birthday. We ate lots of good food, did lots of fun things, and overall had a blast! Below, linked on the map, are some places we visited on the trip:</p>
+	<p style="cplor:red;">In July 2018, my mom, sister, and I went to Japan for a week to celebrate my birthday. Poor dad had to stay home. Whomp whomp. We ate lots of good food, did lots of fun things, and overall had a blast! Below, linked on the map, are some places we visited on the trip:</p>
 
 
 <div id="mapid" class="center"></div>
-
-<script src="locations.js"></script>
-
-<script>	
-        function Popups(feature, layer) {
-            if (feature.properties && feature.properties.popupContent && feature.properties.img) {
-		layer.bindPopup(feature.properties.popupContent+feature.properties.img);
-            };
-		};	
-	
-</script>
 	
 <script type= "application/javascript">
 	var mymap = L.map('mapid').setView([35.48452106000071, 139.84813], 10);
@@ -86,16 +85,15 @@
 	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 	}).addTo(mymap);
 			
-	L.geoJSON(location, {
+	L.geoJSON(locationInTokyo, {
 		onEachFeature: Popups
 	}).addTo(mymap);
 	
-	 L.geoJSON(location, {
-            pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, locationStyle);
-            }}).addTo(map);
-	    
-	 var locationStyle = {
+	L.geoJSON(locationNotInTokyo, {
+		onEachFeature: Popups
+	}).addTo(mymap);
+	
+	 var locationStyleInTokyo = {
             radius: 10,
             fillColor: "FloralWhite",
             color: "#000",
@@ -103,6 +101,26 @@
             opacity: 1,
             fillOpacity: 0.5
             };
+	    
+	 var locationStyleInTokyo = {
+            radius: 10,
+            fillColor: "FireBrick",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.5
+            };
+	
+	 L.geoJSON(locationsinTokyo, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, locationStyleInTokyo);
+            }}).addTo(map);
+	    
+	 L.geoJSON(locationsNotInTokyo, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, locationStyleNotInTokyo);
+            }}).addTo(map);
+	    
 					
 </script>	
 		
