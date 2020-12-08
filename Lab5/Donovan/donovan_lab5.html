@@ -160,7 +160,7 @@
     color: #555;
 }
 .legend i {
-    width: 18px;
+    width: 20px;
     height: 18px;
     float: left;
     margin-right: 8px;
@@ -325,7 +325,7 @@ function resetHighlight(e) {
      
      
         
-        map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
+        map.attributionControl.addAttribution('Census data &copy; <a href="https://open.alberta.ca/dataset/social-vulnerability-indicators-by-census-subdivision-2016-census-of-canada/resource/20066f0e-382d-4621-ad9c-e987271910aa">Alberta Government');
             
             var legend = L.control({position: 'bottomright'});
             
@@ -333,7 +333,7 @@ function resetHighlight(e) {
                 
                 var div = L.DomUtil.create('div', 'info legend'),
                     grades = [0, 5, 10, 15, 20, 25, 30, 40, 50, 60],
-                    labels = ["No.Unemployed <br> per geographic<br> Zone<br>"],
+                    labels = ["% Unemployed <br> per geographic<br> Zone<br>"],
                     from, to;
                 
                 for (var i = 0; i < grades.length; i++) {
