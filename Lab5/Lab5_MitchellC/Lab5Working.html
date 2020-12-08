@@ -1,0 +1,51 @@
+<html> 
+<head> 
+
+	<body style="background-color:orange;">
+	<style ="font-family:'Arial Narrow'">
+	
+	h1 {text-align: center;}
+	h2 {text-align: center;}
+	h3 {text-align: center;}
+	h4 {text-align: center;}
+	p  {text-align: center;}
+	
+	
+	.pagecenter{max-width: 850px; 
+				margin: auto; 
+				}
+				
+	.centerbutton {
+		display: flex;
+		justify-content: center;
+		align-items: center;			
+				
+</style>
+
+	<style>
+		#primaryMap {	height: 540px;
+						width: 1050px;}
+						
+	</style>
+		
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+	   
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   
+ <script>
+	alert("Welcome to Mitchell's webmap for GEOG 586 Lab 5!")
+</script>  
+
+</head> 
+<body>
+	<h1> Pennsylvania Tourism Centre of GEOG 586 </h1>
+	<p> Welcome to the BETA version of the Pennsylvania Tourism Centre website. On this website, you can view Pennsylvania's various counties. <br> Click on the counties to get information, such as their names. </p>
+
+<div id="primaryMap"></div>
+
+	<script type="application/javascript">
+		var map = L.map('primaryMap').setView([51.076884, -114.131655], 15);
