@@ -17,12 +17,10 @@
 
 <body>
 
-<h1>web</h1>
-<div id="bText">site<br><br><br><br>maps</div><br><br>
-
-<div id="MyMap" class="center"></div>
-<br>
-<div id="bText">By Alex Scheer</div>
+<h1>Disparities in Housing Conditions by Census Subdivision, Alberta</h1>
+<p class=blue><b>This interactive choropleth map visualizes relative differences in housing conditions across (Canada) Census Subdivisions in Alberta. Statistics Canada defines a CSD as an "area that is a municipality or an area that is deemed to be equivalent to a municipality for statistical reporting purposes (e.g. as an <b>Indian reserve</b> [emphasis added] or an unorganized territory). Municipal status is defined by laws in effect in each province and territory in Canada." The "housing conditions" variables present are "percent of households in need of major repairs," and "percent of housing considered "unsuitable." Unfortunately, these terms are not better defined than that.<br><br>The variable visualized on the choropleth is "major repairs needed."<br><br>The key finding to point out (because it may not be immediately obvious due to the small size of many CSDs, and because of the extreme political importance of the matter) is the stark contrast between Indigenous reserves on one hand and the rest of the province on the other. Many reserves have "major repairs needed" and "unsuitability" percentages as high as 50% or more, signalling a crisis with obvious, immediately-necessary policy implications.</b></p><br><br>
+    <div id="MyMap" class="center"></div>
+<p style="text-align:right;">By Alex Scheer, December 7, 2020</p>
 
 <script type="application/javascript">
 	
@@ -128,7 +126,7 @@
 		
 		this._div.innerHTML = '<h4>Housing Conditions by Census Subdivision</h4>' +  (props ?
         '<b>' + props.name + '</b><br>Percent of households in need of major repairs: ' + rprn + '%<br>Percent of households with housing considered unsuitable: ' + rpu + '%<br>Percent of households spending 30% or more of their income on shelter costs: ' + rph30 + '%'
-        : 'Hover over a CSD');
+        : 'Hover over a CSD; click to zoom');
 	};
 
 	info.addTo(map);
