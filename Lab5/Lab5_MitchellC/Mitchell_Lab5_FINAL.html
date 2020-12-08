@@ -66,17 +66,45 @@
  </head>
  <body>
  
+	<h1>A look at Hotels and Accomodations across the City of Calgary</h1>
+	<h2>A Guide by Mitchell Cornish, Tourism Calgary</h2>
+	
+	<p> Welcome to the Tourism Calgary website. On this website, you can plan your trip according to how many hotels are in a certain area of the city.<br>
+	Certain areas of the city (e.g. tourist areas) have more hotels for your convienience. For more information on travel, please visit the Tourism Calgary Website!<br><br>
+	Tip! Areas in Red on the map have the most hotels in them! Book today and start your getaway!</p>
+	
+ 
  <div id='map' class="pagecenter"></div>
 <script type="application/javascript">
+	var ccentre = L.marker([51.05284512968707, -114.0625897768874]).bindPopup('This is the centre of the city, where north/south meets east/west.<br>Centre Street divides the city into the east and the west, while the Bow River divides the city into the north and the south. Therefore, this intersection of Centre Street and the Bow River signifies the centre of the city, politically.')
 
-var map = L.map('map').setView([51.048258858656524, -114.0697137255605], 10);
-			
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' ,
-					maxZoom: 15,
-				}).addTo(map);
+	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
+		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+
+	var map = L.map('map', {
+		center: [51.048258858656524, -114.0697137255605],
+		zoom: 10,
+		layers: [grayscale, ccentre]
+	});
+
+	var baseLayers = {
+		"Grayscale": grayscale,
+		"Streets": streets
+	};
+
+	var overlays = {
+		"City Centre": ccentre
+	};
+
+	L.control.layers(baseLayers, overlays).addTo(map);
 	
-			var geoJSONLayer = L.geoJSON(CalgaryCensus2018, {
+	
+	var geoJSONLayer = L.geoJSON(CalgaryCensus2018, {
 				style: style,
 				onEachFeature: onEachFeature
 				}).addTo(map)
@@ -96,7 +124,7 @@ var map = L.map('map').setView([51.048258858656524, -114.0697137255605], 10);
 					opacity: 1,
 					color: 'white',
 					dashArray: '3',
-					fillOpacity: 0.75
+					fillOpacity: 0.30
 					};
 				}
 				
@@ -138,7 +166,8 @@ var map = L.map('map').setView([51.048258858656524, -114.0697137255605], 10);
 			}).addTo(map);
 			
 			
-		var info = L.control();
+			
+var info = L.control();
 
 info.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
@@ -175,15 +204,22 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
-
-
-
-	
-	
 </script>
- 
- 
- 
- 
- </body>
- 
+
+<style> 
+.button {
+  font: bold 15px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+</style>
+<br><br>
+<div class="centerbutton">
+<a href="https://www.visitcalgary.com/" class="button">Click on this button to visit the Tourism Calgary Website</a>
+</div>
