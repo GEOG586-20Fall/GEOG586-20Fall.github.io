@@ -1,1 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@2.5.0/dist/esri-leaflet.js"
+      integrity="sha512-ucw7Grpc+iEQZa711gcjgMBnmd9qju1CICsRaryvX7HJklK0pGl/prxKvtHwpgm5ZHdvAil7YPxI1oWPOWK3UQ=="
+      crossorigin=""></script>
+    <link rel="stylesheet" href="css/covidAB.css">
 
+    <script>
+
+function covidABContentT(feature, layer) {
+    layer.bindPopup("<p><h3>"+feature.properties.Name+ ": Puget-sound-salish"+"</h3>"
+    + "<b>This cryptid is a pop culture phenomena at this point, with sightings not only all over North America, but the entire world. The indigenous origins of this cryptid, however, are much more humble. The Sasquatch has a very long, rich history in the Sts’Ailes Territory -- in fact, the name ‘Sasquatch’ is an anglicised pronunciation of Sa:sq’ets, a Sts’Ailes word which describes the cryptid as the primary caretaker of the land. To the Sts’Ailes people, Sasquatch is integral to their culture.  </b><a href='http://www.sasquatchcrossing.ca/our-lodge/history/story-of-the-sasquatch'>For more information</a></p>"
+    );
+  };
+
+				</script>
+</head>
+
+<body>
+  <!-- Add Heading 1 -->
+  <h1> Dynamic report of Covid-19 cases in Alberta, Canada</h1>
+  <div id="title" class="center">
+<h2>Hover over to see details</b></h2>
+
+</div>
+<h4>(Real-time data come from Open Government Alberta)</b></h4>
+<br>
+<div class="center">
+
+</div>
+</p>
+</div>
+<!-- Add Heading 2 -->
+    <div class = "mapid" id="map"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <!-- MAP SCRIPT -->
+    <script>
+  /********** DATA REQUESTS *****************/
+
+
+
+var covidAB = $.ajax({
+    url: "https://data.edmonton.ca/resource/ix8f-s9xp.geojson",
+    type: "GET",
+    data: {
+      "$limit" : 5000,
+      "$$app_token" : "welUyI8IDCevRlvu6K68Yv20M"
+    },
+    success: console.log("CovidAB json data successfully loaded.")
+});
+
+
+    /* Specify that this code should run once all data request is complete*/
+    $.when(covidAB).done(function() {
+
+
+
+      var calgary = L.marker([51.40145218935039, -114.07784518870824]).bindPopup('This is Calgary, AB.'),
+          edmonton    = L.marker([53.67537744904097, -113.49374547952388]).bindPopup('This is Edmonton, AB.');
+      var cities = L.layerGroup([calgary, edmonton]);
+
+
+        var streets   = L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=GbTgUaI7708nBO7eCLe3',{
+        attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a> Source data &copy; <a href="https://open.alberta.ca">Open Government Alberta</a>',
+        crossOrigin: true}),
+        tone = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.{ext}', {
+				attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> Source data &copy; <a href="https://open.alberta.ca">Open Government Alberta</a>',
+				 subdomains: 'abcd',
+				 minZoom: 0,
+				 maxZoom: 20,
+				 ext: 'png'});
+
+    var map = L.map('map', {
+        center: [54.532592, -114.214152],
+        zoom: 4,
+        layers: [tone, cities]
+        });
+
+      var baseLayers = {
+      		"Streets": streets,
+          "Tone": tone
+      	};
+
+      	var overlays = {
+      		"Cities": cities
+      	};
+
+	      L.control.layers(baseLayers, overlays).addTo(map);
+
+
+        var jsCovidAB = L.geoJSON(covidAB.responseJSON, {
+                 style: style,
+                 onEachFeature: covidABContent
+          }).addTo(map);
+
+          // Add scale on map
+               L.control.scale().addTo(map);
+
+
+      var info = L.control();
+
+      	info.onAdd = function (map) {
+      		this._div = L.DomUtil.create('div', 'info');
+      		this.update();
+      		return this._div;
+      	};
+
+
+      info.update = function (props) {
+          this._div.innerHTML = '<h4>Alberta Covid Cases</h4>' +  (props ?
+               '<b> Location: </b>' + props.location + "<br>" + "<b>Deaths: </b>" + props.deaths + "<br>" + "<b>Recovered cases: </b>"+ props.recovered_cases + "<br>" + "<b>Active cases: </b>"+ props.active_cases + "<br>" + "<b>Total cases: </b>"+ props.total_cases
+              : 'Hover over a place');
+      };
+      	info.addTo(map);
+
+
+
+
+        function covidABContent(feature, layer) {
+          layer.on({
+      			mouseover: highlightFeature,
+      			mouseout: resetHighlight,
+      			click: zoomToFeature
+          });
+      }
+
+    // Adding interaction
+      function highlightFeature(e) {
+  		var layer = e.target;
+
+  		layer.setStyle({
+  			weight: 5,
+  			color: '#666',
+  			dashArray: '',
+  			fillOpacity: 0.7
+  		});
+
+  		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+  			layer.bringToFront();
+  		}
+
+  		info.update(layer.feature.properties);
+  	}
+
+
+    //Define what happens on mouseout
+    function resetHighlight(e) {
+        jsCovidAB.resetStyle(e.target);
+        info.update();
+      }
+
+        function zoomToFeature(e) {
+    		map.fitBounds(e.target.getBounds());
+    	}
+
+            function getColor(d) {
+              return d > 1000 ? '#272727' :
+                     d > 500  ? '#747474' :
+                     d > 200  ? '#59253A' :
+                     d > 100  ? '#895061' :
+                     d > 50   ? '#FD8D3C' :
+                     d > 20   ? '#FEB24C' :
+                     d > 10   ? '#14A76C' :
+                                '#FFEDA0';
+          }
+
+          function style(feature) {
+          		return {
+          			weight: 2,
+          			opacity: 1,
+          			color: 'white',
+          			dashArray: '3',
+          			fillOpacity: 0.7,
+          			fillColor: getColor(feature.properties.total_cases)
+          		};
+          	}
+
+  //L.geoJson(covidAB, {style: style}).addTo(map);
+
+      // Legend
+        var legend = L.control({position: 'bottomleft'});
+
+        	legend.onAdd = function (map) {
+
+        		var div = L.DomUtil.create('div', 'info legend'),
+        			grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+        			labels = [],
+        			from, to;
+
+        		for (var i = 0; i < grades.length; i++) {
+        			from = grades[i];
+        			to = grades[i + 1];
+
+        			labels.push(
+        				'<i style="background:' + getColor(from + 1) + '"></i> ' +
+        				from + (to ? '&ndash;' + to : '+'));
+        		}
+
+        		div.innerHTML = labels.join('<br>');
+        		return div;
+        	};
+
+        	legend.addTo(map);
+
+
+ });
+
+    </script>
+
+<br />
+
+<p>Author: Zach Wang. December 2020</p>
+</body>
+</html>
