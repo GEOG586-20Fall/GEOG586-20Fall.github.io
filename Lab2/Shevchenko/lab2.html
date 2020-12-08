@@ -113,7 +113,7 @@
 	L.geoJSON(locationsInTokyo, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, locationsStyleInTokyo);
-            }}).addTo(map);
+            }}).addTo(mymap);
 	    
 	var locationsStyleNotInTokyo = {
             radius: 10,
@@ -127,7 +127,7 @@
 	L.geoJSON(locationsNotInTokyo, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, locationsStyleNotInTokyo);
-            }}).addTo(map);
+            }}).addTo(mymap);
 	    
 					
 </script>	
