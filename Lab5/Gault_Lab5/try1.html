@@ -1,0 +1,102 @@
+<html> 
+
+<head>
+
+	<style>
+		#MainMap { height: 550px;
+				 width: 850px;
+				 margin: auto;
+			}
+		
+		h1 {
+			text-align: center;
+			color: purple;
+			margin: auto;
+			}
+			
+		p1 {
+			text-align: center;
+			color: purple;
+			}
+		
+		.center {
+			max-width: 850px; 
+			margin: auto; 
+			}
+			
+		body {
+			background-color: lightgrey;
+			}
+		
+		.legend {
+			line-height: 18px;
+			color: #555;
+		}
+		
+		.legend i {
+			width: 18px;
+			height: 18px;
+			float: left;
+			margin-right: 8px;
+			opacity: 0.7;
+		}
+				
+	</style>
+		
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+	   
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+</head> 
+
+<body>
+
+	<h1>Pets in Calgary!</h1>
+	<p1>Made by Samantha Gault</p1>
+	
+	<div id="MainMap" class="center"></div>
+	<script type="text/javascript" src="licenses_Pets.js"></script>
+	<script type="application/javascript">
+	
+	var map = L.map("MainMap").setView([51.035925, -114.059032], 10)
+	
+	L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+			}).addTo(map);
+			
+	var geoJSONlayer = L.geoJSON(licenses_Pets, 
+					{
+					style: style,
+					onEachFeature: onEachFeature
+					})
+					.addTo(map);		
+			
+		function getColor(d) {
+					return d > 1000 ? '#016c59' :
+						   d > 750 ? '#016c59' :
+						   d > 500 ? '#1c9099' :
+						   d > 250 ? '#67a9cf' :
+						   d > 50 ? '#bdc9e1' :
+									  '#f6eff7';
+				}	
+		function style(feature) {
+					return {
+						fillColor: getColor(feature.properties.LICENSE VOLUME),
+						weight: 2,
+						opacity: 1,
+						color: 'white',
+						dashArray: '3',
+						fillOpacity: 0.7
+					};
+				}	
+			
+			
+	
+	
+</body>
+
+</html>
