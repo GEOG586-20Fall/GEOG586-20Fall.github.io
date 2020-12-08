@@ -160,7 +160,7 @@
     color: #555;
 }
 .legend i {
-    width: 30px;
+    width: 20px;
     height: 18px;
     float: left;
     margin-right: 8px;
@@ -181,10 +181,10 @@
     <body>
  <div class="header"></div>
         <div class="container1">
-            <h1>Unemployment in Alberta </h1>
-            <h2>The percentage of unemploymed people by geographical unit from the 2016 census</h2>
+            <h1>Alberta's Unemployment rates </h1>
+            <h2>unemplyment rates by geographical unit from the 2016 census</h2>
              
-           <a class="button button1"href="https://www.alberta.ca/employment-jobs.aspx" target="_blank">Click here to learn more about Alberta Jobs</a>
+           <a class="button button1"href="https://www.alberta.ca/employment-jobs.aspx" target="_blank">Alberta Jobs</a>
         </div>
         
        
@@ -202,13 +202,9 @@
             
             var cities = L.layerGroup();
             
-        L.marker([51.0447, -114.0719]).bindPopup('This is Calgary').addTo(cities),
-        L.marker([53.5461, -113.4938]).bindPopup('This is Edmonton').addTo(cities),
-        L.marker([49.6956, -112.8451)].bindPopup('This is Lethbridge').addTo(cities),
-        L.marker([56.7267, -111.3790]).bindPopup('This is Fort McMurray').addTo(cities),
-        L.marker([56.2331, -117.3341]).bindPopup('This is Peace River').addTo(cities),			
-        L.marker([55.17077, -118.7884]).bindPopup('This is Grande Prairie').addTo(cities),          
-        L.marker([52.2690, -113.8116]).bindPopup('This is Red Deer').addTo(cities);
+            L.marker([51.0447, -114.0719]).bindPopup('This is Calgary').addTo(cities),
+            L.marker([53.5461, -113.4938]).bindPopup('This is Edmonton').addTo(cities),
+            L.marker([52.2690, -113.8116]).bindPopup('This is Red Deer').addTo(cities);
             
          var geojson;             
 
