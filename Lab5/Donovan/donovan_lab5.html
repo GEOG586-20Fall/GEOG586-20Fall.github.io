@@ -160,8 +160,8 @@
     color: #555;
 }
 .legend i {
-    width: 20px;
-    height: 18px;
+    width: 40px;
+    height: 20px;
     float: left;
     margin-right: 8px;
     opacity: 0.7;
@@ -202,6 +202,7 @@
             
             var cities = L.layerGroup();
             
+            L.marker([46.6956, -112.8451]).bindPopup('This is Lethbridge').addTo(cities),
             L.marker([51.0447, -114.0719]).bindPopup('This is Calgary').addTo(cities),
             L.marker([53.5461, -113.4938]).bindPopup('This is Edmonton').addTo(cities),
             L.marker([52.2690, -113.8116]).bindPopup('This is Red Deer').addTo(cities);
