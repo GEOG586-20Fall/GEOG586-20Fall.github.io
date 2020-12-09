@@ -99,7 +99,7 @@ var locationsInTokyo = {
 		"properties": {
 			"name": "Men Mitsui",
 			"popupContent": "<b>Men Mitsui</b><br> an inconspicuous yet really good bib gourmand ramen place",
-			"img": "<img src= 7583920800_IMG_1502.jpg>"}}]},
+			"img": "<img src= 7583920800_IMG_1502.jpg>"}}]};
 
 var locationsNotInTokyo = {
 		"type" : "FeatureCollection",
