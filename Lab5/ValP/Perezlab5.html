@@ -1,0 +1,204 @@
+<html>
+	<head>
+	     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+	   			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+	 		   crossorigin=""/>
+	   
+	     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" 				 				integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" 
+		 			crossorigin=""></script>
+    
+	        <link rel="stylesheet" type="text/css" href="L5styling.css" media="screen"/>
+	        <script src="AB_CSD2016_Immigrants.js"></script>
+     
+		  <title>Alberta's Immigration Count</title>
+	</head>
+	<body>
+		
+	    <h1>Alberta's Immigration Count</h1>
+	        <h4 class="sign">Webmap by Valery</h4>
+        
+	    <h3>An immigrant is defined as someone who moves to live permanently in a foreign country. <br>A city is created when a community, with at least 10,000 people, has a majority of their buildings on an area of land smaller than  1,850 m². Communities in Alberta can apply to be identified as a city through the Alberta Municipal Affairs.	
+			<br><br>Highlighted below are all of Alberta's cities and census subdivisions. Interact with the map below to learn more about the quantity of immigrants Alberta has previously seen + any other related facts. Numbers in the 2016 Census year were influenced by the Canadian Government's resettlement of 25,000 Syrian refugees between 2015-2016. <br> Choose between the "Terrain" base layer, to get to know the Alberta landscape and how this affects where communities can settle and where immigrants can go, and the "Simplified" base layer to focus purely on the statistics.<br>
+			<a class="button button1"href="https://www.alberta.ca/live-permanently-in-alberta.aspx" target="_blank">Immigrate to Alberta</a> <a class="button button1"href="https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/conflict_syria-syrie.aspx?lang=eng" target="_blank">Syrian Crisis</a> </h3>
+	
+	<div id="mapid" class="centermap" style="height: 80%; width: 60%;"></div>
+
+	<script type= "application/javascript">
+//Layers - Chloropleth + Cities 
+
+		var cities = L.layerGroup();
+
+		L.marker([51.2927, -114.0134]).bindPopup('<h2>Airdrie, AB.</h2>').addTo(cities),
+		L.marker([51.0478, -114.0593]).bindPopup('<h2>Calgary, AB.</h2>').addTo(cities),
+		L.marker([51.0382, -113.8425]).bindPopup('<h2>Chestermere, AB.</h2>').addTo(cities),
+		L.marker([53.3525, -113.4155]).bindPopup('<h2>Beaumont, AB.</h2>').addTo(cities),
+		L.marker([53.5461, -113.4938]).bindPopup('<h2>Edmonton, AB.</h2>').addTo(cities),
+		L.marker([53.6963, -113.2164]).bindPopup('<h2>Fort Saskatchewan, AB.</h2>').addTo(cities),
+		L.marker([53.2647, -113.5527]).bindPopup('<h2>Leduc, AB.</h2>').addTo(cities),
+		L.marker([53.6539, -113.6294]).bindPopup('<h2>St. Albert, AB.</h2>').addTo(cities),
+		L.marker([53.5411, -113.9101]).bindPopup('<h2>Spruce Grove, AB.</h2>').addTo(cities),
+		L.marker([50.5657, -111.8978]).bindPopup('<h2>Brooks, AB.</h2>').addTo(cities),
+		L.marker([49.6956, -112.8451]).bindPopup('<h2>Lethbridge, AB.</h2>').addTo(cities),
+		L.marker([50.0292, -110.7034]).bindPopup('<h2>Medicine Hat, AB.</h2>').addTo(cities),
+		L.marker([53.0179, -112.8260]).bindPopup('<h2>Camrose, AB.</h2>').addTo(cities),
+		L.marker([54.4643, -110.1733]).bindPopup('<h2>Cold Lake, AB.</h2>').addTo(cities),
+		L.marker([52.4685, -113.7707]).bindPopup('<h2>Lancome, AB.</h2>').addTo(cities),
+		L.marker([53.2780, -110.0061]).bindPopup('<h2>Lloydminster, AB.</h2>').addTo(cities),
+		L.marker([52.2690, -113.8116]).bindPopup('<h2>Red Deer, AB.</h2>').addTo(cities),
+		L.marker([52.9688, -113.3661]).bindPopup('<h2>Wetaskiwin, AB.</h2>').addTo(cities),
+		L.marker([55.1707, -118.7884]).bindPopup('<h2>Grande Prairie, AB.</h2>').addTo(cities);
+
+		var geojson;             
+
+		function highlightFeature(e) {
+			var layer = e.target;
+
+			layer.setStyle({
+				weight: 5,
+				color: '#666',
+				dashArray: '',
+				fillOpacity: 0.7
+			});
+
+			if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+				layer.bringToFront();
+			}
+
+			info.update(layer.feature.properties);
+		}
+
+		function resetHighlight(e) {
+				geojson.resetStyle(e.target);
+				info.update();
+			}
+
+		function zoomToFeature(e) {
+				mymap.fitBounds(e.target.getBounds());
+			}
+
+			function onEachFeature(feature, layer) {
+				layer.on({
+					mouseover: highlightFeature,
+					mouseout: resetHighlight,
+					click: zoomToFeature
+				});
+			}
+
+			geojson = L.geoJson(IMMS, {
+			    style: style,
+			    onEachFeature: onEachFeature
+			});
+		
+
+	//Map control
+
+	        var terrain = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+	            attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	            subdomains: 'abcd',
+	            minZoom: 0,
+	            maxZoom: 18,
+	            ext: 'png',
+	            accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A'
+	          });
+			  
+			  var simple = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+			subdomains: 'abcd',
+			minZoom: 0,
+			maxZoom: 20,
+			ext: 'png',
+			accessToken: 'pk.eyJ1IjoidmFsY2hhZmlhIiwiYSI6ImNrZm15bTB3OTAyd3MycXBnczl2YWhua3QifQ.EvMP5t8wY9B7uyDDhwFC7A'
+			  });
+			  
+
+		var mymap = L.map('mapid', {
+			center: [55.2764,-114.8065],
+			zoom: 5,
+			layers: [terrain, geojson, cities]
+		});
+
+		var baseLayers = {
+			"Terrain": terrain,
+			"Simplified": simple
+		};
+
+		var overlays = {
+			"Immigration Statistics": geojson, 
+			"Cities": cities
+		};
+
+		L.control.layers(baseLayers, overlays).addTo(mymap);
+
+
+// Immigrant stats
+
+	    var info = L.control();
+
+	  info.onAdd = function (mymap) {
+	      this._div = L.DomUtil.create('div', 'info'); 
+	      this.update();
+	      return this._div;
+	  };
+
+	  info.update = function (props) {
+	      this._div.innerHTML = '<h4>Immigrant Count</h4>' +  (props ?
+	          '<b>' + props.CSDNAME + '</b><br/>' + 'Immigrants: ' + props.Immigrants + '</b><br/>' + 'Immigrants from 2006-2010: ' + props.IImm06_10 + '</b><br/>' + 'Immigrants from 2011-2016: ' + props.Imm11_16 + '</b><br/>' + 'Non-permanent residents: '+props.nonperm_res + '</b><br/>'+'Non-immigrants: '+ props.non_immigrants
+	          : 'Hover over a census subdivision ');
+	  };
+      
+		info.addTo(mymap);
+
+
+// Adding colours
+		function getColor(d) {
+		    return d > 50000 ? '#662506' :
+		           d > 10000  ? '#993404' :
+			       d > 5000  ? '#cc4c02' :
+			       d > 3000  ? '#ec7014' :
+				   d > 1000  ? '#fe9929':
+				   d > 500  ? '#fec44f' :
+		           d > 100   ? '#fee391' :
+		           d > 30   ? '#fff7bc' :
+		           d > 0  ? '#ffffe5' :
+		                      '#EDBB99';}
+	  
+	
+		function style(feature) {
+		    return {
+		        fillColor: getColor(feature.properties.Immigrants),
+		        weight: 2,
+		        opacity: 1,
+		        color: 'white',
+		        dashArray: '3',
+		        fillOpacity: 0.7
+		    };
+		}
+	
+
+	
+//Legends
+
+		var legend = L.control({position: 'bottomright'});
+
+		  legend.onAdd = function (mymap) {
+
+		      var div = L.DomUtil.create('div', 'info legend'),
+		          grades = [0, 30, 100, 500, 1000, 3000, 5000, 10000, 50000],
+		          labels = [ ];  
+		  
+		      for (var i = 0; i < grades.length; i++) {
+		          div.innerHTML +=
+		              '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+		              grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+		      }
+
+		      return div;
+		  };
+
+		  legend.addTo(mymap);
+		  
+		  </script>
+		
+		</body>
+	
+</html>

@@ -1,0 +1,163 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+	   
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   
+	<script type="text/javascript" src="AB_CSD2016_Core_Housing_Need.js"></script>
+   
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+
+</head>
+
+<body>
+
+<h1>Disparities in Housing Conditions by Census Subdivision, Alberta</h1>
+<p class=blue><b>This interactive choropleth map visualizes relative differences in housing conditions across (Canada) Census Subdivisions in Alberta. Statistics Canada defines a CSD as an "area that is a municipality or an area that is deemed to be equivalent to a municipality for statistical reporting purposes (e.g. as an <b>Indian reserve</b> [emphasis added] or an unorganized territory). Municipal status is defined by laws in effect in each province and territory in Canada." The "housing conditions" variables present are "percent of households in need of major repairs," and "percent of housing considered "unsuitable." Unfortunately, these terms are not better defined than that.<br><br>The variable visualized on the choropleth is "major repairs needed."<br><br>The key finding to point out (because it may not be immediately obvious due to the small size of many CSDs, and because of the extreme political importance of the matter) is the stark contrast between Indigenous reserves on one hand and the rest of the province on the other. Many reserves have "major repairs needed" and "unsuitability" percentages as high as 50% or more, signalling a crisis with obvious, immediately-necessary policy implications.</b></p><br><br>
+   
+<div id="MyMap" class="center"></div>
+
+<p>Data source: Social Vulnerability Indicators, Canada Census 2016, Statistics Canada<br>https://open.alberta.ca/opendata/social-vulnerability-indicators-by-census-subdivision-2016-census-of-canada</p>	
+<p style="text-align:right;">By Alex Scheer, December 7, 2020</p>
+
+<script type="application/javascript">
+	
+	var grayscale = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
+	});
+	
+	var geojson = L.geoJSON(chn, {
+		style: style,
+		onEachFeature: onEachFeature
+	});
+	
+	var baseMaps = {
+		  "Grayscale": grayscale
+	};
+	var overlayMaps = {
+		"Housing Needs": geojson
+	};
+
+	var map = L.map('MyMap', {
+		center: [55.506059, -114.483853],
+		zoom: 5,
+		layers: [grayscale, geojson]
+	});
+
+	L.control.layers(baseMaps, overlayMaps).addTo(map);
+	
+	function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
+
+	function getColor(d) {
+		return d > 50 ? '#993404' :
+			   d > 25 ? '#d95f0e' :
+			   d > 10 ? '#fe9929' :
+			   d > 5  ? '#fec44f' :
+			   d > 1  ? '#fee391' :
+						'#ffffd4';
+	}
+	
+	function style(feature) {
+		var percentRepairsNeeded = feature.properties.majorRepairsNeeded/feature.properties.conditionTotal*100;
+		return {
+			fillColor: getColor(percentRepairsNeeded),
+			weight: 2,
+			opacity: 1,
+			color: 'white',
+			dashArray: '3',
+			fillOpacity: 0.7
+		};
+	}
+	
+	function highlightFeature(e) {
+		var layer = e.target;
+
+		layer.setStyle({
+			weight: 5,
+			color: '#666',
+			dashArray: '',
+			fillOpacity: 0.7
+		});
+
+		if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+			layer.bringToFront();
+		}
+		info.update(layer.feature.properties);
+	}
+	
+	function resetHighlight(e) {
+		geojson.resetStyle(e.target);
+		info.update();
+	}
+	
+	function zoomToFeature(e) {
+		map.fitBounds(e.target.getBounds());
+	}
+	
+	// Info control
+	
+	var info = L.control();
+
+	info.onAdd = function (map) {
+		this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+		this.update();
+		return this._div;
+	};
+
+	// method to update the control based on feature properties passed
+	info.update = function (props) {
+		if (props) { // compute percentages and round the numbers
+			var percentRepairsNeeded = props.majorRepairsNeeded/props.conditionTotal*100;
+			var rprn = percentRepairsNeeded.toFixed(2);
+			var percentUnsuitability = props.notSuitable/props.suitabilityTotal*100;
+			var rpu = percentUnsuitability.toFixed(2);
+			var percentHouseholdsSpending30OrMore = props.moreThan30/props.incomeTotal*100;
+			var rph30 = percentHouseholdsSpending30OrMore.toFixed(2);
+		}
+		
+		this._div.innerHTML = '<h4>Housing Conditions by Census Subdivision</h4>' +  (props ?
+        '<b>' + props.name + '</b><br>Percent of households in need of major repairs: ' + rprn + '%<br>Percent of households with housing considered unsuitable: ' + rpu + '%<br>Percent of households spending 30% or more of their income on shelter costs: ' + rph30 + '%'
+        : 'Hover over a CSD; click to zoom');
+	};
+
+	info.addTo(map);
+	
+	// Legend
+	
+	var legend = L.control({position: 'bottomright'});
+
+	legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 1, 5, 10, 25, 50],
+        labels = [];
+
+	div.innerHTML = '<h4><b>%</b> by CSD</h4>';
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(map);
+		
+</script> 	
+
+</body>
+</html>

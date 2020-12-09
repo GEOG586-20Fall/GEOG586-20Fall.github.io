@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+   <head>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+      <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+
+
+
+            <script type="text/javascript" src="class_1.js"></script>
+            <script type="text/javascript" src="class_2.js"></script>
+            <script type="text/javascript" src="class_3.js"></script>
+            <script type="text/javascript" src="class_4.js"></script>
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<!-- CSS STYLES FOR LABELS AND TEXT CONTENT 
+ ------------------------------------------------------------------------------------------------------ --> 
+
+      <style>
+         body {font-family: 'Roboto Condensed';font-size: 22px; color: black;}
+         body {background-color: #0000;}
+         h1 {font-family: 'Roboto Condensed'; text-align: center;}
+         p {font-family: 'Roboto Condensed'; text-align: center;}
+
+        .button{
+            text-align: center;
+            font-family: 'Roboto Condensed';
+            font-size: 15px;
+            color: white;
+            background-color: #1f2428;
+            border: none;
+            opacity: 1;
+            position: relative;
+            padding: 5px 15px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            font-weight: 100;
+            display: inline-block;
+            margin: 2px;
+            text-decoration: none;
+
+
+        }
+        .button:hover {
+            text-align: center;
+            font-size: 15px;
+            background-color: whitesmoke;
+            color: black;
+            border: none;
+            opacity: 1;
+            padding: 5px 15px;
+            border-radius: 15px;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        
+		} 		
+		.info {
+		    padding: 6px 8px;
+		    font: 14px/16px Arial, Helvetica, sans-serif;
+		    background: white;
+		    background: rgba(255,255,255,0.8);
+		    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+		    border-radius: 5px;
+		}
+		.info h4 {
+		    margin: 0 0 5px;
+		    color: #777;
+		}
+		.legend {
+		    line-height: 18px;
+		    color: #555;
+		}
+		.legend i {
+		    width: 18px;
+		    height: 18px;
+		    float: left;
+		    margin-right: 8px;
+		    opacity: 0.7;
+		}
+
+		.sub {
+            display: block;
+            position: relative; 
+            padding-left: 20%;
+            padding-right: 20%;
+            height: 15%;
+            top:5%;
+            
+ 		</style>
+   
+   </head>
+   
+  <body>
+      
+<!-- ------------------------------------------------------------------------------------------------------ -->
+<!-- THE TITLE AND TEXT 
+ ------------------------------------------------------------------------------------------------------ --> 
+<!-- 
+      <div class="center" >
+           <a class="button button1" style="float: center;" href="https://www.pc.gc.ca/en/pn-np" target="_blank">Canada National Parks Website</a>
+      </div> -->
+      
+	<div>
+     <h1>Alberta Agricultural Land Prospects</h1>
+     <p class="sub"> Food security is a both a global and local issue. The map illustrates the agricultural potential of the province as well as individual communities. The agricultural potential is determined by government land survey which notes the class and limitation of the land parcel.</p>
+
+     <p> Click below to learn about sustainable agriculture through erosion control.<br>
+      	<a class="button button1" style="float: center;" href="https://open.alberta.ca/dataset/71d89f2c-f9c1-4b1a-b7e7-16746af9b67e/resource/a2fd9ffd-dc6f-4770-a8af-39760a663ac6/download/introduction-water-erosion-control.pdf" target="_blank">Water Erosion Control</a>
+      	<a class="button button1" style="float: center;" href="https://open.alberta.ca/dataset/5ab5fe3e-deba-4730-b178-93be8b87a2cb/resource/c0b85736-f28d-4a54-a12b-36c2b9a2ee79/download/introduction-wind-erosion-control.pdf" target="_blank">Wind Erosion Control</a>
+      	<a class="button button1" style="float: center;" href="https://www.nrcan.gc.ca/sites/www.nrcan.gc.ca/files/energy/files/pdf/11-1416_eng_acc.pdf">Carbon Storage Potential</a>
+
+      </p>
+      
+      </div>
+
+
+      <div id= "info"></div>
+      
+
+      <div id="mapid" style="height: 700px; width: 600; display: block;"></div>
+      <div id="mapid" style="height: 800px; left: 50%; display: block;"></div>
+	  <script type="text/javascript">
+
+
+// <!-- ------------------------------------------------------------------------------------------------------ -->
+// <!-- THE MAP
+// <!-- ------------------------------------------------------------------------------------------------------ --> 
+
+           
+
+
+           var mapbox = L.tileLayer(
+         'https://api.mapbox.com/styles/v1/macmulline/ckig7d75y5b8x19malnlfoxtt/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
+           
+          {
+              attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: 'mapbox/streets-v11',
+              tileSize: 512,
+              zoomOffset: -1,
+              accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+          		}),
+			
+			sat = L.tileLayer('https://api.mapbox.com/styles/v1/macmulline/cki7mnnti2kf519mn7mx98sz9/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',{id: 'sat', 
+		                attribution: 'https://api.mapbox.com/styles/v1/macmulline/cki6vtltt7jkc19qk2xvt7eei/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A',
+		              maxZoom: 18,
+		              tileSize: 512,
+		              zoomOffset: -1,
+		              accessToken: 'pk.eyJ1IjoibWFjbXVsbGluZSIsImEiOiJjazg1NGlodTAwMHF2M2VtbjlrenJpcXpnIn0.CUg3zp6Gqb5F9kW1TCKe7A'
+	
+				});
+		
+			c1 = L.geoJson(class_1, {
+				    style: style,
+				    onEachFeature: onEachFeature
+				});
+		
+			c2 = L.geoJson(class_2, {
+				    style: style,
+				    onEachFeature: onEachFeature
+				});
+			
+			c3 = L.geoJson(class_3, {
+				    style: style,
+				    onEachFeature: onEachFeature
+				});	
+			
+			c4 = L.geoJson(class_4, {
+				    style: style,
+				    onEachFeature: onEachFeature
+				});
+
+          	var mymap = L.map('mapid', {center: [54.76783103448121, -114.74082432881103], zoom: 5, layers: [mapbox, c1, c2, c3, c4]});
+
+
+			var baseMaps = {
+			    "Base Map": mapbox,
+			    "Satellite": sat
+			};
+
+			var overlayMaps = {
+			    "Class 1": c1,
+			    "Class 2":c2,
+			    "Class 3":c3,
+			    "Class 4":c4
+			};
+
+
+			L.control.layers(baseMaps, overlayMaps).addTo(mymap);
+
+
+
+// <!-- ------------------------------------------------------------------------------------------------------ -->
+// <!-- color by class 
+// <!-- ------------------------------------------------------------------------------------------------------ --> 
+
+			// function getColor(d) {
+			//     return d === "1"  ? '#530500' :
+			//            d === "2" ? '#A63F03' :
+			//            d === "3" ? '#7E3022' :
+			//            d === "4"   ? '#C28E43' :
+
+	  // 							     '#FFEDc0';
+			// }
+
+						function getColor(d) {
+			    return d === "1"  ? 'darkgoldenrod' :
+			           d === "2" ? 'coral' :
+			           d === "3" ? 'palevioletred' :
+			           d === "4"   ? 'darkred' :
+
+	  							     '#FFEDc0';
+			}
+
+
+
+			function style(feature) {
+			    return {
+			        fillColor: getColor(feature.properties.CLASS_A),
+			        weight: .1,
+			        opacity: 1,
+			        color: 'white',
+			        // dashArray: '3',
+			        fillOpacity: 0.7
+			    };
+			}
+
+			function highlightFeature(e) {
+				    var layer = e.target;
+
+				    layer.setStyle({
+				        weight: 3,
+				        color: '#666',
+				        dashArray: '',
+				        fillOpacity: 0.7
+				    });
+
+				    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+				        layer.bringToFront();
+				    }
+				 
+				 	info.update(layer.feature.properties);
+				}
+   
+
+
+			function resetHighlight(e) {
+				    c1.resetStyle(e.target);
+					info.update();
+				}
+
+			var c1;
+
+			function zoomToFeature(e) {
+				    mymap.fitBounds(e.target.getBounds());
+				}
+
+			function onEachFeature(feature, layer) {
+				    layer.on({
+				        mouseover: highlightFeature,
+				        mouseout: resetHighlight,
+				        click: zoomToFeature
+				    });
+				}
+
+		
+															
+// <!-- ------------------------------------------------------------------------------------------------------ -->
+// <!-- HOVER & POPUPS
+// <!-- ------------------------------------------------------------------------------------------------------ --> 
+				var legend = L.control({position: 'bottomright'});
+
+			legend.onAdd = function (map) {
+
+			    var div = L.DomUtil.create('div', 'info legend'),
+			        zones = ["1", "2", "3", "4"],
+			        labels = ["1 - No Significant Limitations", "2 - Moderate Limitations", 
+			        "3 - Moderately Severe Limitations", "4 - Severe Limitations"];
+
+				div.innerHTML =  '<h4>Agricultural Land Capability</h4>'
+			    for (var i = 0; i < zones.length; i++) {
+			        div.innerHTML +=
+			            '<i style="background:' + getColor(zones[i]) + '"></i> ' +
+			            labels[i] + '<br>';
+			    }
+
+			    return div;
+			};
+
+			legend.addTo(mymap);
+
+
+			var info = L.control({position: 'bottomright'});
+
+			info.onAdd = function (map) {
+			    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+			    this.update();
+			    return this._div;
+			};
+
+
+			info.update = function (props) {
+			    this._div.innerHTML = (props ? '<h4> Primary Land Limitation </h4>' +
+			        '<b>' + props.SUBCLAS_A1 + '</b>'
+			        : 'Hover over a zone to learn more');
+			};
+
+			info.addTo(mymap);
+
+
+		
+           
+         
+      </script>
+   </body>
+</html>
