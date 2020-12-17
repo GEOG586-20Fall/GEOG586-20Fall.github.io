@@ -1,4 +1,4 @@
-var locationsInTokyo = {
+     var locationsInTokyo = {
 		"type" : "FeatureCollection",
         "features" : [
 		{"type":"Feature",
@@ -8,7 +8,7 @@ var locationsInTokyo = {
 				"img": "<img src= IMG_4246.jpg>"},
 		 	"geometry":{
 				"type":"Point",
-				"coordinates":[35.66036651018742, 139.69940115950655]}},
+				"coordinates":[-220.301, 35.660]}},
 		
 		
 		{"type":"Feature",
@@ -18,7 +18,7 @@ var locationsInTokyo = {
 				"img": "<img src= IMG_4602.jpg>"},
 			"geometry":{
 				"type":"Point",
-				"coordinates": [35.66121543467788, 139.69821374382948]}},
+				"coordinates": [-220.302, 35.6612]}},
 
 
 		{"type":"Feature",
@@ -28,7 +28,7 @@ var locationsInTokyo = {
 				"img": "<img src= IMG_4602.jpg>"},
 			"geometry":{
 				"type":"Point",
-				"coordinates": [35.66121543467788, 139.69821374382948]}},
+				"coordinates": [-220.301787, 35.66121543467788]}},
 		
 
 		{"type":"Feature",
@@ -38,7 +38,7 @@ var locationsInTokyo = {
 				"img": "<img src= IMG_7625.jpg>"},
 		 	"geometry": {
 				 "type": "Point",
-				 "coordinates": [35.66105455076822, 139.6973820170712]}},
+				 "coordinates": [-220.302618, 35.66105455076822]}},
 
 		
 		{"type":"Feature",
@@ -48,7 +48,7 @@ var locationsInTokyo = {
 				"img":"<img src= IMG_3728.jpg>"},
 		 	"geometry": {
 				"type":"Point",
-				"coordinates":[35.66239697807741, 139.86133579435545]}},
+				"coordinates":[-220.138664, 35.66239697807741]}},
 		
 
 		{"type":"Feature",
@@ -58,7 +58,7 @@ var locationsInTokyo = {
 				"img": "<img src= IMG_4246.jpg>"},
 			"geometry": {
 				"type": "Point",
-				"coordinates": [35.66377824212148, 139.86149918469388]}},
+				"coordinates": [-220.138501, 35.66377824212148]}},
 
 
 		{"type":"Feature",
@@ -68,7 +68,7 @@ var locationsInTokyo = {
 				"img": "<img src= 7583948400_IMG_1248.jpg>"},
 		 	"geometry": {
 				"type": "Point",
-				"coordinates": [35.671440953956015, 139.704023548999]}},
+				"coordinates": [-220.295977, 35.671440953956015]}},
 
 
 		{"type":"Feature",
@@ -78,7 +78,7 @@ var locationsInTokyo = {
 				"img": "<img src= 7583920800_IMG_1523.jpg>"},
 			"geometry": {
 				"type": "Point",
-				"coordinates": [35.709990035416496, 139.81073641017545]}},
+				"coordinates": [-220.189264, 35.709990035416496]}},
 		
 
 		{"type":"Feature",
@@ -88,7 +88,7 @@ var locationsInTokyo = {
 				"img": "<img src= 68E0EA3D-7D30-42F4-8E55-3C5E462350F8.jpg>"},	 
 			"geometry": {
 				"type": "Point",
-				"coordinates": [35.714758562738545, 139.796806493158]}},
+				"coordinates": [-220.203194, 35.714758562738545]}},
 		 
 
 		{"type":"Feature",
@@ -98,7 +98,7 @@ var locationsInTokyo = {
 				"img": "<img src= IMG_4432.jpg>"},
 			"geometry": {
 				"type": "Point",
-				"coordinates": [35.669586360396146, 139.76401155307568]}},
+				"coordinates": [-220.235988, 35.669586360396146]}},
 
 
 		{"type":"Feature",
@@ -108,7 +108,7 @@ var locationsInTokyo = {
 				"img": "<img src= 7583920800_IMG_1502.jpg>"},
 		 	"geometry": {
 				"type": "Point",
-				"coordinates": [35.71254424544651, 139.7905458223567]}}]};
+				"coordinates": [-220.209454, 35.71254424544651]}}]};
 
 
 var locationsNotInTokyo = {
@@ -122,7 +122,7 @@ var locationsNotInTokyo = {
 				"img":"<img src= 7718097168_IMG_1190.jpg>"},
 			"geometry": {
 				"type": "Point",
-				"coordinates": [35.62465762208486, 139.42953915767993]}},
+				"coordinates": [-220.570461, 35.62465762208486]}},
 		
 				
 		{"type":"Feature",
@@ -132,7 +132,7 @@ var locationsNotInTokyo = {
 				"img": "<img src= IMG_3676.jpg>"},
 		 "geometry": {
 			"type": "Point",
-			"coordinates": [35.77357778215192, 140.38743840470647]}},
+			"coordinates": [-219.612562, 35.77357778215192]}},
 	
 				
 		{"type":"Feature",
@@ -142,4 +142,4 @@ var locationsNotInTokyo = {
 				"img": "<img src= IMG_4293.jpg>"},
 		 "geometry": {
 			"type": "Point",
-			"coordinates": [35.45540830552133, 139.63891585734598]}}]};
+			"coordinates": [-220.361085, 35.45540830552133]}}]};   
