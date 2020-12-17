@@ -4,7 +4,7 @@ var locationsInTokyo = {
 		{"type":"Feature",
 		 "properties":{
 			"name":"Genki Sushi",
-			"popupContent":"<b>Genki Suski</b><br> a cheap and good conveyor belt sushi resturant",
+			"popupContent":"<b>Genki Suski</b><br> A cheap and good conveyor belt sushi resturant",
 				"img": "<img src= IMG_4246.JPG>"},
 		 	"geometry":{
 				"type":"Point",
@@ -15,7 +15,7 @@ var locationsInTokyo = {
 		{"type":"Feature",
 		"properties": {
 			"name": "Adores Shibuya",
-			"popupContent":"<b>Adores Shibuya</b><br> video acrade with fun photobooths for pictures",
+			"popupContent":"<b>Adores Shibuya</b><br> A video acrade with fun photobooths for pictures",
 				"img": "<img src= IMG_4602.JPG>"},
 			"geometry":{
 				"type":"Point",
@@ -25,7 +25,7 @@ var locationsInTokyo = {
 		{"type":"Feature",
 		 "properties": {
 			"name": "Cat Cafe Mocha",
-			"popupContent":"<b>Cat Cafe Mocha</b><br> cat cafe for furry snuggles",
+			"popupContent":"<b>Cat Cafe Mocha</b><br> A cat cafe for furry snuggles",
 				"img": "<img src= IMG_7625.JPG>"},
 		 	"geometry": {
 				 "type": "Point",
@@ -35,7 +35,7 @@ var locationsInTokyo = {
 		{"type":"Feature",
 		 "properties":{
 			"name":"Hotel Lumiere",
-			"popupContent":"<b>Hotel Lumiere</b><br> a cute hotel with three beds (which was hard to find!) for my mom, sister, and I",
+			"popupContent":"<b>Hotel Lumiere</b><br> A cute hotel with three beds (which was hard to find!) for my mom, sister, and I",
 				"img":"<img src= IMG_3728.jpg>"},
 		 	"geometry": {
 				"type":"Point",
@@ -45,7 +45,7 @@ var locationsInTokyo = {
 		{"type":"Feature",
 		 "properties":{
 			"name":"Mos Burger",
-			"popupContent":"<b>Mos Burger</b><br> a tasty Japanese burger chain",
+			"popupContent":"<b>Mos Burger</b><br> A tasty Japanese burger chain",
 				"img": "<img src= IMG_4246.JPG>"},
 			"geometry": {
 				"type": "Point",
@@ -55,7 +55,7 @@ var locationsInTokyo = {
 		{"type":"Feature",
 		 "properties": {
 			"name": "Beard Papa Harajuku",
-			"popupContent":"<b>Beard Papa Harajuku</b><br> a creme puff shop in Harajuku, good snack for after lots of shopping",
+			"popupContent":"<b>Beard Papa Harajuku</b><br> A creme puff shop in Harajuku, good snack for after lots of shopping",
 				"img": "<img src= 7583948400_IMG_1248.JPG>"},
 		 	"geometry": {
 				"type": "Point",
@@ -65,7 +65,7 @@ var locationsInTokyo = {
 		{"type":"Feature",
 		 "properties": {
 			"name": "Tokyo Skytree",
-			"popupContent": "<b>Tokyo Skytree</b><br> a radio broadcast tower with a shopping mall underneath",
+			"popupContent": "<b>Tokyo Skytree</b><br> A radio broadcast tower with a shopping mall underneath",
 				"img": "<img src= 7583920800_IMG_1523.JPG>"},
 			"geometry": {
 				"type": "Point",
@@ -75,7 +75,7 @@ var locationsInTokyo = {
 		{"type":"Feature",
 		 "properties": {
 			"name": "Senso Temple",
-			"popupContent": "<b>Senso Temple</b><br> a very aesthetically pleasing and serene Buddhist temple",
+			"popupContent": "<b>Senso Temple</b><br> A very aesthetically pleasing and serene Buddhist temple",
 				"img": "<img src= 68E0EA3D-7D30-42F4-8E55-3C5E462350F8.JPG>"},	 
 			"geometry": {
 				"type": "Point",
@@ -85,7 +85,7 @@ var locationsInTokyo = {
 		{"type":"Feature",
 		 "properties": {
 			"name": "Ginza Six",
-			"popupContent": "<b>Ginza Six</b><br> a high-end shopping mall with a delicious world-famous green tea ice cream stall and nice rooftop garden to stare at the city lights from",
+			"popupContent": "<b>Ginza Six</b><br> A high-end shopping mall with a delicious world-famous green tea ice cream stall and nice rooftop garden to stare at the city lights from",
 				"img": "<img src= IMG_4432.jpg>"},
 			"geometry": {
 				"type": "Point",
@@ -95,7 +95,7 @@ var locationsInTokyo = {
 		{"type":"Feature",
 		 "properties": {
 			"name": "Men Mitsui",
-			"popupContent": "<b>Men Mitsui</b><br> an inconspicuous yet really good bib gourmand ramen place",
+			"popupContent": "<b>Men Mitsui</b><br> An inconspicuous yet really good bib gourmand ramen place",
 				"img": "<img src= 7583920800_IMG_1502.JPG>"},
 		 	"geometry": {
 				"type": "Point",
@@ -109,7 +109,7 @@ var locationsNotInTokyo = {
 		{"type":"Feature",
 		 "properties": {
 			"name": "Sanrio Puroland",
-			"popupContent":"<b>Sanrio Puroland</b><br> a Sanrio theme park. Everything is ~so kawaii~",
+			"popupContent":"<b>Sanrio Puroland</b><br> A Sanrio theme park. Everything is ~so kawaii~",
 				"img":"<img src= 7718097168_IMG_1210.JPG>"},
 			"geometry": {
 				"type": "Point",
@@ -119,7 +119,7 @@ var locationsNotInTokyo = {
 		{"type":"Feature",
 		 "properties": {
 			"name": "Narita Airport",
-			"popupContent": "<b>Narita Airport</b><br> the airport we flew in and out of",
+			"popupContent": "<b>Narita Airport</b><br> The airport we flew in and out of",
 				"img": "<img src= IMG_3676.jpg>"},
 		 "geometry": {
 			"type": "Point",
@@ -129,7 +129,7 @@ var locationsNotInTokyo = {
 		{"type":"Feature",
 		 "properties": {
 			"name": "Cup Noodles Museum",
-			"popupContent": "<b>Cup Noodles Museum</b><br> a museum honoring the history of the original Cup Noodles",
+			"popupContent": "<b>Cup Noodles Museum</b><br> A museum honoring the history of the original Cup Noodles",
 				"img": "<img src= IMG_4293.JPG>"},
 		 "geometry": {
 			"type": "Point",
