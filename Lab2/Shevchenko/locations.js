@@ -5,7 +5,7 @@ var locationsInTokyo = {
 		 "properties":{
 			"name":"Genki Sushi",
 			"popupContent":"<b>Genki Suski</b><br> a cheap and good conveyor belt sushi resturant",
-				"img": "<img src= IMG_4246.jpg>"},
+				"img": "<img src= IMG_4246.JPG>"},
 		 	"geometry":{
 				"type":"Point",
 				"coordinates":[-220.301, 35.660]}},
