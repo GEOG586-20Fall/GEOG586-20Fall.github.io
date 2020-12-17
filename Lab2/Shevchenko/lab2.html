@@ -86,12 +86,21 @@
 <div id="mapid" class="center"></div>
 	
 <script type= "application/javascript">
-	var mymap = L.map('mapid').setView([35.48452106000071, 139.84813], 10);
+	var mymap = L.map('mapid').setView([35.48452106000071, -220.187], 10);
 		
 	L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 	}).addTo(mymap);
-		
+        
+    L.geoJSON(locationsInTokyo, {
+		onEachFeature: Popups
+	}).addTo(mymap);
+	
+	L.geoJSON(locationsNotInTokyo, { 
+		onEachFeature:Popups
+	}).addTo(mymap); 
+        
+        
 	var locationsStyleInTokyo = {
             radius: 10,
             fillColor: "FloralWhite",
