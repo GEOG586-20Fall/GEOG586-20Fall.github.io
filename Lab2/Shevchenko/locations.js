@@ -10,22 +10,13 @@ var locationsInTokyo = {
 				"type":"Point",
 				"coordinates":[-220.301, 35.660]}},
 		
-		
-		{"type":"Feature",
-		 "properties": {
-			"name": "Adores Shibuya",
-			"popupContent":"<b>Adores Shibuya</b><br> video acrade with fun photobooths for pictures",
-				"img": "<img src= IMG_4602.jpg>"},
-			"geometry":{
-				"type":"Point",
-				"coordinates": [-220.302, 35.6612]}},
 
 
 		{"type":"Feature",
 		"properties": {
 			"name": "Adores Shibuya",
 			"popupContent":"<b>Adores Shibuya</b><br> video acrade with fun photobooths for pictures",
-				"img": "<img src= IMG_4602.jpg>"},
+				"img": "<img src= IMG_4602.JPG>"},
 			"geometry":{
 				"type":"Point",
 				"coordinates": [-220.301787, 35.66121543467788]}},
@@ -35,7 +26,7 @@ var locationsInTokyo = {
 		 "properties": {
 			"name": "Cat Cafe Mocha",
 			"popupContent":"<b>Cat Cafe Mocha</b><br> cat cafe for furry snuggles",
-				"img": "<img src= IMG_7625.jpg>"},
+				"img": "<img src= IMG_7625.JPG>"},
 		 	"geometry": {
 				 "type": "Point",
 				 "coordinates": [-220.302618, 35.66105455076822]}},
@@ -55,7 +46,7 @@ var locationsInTokyo = {
 		 "properties":{
 			"name":"Mos Burger",
 			"popupContent":"<b>Mos Burger</b><br> a tasty Japanese burger chain",
-				"img": "<img src= IMG_4246.jpg>"},
+				"img": "<img src= IMG_4246.JPG>"},
 			"geometry": {
 				"type": "Point",
 				"coordinates": [-220.138501, 35.66377824212148]}},
@@ -65,7 +56,7 @@ var locationsInTokyo = {
 		 "properties": {
 			"name": "Beard Papa Harajuku",
 			"popupContent":"<b>Beard Papa Harajuku</b><br> a creme puff shop in Harajuku, good snack for after lots of shopping",
-				"img": "<img src= 7583948400_IMG_1248.jpg>"},
+				"img": "<img src= 7583948400_IMG_1248.JPG>"},
 		 	"geometry": {
 				"type": "Point",
 				"coordinates": [-220.295977, 35.671440953956015]}},
@@ -75,7 +66,7 @@ var locationsInTokyo = {
 		 "properties": {
 			"name": "Tokyo Skytree",
 			"popupContent": "<b>Tokyo Skytree</b><br> a radio broadcast tower with a shopping mall underneath",
-				"img": "<img src= 7583920800_IMG_1523.jpg>"},
+				"img": "<img src= 7583920800_IMG_1523.JPG>"},
 			"geometry": {
 				"type": "Point",
 				"coordinates": [-220.189264, 35.709990035416496]}},
@@ -85,7 +76,7 @@ var locationsInTokyo = {
 		 "properties": {
 			"name": "Senso Temple",
 			"popupContent": "<b>Senso Temple</b><br> a very aesthetically pleasing and serene Buddhist temple",
-				"img": "<img src= 68E0EA3D-7D30-42F4-8E55-3C5E462350F8.jpg>"},	 
+				"img": "<img src= 68E0EA3D-7D30-42F4-8E55-3C5E462350F8.JPG>"},	 
 			"geometry": {
 				"type": "Point",
 				"coordinates": [-220.203194, 35.714758562738545]}},
@@ -105,7 +96,7 @@ var locationsInTokyo = {
 		 "properties": {
 			"name": "Men Mitsui",
 			"popupContent": "<b>Men Mitsui</b><br> an inconspicuous yet really good bib gourmand ramen place",
-				"img": "<img src= 7583920800_IMG_1502.jpg>"},
+				"img": "<img src= 7583920800_IMG_1502.JPG>"},
 		 	"geometry": {
 				"type": "Point",
 				"coordinates": [-220.209454, 35.71254424544651]}}]};
@@ -119,7 +110,7 @@ var locationsNotInTokyo = {
 		 "properties": {
 			"name": "Sanrio Puroland",
 			"popupContent":"<b>Sanrio Puroland</b><br> a Sanrio theme park. Everything is ~so kawaii~",
-				"img":"<img src= 7718097168_IMG_1190.jpg>"},
+				"img":"<img src= 7718097168_IMG_1190.JPG>"},
 			"geometry": {
 				"type": "Point",
 				"coordinates": [-220.570461, 35.62465762208486]}},
@@ -139,7 +130,7 @@ var locationsNotInTokyo = {
 		 "properties": {
 			"name": "Cup Noodles Museum",
 			"popupContent": "<b>Cup Noodles Museum</b><br> a museum honoring the history of the original Cup Noodles",
-				"img": "<img src= IMG_4293.jpg>"},
+				"img": "<img src= IMG_4293.JPG>"},
 		 "geometry": {
 			"type": "Point",
 			"coordinates": [-220.361085, 35.45540830552133]}}]};  
