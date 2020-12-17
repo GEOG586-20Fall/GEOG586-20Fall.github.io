@@ -110,7 +110,7 @@ var locationsNotInTokyo = {
 		 "properties": {
 			"name": "Sanrio Puroland",
 			"popupContent":"<b>Sanrio Puroland</b><br> a Sanrio theme park. Everything is ~so kawaii~",
-				"img":"<img src= 7718097168_IMG_1190.JPG>"},
+				"img":"<img src= 7718097168_IMG_1210.JPG>"},
 			"geometry": {
 				"type": "Point",
 				"coordinates": [-220.570461, 35.62465762208486]}},
