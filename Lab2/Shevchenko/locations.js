@@ -1,4 +1,4 @@
-     var locationsInTokyo = {
+var locationsInTokyo = {
 		"type" : "FeatureCollection",
         "features" : [
 		{"type":"Feature",
@@ -142,4 +142,4 @@ var locationsNotInTokyo = {
 				"img": "<img src= IMG_4293.jpg>"},
 		 "geometry": {
 			"type": "Point",
-			"coordinates": [-220.361085, 35.45540830552133]}}]};   
+			"coordinates": [-220.361085, 35.45540830552133]}}]};  
