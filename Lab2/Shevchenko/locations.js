@@ -46,7 +46,7 @@ var locationsInTokyo = {
 		 "properties":{
 			"name":"Mos Burger",
 			"popupContent":"<b>Mos Burger</b><br> A tasty Japanese burger chain",
-				"img": "<img src= IMG_4246.JPG>"},
+				"img": "<img src= IMG_9783.jpg>"},
 			"geometry": {
 				"type": "Point",
 				"coordinates": [-220.138501, 35.66377824212148]}},
