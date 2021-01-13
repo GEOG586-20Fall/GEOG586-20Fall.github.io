@@ -64,6 +64,18 @@
 
 <script type= "application/javascript">
 
+	var httpReq = new XMLHttpRequest();
+	httpReq.onreadystatechange = function() {
+    if (this.readyState == 4) {
+        var respText = JSON.parse(this.responseText);
+        myFunction(respText);
+    }
+};
+	
+	httpReq.open("GET", "https://burnsr77.github.io/GH_demo/PACo.geojson", "synch");
+	
+	httpReq.send();
+
 
  function myFunction(newlayer){	
 	var mymap = L.map('mapid').setView([41.046341933094446, -77.65140889176775], 7);
@@ -98,18 +110,6 @@ var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(mym
 				layer.bindPopup("<p>"+feature.properties.COUNTY_NAM+" COUNTY"+"</p>"+"<br>"+"This county is "+feature.properties.AREA_SQ_MI +" square miles large!");
 				};
 
-	var httpReq = new XMLHttpRequest();
-	httpReq.onreadystatechange = function() {
-    if (this.readyState == 4) {
-        var respText = JSON.parse(this.responseText);
-        myFunction(respText);
-    }
-};
-	
-	httpReq.open("GET", "https://burnsr77.github.io/GH_demo/PACo.geojson", "synch");
-	
-	httpReq.send();
-	
 		
 </script> 
 
