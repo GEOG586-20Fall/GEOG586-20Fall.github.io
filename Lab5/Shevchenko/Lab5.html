@@ -1,0 +1,107 @@
+<html> 
+<head> 
+
+	<style>
+		
+		h1 {font-family: Optima;
+			color: #660066;
+			text-align: center;
+			}
+				
+		h3 {font-family: monaco;
+			color: #660066;
+			text-align: center;
+			}
+				
+		h4 {font-family: monaco;
+			color: #333333;
+			text-align: center;
+			}
+            
+       	p {font-family: arial;
+        	color: #333333;
+			text-align: center;
+			}
+			
+		body {background-image: url("https://javascript30.com/images/topographic-pattern.png");
+			}
+            
+		#mapid { height: 300px;
+				 width: 300px;
+                 border: 6px solid #660066;
+            }
+                
+	</style>
+	
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+  
+<script src="censusTracts.js"></script>
+
+
+	<script>
+		alert("Welcome to the map. Press OK to explore!")
+   	</script>
+
+</head> 
+
+<body>
+
+	<h1>Population Estimates by Sex, per Provincial Census Subdivision</h1>
+	<p>Explore the province of Alberta below by hovering over each of the census subdivsions to view the population estimates for each subdivision, divided by sex. The layer toggles are located in the upper right corner of the map.</p>
+
+<center><div id="mapid"></div></center>
+<div id="xhr_callup"></div>
+
+<script type= "application/javascript">
+
+	var httpReq = new XMLHttpRequest();
+	httpReq.onreadystatechange = function() {
+    if (this.readyState == 4) {
+        var respText = JSON.parse(this.responseText);
+        myFunction(respText);
+    }
+};
+
+
+ function myFunction(newlayer){	
+	var mymap = L.map('mapid').setView([41.046341933094446, -77.65140889176775], 7);
+    
+
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+	}).addTo(mymap);
+    
+    	L.geoJson(popDataFemale).addTo(mymap);
+        
+        L.geoJSON(census,	(
+        	onEachFeature: bindPopup
+        )).addTo(mymap);
+    
+    
+    L.marker([39.998089, -75.134109]).addTo(mymap)
+			.bindPopup("<p>"+"Phildelphia - Pennsylvania's 1st Largest City"+"</p>"+"<br>"+"pop. 1,591,800")
+			.openPopup();
+
+	
+var geoJSONlayer = L.geoJSON(newlayer, {onEachFeature: onEachFeature}).addTo(mymap);
+		};
+
+	function onEachFeature(feature, layer) {
+				layer.bindPopup("<p>"+feature.properties.COUNTY_NAM+" COUNTY"+"</p>"+"<br>"+"This county is "+feature.properties.AREA_SQ_MI +" square miles large!");
+				};
+
+		
+</script> 
+
+<h3>GEOG 586/695 Lab 5</h3>
+<h4>Larissa Shevchenko</h4>
+
+</body> 
+
+</html>
