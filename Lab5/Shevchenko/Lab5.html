@@ -76,13 +76,84 @@ xhr.onload = function() {
 };
 xhr.send();
 
+var geojson;             
+
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+    info.update();
+}
+
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
 function onEachFeature(feature, layer) {
-		layer.on({
-			mouseover: highlightFeature,
-			mouseout: resetHighlight,
-			click: zoomToFeature
-		});
-	}
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+	geojson = L.geoJson(education, {
+    style: style,
+    onEachFeature: onEachFeature
+});
+
+
+var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+
+
+var grayscale = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
+	});
+
+
+var mymap = L.map('mapid', {
+		center: [53.933, -116.5765],
+		zoom: 5,
+		layers: [grayscale, geojson]
+	});
+
+	var baseLayers = {
+		"Grayscale": grayscale,
+	};
+
+var overlays = {
+		"Educated Individuals": geojson
+	};
+
+
+	L.control.layers(baseLayers, overlays).addTo(mymap);
+
+
+
+
+var info = L.control();
+
+info.onAdd = function (mymap) {
+    this._div = L.DomUtil.create('div', 'info');
+    this.update();
+    return this._div;
+};
+
+
+
+
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Number of individuals:</h4>' +  (props ?
+        '<b>' + props.CSDNAME + '</b><br />' + props.TOTAL_1701 + ' people holding this distinction'
+        : 'Hover over a census tract');
+};
+
+	info.addTo(mymap);
+
+
 
 function getColor(d) {
     return d > 600000 ? '#7a0177' :
@@ -93,10 +164,12 @@ function getColor(d) {
                       '#feebe2';
 }
 
+
+
 function style(feature) {
 
     return {
-        fillColor: getColor(TOTAL_1701),
+        fillColor: getColor(feature.properties.total_cases),
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -105,12 +178,13 @@ function style(feature) {
     };
 }
 
+
 function highlightFeature(e) {
     var layer = e.target;
 
     layer.setStyle({
         weight: 5,
-        color: '#000000',
+        color: '#666',
         dashArray: '',
         fillOpacity: 0.7
     });
@@ -118,63 +192,14 @@ function highlightFeature(e) {
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
     }
+    info.update(layer.feature.properties);
 }
 
-function resetHighlight(e) {
-    geojson.resetStyle(e.target);
-}
 
-function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-}
-
-var grayscale = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-	maxZoom: 16
-	});
-    
-var educationTracts = L.geoJSON(education, {
-		style: style,
-		onEachFeature: onEachFeature
-	});
-    
-var map = L.map('mymap', {
-    center: [55.00, -114.00],
-    zoom: 4.5,
-    layers: [grayscale, educationTracts]
-});
-
-var baseMaps = {
-    "Educated Individuals": educationTracts,
-};
-
-var overlayMaps = {
-    "Cities": cities
-};
-
-L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-
-var info = L.control();
-
-info.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info');
-    this.update();
-    return this._div;
-};
-
-
-info.update = function (props) {
-    this._div.innerHTML = '<h4>Number of individuals:</h4>' +  (props ?
-        '<b>' + feature.properties.CSDNAME + '</b><br />' + feature.properties.TOTAL_1701 + ' people holding this distinction'
-        : 'Hover over a census tract');
-};
-
-info.addTo(map);
 
 var legend = L.control({position: 'bottomright'});
 
-	legend.onAdd = function (map) {
+	legend.onAdd = function (mymap) {
 
     var div = L.DomUtil.create('div', 'info legend'),
         grades = [0, 1490, 5370, 14955, 36870, 600000],
@@ -187,9 +212,12 @@ var legend = L.control({position: 'bottomright'});
     }
 
     return div;
-};
 
-legend.addTo(map);
+	};
+
+	legend.addTo(mymap);
+
+
 
 					
 </script>	
@@ -199,3 +227,4 @@ legend.addTo(map);
 
 </body>
 </html>
+
