@@ -61,9 +61,17 @@ The data is obtained from the Alberta Open Data portal, <a href="https://open.al
 		
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-	}).addTo(mymap);
+	}).addTo(mymap); 
     
 L.geoJson(education).addTo(map);
+
+function onEachFeature(feature, layer) {
+		layer.on({
+			mouseover: highlightFeature,
+			mouseout: resetHighlight,
+			click: zoomToFeature
+		});
+	}
 
 function getColor(d) {
     return d > 600000 ? '#7a0177' :
@@ -75,8 +83,9 @@ function getColor(d) {
 }
 
 function style(feature) {
+
     return {
-        fillColor: getColor(feature.properties.TOTAL_1701),
+        fillColor: getColor(TOTAL_1701),
         weight: 2,
         opacity: 1,
         color: 'white',
@@ -84,8 +93,6 @@ function style(feature) {
         fillOpacity: 0.7
     };
 }
-
-L.geoJson(statesData, {style: style}).addTo(map);
 
 function highlightFeature(e) {
     var layer = e.target;
@@ -106,25 +113,10 @@ function resetHighlight(e) {
     geojson.resetStyle(e.target);
 }
 
-var geojson;
-geojson = L.geoJson(education);
-
 function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
 }
 
-function onEachFeature(feature, layer) {
-    layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-    });
-}
-
-geojson = L.geoJson(statesData, {
-    style: style,
-    onEachFeature: onEachFeature
-}).addTo(map);
 
 
 var info = L.control();
@@ -135,10 +127,10 @@ info.onAdd = function (map) {
     return this._div;
 };
 
-// method that we will use to update the control based on feature properties passed
+
 info.update = function (props) {
     this._div.innerHTML = '<h4>Number of individuals:</h4>' +  (props ?
-        '<b>' + props.name + '</b><br />' + props.density + ' people holding this distinction'
+        '<b>' + feature.properties.CSDNAME + '</b><br />' + feature.properties.TOTAL_1701 + ' people holding this distinction'
         : 'Hover over a census tract');
 };
 
