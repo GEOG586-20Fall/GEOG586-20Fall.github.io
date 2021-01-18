@@ -41,11 +41,14 @@
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""></script>
   
+<script src="/js/leaflet-0.7.2/leaflet.ajax.min.js"></script>
+  
 <script src="education.geojson"></script>
 
 </head>
 
 <body>
+
 
 	<h1>Number of Individuals with a Post-Secondary Certificate, Diploma, or Degree in Alberta</h1>
 	<p>Explore the province of Alberta below by hovering over each of the census subdivsions to the number of individuals within that census tract who obtain a post-secondary certificate, diploma, or degree, as of 2016. The layer toggles are located in the upper right corner of the map.
@@ -64,6 +67,8 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/
 	}).addTo(mymap); 
     
 L.geoJson(education).addTo(mymap);
+var geojsonLayer = new L.GeoJSON.AJAX("education.geojson");       
+geojsonLayer.addTo(mymap);
 
 function onEachFeature(feature, layer) {
 		layer.on({
