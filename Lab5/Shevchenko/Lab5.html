@@ -40,13 +40,18 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
   crossorigin=""></script>
+  
+<script src="education.geojson"></script>
 
 </head>
 
 <body>
 
-	<h1>I NEED A NEW TOPIC</h1>
-	<p>Explore the province of Alberta below by hovering over each of the census subdivsions to VIEW NEW TOPIC. The layer toggles are located in the upper right corner of the map.</p>
+	<h1>Number of Individuals with a Post-Secondary Certificate, Diploma, or Degree in Alberta</h1>
+	<p>Explore the province of Alberta below by hovering over each of the census subdivsions to the number of individuals within that census tract who obtain a post-secondary certificate, diploma, or degree, as of 2016. The layer toggles are located in the upper right corner of the map.
+<br>
+<br>
+The data is obtained from the Alberta Open Data portal, <a href="https://open.alberta.ca/opendata/social-vulnerability-indicators-by-census-subdivision-2016-census-of-canada">located here</a></p>
 
 
 <center><div id="mapid"></div></center>
@@ -57,7 +62,92 @@
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 	}).addTo(mymap);
-			
+    
+L.geoJson(education).addTo(map);
+
+function getColor(d) {
+    return d > 600000 ? '#7a0177' :
+           d > 36870  ? '#c51b8a' :
+           d > 14955  ? '#f768a1' :
+           d > 5370  ? '#fa9fb5' :
+           d > 1490   ? '#fcc5c0' :
+                      '#feebe2';
+}
+
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.TOTAL_1701),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
+L.geoJson(statesData, {style: style}).addTo(map);
+
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#000000',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+}
+
+function resetHighlight(e) {
+    geojson.resetStyle(e.target);
+}
+
+var geojson;
+geojson = L.geoJson(education);
+
+function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
+geojson = L.geoJson(statesData, {
+    style: style,
+    onEachFeature: onEachFeature
+}).addTo(map);
+
+
+var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info');
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Number of individuals:</h4>' +  (props ?
+        '<b>' + props.name + '</b><br />' + props.density + ' people holding this distinction'
+        : 'Hover over a census tract');
+};
+
+info.addTo(map);
+
+
+
+
+
 					
 </script>	
 	
