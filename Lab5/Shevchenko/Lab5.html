@@ -57,7 +57,7 @@ The data is obtained from the Alberta Open Data portal, <a href="https://open.al
 <center><div id="mapid"></div></center>
 	
 <script type= "application/javascript">
-	var mymap = L.map('mapid').setView([55.00, -114.00], 9);
+	var mymap = L.map('mapid').setView([55.00, -114.00], 4.5);
 		
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
@@ -129,7 +129,7 @@ var educationTracts = L.geoJSON(education, {
     
 var map = L.map('mymap', {
     center: [55.00, -114.00],
-    zoom: 10,
+    zoom: 4.5,
     layers: [grayscale, educationTracts]
 });
 
