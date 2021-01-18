@@ -57,13 +57,13 @@ The data is obtained from the Alberta Open Data portal, <a href="https://open.al
 <center><div id="mapid"></div></center>
 	
 <script type= "application/javascript">
-	var mymap = L.map('mapid').setView([51.200, -114.100], 9);
+	var mymap = L.map('mapid').setView([55.00, -114.00], 9);
 		
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 	}).addTo(mymap); 
     
-L.geoJson(education).addTo(map);
+L.geoJson(education).addTo(mymap);
 
 function onEachFeature(feature, layer) {
 		layer.on({
@@ -117,6 +117,31 @@ function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
 }
 
+var grayscale = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+	maxZoom: 16
+	});
+    
+var educationTracts = L.geoJSON(education, {
+		style: style,
+		onEachFeature: onEachFeature
+	});
+    
+var map = L.map('mymap', {
+    center: [55.00, -114.00],
+    zoom: 10,
+    layers: [grayscale, educationTracts]
+});
+
+var baseMaps = {
+    "Educated Individuals": educationTracts,
+};
+
+var overlayMaps = {
+    "Cities": cities
+};
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 
 var info = L.control();
@@ -136,9 +161,24 @@ info.update = function (props) {
 
 info.addTo(map);
 
+var legend = L.control({position: 'bottomright'});
 
+	legend.onAdd = function (map) {
 
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 1490, 5370, 14955, 36870, 600000],
+        labels = [];
 
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+
+    return div;
+};
+
+legend.addTo(map);
 
 					
 </script>	
